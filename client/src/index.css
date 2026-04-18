@@ -1,0 +1,226 @@
+/*
+Design philosophy for this file: Storybook Editorial.
+Use warm parchment tones, deep storybook navy, meadow green accents, and readable typography that feels inviting for families and schools.
+Favor clear hierarchy, softened framing, and literary warmth over austere minimalism.
+*/
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Source Sans 3", sans-serif;
+  --font-display: "Cormorant Garamond", serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root {
+  --radius: 1rem;
+  --background: oklch(0.985 0.01 91.2);
+  --foreground: oklch(0.285 0.04 262.1);
+  --card: oklch(0.993 0.01 92.4);
+  --card-foreground: oklch(0.285 0.04 262.1);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.285 0.04 262.1);
+  --primary: oklch(0.292 0.056 264.8);
+  --primary-foreground: oklch(0.985 0.003 90);
+  --secondary: oklch(0.958 0.022 92.4);
+  --secondary-foreground: oklch(0.285 0.04 262.1);
+  --muted: oklch(0.964 0.01 90.8);
+  --muted-foreground: oklch(0.49 0.025 257.2);
+  --accent: oklch(0.593 0.08 149.4);
+  --accent-foreground: oklch(0.985 0.003 90);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.89 0.02 88.5);
+  --input: oklch(0.94 0.014 90.1);
+  --ring: oklch(0.593 0.08 149.4);
+}
+
+.dark {
+  --background: oklch(0.22 0.026 266.5);
+  --foreground: oklch(0.96 0.004 95);
+  --card: oklch(0.26 0.022 266.5);
+  --card-foreground: oklch(0.96 0.004 95);
+  --popover: oklch(0.26 0.022 266.5);
+  --popover-foreground: oklch(0.96 0.004 95);
+  --primary: oklch(0.72 0.065 87.2);
+  --primary-foreground: oklch(0.24 0.022 266.5);
+  --secondary: oklch(0.33 0.018 266.5);
+  --secondary-foreground: oklch(0.96 0.004 95);
+  --muted: oklch(0.3 0.018 266.5);
+  --muted-foreground: oklch(0.8 0.01 95);
+  --accent: oklch(0.68 0.085 146.5);
+  --accent-foreground: oklch(0.22 0.026 266.5);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.68 0.085 146.5);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.65;
+    background-image:
+      radial-gradient(circle at top left, rgba(108, 132, 92, 0.1), transparent 24%),
+      radial-gradient(circle at right 16%, rgba(192, 157, 89, 0.08), transparent 18%),
+      linear-gradient(to bottom, rgba(255, 251, 244, 0.96), rgba(248, 243, 232, 0.96));
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    line-height: 0.98;
+    font-weight: 600;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-width: 0;
+    min-height: 0;
+  }
+
+  .section-label {
+    @apply mb-4 inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#5F7752];
+  }
+
+  .section-label::before {
+    content: "";
+    width: 2.25rem;
+    height: 1px;
+    background: rgba(95, 119, 82, 0.65);
+  }
+
+  .page-shell {
+    @apply relative overflow-hidden;
+    background: linear-gradient(180deg, rgba(255, 252, 246, 0.86), rgba(248, 243, 232, 0.7));
+  }
+
+  .page-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(rgba(58, 74, 106, 0.05) 0.6px, transparent 0.6px),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.28), transparent 26%);
+    background-size: 18px 18px, auto;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.22), transparent 72%);
+  }
+
+  .editorial-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .soft-card {
+    @apply rounded-[1.75rem] border bg-[rgba(255,252,246,0.9)] shadow-[0_22px_50px_rgba(79,61,38,0.09)] backdrop-blur;
+    border-color: rgba(96, 87, 62, 0.14);
+  }
+
+  .grain-overlay {
+    position: relative;
+  }
+
+  .grain-overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.12;
+    mix-blend-mode: multiply;
+    background-image:
+      linear-gradient(0deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.28)),
+      radial-gradient(circle at 20% 20%, rgba(139, 115, 85, 0.25), transparent 18%),
+      radial-gradient(circle at 80% 40%, rgba(74, 124, 89, 0.15), transparent 20%);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      max-width: 1280px;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    .editorial-grid {
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: stretch;
+      gap: 1.75rem;
+    }
+  }
+}

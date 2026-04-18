@@ -1,0 +1,5 @@
+- [ ] Adjust photography image framing so heads are no longer cropped and more of each subject is visible.
+- [ ] Move the About page to appear immediately after Home in site navigation.
+- [ ] Replace the weak Books-page placeholder copy with stronger substantive content where writing is needed.
+- [ ] Add the provided The Tale of Jacob Swift cover image to the Books page and site content mapping.
+- [ ] Add the provided teacher testimonial to the School Visits page.
