@@ -151,6 +151,10 @@ export default function Home() {
           <PlaceholderBlock label="PHOTO: Jeff presenting to students. Not yet available." className="min-h-[240px] bg-[#6C665E]" />
         </div>
       </section>
+
+      <section className="container pb-12 text-center">
+        <p className="text-sm text-[#8A8578]">TEST — CONTENT UPDATE WORKFLOW VERIFIED</p>
+      </section>
     </div>
   );
 }
