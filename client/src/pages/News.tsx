@@ -65,8 +65,8 @@ export default function News() {
         eyebrow="News"
         title="What's happening with Jeff's books, school visits, and Nebraskaland Magazine."
         description="Upcoming events, magazine awards, and community presentations across Nebraska."
-        image={visualAssets.jkPhotography.heroPrairieGrass}
-        imagePosition="center 60%"
+        image={visualAssets.jkPhotography.heroWindmillSunset}
+        imagePosition="center center"
       />
 
       {/* Nebraskaland Magazine featured callout */}
@@ -89,46 +89,63 @@ export default function News() {
         </div>
       </section>
 
-      {/* Upcoming Events */}
+      {/* Upcoming Events -- each card color-coded */}
       <section className="container pb-16 sm:pb-20">
         <p className="section-label">Upcoming events</p>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {upcomingEvents.map((event) => (
-            <article
-              key={event.title}
-              className="soft-card p-7"
-            >
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#B8860B]">
-                {event.date}
-              </p>
-              <h3 className="mt-3 text-xl font-semibold text-[#1B2A4A]">
-                {event.title}
-              </h3>
-              <p className="mt-4 text-base leading-7 text-[#445065]">
-                {event.description}
-              </p>
-            </article>
-          ))}
+          {upcomingEvents.map((event, i) => {
+            const accents = [
+              { border: "border-[#4A7C59]", bg: "bg-[#F2F7F0]", badge: "bg-[#4A7C59]/10 text-[#4A7C59]", date: "text-[#4A7C59]" },
+              { border: "border-[#B8860B]", bg: "bg-[#FBF6EC]", badge: "bg-[#B8860B]/10 text-[#B8860B]", date: "text-[#B8860B]" },
+              { border: "border-[#5C6782]", bg: "bg-[#F0F2F7]", badge: "bg-[#5C6782]/10 text-[#5C6782]", date: "text-[#5C6782]" },
+              { border: "border-[#1B2A4A]", bg: "bg-[#EEF1F6]", badge: "bg-[#1B2A4A]/10 text-[#1B2A4A]", date: "text-[#1B2A4A]" },
+              { border: "border-[#7A6B5A]", bg: "bg-[#F7F4EE]", badge: "bg-[#7A6B5A]/10 text-[#7A6B5A]", date: "text-[#7A6B5A]" },
+            ];
+            const a = accents[i % accents.length];
+            return (
+              <article
+                key={event.title}
+                className={`rounded-[1.75rem] border-l-4 ${a.border} ${a.bg} p-7 shadow-[0_16px_32px_rgba(27,42,74,0.06)]`}
+              >
+                <div className={`mb-3 inline-flex rounded-full ${a.badge} px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.18em]`}>
+                  {event.date}
+                </div>
+                <h3 className="text-xl font-semibold text-[#1B2A4A]">
+                  {event.title}
+                </h3>
+                <p className="mt-4 text-base leading-7 text-[#445065]">
+                  {event.description}
+                </p>
+              </article>
+            );
+          })}
         </div>
       </section>
 
-      {/* Recent / Ongoing */}
+      {/* Recent / Ongoing -- dark treatment to contrast with events */}
       <section className="container pb-16 sm:pb-20">
         <p className="section-label">Recent and ongoing</p>
         <div className="grid gap-5 lg:grid-cols-3">
-          {recentOngoing.map((item) => (
-            <article
-              key={item.title}
-              className="rounded-[1.5rem] border border-[color:rgba(27,42,74,0.08)] bg-[#FBFAF6] p-7 shadow-[0_18px_35px_rgba(27,42,74,0.05)]"
-            >
-              <h3 className="text-xl font-semibold text-[#1B2A4A]">
-                {item.title}
-              </h3>
-              <p className="mt-4 text-base leading-7 text-[#445065]">
-                {item.description}
-              </p>
-            </article>
-          ))}
+          {recentOngoing.map((item, i) => {
+            const tints = [
+              "bg-[#1B2A4A] border-[#B8860B]",
+              "bg-[#2A3E5E] border-[#4A7C59]",
+              "bg-[#1B2A4A] border-[#C4883A]",
+            ];
+            return (
+              <article
+                key={item.title}
+                className={`rounded-[1.75rem] border-t-4 ${tints[i % tints.length]} p-7 shadow-[0_20px_44px_rgba(27,42,74,0.14)]`}
+              >
+                <h3 className="text-xl font-semibold text-white">
+                  {item.title}
+                </h3>
+                <p className="mt-4 text-base leading-7 text-white/75">
+                  {item.description}
+                </p>
+              </article>
+            );
+          })}
         </div>
       </section>
 
@@ -136,13 +153,15 @@ export default function News() {
       <section className="container pb-16 sm:pb-20">
         <div className="soft-card overflow-hidden lg:grid lg:grid-cols-[1.1fr_0.9fr]">
           <div
-            className="min-h-[300px] lg:min-h-full"
+            className="relative min-h-[300px] lg:min-h-full"
             style={{
               backgroundImage: `url(${visualAssets.jkPhotography.doubleRainbowDirtRoad})`,
               backgroundSize: "cover",
-              backgroundPosition: "center 55%",
+              backgroundPosition: "center center",
             }}
-          />
+          >
+            <span className="absolute bottom-3 left-4 text-[0.65rem] tracking-[0.06em] text-white/60">Courtesy of Nebraskaland Magazine</span>
+          </div>
           <div className="p-8 sm:p-10 lg:p-12">
             <p className="section-label">Community presentations</p>
             <h2 className="text-3xl font-semibold text-[#1B2A4A] sm:text-4xl">

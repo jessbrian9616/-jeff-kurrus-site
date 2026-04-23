@@ -35,9 +35,9 @@ export default function SchoolVisits() {
               </footer>
               <div className="mt-8 grid grid-cols-2 gap-3">
                 <img
-                  src={visualAssets.uploaded.schoolVisit2}
-                  alt="Students engaged during Jeff Kurrus author presentation"
-                  className="h-[180px] w-full rounded-[1.2rem] object-cover object-[center_20%] shadow-[0_14px_28px_rgba(96,87,62,0.1)]"
+                  src={visualAssets.uploaded.schoolVisit1}
+                  alt="Donnie Bats bulletin board display during Jeff Kurrus school visit"
+                  className="h-[180px] w-full rounded-[1.2rem] object-cover object-center shadow-[0_14px_28px_rgba(96,87,62,0.1)]"
                 />
                 <img
                   src={visualAssets.uploaded.schoolVisitTurtle}
@@ -167,7 +167,7 @@ export default function SchoolVisits() {
               <img
                 src={visualAssets.uploaded.readerCouch}
                 alt="Boy reading a Jeff Kurrus book on the couch"
-                className="h-[240px] w-full rounded-[1.2rem] object-cover object-[center_25%]"
+                className="h-[240px] w-full rounded-[1.2rem] object-cover object-center"
               />
             </div>
             <p className="mt-5 text-lg leading-8 text-[#31405C]">
@@ -187,8 +187,8 @@ export default function SchoolVisits() {
             <div className="p-8 sm:p-10 lg:p-12">
               <p className="section-label">School visit photos</p>
               <div className="grid grid-cols-2 gap-3">
-                <img src={visualAssets.uploaded.schoolVisit1} alt="Donnie Bats bulletin board display at Ashbury Elementary" className="h-[200px] w-full rounded-[1.2rem] object-cover object-[center_40%] shadow-[0_14px_28px_rgba(96,87,62,0.1)]" />
-                <img src={visualAssets.uploaded.schoolVisit2} alt="Students engaged during Jeff Kurrus author visit" className="h-[200px] w-full rounded-[1.2rem] object-cover object-[center_20%] shadow-[0_14px_28px_rgba(96,87,62,0.1)]" />
+                <img src={visualAssets.uploaded.schoolVisit1} alt="Donnie Bats bulletin board display at Ashbury Elementary" className="h-[200px] w-full rounded-[1.2rem] object-cover object-center shadow-[0_14px_28px_rgba(96,87,62,0.1)]" />
+                <img src={visualAssets.uploaded.schoolVisit2} alt="Students engaged during Jeff Kurrus author visit" className="h-[200px] w-full rounded-[1.2rem] object-cover object-center shadow-[0_14px_28px_rgba(96,87,62,0.1)]" />
               </div>
               <img src={visualAssets.uploaded.schoolVisitTurtle} alt="Students gathered around a turtle during a school visit" className="mt-3 h-[200px] w-full rounded-[1.2rem] object-cover object-center shadow-[0_14px_28px_rgba(96,87,62,0.1)]" />
               <div className="mt-6 grid grid-cols-2 gap-3">

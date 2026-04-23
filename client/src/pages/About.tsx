@@ -12,8 +12,8 @@ export default function About() {
         eyebrow="About"
         title="The author formation story behind the books and the camera."
         description="From sandhill cranes on the Platte River to a young baseball player discovering his hidden talent, the subject changes but the goal stays the same."
-        image={visualAssets.jkPhotography.heroBarnGoldenHour}
-        imagePosition="center 30%"
+        image={visualAssets.jkPhotography.heroFoggyGoldenLandscape}
+        imagePosition="center center"
       />
 
       <section className="container py-16 sm:py-20">
@@ -48,6 +48,23 @@ export default function About() {
               <p>It's the best insomnia I've ever had.</p>
               <p>From sandhill cranes to swift foxes to a young baseball player still uncovering his hidden talent, the subject changes -- but the goal stays the same: capture attention and tell the truth about what's there.</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="container pb-16 sm:pb-20">
+        <div className="soft-card overflow-hidden lg:grid lg:grid-cols-2">
+          <img
+            src={visualAssets.jkPhotography.sunflowerLight}
+            alt="Wild sunflowers with a beam of light across a Nebraska field, photographed by Jeff Kurrus"
+            className="h-[360px] w-full object-cover object-center lg:h-full"
+          />
+          <div className="p-8 sm:p-10 lg:p-12">
+            <p className="section-label">Behind the camera</p>
+            <h2 className="text-3xl font-semibold text-[#1B2A4A]">Twenty years of Nebraska light.</h2>
+            <p className="mt-6 text-lg leading-8 text-[#445065]">
+              The same eye that finds a stunning sunrise over the Sandhills finds the light on a senior's face at golden hour. Jeff has spent two decades photographing Nebraska's landscapes, wildlife, and people for Nebraskaland Magazine and his own portrait work.
+            </p>
           </div>
         </div>
       </section>

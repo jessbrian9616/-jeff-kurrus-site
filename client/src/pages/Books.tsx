@@ -17,7 +17,7 @@ export default function Books() {
         title="Baseball chapter books for kids who'd rather be outside than reading."
         description="From sandhill cranes on the Platte River to a young ballplayer discovering his hidden talent, Jeff's books capture attention and tell the truth about what's there."
         image={visualAssets.uploaded.donnieBats}
-        imagePosition="center 60%"
+        imagePosition="center center"
       />
 
       <section className="container py-16 sm:py-20">

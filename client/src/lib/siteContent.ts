@@ -36,6 +36,13 @@ export const visualAssets = {
     doubleRainbowDirtRoad: "/images/double-rainbow-dirt-road.jpg",
     duckDecoysWinter: "/images/duck-decoys-winter.jpg",
     lakeDiveSunset: "/images/lake-dive-sunset.jpg",
+    sunflowerLight: "/images/sunflower-light.jpg",
+    seniorDragonsAthlete: "/images/senior-dragons-athlete.jpg",
+    seniorSdAthlete: "/images/senior-sd-athlete.jpg",
+    seniorGraduationToss: "/images/senior-graduation-toss.jpg",
+    heroFishermanSunrise: "/images/hero-fisherman-sunrise.jpg",
+    heroFoggyFisherman: "/images/hero-foggy-fisherman.jpg",
+    heroFoggyGoldenLandscape: "/images/hero-foggy-golden-landscape.jpg",
   },
   uploaded: {
     donnieBats: "/images/donnie-bats-cover.jpg",
@@ -149,17 +156,17 @@ export const photographyGallery = [
   {
     src: visualAssets.uploaded.senior01,
     alt: "Senior portrait photography by Jeff Kurrus in Gretna Nebraska, natural light",
-    position: "center 20%",
+    position: "center center",
   },
   {
     src: visualAssets.uploaded.senior02,
     alt: "Senior portrait photography by Jeff Kurrus in Gretna Nebraska, outdoor portrait",
-    position: "center 14%",
+    position: "center center",
   },
   {
     src: visualAssets.uploaded.senior03,
     alt: "Senior portrait photography by Jeff Kurrus in Gretna Nebraska, golden hour",
-    position: "center 16%",
+    position: "center top",
   },
   {
     src: visualAssets.uploaded.senior04,
@@ -169,41 +176,56 @@ export const photographyGallery = [
   {
     src: visualAssets.uploaded.senior05,
     alt: "Senior portrait photography by Jeff Kurrus in Gretna Nebraska, field portrait",
-    position: "center 14%",
+    position: "center top",
   },
   {
     src: visualAssets.uploaded.senior06,
     alt: "Senior portrait photography by Jeff Kurrus in Gretna Nebraska, warm outdoor portrait",
-    position: "center 16%",
+    position: "center top",
   },
   {
     src: visualAssets.uploaded.senior07,
     alt: "Senior portrait photography by Jeff Kurrus in Gretna Nebraska, natural light portrait",
-    position: "center 12%",
+    position: "center top",
   },
   {
     src: visualAssets.uploaded.senior08,
     alt: "Senior portrait photography by Jeff Kurrus in Gretna Nebraska, outdoor senior session",
-    position: "center 18%",
+    position: "center top",
   },
   {
     src: visualAssets.uploaded.senior09,
     alt: "Senior portrait photography by Jeff Kurrus in Gretna Nebraska, softball portrait at golden hour",
-    position: "center 34%",
+    position: "center center",
   },
   {
     src: visualAssets.uploaded.senior10,
     alt: "Senior portrait photography by Jeff Kurrus in Gretna Nebraska, graduation portrait in summer greenery",
-    position: "center 18%",
+    position: "center top",
   },
   {
     src: visualAssets.uploaded.seniorAthlete,
     alt: "Student athlete senior portrait by Jeff Kurrus in Gretna Nebraska",
-    position: "center 30%",
+    position: "center top",
   },
   {
     src: visualAssets.uploaded.momDaughterSunset,
     alt: "Mother and daughter portrait at sunset in a golden field by Jeff Kurrus",
     position: "center center",
+  },
+  {
+    src: visualAssets.jkPhotography.seniorDragonsAthlete,
+    alt: "Dragons multi-sport athlete senior portrait with jerseys and football by Jeff Kurrus",
+    position: "center center",
+  },
+  {
+    src: visualAssets.jkPhotography.seniorSdAthlete,
+    alt: "USD student athlete senior portrait in white dress by Jeff Kurrus",
+    position: "center top",
+  },
+  {
+    src: visualAssets.jkPhotography.seniorGraduationToss,
+    alt: "Graduation cap toss celebration portrait in red gown by Jeff Kurrus",
+    position: "center top",
   },
 ];

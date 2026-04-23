@@ -12,8 +12,8 @@ export default function Contact() {
         eyebrow="Contact"
         title="I read every message."
         description="Use the form below to book a school visit, order books, ask about photography, or send a general inquiry."
-        image={visualAssets.generated.contactSkyline}
-        dark={false}
+        image={visualAssets.jkPhotography.heroFoggyFisherman}
+        imagePosition="center center"
       />
 
       <section className="container py-16 sm:py-20">
@@ -41,18 +41,20 @@ export default function Contact() {
           </div>
 
           <div className="soft-card overflow-hidden">
-            <div className="h-full min-h-[100%] bg-[#F7F4EC] p-8 sm:p-10 lg:p-12" style={{ backgroundImage: `linear-gradient(180deg, rgba(255,255,255,0.84), rgba(247,244,236,0.96)), url(${visualAssets.generated.contactSkyline})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-              <p className="section-label">Let's connect</p>
-              <div className="mb-8 border-b border-[rgba(96,87,62,0.12)] pb-8">
-                <p className="text-base leading-7 text-[#31405C]">Reach out. Let's discuss what your classroom or group needs. Then we'll tailor a presentation to help.</p>
-                <p className="mt-4 text-base leading-7 text-[#31405C]">Writing is hard. So is photography. I can make these skills click for your group -- from young writers to adult specialty groups -- so everyone walks away with the confidence to grow as a creator.</p>
+            <div className="h-full min-h-[100%] p-8 sm:p-10 lg:p-12" style={{ backgroundImage: `linear-gradient(180deg, rgba(27,42,74,0.94), rgba(27,42,74,0.88)), url(${visualAssets.jkPhotography.heroPrairieGrass})`, backgroundSize: "cover", backgroundPosition: "center" }}>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Why reach out</p>
+              <h2 className="mt-4 text-3xl font-semibold text-white">Every book, school visit, and photo session started with a conversation.</h2>
+              <div className="mt-6 space-y-4 text-base leading-7 text-white/80">
+                <p>If you're a teacher wondering whether your students would connect with a visiting author, the answer is yes. If you're a parent looking for senior portraits that actually look like your kid, not a stock photo, I'd love to talk.</p>
+                <p>I work with schools across Nebraska, shoot portraits in the Gretna and Omaha area, and speak to book clubs and civic groups for free. Whatever you're thinking about, send a note. I'll get back to you.</p>
               </div>
-              <p className="section-label">Direct contact</p>
-              <a href="mailto:jeffreyekurrus@gmail.com" className="text-3xl font-semibold text-[#1B2A4A] transition hover:text-[#4A7C59]">jeffreyekurrus@gmail.com</a>
-              <p className="mt-5 text-lg leading-8 text-[#445065]">For school visits, book orders, photography sessions, and media inquiries.</p>
-              <div className="mt-10 space-y-4">
+              <div className="mt-8 border-t border-white/15 pt-8">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Direct</p>
+                <a href="mailto:jeffreyekurrus@gmail.com" className="mt-3 block text-2xl font-semibold text-white transition hover:text-[#B8860B]">jeffreyekurrus@gmail.com</a>
+              </div>
+              <div className="mt-8 space-y-3">
                 {siteMeta.socials.map((item) => (
-                  <a key={item.href} href={item.href} target="_blank" rel="noreferrer" className="block rounded-full border border-[color:rgba(27,42,74,0.1)] bg-white/85 px-5 py-4 text-base font-semibold text-[#1B2A4A] transition hover:bg-white">
+                  <a key={item.href} href={item.href} target="_blank" rel="noreferrer" className="block rounded-full border border-white/15 bg-white/8 px-5 py-4 text-base font-semibold text-white transition hover:border-white/30 hover:bg-white/15">
                     {item.label}
                   </a>
                 ))}

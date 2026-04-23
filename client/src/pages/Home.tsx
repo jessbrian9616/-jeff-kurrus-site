@@ -14,8 +14,8 @@ export default function Home() {
         eyebrow="Home"
         title="Books for kids who'd rather be outside."
         description="Jeff Kurrus writes children's books shaped by natural landscapes, baseball diamonds, and years spent paying attention behind the camera."
-        image={visualAssets.jkPhotography.heroWindmillSunset}
-        imagePosition="center 40%"
+        image={visualAssets.jkPhotography.heroFishermanSunrise}
+        imagePosition="center center"
         actions={
           <>
             <Link href="/books">
@@ -99,14 +99,14 @@ export default function Home() {
             <p className="section-label">For educators</p>
             <div className="mb-6 grid grid-cols-2 gap-3">
               <img
-                src={visualAssets.uploaded.readerCouch}
-                alt="Boy reading a Jeff Kurrus book on the couch"
-                className="h-[200px] w-full rounded-[1.5rem] object-cover object-[center_30%] shadow-[0_20px_40px_rgba(27,42,74,0.12)]"
+                src={visualAssets.uploaded.schoolVisit1}
+                alt="Students engaged during a Jeff Kurrus author visit"
+                className="h-[200px] w-full rounded-[1.5rem] object-cover object-center shadow-[0_20px_40px_rgba(27,42,74,0.12)]"
               />
               <img
-                src={visualAssets.uploaded.readerThankYou}
-                alt="Hand-drawn thank-you card from a young reader"
-                className="h-[200px] w-full rounded-[1.5rem] object-contain bg-[#f5f0e8] shadow-[0_20px_40px_rgba(27,42,74,0.12)]"
+                src={visualAssets.uploaded.schoolVisitTurtle}
+                alt="Students gathered around a turtle during a Jeff Kurrus school visit"
+                className="h-[200px] w-full rounded-[1.5rem] object-cover object-center shadow-[0_20px_40px_rgba(27,42,74,0.12)]"
               />
             </div>
             <p className="text-lg leading-8 text-[#445065]">
@@ -145,9 +145,9 @@ export default function Home() {
           <div className="soft-card overflow-hidden">
             <Link href="/contact">
               <img
-                src={visualAssets.jkPhotography.doubleRainbowDirtRoad}
-                alt="Double rainbow over a dirt road on the Nebraska prairie, photographed by Jeff Kurrus"
-                className="h-[260px] w-full object-cover object-[center_60%] transition hover:scale-[1.02]"
+                src={visualAssets.jkPhotography.foggyDockMahoney}
+                alt="Foggy morning dock at Mahoney State Park, photographed by Jeff Kurrus"
+                className="h-[260px] w-full object-cover object-center transition hover:scale-[1.02]"
               />
               <div className="p-6">
                 <p className="section-label">Get in touch</p>
