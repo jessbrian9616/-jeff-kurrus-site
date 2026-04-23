@@ -96,7 +96,7 @@ export default function Home() {
                 I spent years behind a camera. Sandhill cranes on the Platte River. Swift foxes in the short grass. I learned that a good photograph and a good story ask the same thing of you: pay attention and tell the truth about what you see.
               </p>
               <p>
-                I am the editor of Nebraskaland Magazine. I live in Gretna, Nebraska. I write baseball chapter books for boys who would rather be outside than reading.
+                I am the editor of Nebraskaland Magazine. I live in Gretna, Nebraska. I write baseball chapter books for kids who would rather be outside than reading.
               </p>
             </div>
             <Link href="/about" className="mt-8 inline-flex text-sm font-semibold uppercase tracking-[0.18em] text-[#4A7C59]">
@@ -136,8 +136,16 @@ export default function Home() {
               className="mb-6 h-[220px] w-full rounded-[1.5rem] object-cover shadow-[0_20px_40px_rgba(27,42,74,0.12)]"
             />
             <p className="text-lg leading-8 text-[#445065]">
-              I bring a 45-minute program to K-5 classrooms across Nebraska. Students hear the story behind Donnie Bats, talk about writing, and sign books at the table afterward.
+              Jeff brings a 45-minute writing program to K-8 classrooms across Nebraska. Students hear the story behind Donnie Bats, dig into the writing process, and leave with signed books.
             </p>
+            <blockquote className="mt-5 border-l-2 border-[#4A7C59]/40 pl-4">
+              <p className="text-base italic leading-7 text-[#445065]">
+                "'Jeff Kurrus Days' are a core memory for every student who has had the chance to experience them."
+              </p>
+              <footer className="mt-2 text-sm font-semibold text-[#4A7C59]">
+                — Mrs. Lisa Giles, 4th Grade, Ashbury Elementary
+              </footer>
+            </blockquote>
             <Link href="/school-visits" className="mt-8 inline-flex rounded-full bg-[#4A7C59] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#3C6648]">
               Book an Author Visit
             </Link>
@@ -147,14 +155,11 @@ export default function Home() {
 
       <section className="container pb-8">
         <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <PlaceholderBlock label="HERO IMAGE: Jeff's environmental photo, Nebraska prairie or baseball field, golden hour. Photo not yet available." className="min-h-[240px] bg-[#1B2A4A]" />
-          <PlaceholderBlock label="PHOTO: Jeff presenting to students. Not yet available." className="min-h-[240px] bg-[#6C665E]" />
+          <PlaceholderBlock label="Coming Soon" className="min-h-[240px] bg-[#1B2A4A]" />
+          <PlaceholderBlock label="Coming Soon" className="min-h-[240px] bg-[#6C665E]" />
         </div>
       </section>
 
-      <section className="container pb-12 text-center">
-        <p className="text-sm text-[#8A8578]">TEST — CONTENT UPDATE WORKFLOW VERIFIED</p>
-      </section>
     </div>
   );
 }

@@ -23,17 +23,16 @@ export default function About() {
           <div className="soft-card p-8 sm:p-10 lg:p-12">
             <p className="section-label">First person</p>
             <div className="space-y-6 text-lg leading-8 text-[#445065]">
-              <p><strong>I write baseball chapter books for boys who would rather be outside than reading.</strong></p>
-              <p><strong>I have been the editor of Nebraskaland Magazine for the Nebraska Game and Parks Commission since 2006. Named editor in 2013.</strong></p>
-              <p><strong>Before Donnie Bats, I spent years behind a camera. Sandhill cranes on the Platte River. Swift foxes in the short grass. Whooping cranes along the Central Flyway. Somewhere in that work I realized the same thing that makes a good wildlife photograph makes a good story for kids: you have to be patient, you have to pay attention, and you have to tell the truth about what you see.</strong></p>
-              <p><strong>Have You Seen Mary? was represented by Mansion Street Literary Management in New York. They pitched it to Penguin and Simon and Schuster. The publishers passed on the format. A photo-driven children's book was too unfamiliar. Not the quality.</strong></p>
-              <p><strong>Joel Sartore, founder of National Geographic Photo Ark, endorsed Have You Seen Mary?</strong></p>
-              <p><strong>Have You Seen Mary? was a Golden Sower Award nominee. The Nebraska Library Association runs the award. More than 75,000 students voted that year.</strong></p>
-              <p><strong>More than 25,000 copies of my books are in readers' hands.</strong></p>
-              <p><strong>I have been visiting schools across Nebraska for years. Reading to kids. Talking about writing. Signing books at the table afterward.</strong></p>
-              <p><strong>I also lead author workshops and photography workshops, and I photograph seniors and families in the Gretna and Omaha area.</strong></p>
-              <p><strong>I grew up in Memphis, Tennessee. BA from the University of Memphis, 1998. MA in English and Creative Nonfiction from the University of Nebraska at Omaha, 2002.</strong></p>
-              <p><strong>I live in Gretna, Nebraska with my family.</strong></p>
+              <p>I grew up in Shelby Forest, a suburb of sorts outside of Memphis, Tennessee. There, I spent my days in the outdoors -- catching fish, hunting ducks, and ... writing.</p>
+              <p>I've always loved to write, even though I wasn't an A student in English in grade school, high school, or college.</p>
+              <p>But that didn't stop me. I got the publishing bug when I was studying at the University of Memphis, writing outdoor articles for Game &amp; Fish Magazine. I stared at my first assignment sheet for a month before starting, then gazed at that little $150 check after the article's publication like it was a gold bar.</p>
+              <p>From there, I continued to send work to publishers even while I was teaching high school English, receiving hundreds upon hundreds of rejections and getting just enough accepted to maintain my confidence.</p>
+              <p>That confidence landed me a job at Nebraskaland Magazine, where the staff had more than 150 years of experience and taught me the eccentricities of photography and the writing process. Today I serve as the magazine's editor -- an award-winning outdoor publication that has been part of readers' lives since 1926, and with any luck, will continue for another hundred years.</p>
+              <p>Then I asked a simple question: What happens when two sandhill cranes who are lifelong mates become separated from each other on the Platte River during migration? Six months after this question I was staring at my first children's book: Have You Seen Mary?</p>
+              <p>I followed this with The Tale of Jacob Swift and Can You Dance Like John? but couldn't help thinking about my other lifelong love: baseball.</p>
+              <p>My next two years were spent working on The Legend of Donnie Bats, the most enjoyable experience of my writing career. Only to be kept up at night when I began writing The Return of Donnie Bats.</p>
+              <p>It's the best insomnia I've ever had.</p>
+              <p>From sandhill cranes to swift foxes to a young baseball player still uncovering his hidden talent, the subject changes -- but the goal stays the same: capture attention and tell the truth about what's there.</p>
             </div>
           </div>
         </div>

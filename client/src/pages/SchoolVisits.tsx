@@ -60,6 +60,32 @@ export default function SchoolVisits() {
       </section>
 
       <section className="container pb-16 sm:pb-20">
+        <p className="section-label">Programs</p>
+        <div className="grid gap-5 lg:grid-cols-2">
+          <div className="soft-card p-7">
+            <h3 className="text-xl font-semibold text-[#22304F]">Zoom Q&amp;A <span className="ml-2 text-base font-normal text-[#5F7752]">Grades K-8</span></h3>
+            <p className="mt-4 text-lg leading-8 text-[#445065]">Jeff connects with students virtually, answering questions about the writing life and how he tackles the complicated (but thrilling) writing process. Works especially well with reluctant writers.</p>
+          </div>
+          <div className="soft-card p-7">
+            <h3 className="text-xl font-semibold text-[#22304F]">Writer's Workshop <span className="ml-2 text-base font-normal text-[#5F7752]">Grades K-2</span></h3>
+            <p className="mt-4 text-lg leading-8 text-[#445065]">Jeff reads the Golden Sower-nominated 'Have You Seen Mary?', then introduces his 7 Question Words: Who, What, When, Where, How, Why, and Can. Students start building stories within minutes.</p>
+          </div>
+          <div className="soft-card p-7">
+            <h3 className="text-xl font-semibold text-[#22304F]">Writer's Workshop <span className="ml-2 text-base font-normal text-[#5F7752]">Grades 3-5</span></h3>
+            <p className="mt-4 text-lg leading-8 text-[#445065]">Starting with an excerpt from 'The Legend of Donnie Bats,' Jeff walks students through his 7 Question Words, then layers in drawing, storyboarding, and a technique called 'Once Upon a Time' to tackle writing's hardest challenge: getting started.</p>
+          </div>
+          <div className="soft-card p-7">
+            <h3 className="text-xl font-semibold text-[#22304F]">Author Q&amp;A <span className="ml-2 text-base font-normal text-[#5F7752]">Grades K-8</span></h3>
+            <p className="mt-4 text-lg leading-8 text-[#445065]">Jeff draws on 20 years of working with student writers to give an authentic, story-driven look at the life of an author.</p>
+          </div>
+          <div className="soft-card p-7 lg:col-span-2">
+            <h3 className="text-xl font-semibold text-[#22304F]">Photography Workshop <span className="ml-2 text-base font-normal text-[#5F7752]">Grades 6-8</span></h3>
+            <p className="mt-4 text-lg leading-8 text-[#445065]">Jeff shares 20 years of experience as a professional outdoor photographer for the award-winning Nebraskaland Magazine. Students learn the basics of composition, aperture, and shutter speed, plus photography's most important tool: an alarm clock.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="container pb-16 sm:pb-20">
         <div className="soft-card p-8 sm:p-10 lg:p-12">
           <p className="section-label">Public pricing</p>
           <div className="grid gap-5 lg:grid-cols-3">
@@ -70,7 +96,24 @@ export default function SchoolVisits() {
               </article>
             ))}
           </div>
-          <p className="mt-6 text-lg leading-8 text-[#445065]">All pricing is negotiable. Reach out and let's talk about what works for your school.</p>
+          <p className="mt-6 text-lg leading-8 text-[#445065]">All pricing is negotiable. Reach out and let's talk about how we can help your young writers.</p>
+          <div className="mt-6 rounded-[1.5rem] border border-[color:rgba(96,87,62,0.14)] bg-[#FBFAF6] p-6">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">Book orders</p>
+            <p className="mt-4 text-lg leading-8 text-[#445065]">Books can be ordered in advance at bulk pricing -- contact Jeff directly to arrange. Students can also purchase at the signing table after the presentation.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="container pb-16 sm:pb-20">
+        <div className="grid gap-6 lg:grid-cols-2">
+          <div className="soft-card p-8 sm:p-10" style={{ backgroundColor: "rgba(246,239,217,0.5)" }}>
+            <p className="section-label">What to expect</p>
+            <p className="text-lg leading-8 text-[#445065]">Jeff brings an authentic experience to every school visit. He explains why he writes: 'I absolutely love getting lost in a story.' He tackles writing's toughest challenge head-on: getting started. And with stopwatch in hand, he gets your students writing more in a 45-minute session than you've ever seen.</p>
+          </div>
+          <div className="soft-card p-8 sm:p-10">
+            <p className="section-label">What Jeff needs</p>
+            <p className="text-lg leading-8 text-[#445065]">Not much. A whiteboard helps, but he's hosted plenty of classes outdoors. As long as he has his timer, your students will write -- and have fun doing it. For assemblies, a microphone is nice, but his voice can fill an auditorium.</p>
+          </div>
         </div>
       </section>
 
@@ -99,6 +142,15 @@ export default function SchoolVisits() {
                 </p>
                 <footer className="mt-5 text-base font-semibold text-[#5B6D53]">
                   Jeanna, Archdiocese of Omaha
+                </footer>
+              </blockquote>
+              <blockquote className="rounded-[1.8rem] border border-[rgba(95,119,82,0.24)] bg-[#F7ECD0] p-7 text-[#22304F] shadow-[0_18px_36px_rgba(96,87,62,0.1)]">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">From educators</p>
+                <p className="mt-4 text-xl leading-9 text-[#31405C]">
+                  "He truly pours his heart into each lesson and students feel that. He's supportive and honest; thoughtful and silly. He works hard to make learning come alive so that every child feels like an author. 'Jeff Kurrus Days' are a core memory for every student who has had the chance to experience them. We are so lucky to work with him!"
+                </p>
+                <footer className="mt-5 text-base font-semibold text-[#5B6D53]">
+                  Mrs. Lisa Giles -- 4th grade teacher, Ashbury Elementary
                 </footer>
               </blockquote>
               {/* Parent / reader testimonial */}

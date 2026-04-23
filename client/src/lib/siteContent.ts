@@ -56,7 +56,7 @@ export const bookCatalog = [
     title: "The Legend of Donnie Bats",
     price: "$12.95 | Ages 7-12 | Chapter Book",
     description:
-      "A funny chapter book about the kid who loves baseball most, even when nothing on the field seems to go his way.",
+      "Donnie Bats loves baseball but can't hit, throw, or catch -- until he discovers he might just be the best player his town has ever seen.",
     cta: "Buy on Amazon",
     href: "#",
     image: visualAssets.uploaded.donnieBats,
@@ -76,7 +76,7 @@ export const bookCatalog = [
     title: "Have You Seen Mary?",
     price: "$9.95 (softcover) / $17.00 (hardcover) | Ages 5-10",
     description:
-      "A tender picture book about a whooping crane, a disappearance, and the long search that follows.",
+      "'. . . and the sky blackened with dark, gray bodies. In the blurry confusion, John lost Mary.' So begins Have You Seen Mary?, the photo fictional account of one sandhill crane's faithful search during spring migration for his lost mate. Set on the crane's migration path, this bittersweet story of love, loss, and healing will appeal to all ages. Michael Forsberg's beautiful color photographs also help entertain and educate readers about sandhill cranes.",
     note: "Golden Sower Award Nominee | Photography by Michael Forsberg | Endorsed by Joel Sartore, founder of National Geographic Photo Ark.",
     cta: "Buy on Amazon",
     href: "#",
@@ -87,7 +87,7 @@ export const bookCatalog = [
     title: "The Tale of Jacob Swift",
     price: "$17.00 | Ages 5-10 | Photography by Rob Palmer",
     description:
-      "A prairie story that follows a swift fox through the beauty and hard truths of the Nebraska grassland.",
+      "Jacob recounts the struggles and triumphs that one swift fox family experiences in raising its son in the harsh but beautiful grasslands of North America. Looks like a picture book, reads like a chapter book.",
     cta: "Buy on Amazon",
     href: "#",
     image: visualAssets.uploaded.jacobSwift,

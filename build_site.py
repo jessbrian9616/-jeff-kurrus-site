@@ -584,7 +584,7 @@ export default function Home() {
                 I spent years behind a camera. Sandhill cranes on the Platte River. Swift foxes in the short grass. I learned that a good photograph and a good story ask the same thing of you: pay attention and tell the truth about what you see.
               </p>
               <p>
-                I am the editor of Nebraskaland Magazine. I live in Gretna, Nebraska. I write baseball chapter books for boys who would rather be outside than reading.
+                I am the editor of Nebraskaland Magazine. I live in Gretna, Nebraska. I write baseball chapter books for kids who would rather be outside than reading.
               </p>
             </div>
             <Link href="/about" className="mt-8 inline-flex text-sm font-semibold uppercase tracking-[0.18em] text-[#4A7C59]">
@@ -624,8 +624,16 @@ export default function Home() {
               className="mb-6 h-[220px] w-full rounded-[1.5rem] object-cover shadow-[0_20px_40px_rgba(27,42,74,0.12)]"
             />
             <p className="text-lg leading-8 text-[#445065]">
-              I bring a 45-minute program to K-5 classrooms across Nebraska. Students hear the story behind Donnie Bats, talk about writing, and sign books at the table afterward.
+              Jeff brings a 45-minute writing program to K-8 classrooms across Nebraska. Students hear the story behind Donnie Bats, dig into the writing process, and leave with signed books.
             </p>
+            <blockquote className="mt-5 border-l-2 border-[#4A7C59]/40 pl-4">
+              <p className="text-base italic leading-7 text-[#445065]">
+                "'Jeff Kurrus Days' are a core memory for every student who has had the chance to experience them."
+              </p>
+              <footer className="mt-2 text-sm font-semibold text-[#4A7C59]">
+                — Mrs. Lisa Giles, 4th Grade, Ashbury Elementary
+              </footer>
+            </blockquote>
             <Link href="/school-visits" className="mt-8 inline-flex rounded-full bg-[#4A7C59] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#3C6648]">
               Book an Author Visit
             </Link>
@@ -635,8 +643,8 @@ export default function Home() {
 
       <section className="container pb-8">
         <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <PlaceholderBlock label="HERO IMAGE: Jeff's environmental photo, Nebraska prairie or baseball field, golden hour. Photo not yet available." className="min-h-[240px] bg-[#1B2A4A]" />
-          <PlaceholderBlock label="PHOTO: Jeff presenting to students. Not yet available." className="min-h-[240px] bg-[#6C665E]" />
+          <PlaceholderBlock label="Coming Soon" className="min-h-[240px] bg-[#1B2A4A]" />
+          <PlaceholderBlock label="Coming Soon" className="min-h-[240px] bg-[#6C665E]" />
         </div>
       </section>
     </div>
@@ -765,6 +773,32 @@ export default function SchoolVisits() {
       </section>
 
       <section className="container pb-16 sm:pb-20">
+        <p className="section-label">Programs</p>
+        <div className="grid gap-5 lg:grid-cols-2">
+          <div className="soft-card p-7">
+            <h3 className="text-xl font-semibold text-[#22304F]">Zoom Q&amp;A <span className="ml-2 text-base font-normal text-[#5F7752]">Grades K-8</span></h3>
+            <p className="mt-4 text-lg leading-8 text-[#445065]">Jeff connects with students virtually, answering questions about the writing life and how he tackles the complicated (but thrilling) writing process. Works especially well with reluctant writers.</p>
+          </div>
+          <div className="soft-card p-7">
+            <h3 className="text-xl font-semibold text-[#22304F]">Writer's Workshop <span className="ml-2 text-base font-normal text-[#5F7752]">Grades K-2</span></h3>
+            <p className="mt-4 text-lg leading-8 text-[#445065]">Jeff reads the Golden Sower-nominated 'Have You Seen Mary?', then introduces his 7 Question Words: Who, What, When, Where, How, Why, and Can. Students start building stories within minutes.</p>
+          </div>
+          <div className="soft-card p-7">
+            <h3 className="text-xl font-semibold text-[#22304F]">Writer's Workshop <span className="ml-2 text-base font-normal text-[#5F7752]">Grades 3-5</span></h3>
+            <p className="mt-4 text-lg leading-8 text-[#445065]">Starting with an excerpt from 'The Legend of Donnie Bats,' Jeff walks students through his 7 Question Words, then layers in drawing, storyboarding, and a technique called 'Once Upon a Time' to tackle writing's hardest challenge: getting started.</p>
+          </div>
+          <div className="soft-card p-7">
+            <h3 className="text-xl font-semibold text-[#22304F]">Author Q&amp;A <span className="ml-2 text-base font-normal text-[#5F7752]">Grades K-8</span></h3>
+            <p className="mt-4 text-lg leading-8 text-[#445065]">Jeff draws on 20 years of working with student writers to give an authentic, story-driven look at the life of an author.</p>
+          </div>
+          <div className="soft-card p-7 lg:col-span-2">
+            <h3 className="text-xl font-semibold text-[#22304F]">Photography Workshop <span className="ml-2 text-base font-normal text-[#5F7752]">Grades 6-8</span></h3>
+            <p className="mt-4 text-lg leading-8 text-[#445065]">Jeff shares 20 years of experience as a professional outdoor photographer for the award-winning Nebraskaland Magazine. Students learn the basics of composition, aperture, and shutter speed, plus photography's most important tool: an alarm clock.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="container pb-16 sm:pb-20">
         <div className="soft-card p-8 sm:p-10 lg:p-12">
           <p className="section-label">Public pricing</p>
           <div className="grid gap-5 lg:grid-cols-3">
@@ -775,7 +809,24 @@ export default function SchoolVisits() {
               </article>
             ))}
           </div>
-          <p className="mt-6 text-base leading-7 text-[#445065]">All pricing is negotiable. Reach out and let's talk about what works for your school.</p>
+          <p className="mt-6 text-base leading-7 text-[#445065]">All pricing is negotiable. Reach out and let's talk about how we can help your young writers.</p>
+          <div className="mt-6 rounded-[1.5rem] border border-[color:rgba(96,87,62,0.14)] bg-[#FBFAF6] p-6">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">Book orders</p>
+            <p className="mt-4 text-lg leading-8 text-[#445065]">Books can be ordered in advance at bulk pricing -- contact Jeff directly to arrange. Students can also purchase at the signing table after the presentation.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="container pb-16 sm:pb-20">
+        <div className="grid gap-6 lg:grid-cols-2">
+          <div className="soft-card p-8 sm:p-10" style={{ backgroundColor: "rgba(246,239,217,0.5)" }}>
+            <p className="section-label">What to expect</p>
+            <p className="text-lg leading-8 text-[#445065]">Jeff brings an authentic experience to every school visit. He explains why he writes: 'I absolutely love getting lost in a story.' He tackles writing's toughest challenge head-on: getting started. And with stopwatch in hand, he gets your students writing more in a 45-minute session than you've ever seen.</p>
+          </div>
+          <div className="soft-card p-8 sm:p-10">
+            <p className="section-label">What Jeff needs</p>
+            <p className="text-lg leading-8 text-[#445065]">Not much. A whiteboard helps, but he's hosted plenty of classes outdoors. As long as he has his timer, your students will write -- and have fun doing it. For assemblies, a microphone is nice, but his voice can fill an auditorium.</p>
+          </div>
         </div>
       </section>
 
@@ -789,6 +840,15 @@ export default function SchoolVisits() {
             </div>
             <div className="mt-6 grid gap-4">
               <PlaceholderBlock label="EDUCATOR TESTIMONIALS: Space for 2-3 quotes from librarians and principals. Testimonials being gathered." className="min-h-[180px] bg-[#1B2A4A]" />
+              <blockquote className="rounded-[1.8rem] border border-[rgba(95,119,82,0.24)] bg-[#F7ECD0] p-7 text-[#22304F] shadow-[0_18px_36px_rgba(96,87,62,0.1)]">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">From educators</p>
+                <p className="mt-4 text-xl leading-9 text-[#31405C]">
+                  "He truly pours his heart into each lesson and students feel that. He's supportive and honest; thoughtful and silly. He works hard to make learning come alive so that every child feels like an author. 'Jeff Kurrus Days' are a core memory for every student who has had the chance to experience them. We are so lucky to work with him!"
+                </p>
+                <footer className="mt-5 text-base font-semibold text-[#5B6D53]">
+                  Mrs. Lisa Giles -- 4th grade teacher, Ashbury Elementary
+                </footer>
+              </blockquote>
               {/* Parent / reader testimonial */}
               <div className="rounded-[1.8rem] border border-[rgba(75,100,90,0.20)] bg-[#EDF3EA] p-7 shadow-[0_18px_36px_rgba(96,87,62,0.1)]">
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">What parents are saying</p>
@@ -887,17 +947,16 @@ export default function About() {
           <div className="soft-card p-8 sm:p-10 lg:p-12">
             <p className="section-label">First person</p>
             <div className="space-y-6 text-lg leading-8 text-[#445065]">
-              <p><strong>I write baseball chapter books for boys who would rather be outside than reading.</strong></p>
-              <p><strong>I have been the editor of Nebraskaland Magazine for the Nebraska Game and Parks Commission since 2006. Named editor in 2013.</strong></p>
-              <p><strong>Before Donnie Bats, I spent years behind a camera. Sandhill cranes on the Platte River. Swift foxes in the short grass. Whooping cranes along the Central Flyway. Somewhere in that work I realized the same thing that makes a good wildlife photograph makes a good story for kids: you have to be patient, you have to pay attention, and you have to tell the truth about what you see.</strong></p>
-              <p><strong>Have You Seen Mary? was represented by Mansion Street Literary Management in New York. They pitched it to Penguin and Simon and Schuster. The publishers passed on the format. A photo-driven children's book was too unfamiliar. Not the quality.</strong></p>
-              <p><strong>Joel Sartore, founder of National Geographic Photo Ark, endorsed Have You Seen Mary?</strong></p>
-              <p><strong>Have You Seen Mary? was a Golden Sower Award nominee. The Nebraska Library Association runs the award. More than 75,000 students voted that year.</strong></p>
-              <p><strong>More than 25,000 copies of my books are in readers' hands.</strong></p>
-              <p><strong>I have been visiting schools across Nebraska for years. Reading to kids. Talking about writing. Signing books at the table afterward.</strong></p>
-              <p><strong>I also lead author workshops and photography workshops, and I photograph seniors and families in the Gretna and Omaha area.</strong></p>
-              <p><strong>I grew up in Memphis, Tennessee. BA from the University of Memphis, 1998. MA in English and Creative Nonfiction from the University of Nebraska at Omaha, 2002.</strong></p>
-              <p><strong>I live in Gretna, Nebraska with my family.</strong></p>
+              <p>I grew up in Shelby Forest, a suburb of sorts outside of Memphis, Tennessee. There, I spent my days in the outdoors -- catching fish, hunting ducks, and ... writing.</p>
+              <p>I've always loved to write, even though I wasn't an A student in English in grade school, high school, or college.</p>
+              <p>But that didn't stop me. I got the publishing bug when I was studying at the University of Memphis, writing outdoor articles for Game &amp; Fish Magazine. I stared at my first assignment sheet for a month before starting, then gazed at that little $150 check after the article's publication like it was a gold bar.</p>
+              <p>From there, I continued to send work to publishers even while I was teaching high school English, receiving hundreds upon hundreds of rejections and getting just enough accepted to maintain my confidence.</p>
+              <p>That confidence landed me a job at Nebraskaland Magazine, where the staff had more than 150 years of experience and taught me the eccentricities of photography and the writing process. Today I serve as the magazine's editor -- an award-winning outdoor publication that has been part of readers' lives since 1926, and with any luck, will continue for another hundred years.</p>
+              <p>Then I asked a simple question: What happens when two sandhill cranes who are lifelong mates become separated from each other on the Platte River during migration? Six months after this question I was staring at my first children's book: Have You Seen Mary?</p>
+              <p>I followed this with The Tale of Jacob Swift and Can You Dance Like John? but couldn't help thinking about my other lifelong love: baseball.</p>
+              <p>My next two years were spent working on The Legend of Donnie Bats, the most enjoyable experience of my writing career. Only to be kept up at night when I began writing The Return of Donnie Bats.</p>
+              <p>It's the best insomnia I've ever had.</p>
+              <p>From sandhill cranes to swift foxes to a young baseball player still uncovering his hidden talent, the subject changes -- but the goal stays the same: capture attention and tell the truth about what's there.</p>
             </div>
           </div>
         </div>
