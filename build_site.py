@@ -856,19 +856,19 @@ export default function SchoolVisits() {
                   <img
                     src={visualAssets.uploaded.readerShipping}
                     alt="Table of Donnie Bats books being prepped for shipping"
-                    className="h-[170px] w-full rounded-[1.2rem] object-cover"
+                    className="h-[170px] w-full rounded-[1.2rem] bg-[#f5f3ee] object-contain"
                   />
                   <img
                     src={visualAssets.uploaded.readerThankYou}
                     alt="Hand-drawn thank-you card from a young reader"
-                    className="h-[170px] w-full rounded-[1.2rem] object-cover object-center"
+                    className="h-[170px] w-full rounded-[1.2rem] bg-[#f5f0e8] object-contain"
                   />
                 </div>
                 <div className="mt-3 flex justify-center">
                   <img
                     src={visualAssets.uploaded.readerCouch}
                     alt="Boy reading a Jeff Kurrus book on the couch"
-                    className="h-[200px] w-[75%] rounded-[1.2rem] object-cover"
+                    className="h-[220px] w-[75%] rounded-[1.2rem] object-cover object-[center_40%]"
                   />
                 </div>
                 <p className="mt-5 text-xl leading-9 text-[#31405C]">
