@@ -92,6 +92,7 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
               location === "/about" ? "Author, photographer, and editor of Nebraskaland Magazine." :
               location === "/school-visits" ? "Bringing writing to life in K-8 classrooms across Nebraska." :
               location === "/photography" ? "Senior portraits and family sessions in the Gretna and Omaha area." :
+              location === "/news" ? "What's happening with Jeff's books, school visits, and Nebraskaland Magazine." :
               location === "/contact" ? "Let's talk about what your classroom, group, or family needs." :
               "Author. Photographer. Writing coach."
             }</h2>

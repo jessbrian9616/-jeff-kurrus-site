@@ -5,7 +5,6 @@ The home page should feel like a premium landing sequence for adults making deci
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import PageHero from "@/components/PageHero";
-import PlaceholderBlock from "@/components/PlaceholderBlock";
 import { visualAssets } from "@/lib/siteContent";
 
 export default function Home() {
@@ -15,7 +14,8 @@ export default function Home() {
         eyebrow="Home"
         title="Books for kids who'd rather be outside."
         description="Jeff Kurrus writes children's books shaped by natural landscapes, baseball diamonds, and years spent paying attention behind the camera."
-        image={visualAssets.generated.heroPrairie}
+        image={visualAssets.jkPhotography.heroWindmillSunset}
+        imagePosition="center 40%"
         actions={
           <>
             <Link href="/books">
@@ -97,11 +97,18 @@ export default function Home() {
         <div className="soft-card overflow-hidden">
           <div className="h-full bg-[#F5F2EA] p-8 lg:p-12" style={{ backgroundImage: `linear-gradient(180deg, rgba(255,255,255,0.88), rgba(245,242,234,0.92)), url(${visualAssets.generated.contactSkyline})`, backgroundSize: "cover", backgroundPosition: "center" }}>
             <p className="section-label">For educators</p>
-            <img
-              src={visualAssets.uploaded.schoolVisit1}
-              alt="Students engaged during Jeff Kurrus school visit"
-              className="mb-6 h-[220px] w-full rounded-[1.5rem] object-cover shadow-[0_20px_40px_rgba(27,42,74,0.12)]"
-            />
+            <div className="mb-6 grid grid-cols-2 gap-3">
+              <img
+                src={visualAssets.uploaded.readerCouch}
+                alt="Boy reading a Jeff Kurrus book on the couch"
+                className="h-[200px] w-full rounded-[1.5rem] object-cover object-[center_30%] shadow-[0_20px_40px_rgba(27,42,74,0.12)]"
+              />
+              <img
+                src={visualAssets.uploaded.readerThankYou}
+                alt="Hand-drawn thank-you card from a young reader"
+                className="h-[200px] w-full rounded-[1.5rem] object-contain bg-[#f5f0e8] shadow-[0_20px_40px_rgba(27,42,74,0.12)]"
+              />
+            </div>
             <p className="text-lg leading-8 text-[#445065]">
               Jeff brings a 45-minute writing program to K-8 classrooms across Nebraska. Students hear the story behind Donnie Bats, dig into the writing process, and leave with signed books.
             </p>
@@ -122,8 +129,32 @@ export default function Home() {
 
       <section className="container pb-8">
         <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <PlaceholderBlock label="Coming Soon" className="min-h-[240px] bg-[#1B2A4A]" />
-          <PlaceholderBlock label="Coming Soon" className="min-h-[240px] bg-[#6C665E]" />
+          <div className="soft-card overflow-hidden">
+            <Link href="/photography">
+              <img
+                src={visualAssets.jkPhotography.lakeDiveSunset}
+                alt="Silhouette of a girl diving into a lake at sunset, photographed by Jeff Kurrus"
+                className="h-[260px] w-full object-cover object-center transition hover:scale-[1.02]"
+              />
+              <div className="p-6">
+                <p className="section-label">Senior Photography</p>
+                <p className="text-lg leading-8 text-[#445065]">You own every image. No usage fees. No restrictions. Gretna, Omaha, and surrounding areas.</p>
+              </div>
+            </Link>
+          </div>
+          <div className="soft-card overflow-hidden">
+            <Link href="/contact">
+              <img
+                src={visualAssets.jkPhotography.doubleRainbowDirtRoad}
+                alt="Double rainbow over a dirt road on the Nebraska prairie, photographed by Jeff Kurrus"
+                className="h-[260px] w-full object-cover object-[center_60%] transition hover:scale-[1.02]"
+              />
+              <div className="p-6">
+                <p className="section-label">Get in touch</p>
+                <p className="text-lg leading-8 text-[#445065]">Book a school visit, order books, or schedule a photography session.</p>
+              </div>
+            </Link>
+          </div>
         </div>
       </section>
 

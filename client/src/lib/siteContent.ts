@@ -9,6 +9,7 @@ export const siteMeta = {
     { label: "Books", href: "/books" },
     { label: "School Visits", href: "/school-visits" },
     { label: "Senior Photography", href: "/photography" },
+    { label: "News", href: "/news" },
     { label: "Contact", href: "/contact" },
   ],
   socials: [
@@ -26,6 +27,15 @@ export const visualAssets = {
     heroPrairie: "/images/hero-prairie-dawn.webp",
     booksTexture: "/images/books-texture.webp",
     contactSkyline: "/images/contact-skyline.webp",
+  },
+  jkPhotography: {
+    heroWindmillSunset: "/images/hero-windmill-sunset.jpg",
+    heroBarnGoldenHour: "/images/hero-barn-golden-hour.jpg",
+    heroPrairieGrass: "/images/hero-prairie-grass.jpg",
+    foggyDockMahoney: "/images/foggy-dock-mahoney.jpg",
+    doubleRainbowDirtRoad: "/images/double-rainbow-dirt-road.jpg",
+    duckDecoysWinter: "/images/duck-decoys-winter.jpg",
+    lakeDiveSunset: "/images/lake-dive-sunset.jpg",
   },
   uploaded: {
     donnieBats: "/images/donnie-bats-cover.jpg",
@@ -189,7 +199,7 @@ export const photographyGallery = [
   {
     src: visualAssets.uploaded.seniorAthlete,
     alt: "Student athlete senior portrait by Jeff Kurrus in Gretna Nebraska",
-    position: "center 20%",
+    position: "center 30%",
   },
   {
     src: visualAssets.uploaded.momDaughterSunset,

@@ -3,7 +3,6 @@ Design philosophy for this file: the about page should feel like a long-form pro
 Use measured rhythm, careful line length, and a balance between literary credibility and visual professionalism.
 */
 import PageHero from "@/components/PageHero";
-import PlaceholderBlock from "@/components/PlaceholderBlock";
 import { visualAssets } from "@/lib/siteContent";
 
 export default function About() {
@@ -12,14 +11,29 @@ export default function About() {
       <PageHero
         eyebrow="About"
         title="The author formation story behind the books and the camera."
-        description="A full first-person narrative that connects children's publishing, wildlife photography, and years of work across Nebraska."
-        image={visualAssets.generated.heroPrairie}
-        dark={false}
+        description="From sandhill cranes on the Platte River to a young baseball player discovering his hidden talent, the subject changes but the goal stays the same."
+        image={visualAssets.jkPhotography.heroBarnGoldenHour}
+        imagePosition="center 30%"
       />
 
       <section className="container py-16 sm:py-20">
         <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-          <PlaceholderBlock label="Coming Soon" className="min-h-[520px] bg-[#1B2A4A]" />
+          <div className="space-y-5 lg:sticky lg:top-8">
+            <img
+              src={visualAssets.uploaded.momDaughterSunset}
+              alt="Mother and daughter portrait at sunset by Jeff Kurrus"
+              className="w-full rounded-[1.75rem] object-cover shadow-[0_24px_50px_rgba(27,42,74,0.14)]"
+            />
+            <div className="rounded-[1.75rem] bg-[#1B2A4A] p-6">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Credentials</p>
+              <p className="mt-3 text-base leading-7 text-white/80">Editor, Nebraskaland Magazine (est. 1926). 20+ years professional outdoor photography. Golden Sower Award nominee. 25,000+ books in readers' hands. Endorsed by Joel Sartore, National Geographic Photo Ark.</p>
+            </div>
+            <img
+              src={visualAssets.uploaded.seniorAthlete}
+              alt="Student athlete portrait by Jeff Kurrus"
+              className="w-full rounded-[1.75rem] object-cover shadow-[0_24px_50px_rgba(27,42,74,0.14)]"
+            />
+          </div>
           <div className="soft-card p-8 sm:p-10 lg:p-12">
             <p className="section-label">In his own words</p>
             <div className="space-y-6 text-lg leading-8 text-[#445065]">

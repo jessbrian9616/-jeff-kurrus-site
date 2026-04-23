@@ -9,6 +9,7 @@ import About from "./pages/About";
 import Books from "./pages/Books";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
+import News from "./pages/News";
 import Photography from "./pages/Photography";
 import SchoolVisits from "./pages/SchoolVisits";
 
@@ -21,6 +22,7 @@ function Router() {
         <Route path="/school-visits" component={SchoolVisits} />
         <Route path="/about" component={About} />
         <Route path="/photography" component={Photography} />
+        <Route path="/news" component={News} />
         <Route path="/contact" component={Contact} />
         <Route path="/404" component={NotFound} />
         <Route component={NotFound} />
