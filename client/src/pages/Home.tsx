@@ -13,8 +13,8 @@ export default function Home() {
     <div className="page-shell">
       <PageHero
         eyebrow="Home"
-        title="Books for boys who'd rather be outside."
-        description="Jeff Kurrus writes children's books shaped by Nebraska landscapes, baseball diamonds, and years spent paying attention behind the camera."
+        title="Books for kids who'd rather be outside."
+        description="Jeff Kurrus writes children's books shaped by natural landscapes, baseball diamonds, and years spent paying attention behind the camera."
         image={visualAssets.generated.heroPrairie}
         actions={
           <>

@@ -101,6 +101,35 @@ export default function SchoolVisits() {
                   Jeanna, Archdiocese of Omaha
                 </footer>
               </blockquote>
+              {/* Parent / reader testimonial */}
+              <div className="rounded-[1.8rem] border border-[rgba(75,100,90,0.20)] bg-[#EDF3EA] p-7 shadow-[0_18px_36px_rgba(96,87,62,0.1)]">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">What parents are saying</p>
+                <div className="mt-4 grid grid-cols-[1.3fr_0.7fr] gap-3">
+                  <img
+                    src={visualAssets.uploaded.readerShipping}
+                    alt="Table of Donnie Bats books being prepped for shipping"
+                    className="h-[170px] w-full rounded-[1.2rem] object-cover"
+                  />
+                  <img
+                    src={visualAssets.uploaded.readerThankYou}
+                    alt="Hand-drawn thank-you card from a young reader"
+                    className="h-[170px] w-full rounded-[1.2rem] object-cover object-center"
+                  />
+                </div>
+                <div className="mt-3 flex justify-center">
+                  <img
+                    src={visualAssets.uploaded.readerCouch}
+                    alt="Boy reading a Jeff Kurrus book on the couch"
+                    className="h-[200px] w-[75%] rounded-[1.2rem] object-cover"
+                  />
+                </div>
+                <p className="mt-5 text-xl leading-9 text-[#31405C]">
+                  "My son started your book on our drive home from school yesterday, read for 3 solid hours, woke up and finished the book by 7am this morning! He'd like to know when book 2 will be done."
+                </p>
+                <footer className="mt-5 text-base font-semibold text-[#5B6D53]">
+                  — Parent
+                </footer>
+              </div>
               <PlaceholderBlock label="Downloadable PDF: Author Visit Information Packet for librarians to forward to principals. PDF being created." className="min-h-[160px] bg-[#7A8E67]" />
               <PlaceholderBlock label="Presentation preview: 1–2 slides or a short video clip from Jeff's school presentation. Content is being prepared." className="min-h-[160px] bg-[#5C6782]" />
             </div>

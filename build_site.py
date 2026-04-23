@@ -501,8 +501,8 @@ export default function Home() {
     <div className="page-shell">
       <PageHero
         eyebrow="Home"
-        title="Books for boys who'd rather be outside."
-        description="Jeff Kurrus writes children's books shaped by Nebraska landscapes, baseball diamonds, and years spent paying attention behind the camera."
+        title="Books for kids who'd rather be outside."
+        description="Jeff Kurrus writes children's books shaped by natural landscapes, baseball diamonds, and years spent paying attention behind the camera."
         image={visualAssets.generated.heroPrairie}
         actions={
           <>
@@ -789,6 +789,35 @@ export default function SchoolVisits() {
             </div>
             <div className="mt-6 grid gap-4">
               <PlaceholderBlock label="EDUCATOR TESTIMONIALS: Space for 2-3 quotes from librarians and principals. Testimonials being gathered." className="min-h-[180px] bg-[#1B2A4A]" />
+              {/* Parent / reader testimonial */}
+              <div className="rounded-[1.8rem] border border-[rgba(75,100,90,0.20)] bg-[#EDF3EA] p-7 shadow-[0_18px_36px_rgba(96,87,62,0.1)]">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">What parents are saying</p>
+                <div className="mt-4 grid grid-cols-[1.3fr_0.7fr] gap-3">
+                  <img
+                    src={visualAssets.uploaded.readerShipping}
+                    alt="Table of Donnie Bats books being prepped for shipping"
+                    className="h-[170px] w-full rounded-[1.2rem] object-cover"
+                  />
+                  <img
+                    src={visualAssets.uploaded.readerThankYou}
+                    alt="Hand-drawn thank-you card from a young reader"
+                    className="h-[170px] w-full rounded-[1.2rem] object-cover object-center"
+                  />
+                </div>
+                <div className="mt-3 flex justify-center">
+                  <img
+                    src={visualAssets.uploaded.readerCouch}
+                    alt="Boy reading a Jeff Kurrus book on the couch"
+                    className="h-[200px] w-[75%] rounded-[1.2rem] object-cover"
+                  />
+                </div>
+                <p className="mt-5 text-xl leading-9 text-[#31405C]">
+                  "My son started your book on our drive home from school yesterday, read for 3 solid hours, woke up and finished the book by 7am this morning! He'd like to know when book 2 will be done."
+                </p>
+                <footer className="mt-5 text-base font-semibold text-[#5B6D53]">
+                  — Parent
+                </footer>
+              </div>
               <PlaceholderBlock label="DOWNLOADABLE PDF: Author Visit Information Packet for librarians to forward to principals. PDF being created." className="min-h-[180px] bg-[#6C665E]" />
               <PlaceholderBlock label="PRESENTATION PREVIEW: 1-2 slides or short video clip from Jeff's school presentation. Content being prepared." className="min-h-[180px] bg-[#36516E]" />
             </div>
@@ -893,7 +922,7 @@ export default function Photography() {
       <PageHero
         eyebrow="Photography"
         title="You own every image. No usage fees. No restrictions."
-        description="I have been photographing Nebraska for twenty years. The same eye that finds a whooping crane on the Platte River finds the light on a senior's face at golden hour. I photograph seniors and families in the Gretna and Omaha area."
+        description="I've been photographing beautiful Nebraska for twenty years. The same eye that finds a stunning sunrise finds the light on a senior's face at golden hour. I specialize in getting people of all ages comfortable in front of the camera -- so the expression you see is the real one."
         image={heroImage}
       />
 
@@ -979,6 +1008,11 @@ export default function Contact() {
 
           <div className="soft-card overflow-hidden">
             <div className="h-full min-h-[100%] bg-[#F7F4EC] p-8 sm:p-10 lg:p-12" style={{ backgroundImage: `linear-gradient(180deg, rgba(255,255,255,0.84), rgba(247,244,236,0.96)), url(${visualAssets.generated.contactSkyline})`, backgroundSize: "cover", backgroundPosition: "center" }}>
+              <p className="section-label">Let's connect</p>
+              <div className="mb-8 border-b border-[rgba(96,87,62,0.12)] pb-8">
+                <p className="text-base leading-7 text-[#31405C]">Reach out. Let's discuss what your classroom or group needs. Then we'll tailor a presentation to help.</p>
+                <p className="mt-4 text-base leading-7 text-[#31405C]">Writing is hard. So is photography. I can make these skills click for your group -- from young writers to adult specialty groups -- so everyone walks away with the confidence to grow as a creator.</p>
+              </div>
               <p className="section-label">Direct contact</p>
               <h2 className="text-3xl font-semibold text-[#1B2A4A]">jeffreyekurrus@gmail.com</h2>
               <p className="mt-5 text-lg leading-8 text-[#445065]">For school visits, book orders, photography sessions, and media inquiries.</p>

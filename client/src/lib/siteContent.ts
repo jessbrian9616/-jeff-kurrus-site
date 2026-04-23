@@ -45,6 +45,9 @@ export const visualAssets = {
     senior10: "/images/senior-10.jpg",
     bookReleaseComing: "/images/book-release-coming.jpg",
     jacobSwift: "/images/tale-of-jacob-swift.jpg",
+    readerShipping: "/images/reader-shipping.jpg",
+    readerThankYou: "/images/reader-thank-you.jpg",
+    readerCouch: "/images/reader-couch.jpg",
   },
 };
 
@@ -147,8 +150,8 @@ export const photographyGallery = [
   },
   {
     src: visualAssets.uploaded.senior04,
-    alt: "Senior portrait photography by Jeff Kurrus in Gretna Nebraska, evening light",
-    position: "center 18%",
+    alt: "Senior portrait photography by Jeff Kurrus in Gretna Nebraska, young photographer in a golden field",
+    position: "center center",
   },
   {
     src: visualAssets.uploaded.senior05,

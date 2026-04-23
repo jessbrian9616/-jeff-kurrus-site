@@ -14,7 +14,7 @@ export default function Photography() {
       <PageHero
         eyebrow="Photography"
         title="You own every image. No usage fees. No restrictions."
-        description="I have been photographing Nebraska for twenty years. The same eye that finds a whooping crane on the Platte River finds the light on a senior's face at golden hour. I photograph seniors and families in the Gretna and Omaha area."
+        description="I've been photographing beautiful Nebraska for twenty years. The same eye that finds a stunning sunrise finds the light on a senior's face at golden hour. I specialize in getting people of all ages comfortable in front of the camera -- so the expression you see is the real one."
         image={heroImage}
         imagePosition="center 34%"
       />
