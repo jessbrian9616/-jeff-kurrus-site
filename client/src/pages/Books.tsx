@@ -25,11 +25,11 @@ export default function Books() {
           <div className="grid gap-10 lg:grid-cols-[300px_1fr] lg:items-center">
             <img src={featured.image ?? ""} alt={featured.alt} className="mx-auto w-full max-w-[300px] rounded-[1.75rem] object-cover shadow-[0_24px_50px_rgba(27,42,74,0.18)]" />
             <div>
-              <p className="section-label">Largest display</p>
+              <p className="section-label">Featured</p>
               <h2 className="text-4xl font-semibold text-[#1B2A4A] sm:text-5xl">{featured.title}</h2>
               <p className="mt-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#B8860B]">{featured.price}</p>
               <p className="mt-6 max-w-3xl text-lg leading-8 text-[#445065]">{featured.description}</p>
-              <a href={featured.href} className="mt-8 inline-flex rounded-full bg-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#16233D]">
+              <a href={featured.href} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex rounded-full bg-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#16233D]">
                 {featured.cta}
               </a>
             </div>
@@ -49,14 +49,7 @@ export default function Books() {
             <h2 className="text-3xl font-semibold text-[#1B2A4A] sm:text-4xl">{sequel.title}</h2>
             <p className="mt-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#B8860B]">{sequel.price}</p>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-[#445065]">{sequel.description}</p>
-              <p className="mt-4 max-w-xl text-base leading-7 text-[#667084]">Sign up for release updates and be first to hear when the next Donnie Bats book is ready.</p>
-
-            <div className="mt-8 flex max-w-xl flex-col gap-4 sm:flex-row">
-              <input type="email" placeholder="Email address" className="min-h-[56px] flex-1 rounded-full border border-[color:rgba(27,42,74,0.12)] bg-white px-5 text-base text-[#1B2A4A] outline-none transition focus:border-[#4A7C59]" />
-              <Button type="button" className="rounded-full bg-[#4A7C59] px-7 py-6 text-sm font-semibold uppercase tracking-[0.18em] text-white hover:bg-[#3C6648]">
-                {sequel.cta}
-              </Button>
-            </div>
+              <p className="mt-4 max-w-xl text-base leading-7 text-[#667084]">Check back for release updates.</p>
           </div>
         </div>
       </section>
@@ -74,7 +67,7 @@ export default function Books() {
               <p className="mt-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">{book.price}</p>
               {book.note ? <p className="mt-4 text-sm font-semibold text-[#4A7C59]">{book.note}</p> : null}
               <p className="mt-4 text-base leading-7 text-[#445065]">{book.description}</p>
-              <a href={book.href} className="mt-6 inline-flex rounded-full border border-[color:rgba(27,42,74,0.12)] px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#1B2A4A] transition hover:border-[#1B2A4A] hover:bg-[#1B2A4A] hover:text-white">
+              <a href={book.href} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex rounded-full border border-[color:rgba(27,42,74,0.12)] px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#1B2A4A] transition hover:border-[#1B2A4A] hover:bg-[#1B2A4A] hover:text-white">
                 {book.cta}
               </a>
             </article>

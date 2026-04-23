@@ -17,37 +17,23 @@ type PageHeroProps = {
 export default function PageHero({ eyebrow, title, description, image, dark = true, actions, imagePosition = "center" }: PageHeroProps) {
   return (
     <section className="container pt-8 sm:pt-12 lg:pt-14">
-      <div className="relative">
-        <div
-          className={`relative overflow-hidden rounded-[2.25rem] border border-[rgba(96,87,62,0.16)] px-6 py-10 shadow-[0_24px_55px_rgba(76,59,37,0.14)] sm:px-10 sm:py-14 lg:min-h-[520px] lg:px-14 lg:py-18 lg:pr-[22rem] ${dark ? "text-white" : "text-[#22304F]"}`}
-          style={{
-            backgroundImage: `${
-              dark ? "linear-gradient(125deg, rgba(36,31,45,0.7), rgba(37,31,46,0.24))" : "linear-gradient(125deg, rgba(255,250,242,0.88), rgba(255,248,240,0.2))"
-            }, url(${image})`,
-            backgroundSize: "cover",
-            backgroundPosition: imagePosition,
-          }}
-        >
-          <div className="max-w-3xl">
-            <span className={`mb-5 inline-flex text-sm font-semibold uppercase tracking-[0.2em] ${dark ? "text-[#F5E6BF]" : "text-[#5F7752]"}`}>{eyebrow}</span>
-            <h1 className="text-balance max-w-3xl text-5xl font-semibold leading-[0.9] sm:text-6xl lg:text-[5.1rem]">
-              {title}
-            </h1>
-            <p className={`mt-5 max-w-2xl text-xl leading-8 sm:text-[1.45rem] sm:leading-9 ${dark ? "text-white/92" : "text-[#31405C]"}`}>{description}</p>
-            {actions ? <div className="mt-8 flex flex-wrap gap-4">{actions}</div> : null}
-          </div>
-        </div>
-
-        <div className="soft-card mt-6 rounded-[2rem] border-[rgba(95,119,82,0.28)] bg-[rgba(255,251,242,0.97)] p-6 shadow-[0_22px_42px_rgba(96,87,62,0.16)] sm:p-8 lg:absolute lg:right-8 lg:top-1/2 lg:mt-0 lg:w-[340px] lg:-translate-y-1/2">
-          <div className="rounded-[1.6rem] border border-[rgba(95,119,82,0.26)] bg-[rgba(255,252,247,0.95)] p-5 sm:p-6">
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#5F7752]">Gretna, Nebraska</p>
-            <p className="mt-4 text-[2rem] leading-[1.02] font-semibold text-[#22304F] sm:text-[2.35rem]">
-              Clean presentation. Quiet confidence. Stories and images that welcome people in.
-            </p>
-            <p className="mt-4 text-lg leading-8 text-[#4D596F]">
-              This site is built to serve book buyers, educators, and portrait clients with a structure that feels warm, polished, and easy to follow.
-            </p>
-          </div>
+      <div
+        className={`relative overflow-hidden rounded-[2.25rem] border border-[rgba(96,87,62,0.16)] px-6 py-10 shadow-[0_24px_55px_rgba(76,59,37,0.14)] sm:px-10 sm:py-14 lg:min-h-[520px] lg:px-14 lg:py-18 ${dark ? "text-white" : "text-[#22304F]"}`}
+        style={{
+          backgroundImage: `${
+            dark ? "linear-gradient(125deg, rgba(36,31,45,0.7), rgba(37,31,46,0.24))" : "linear-gradient(125deg, rgba(255,250,242,0.88), rgba(255,248,240,0.2))"
+          }, url(${image})`,
+          backgroundSize: "cover",
+          backgroundPosition: imagePosition,
+        }}
+      >
+        <div className="max-w-3xl">
+          <span className={`mb-5 inline-flex text-sm font-semibold uppercase tracking-[0.2em] ${dark ? "text-[#F5E6BF]" : "text-[#5F7752]"}`}>{eyebrow}</span>
+          <h1 className="text-balance max-w-3xl text-5xl font-semibold leading-[0.9] sm:text-6xl lg:text-[5.1rem]">
+            {title}
+          </h1>
+          <p className={`mt-5 max-w-2xl text-xl leading-8 sm:text-[1.45rem] sm:leading-9 ${dark ? "text-white/92" : "text-[#31405C]"}`}>{description}</p>
+          {actions ? <div className="mt-8 flex flex-wrap gap-4">{actions}</div> : null}
         </div>
       </div>
     </section>

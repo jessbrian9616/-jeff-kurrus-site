@@ -8,7 +8,7 @@ export const siteMeta = {
     { label: "About", href: "/about" },
     { label: "Books", href: "/books" },
     { label: "School Visits", href: "/school-visits" },
-    { label: "Photography", href: "/photography" },
+    { label: "Senior Photography", href: "/photography" },
     { label: "Contact", href: "/contact" },
   ],
   socials: [
@@ -48,6 +48,9 @@ export const visualAssets = {
     readerShipping: "/images/reader-shipping.jpg",
     readerThankYou: "/images/reader-thank-you.jpg",
     readerCouch: "/images/reader-couch.jpg",
+    momDaughterSunset: "/images/mom-daughter-sunset.jpg",
+    seniorAthlete: "/images/senior-athlete.jpg",
+    schoolVisitTurtle: "/images/school-visit-turtle.jpg",
   },
 };
 
@@ -58,7 +61,7 @@ export const bookCatalog = [
     description:
       "Donnie Bats loves baseball but can't hit, throw, or catch -- until he discovers he might just be the best player his town has ever seen.",
     cta: "Buy on Amazon",
-    href: "#",
+    href: "https://www.amazon.com/Legend-Donnie-Bats-Greatness-Lives/dp/0991638921/",
     image: visualAssets.uploaded.donnieBats,
     alt: "The Legend of Donnie Bats book cover by Jeff Kurrus",
   },
@@ -79,7 +82,7 @@ export const bookCatalog = [
       "'. . . and the sky blackened with dark, gray bodies. In the blurry confusion, John lost Mary.' So begins Have You Seen Mary?, the photo fictional account of one sandhill crane's faithful search during spring migration for his lost mate. Set on the crane's migration path, this bittersweet story of love, loss, and healing will appeal to all ages. Michael Forsberg's beautiful color photographs also help entertain and educate readers about sandhill cranes.",
     note: "Golden Sower Award Nominee | Photography by Michael Forsberg | Endorsed by Joel Sartore, founder of National Geographic Photo Ark.",
     cta: "Buy on Amazon",
-    href: "#",
+    href: "https://www.amazon.com/Have-Seen-Mary-Jeff-Kurrus/dp/0991638905/",
     image: visualAssets.uploaded.mary,
     alt: "Have You Seen Mary book cover by Jeff Kurrus and Michael Forsberg",
   },
@@ -89,7 +92,7 @@ export const bookCatalog = [
     description:
       "Jacob recounts the struggles and triumphs that one swift fox family experiences in raising its son in the harsh but beautiful grasslands of North America. Looks like a picture book, reads like a chapter book.",
     cta: "Buy on Amazon",
-    href: "#",
+    href: "https://www.amazon.com/Tale-Jacob-Swift-Jeff-Kurrus/dp/0991638913/",
     image: visualAssets.uploaded.jacobSwift,
     alt: "The Tale of Jacob Swift book cover by Jeff Kurrus and Rob Palmer",
   },
@@ -97,9 +100,9 @@ export const bookCatalog = [
     title: "Can You Dance Like John?",
     price: "$17.00 | Ages 5-10 | Photography by Michael Forsberg",
     description:
-      "A lyrical picture book inspired by a greater prairie chicken and the rhythms of spring on the prairie.",
+      "The story of John and Mary continues in this picture book follow-up to Have You Seen Mary?, returning to John and Mary with a tale of love, loss, and the memories that keep us going.",
     cta: "Buy on Amazon",
-    href: "#",
+    href: "https://www.amazon.com/Can-You-Dance-Like-John/dp/1496206673/",
     image: visualAssets.uploaded.john,
     alt: "Can You Dance Like John book cover by Jeff Kurrus and Michael Forsberg",
   },
@@ -182,5 +185,15 @@ export const photographyGallery = [
     src: visualAssets.uploaded.senior10,
     alt: "Senior portrait photography by Jeff Kurrus in Gretna Nebraska, graduation portrait in summer greenery",
     position: "center 18%",
+  },
+  {
+    src: visualAssets.uploaded.seniorAthlete,
+    alt: "Student athlete senior portrait by Jeff Kurrus in Gretna Nebraska",
+    position: "center 20%",
+  },
+  {
+    src: visualAssets.uploaded.momDaughterSunset,
+    alt: "Mother and daughter portrait at sunset in a golden field by Jeff Kurrus",
+    position: "center center",
   },
 ];

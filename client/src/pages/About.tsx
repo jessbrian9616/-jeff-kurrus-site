@@ -19,9 +19,9 @@ export default function About() {
 
       <section className="container py-16 sm:py-20">
         <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-          <PlaceholderBlock label="AUTHOR PHOTO: Jeff's environmental portrait, outdoor setting, golden hour. Photo not yet available." className="min-h-[520px] bg-[#1B2A4A]" />
+          <PlaceholderBlock label="Coming Soon" className="min-h-[520px] bg-[#1B2A4A]" />
           <div className="soft-card p-8 sm:p-10 lg:p-12">
-            <p className="section-label">First person</p>
+            <p className="section-label">In his own words</p>
             <div className="space-y-6 text-lg leading-8 text-[#445065]">
               <p>I grew up in Shelby Forest, a suburb of sorts outside of Memphis, Tennessee. There, I spent my days in the outdoors -- catching fish, hunting ducks, and ... writing.</p>
               <p>I've always loved to write, even though I wasn't an A student in English in grade school, high school, or college.</p>

@@ -87,9 +87,16 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
         <div className="container grid gap-12 py-14 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#5F7752]">Jeff Kurrus</p>
-            <h2 className="mt-4 text-4xl font-semibold text-[#22304F] sm:text-5xl">Children's books, school visits, and portrait photography.</h2>
+            <h2 className="mt-4 text-4xl font-semibold text-[#22304F] sm:text-5xl">{
+              location === "/books" ? "Stories for kids who'd rather be outside." :
+              location === "/about" ? "Author, photographer, and editor of Nebraskaland Magazine." :
+              location === "/school-visits" ? "Bringing writing to life in K-8 classrooms across Nebraska." :
+              location === "/photography" ? "Senior portraits and family sessions in the Gretna and Omaha area." :
+              location === "/contact" ? "Let's talk about what your classroom, group, or family needs." :
+              "Author. Photographer. Writing coach."
+            }</h2>
             <p className="mt-4 max-w-xl text-lg leading-8 text-[#566070]">
-              Based in Gretna, Nebraska. Built for readers, educators, librarians, and families looking for portrait sessions in the Omaha area.
+              Based in Gretna, Nebraska.
             </p>
           </div>
           <div className="grid gap-10 sm:grid-cols-2">

@@ -20,18 +20,20 @@ export default function Contact() {
         <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="soft-card p-8 sm:p-10 lg:p-12">
             <p className="section-label">Contact form</p>
-            <form className="space-y-4">
-              <input type="text" placeholder="Name" className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
-              <input type="email" placeholder="Email" className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
-              <select className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]">
-                <option value="book-visit">Book a School Visit</option>
-                <option value="order-books">Order Books</option>
-                <option value="photo-session">Photography Session</option>
-                <option value="media-inquiry">Media Inquiry</option>
-                <option value="general-question">General Question</option>
+            <form action="https://formspree.io/jeffreyekurrus@gmail.com" method="POST" className="space-y-4">
+              <input type="text" name="name" placeholder="Name" required className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
+              <input type="email" name="email" placeholder="Email" required className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
+              <input type="tel" name="phone" placeholder="Phone" required className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
+              <select name="inquiry_type" className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]">
+                <option value="Senior Photo Session">Senior Photo Session</option>
+                <option value="School Visit">School Visit</option>
+                <option value="Order Books">Order Books</option>
+                <option value="Media Inquiry">Media Inquiry</option>
+                <option value="General Inquiry">General Inquiry</option>
               </select>
-              <textarea placeholder="Message" rows={7} className="w-full rounded-[1.5rem] border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
-              <button type="button" className="w-full rounded-full bg-[#1B2A4A] px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#16233D]">
+              <textarea name="message" placeholder="Message" rows={7} className="w-full rounded-[1.5rem] border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
+              <input type="hidden" name="_subject" value="New inquiry from jeffkurrus.com" />
+              <button type="submit" className="w-full rounded-full bg-[#1B2A4A] px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#16233D]">
                 Send Message
               </button>
             </form>

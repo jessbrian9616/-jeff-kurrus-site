@@ -63,10 +63,6 @@ export default function SchoolVisits() {
         <p className="section-label">Programs</p>
         <div className="grid gap-5 lg:grid-cols-2">
           <div className="soft-card p-7">
-            <h3 className="text-xl font-semibold text-[#22304F]">Zoom Q&amp;A <span className="ml-2 text-base font-normal text-[#5F7752]">Grades K-8</span></h3>
-            <p className="mt-4 text-lg leading-8 text-[#445065]">Jeff connects with students virtually, answering questions about the writing life and how he tackles the complicated (but thrilling) writing process. Works especially well with reluctant writers.</p>
-          </div>
-          <div className="soft-card p-7">
             <h3 className="text-xl font-semibold text-[#22304F]">Writer's Workshop <span className="ml-2 text-base font-normal text-[#5F7752]">Grades K-2</span></h3>
             <p className="mt-4 text-lg leading-8 text-[#445065]">Jeff reads the Golden Sower-nominated 'Have You Seen Mary?', then introduces his 7 Question Words: Who, What, When, Where, How, Why, and Can. Students start building stories within minutes.</p>
           </div>
@@ -74,13 +70,17 @@ export default function SchoolVisits() {
             <h3 className="text-xl font-semibold text-[#22304F]">Writer's Workshop <span className="ml-2 text-base font-normal text-[#5F7752]">Grades 3-5</span></h3>
             <p className="mt-4 text-lg leading-8 text-[#445065]">Starting with an excerpt from 'The Legend of Donnie Bats,' Jeff walks students through his 7 Question Words, then layers in drawing, storyboarding, and a technique called 'Once Upon a Time' to tackle writing's hardest challenge: getting started.</p>
           </div>
+          <div className="soft-card p-7 lg:col-span-2">
+            <h3 className="text-xl font-semibold text-[#22304F]">Photography Workshop <span className="ml-2 text-base font-normal text-[#5F7752]">Grades 6-8</span></h3>
+            <p className="mt-4 text-lg leading-8 text-[#445065]">Jeff shares 20 years of experience as a professional outdoor photographer for the award-winning Nebraskaland Magazine. Students learn the basics of composition, aperture, and shutter speed, plus photography's most important tool: an alarm clock.</p>
+          </div>
           <div className="soft-card p-7">
             <h3 className="text-xl font-semibold text-[#22304F]">Author Q&amp;A <span className="ml-2 text-base font-normal text-[#5F7752]">Grades K-8</span></h3>
             <p className="mt-4 text-lg leading-8 text-[#445065]">Jeff draws on 20 years of working with student writers to give an authentic, story-driven look at the life of an author.</p>
           </div>
-          <div className="soft-card p-7 lg:col-span-2">
-            <h3 className="text-xl font-semibold text-[#22304F]">Photography Workshop <span className="ml-2 text-base font-normal text-[#5F7752]">Grades 6-8</span></h3>
-            <p className="mt-4 text-lg leading-8 text-[#445065]">Jeff shares 20 years of experience as a professional outdoor photographer for the award-winning Nebraskaland Magazine. Students learn the basics of composition, aperture, and shutter speed, plus photography's most important tool: an alarm clock.</p>
+          <div className="soft-card p-7">
+            <h3 className="text-xl font-semibold text-[#22304F]">Zoom Q&amp;A <span className="ml-2 text-base font-normal text-[#5F7752]">Grades K-8</span></h3>
+            <p className="mt-4 text-lg leading-8 text-[#445065]">Jeff connects with students virtually, answering questions about the writing life and how he tackles the complicated (but thrilling) writing process. Works especially well with reluctant writers.</p>
           </div>
         </div>
       </section>
@@ -108,7 +108,12 @@ export default function SchoolVisits() {
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="soft-card p-8 sm:p-10" style={{ backgroundColor: "rgba(246,239,217,0.5)" }}>
             <p className="section-label">What to expect</p>
-            <p className="text-lg leading-8 text-[#445065]">Jeff brings an authentic experience to every school visit. He explains why he writes: 'I absolutely love getting lost in a story.' He tackles writing's toughest challenge head-on: getting started. And with stopwatch in hand, he gets your students writing more in a 45-minute session than you've ever seen.</p>
+            <blockquote className="text-xl leading-9 italic text-[#31405C]">
+              One moment, the room is roaring with laughter. The next, it is filled with focused silence as students craft their stories with purpose and confidence.
+            </blockquote>
+            <footer className="mt-5 text-base font-semibold text-[#5B6D53]">
+              Jeanna White, Facilitator of Curriculum and Instruction
+            </footer>
           </div>
           <div className="soft-card p-8 sm:p-10">
             <p className="section-label">What Jeff needs</p>
@@ -124,12 +129,13 @@ export default function SchoolVisits() {
             <div className="grid gap-4 md:grid-cols-2">
               <img src={visualAssets.uploaded.schoolVisit1} alt="Students engaged during Jeff Kurrus school visit" className="h-[280px] w-full rounded-[1.5rem] object-cover shadow-[0_18px_30px_rgba(96,87,62,0.12)]" />
               <img src={visualAssets.uploaded.schoolVisit2} alt="Student work from Jeff Kurrus author visit" className="h-[280px] w-full rounded-[1.5rem] object-cover shadow-[0_18px_30px_rgba(96,87,62,0.12)]" />
+              <img src={visualAssets.uploaded.schoolVisitTurtle} alt="Students gathered around a turtle during a Jeff Kurrus school visit" className="h-[280px] w-full rounded-[1.5rem] object-cover shadow-[0_18px_30px_rgba(96,87,62,0.12)] md:col-span-2" />
             </div>
             <div className="mt-6 grid gap-4">
               <blockquote className="rounded-[1.8rem] border border-[rgba(95,119,82,0.24)] bg-[#F7ECD0] p-7 text-[#22304F] shadow-[0_18px_36px_rgba(96,87,62,0.1)]">
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">Teacher testimonial</p>
                 <p className="mt-4 text-xl leading-9 text-[#31405C]">
-                  "I have had the privilege of watching Jeff work with 4th graders for 15 years. Every year, whether we have 40 kids or 90, Jeff captivates the students with his hands-on, straight forward, yet always entertaining, methods. All students, even the reluctant writers, become celebrated authors after spending time with Jeff. Our students love 'Kurrus Day!'"
+                  I have had the privilege of watching Jeff work with 4th graders for 15 years. Every year, whether we have 40 kids or 90, Jeff captivates the students with his hands-on, straight forward, yet always entertaining, methods. All students, even the reluctant writers, become celebrated authors after spending time with Jeff. Our students love 'Kurrus Day!'
                 </p>
                 <footer className="mt-5 text-base font-semibold text-[#5B6D53]">
                   Katie Mott, 4th Grade Teacher, Prairie Queen Elementary, Papillion, Nebraska
@@ -138,7 +144,7 @@ export default function SchoolVisits() {
               <blockquote className="rounded-[1.8rem] border border-[rgba(95,119,82,0.24)] bg-[#F7ECD0] p-7 text-[#22304F] shadow-[0_18px_36px_rgba(96,87,62,0.1)]">
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">Literacy expert testimonial</p>
                 <p className="mt-4 text-xl leading-9 text-[#31405C]">
-                  "There is something uniquely powerful about students and educators learning from a real, local author. Jeff brings credibility, authenticity, and a sense of possibility that cannot be replicated. He shows students that writing is not just a school task but a meaningful, real-world craft. Jeff's session was one of the highest-rated at the symposium, even among an outstanding lineup of nationally recognized literacy experts. That speaks not only to his expertise but to his ability to connect, engage, and deliver fun yet meaningful learning."
+                  There is something uniquely powerful about students and educators learning from a real, local author. Jeff brings credibility, authenticity, and a sense of possibility that cannot be replicated. He shows students that writing is not just a school task but a meaningful, real-world craft. Jeff's session was one of the highest-rated at the symposium, even among an outstanding lineup of nationally recognized literacy experts. That speaks not only to his expertise but to his ability to connect, engage, and deliver fun yet meaningful learning.
                 </p>
                 <footer className="mt-5 text-base font-semibold text-[#5B6D53]">
                   Jeanna, Archdiocese of Omaha
@@ -147,7 +153,7 @@ export default function SchoolVisits() {
               <blockquote className="rounded-[1.8rem] border border-[rgba(95,119,82,0.24)] bg-[#F7ECD0] p-7 text-[#22304F] shadow-[0_18px_36px_rgba(96,87,62,0.1)]">
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">From educators</p>
                 <p className="mt-4 text-xl leading-9 text-[#31405C]">
-                  "He truly pours his heart into each lesson and students feel that. He's supportive and honest; thoughtful and silly. He works hard to make learning come alive so that every child feels like an author. 'Jeff Kurrus Days' are a core memory for every student who has had the chance to experience them. We are so lucky to work with him!"
+                  He truly pours his heart into each lesson and students feel that. He's supportive and honest; thoughtful and silly. He works hard to make learning come alive so that every child feels like an author. 'Jeff Kurrus Days' are a core memory for every student who has had the chance to experience them. We are so lucky to work with him!
                 </p>
                 <footer className="mt-5 text-base font-semibold text-[#5B6D53]">
                   Mrs. Lisa Giles -- 4th grade teacher, Ashbury Elementary
@@ -176,14 +182,14 @@ export default function SchoolVisits() {
                   />
                 </div>
                 <p className="mt-5 text-xl leading-9 text-[#31405C]">
-                  "My son started your book on our drive home from school yesterday, read for 3 solid hours, woke up and finished the book by 7am this morning! He'd like to know when book 2 will be done."
+                  My son started your book on our drive home from school yesterday, read for 3 solid hours, woke up and finished the book by 7am this morning! He'd like to know when book 2 will be done.
                 </p>
                 <footer className="mt-5 text-base font-semibold text-[#5B6D53]">
                   — Parent
                 </footer>
               </div>
-              <PlaceholderBlock label="Downloadable PDF: Author Visit Information Packet for librarians to forward to principals. PDF being created." className="min-h-[160px] bg-[#7A8E67]" />
-              <PlaceholderBlock label="Presentation preview: 1–2 slides or a short video clip from Jeff's school presentation. Content is being prepared." className="min-h-[160px] bg-[#5C6782]" />
+              <PlaceholderBlock label="Coming Soon" className="min-h-[160px] bg-[#7A8E67]" />
+              <PlaceholderBlock label="Coming Soon" className="min-h-[160px] bg-[#5C6782]" />
             </div>
           </div>
           <div className="soft-card p-8 sm:p-10">
@@ -199,22 +205,18 @@ export default function SchoolVisits() {
 
             <div className="mt-10 rounded-[1.65rem] border border-[color:rgba(96,87,62,0.14)] bg-[#FFF8ED] p-6 sm:p-7">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">Booking inquiry form</p>
-              <form className="mt-6 space-y-4">
-                <input type="text" placeholder="Name" className="w-full rounded-2xl border border-[color:rgba(96,87,62,0.16)] bg-white px-5 py-4 text-lg outline-none transition focus:border-[#5F7752]" />
-                <input type="text" placeholder="School" className="w-full rounded-2xl border border-[color:rgba(96,87,62,0.16)] bg-white px-5 py-4 text-lg outline-none transition focus:border-[#5F7752]" />
-                <input type="email" placeholder="Email" className="w-full rounded-2xl border border-[color:rgba(96,87,62,0.16)] bg-white px-5 py-4 text-lg outline-none transition focus:border-[#5F7752]" />
-                <select className="w-full rounded-2xl border border-[color:rgba(96,87,62,0.16)] bg-white px-5 py-4 text-lg outline-none transition focus:border-[#5F7752]">
-                  <option value="grades">Grade Levels</option>
-                  <option value="k">K</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-                <input type="text" placeholder="Preferred Dates" className="w-full rounded-2xl border border-[color:rgba(96,87,62,0.16)] bg-white px-5 py-4 text-lg outline-none transition focus:border-[#5F7752]" />
-                <textarea placeholder="Message" rows={5} className="w-full rounded-[1.5rem] border border-[color:rgba(96,87,62,0.16)] bg-white px-5 py-4 text-lg outline-none transition focus:border-[#5F7752]" />
-                <button type="button" className="w-full rounded-full bg-[#5F7752] px-6 py-4 text-base font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#4F6644]">
+              <form action="https://formspree.io/jeffreyekurrus@gmail.com" method="POST" className="mt-6 space-y-4">
+                <input type="hidden" name="_subject" value="School Visit Booking Inquiry" />
+                <input type="hidden" name="inquiry_type" value="School Visit" />
+                <input type="text" name="name" placeholder="Name" required className="w-full rounded-2xl border border-[color:rgba(96,87,62,0.16)] bg-white px-5 py-4 text-lg outline-none transition focus:border-[#5F7752]" />
+                <input type="text" name="school" placeholder="School / Organization" required className="w-full rounded-2xl border border-[color:rgba(96,87,62,0.16)] bg-white px-5 py-4 text-lg outline-none transition focus:border-[#5F7752]" />
+                <input type="text" name="role" placeholder="Role (Teacher, Librarian, Principal, PTO, Other)" className="w-full rounded-2xl border border-[color:rgba(96,87,62,0.16)] bg-white px-5 py-4 text-lg outline-none transition focus:border-[#5F7752]" />
+                <input type="email" name="email" placeholder="Email" required className="w-full rounded-2xl border border-[color:rgba(96,87,62,0.16)] bg-white px-5 py-4 text-lg outline-none transition focus:border-[#5F7752]" />
+                <input type="tel" name="phone" placeholder="Phone" required className="w-full rounded-2xl border border-[color:rgba(96,87,62,0.16)] bg-white px-5 py-4 text-lg outline-none transition focus:border-[#5F7752]" />
+                <input type="text" name="grade_levels" placeholder="Grade Levels" className="w-full rounded-2xl border border-[color:rgba(96,87,62,0.16)] bg-white px-5 py-4 text-lg outline-none transition focus:border-[#5F7752]" />
+                <input type="text" name="preferred_date" placeholder="Preferred Dates" className="w-full rounded-2xl border border-[color:rgba(96,87,62,0.16)] bg-white px-5 py-4 text-lg outline-none transition focus:border-[#5F7752]" />
+                <textarea name="message" placeholder="Message" rows={5} className="w-full rounded-[1.5rem] border border-[color:rgba(96,87,62,0.16)] bg-white px-5 py-4 text-lg outline-none transition focus:border-[#5F7752]" />
+                <button type="submit" className="w-full rounded-full bg-[#5F7752] px-6 py-4 text-base font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#4F6644]">
                   Book a Visit
                 </button>
               </form>

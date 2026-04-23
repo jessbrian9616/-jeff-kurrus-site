@@ -334,36 +334,25 @@ type PageHeroProps = {
 export default function PageHero({ eyebrow, title, description, image, dark = true, actions }: PageHeroProps) {
   return (
     <section className="container pt-8 sm:pt-12 lg:pt-16">
-      <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
-        <div
-          className={`relative overflow-hidden rounded-[2rem] px-6 py-10 sm:px-10 sm:py-14 lg:px-14 lg:py-20 ${dark ? "text-white" : "text-[#1B2A4A]"}`}
-          style={{
-            backgroundImage: `${dark ? "linear-gradient(125deg, rgba(18,31,58,0.82), rgba(18,31,58,0.34))" : "linear-gradient(125deg, rgba(255,255,255,0.76), rgba(255,255,255,0.18))"}, url(${image})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <div className="max-w-2xl">
-            <span className={`mb-5 inline-flex text-xs font-semibold uppercase tracking-[0.28em] ${dark ? "text-white/78" : "text-[#4A7C59]"}`}>
-              {eyebrow}
-            </span>
-            <h1 className="text-balance max-w-3xl text-4xl font-semibold leading-[0.95] sm:text-5xl lg:text-6xl">
-              {title}
-            </h1>
-            <p className={`mt-5 max-w-xl text-base leading-7 sm:text-lg ${dark ? "text-white/82" : "text-[#334460]"}`}>
-              {description}
-            </p>
-            {actions ? <div className="mt-8 flex flex-wrap gap-4">{actions}</div> : null}
-          </div>
-        </div>
-        <div className="soft-card rounded-[2rem] p-6 sm:p-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#4A7C59]">Gretna, Nebraska</p>
-          <p className="mt-4 text-2xl font-semibold text-[#1B2A4A] sm:text-3xl">
-            Clean presentation. Quiet confidence. Images given room to lead.
+      <div
+        className={`relative overflow-hidden rounded-[2rem] px-6 py-10 sm:px-10 sm:py-14 lg:px-14 lg:py-20 ${dark ? "text-white" : "text-[#1B2A4A]"}`}
+        style={{
+          backgroundImage: `${dark ? "linear-gradient(125deg, rgba(18,31,58,0.82), rgba(18,31,58,0.34))" : "linear-gradient(125deg, rgba(255,255,255,0.76), rgba(255,255,255,0.18))"}, url(${image})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="max-w-2xl">
+          <span className={`mb-5 inline-flex text-xs font-semibold uppercase tracking-[0.28em] ${dark ? "text-white/78" : "text-[#4A7C59]"}`}>
+            {eyebrow}
+          </span>
+          <h1 className="text-balance max-w-3xl text-4xl font-semibold leading-[0.95] sm:text-5xl lg:text-6xl">
+            {title}
+          </h1>
+          <p className={`mt-5 max-w-xl text-base leading-7 sm:text-lg ${dark ? "text-white/82" : "text-[#334460]"}`}>
+            {description}
           </p>
-          <p className="mt-4 text-base leading-7 text-[#455166]">
-            This site is built to serve book buyers, educators, and portrait clients with a structure that is clear, polished, and practical.
-          </p>
+          {actions ? <div className="mt-8 flex flex-wrap gap-4">{actions}</div> : null}
         </div>
       </div>
     </section>
@@ -450,9 +439,16 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
         <div className="container grid gap-12 py-14 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#4A7C59]">Jeff Kurrus</p>
-            <h2 className="mt-4 text-3xl font-semibold text-[#1B2A4A]">Children's books, school visits, and portrait photography.</h2>
+            <h2 className="mt-4 text-3xl font-semibold text-[#1B2A4A]">{
+              location === "/books" ? "Stories for kids who'd rather be outside." :
+              location === "/about" ? "Author, photographer, and editor of Nebraskaland Magazine." :
+              location === "/school-visits" ? "Bringing writing to life in K-8 classrooms across Nebraska." :
+              location === "/photography" ? "Senior portraits and family sessions in the Gretna and Omaha area." :
+              location === "/contact" ? "Let's talk about what your classroom, group, or family needs." :
+              "Author. Photographer. Writing coach."
+            }</h2>
             <p className="mt-4 max-w-xl text-base leading-7 text-[#526077]">
-              Based in Gretna, Nebraska. Built for readers, educators, librarians, and families looking for portrait sessions in the Omaha area.
+              Based in Gretna, Nebraska.
             </p>
           </div>
           <div className="grid gap-10 sm:grid-cols-2">
@@ -536,7 +532,7 @@ export default function Home() {
                 <p className="mt-6 max-w-2xl text-lg leading-8 text-[#445065]">
                   Donnie Bats loves baseball. He just can't hit, throw, or catch. A chapter book for every kid who has ever been the worst player on the team.
                 </p>
-                <a href="#" className="mt-8 inline-flex rounded-full bg-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:bg-[#16233D]">
+                <a href="https://www.amazon.com/Legend-Donnie-Bats-Greatness-Lives/dp/0991638921/" target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex rounded-full bg-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:bg-[#16233D]">
                   Buy on Amazon
                 </a>
               </div>
@@ -547,20 +543,7 @@ export default function Home() {
               <p className="section-label">Coming next</p>
               <h2 className="max-w-sm text-3xl font-semibold text-[#1B2A4A]">The Return of Donnie Bats</h2>
               <p className="mt-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#B8860B]">Coming December 2026</p>
-              <p className="mt-6 max-w-sm text-lg leading-8 text-[#445065]">Be the first to know.</p>
-              <form className="mt-8 space-y-4">
-                <input
-                  type="email"
-                  placeholder="Email address"
-                  className="w-full rounded-full border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base text-[#1B2A4A] outline-none transition focus:border-[#4A7C59]"
-                />
-                <button
-                  type="button"
-                  className="w-full rounded-full bg-[#4A7C59] px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#3C6648]"
-                >
-                  Be the first to know
-                </button>
-              </form>
+              <p className="mt-6 max-w-sm text-lg leading-8 text-[#445065]">The sequel is coming December 2026.</p>
             </div>
           </div>
         </div>
@@ -571,7 +554,7 @@ export default function Home() {
           <div className="soft-card p-8 sm:p-10">
             <p className="section-label">Recognition</p>
             <blockquote className="text-2xl font-semibold leading-[1.3] text-[#1B2A4A] sm:text-3xl">
-              “Jeff Kurrus's words and Michael Forsberg's photographs are teamed here to bring us a remarkable story...”
+              Jeff Kurrus's words and Michael Forsberg's photographs are teamed here to bring us a remarkable story...
             </blockquote>
             <p className="mt-6 text-base font-semibold text-[#1B2A4A]">Joel Sartore, founder of National Geographic Photo Ark</p>
             <p className="mt-1 text-base text-[#526077]">on Have You Seen Mary?</p>
@@ -595,28 +578,8 @@ export default function Home() {
       </section>
 
       <section className="container pb-16 sm:pb-20">
-        <div className="soft-card overflow-hidden lg:grid lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="p-8 sm:p-10 lg:p-12">
-            <p className="section-label">Email capture</p>
-            <h2 className="text-3xl font-semibold text-[#1B2A4A] sm:text-4xl">Get the Free Donnie Bats Activity Pack.</h2>
-            <p className="mt-5 max-w-xl text-lg leading-8 text-[#445065]">
-              Puzzles, a word search, and discussion questions. Enter your email and I'll send it straight to your inbox.
-            </p>
-            <form className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <input
-                type="email"
-                placeholder="Email address"
-                className="min-h-[56px] flex-1 rounded-full border border-[color:rgba(27,42,74,0.12)] bg-white px-5 text-base text-[#1B2A4A] outline-none transition focus:border-[#4A7C59]"
-              />
-              <button
-                type="button"
-                className="rounded-full bg-[#1B2A4A] px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#16233D]"
-              >
-                Send It to Me
-              </button>
-            </form>
-          </div>
-          <div className="h-full border-t border-[color:rgba(27,42,74,0.08)] bg-[#F5F2EA] p-8 lg:border-l lg:border-t-0 lg:p-12" style={{ backgroundImage: `linear-gradient(180deg, rgba(255,255,255,0.88), rgba(245,242,234,0.92)), url(${visualAssets.generated.contactSkyline})`, backgroundSize: "cover", backgroundPosition: "center" }}>
+        <div className="soft-card overflow-hidden">
+          <div className="h-full bg-[#F5F2EA] p-8 lg:p-12" style={{ backgroundImage: `linear-gradient(180deg, rgba(255,255,255,0.88), rgba(245,242,234,0.92)), url(${visualAssets.generated.contactSkyline})`, backgroundSize: "cover", backgroundPosition: "center" }}>
             <p className="section-label">For educators</p>
             <img
               src={visualAssets.uploaded.schoolVisit1}
@@ -628,7 +591,7 @@ export default function Home() {
             </p>
             <blockquote className="mt-5 border-l-2 border-[#4A7C59]/40 pl-4">
               <p className="text-base italic leading-7 text-[#445065]">
-                "'Jeff Kurrus Days' are a core memory for every student who has had the chance to experience them."
+                'Jeff Kurrus Days' are a core memory for every student who has had the chance to experience them.
               </p>
               <footer className="mt-2 text-sm font-semibold text-[#4A7C59]">
                 — Mrs. Lisa Giles, 4th Grade, Ashbury Elementary
@@ -678,11 +641,11 @@ export default function Books() {
           <div className="grid gap-10 lg:grid-cols-[300px_1fr] lg:items-center">
             <img src={featured.image ?? ""} alt={featured.alt} className="mx-auto w-full max-w-[300px] rounded-[1.75rem] object-cover shadow-[0_24px_50px_rgba(27,42,74,0.18)]" />
             <div>
-              <p className="section-label">Largest display</p>
+              <p className="section-label">Featured</p>
               <h1 className="text-4xl font-semibold text-[#1B2A4A] sm:text-5xl">{featured.title}</h1>
               <p className="mt-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#B8860B]">{featured.price}</p>
               <p className="mt-6 max-w-3xl text-lg leading-8 text-[#445065]">{featured.description}</p>
-              <a href={featured.href} className="mt-8 inline-flex rounded-full bg-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#16233D]">
+              <a href={featured.href} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex rounded-full bg-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#16233D]">
                 {featured.cta}
               </a>
             </div>
@@ -698,12 +661,7 @@ export default function Books() {
             <h2 className="text-3xl font-semibold text-[#1B2A4A] sm:text-4xl">{sequel.title}</h2>
             <p className="mt-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#B8860B]">{sequel.price}</p>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[#445065]">{sequel.description}</p>
-            <div className="mt-8 flex max-w-xl flex-col gap-4 sm:flex-row">
-              <input type="email" placeholder="Email address" className="min-h-[56px] flex-1 rounded-full border border-[color:rgba(27,42,74,0.12)] bg-white px-5 text-base text-[#1B2A4A] outline-none transition focus:border-[#4A7C59]" />
-              <Button type="button" className="rounded-full bg-[#4A7C59] px-7 py-6 text-sm font-semibold uppercase tracking-[0.18em] text-white hover:bg-[#3C6648]">
-                {sequel.cta}
-              </Button>
-            </div>
+            <p className="mt-4 max-w-xl text-base leading-7 text-[#667084]">Check back for release updates.</p>
           </div>
         </div>
       </section>
@@ -721,7 +679,7 @@ export default function Books() {
               <p className="mt-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">{book.price}</p>
               {book.note ? <p className="mt-4 text-sm font-semibold text-[#4A7C59]">{book.note}</p> : null}
               <p className="mt-4 text-base leading-7 text-[#445065]">{book.description}</p>
-              <a href={book.href} className="mt-6 inline-flex rounded-full border border-[color:rgba(27,42,74,0.12)] px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#1B2A4A] transition hover:border-[#1B2A4A] hover:bg-[#1B2A4A] hover:text-white">
+              <a href={book.href} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex rounded-full border border-[color:rgba(27,42,74,0.12)] px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#1B2A4A] transition hover:border-[#1B2A4A] hover:bg-[#1B2A4A] hover:text-white">
                 {book.cta}
               </a>
             </article>
@@ -776,10 +734,6 @@ export default function SchoolVisits() {
         <p className="section-label">Programs</p>
         <div className="grid gap-5 lg:grid-cols-2">
           <div className="soft-card p-7">
-            <h3 className="text-xl font-semibold text-[#22304F]">Zoom Q&amp;A <span className="ml-2 text-base font-normal text-[#5F7752]">Grades K-8</span></h3>
-            <p className="mt-4 text-lg leading-8 text-[#445065]">Jeff connects with students virtually, answering questions about the writing life and how he tackles the complicated (but thrilling) writing process. Works especially well with reluctant writers.</p>
-          </div>
-          <div className="soft-card p-7">
             <h3 className="text-xl font-semibold text-[#22304F]">Writer's Workshop <span className="ml-2 text-base font-normal text-[#5F7752]">Grades K-2</span></h3>
             <p className="mt-4 text-lg leading-8 text-[#445065]">Jeff reads the Golden Sower-nominated 'Have You Seen Mary?', then introduces his 7 Question Words: Who, What, When, Where, How, Why, and Can. Students start building stories within minutes.</p>
           </div>
@@ -787,13 +741,17 @@ export default function SchoolVisits() {
             <h3 className="text-xl font-semibold text-[#22304F]">Writer's Workshop <span className="ml-2 text-base font-normal text-[#5F7752]">Grades 3-5</span></h3>
             <p className="mt-4 text-lg leading-8 text-[#445065]">Starting with an excerpt from 'The Legend of Donnie Bats,' Jeff walks students through his 7 Question Words, then layers in drawing, storyboarding, and a technique called 'Once Upon a Time' to tackle writing's hardest challenge: getting started.</p>
           </div>
+          <div className="soft-card p-7 lg:col-span-2">
+            <h3 className="text-xl font-semibold text-[#22304F]">Photography Workshop <span className="ml-2 text-base font-normal text-[#5F7752]">Grades 6-8</span></h3>
+            <p className="mt-4 text-lg leading-8 text-[#445065]">Jeff shares 20 years of experience as a professional outdoor photographer for the award-winning Nebraskaland Magazine. Students learn the basics of composition, aperture, and shutter speed, plus photography's most important tool: an alarm clock.</p>
+          </div>
           <div className="soft-card p-7">
             <h3 className="text-xl font-semibold text-[#22304F]">Author Q&amp;A <span className="ml-2 text-base font-normal text-[#5F7752]">Grades K-8</span></h3>
             <p className="mt-4 text-lg leading-8 text-[#445065]">Jeff draws on 20 years of working with student writers to give an authentic, story-driven look at the life of an author.</p>
           </div>
-          <div className="soft-card p-7 lg:col-span-2">
-            <h3 className="text-xl font-semibold text-[#22304F]">Photography Workshop <span className="ml-2 text-base font-normal text-[#5F7752]">Grades 6-8</span></h3>
-            <p className="mt-4 text-lg leading-8 text-[#445065]">Jeff shares 20 years of experience as a professional outdoor photographer for the award-winning Nebraskaland Magazine. Students learn the basics of composition, aperture, and shutter speed, plus photography's most important tool: an alarm clock.</p>
+          <div className="soft-card p-7">
+            <h3 className="text-xl font-semibold text-[#22304F]">Zoom Q&amp;A <span className="ml-2 text-base font-normal text-[#5F7752]">Grades K-8</span></h3>
+            <p className="mt-4 text-lg leading-8 text-[#445065]">Jeff connects with students virtually, answering questions about the writing life and how he tackles the complicated (but thrilling) writing process. Works especially well with reluctant writers.</p>
           </div>
         </div>
       </section>
@@ -821,7 +779,12 @@ export default function SchoolVisits() {
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="soft-card p-8 sm:p-10" style={{ backgroundColor: "rgba(246,239,217,0.5)" }}>
             <p className="section-label">What to expect</p>
-            <p className="text-lg leading-8 text-[#445065]">Jeff brings an authentic experience to every school visit. He explains why he writes: 'I absolutely love getting lost in a story.' He tackles writing's toughest challenge head-on: getting started. And with stopwatch in hand, he gets your students writing more in a 45-minute session than you've ever seen.</p>
+            <blockquote className="text-xl leading-9 italic text-[#31405C]">
+              One moment, the room is roaring with laughter. The next, it is filled with focused silence as students craft their stories with purpose and confidence.
+            </blockquote>
+            <footer className="mt-5 text-base font-semibold text-[#5B6D53]">
+              Jeanna White, Facilitator of Curriculum and Instruction
+            </footer>
           </div>
           <div className="soft-card p-8 sm:p-10">
             <p className="section-label">What Jeff needs</p>
@@ -837,13 +800,14 @@ export default function SchoolVisits() {
             <div className="grid gap-4 md:grid-cols-2">
               <img src={visualAssets.uploaded.schoolVisit1} alt="Students engaged during Jeff Kurrus school visit" className="h-[250px] w-full rounded-[1.5rem] object-cover" />
               <img src={visualAssets.uploaded.schoolVisit2} alt="Student work from Jeff Kurrus author visit" className="h-[250px] w-full rounded-[1.5rem] object-cover" />
+              <img src={visualAssets.uploaded.schoolVisitTurtle} alt="Students gathered around a turtle during a Jeff Kurrus school visit" className="h-[250px] w-full rounded-[1.5rem] object-cover md:col-span-2" />
             </div>
             <div className="mt-6 grid gap-4">
-              <PlaceholderBlock label="EDUCATOR TESTIMONIALS: Space for 2-3 quotes from librarians and principals. Testimonials being gathered." className="min-h-[180px] bg-[#1B2A4A]" />
+              <PlaceholderBlock label="Coming Soon" className="min-h-[180px] bg-[#1B2A4A]" />
               <blockquote className="rounded-[1.8rem] border border-[rgba(95,119,82,0.24)] bg-[#F7ECD0] p-7 text-[#22304F] shadow-[0_18px_36px_rgba(96,87,62,0.1)]">
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">From educators</p>
                 <p className="mt-4 text-xl leading-9 text-[#31405C]">
-                  "He truly pours his heart into each lesson and students feel that. He's supportive and honest; thoughtful and silly. He works hard to make learning come alive so that every child feels like an author. 'Jeff Kurrus Days' are a core memory for every student who has had the chance to experience them. We are so lucky to work with him!"
+                  He truly pours his heart into each lesson and students feel that. He's supportive and honest; thoughtful and silly. He works hard to make learning come alive so that every child feels like an author. 'Jeff Kurrus Days' are a core memory for every student who has had the chance to experience them. We are so lucky to work with him!
                 </p>
                 <footer className="mt-5 text-base font-semibold text-[#5B6D53]">
                   Mrs. Lisa Giles -- 4th grade teacher, Ashbury Elementary
@@ -872,14 +836,14 @@ export default function SchoolVisits() {
                   />
                 </div>
                 <p className="mt-5 text-xl leading-9 text-[#31405C]">
-                  "My son started your book on our drive home from school yesterday, read for 3 solid hours, woke up and finished the book by 7am this morning! He'd like to know when book 2 will be done."
+                  My son started your book on our drive home from school yesterday, read for 3 solid hours, woke up and finished the book by 7am this morning! He'd like to know when book 2 will be done.
                 </p>
                 <footer className="mt-5 text-base font-semibold text-[#5B6D53]">
                   — Parent
                 </footer>
               </div>
-              <PlaceholderBlock label="DOWNLOADABLE PDF: Author Visit Information Packet for librarians to forward to principals. PDF being created." className="min-h-[180px] bg-[#6C665E]" />
-              <PlaceholderBlock label="PRESENTATION PREVIEW: 1-2 slides or short video clip from Jeff's school presentation. Content being prepared." className="min-h-[180px] bg-[#36516E]" />
+              <PlaceholderBlock label="Coming Soon" className="min-h-[180px] bg-[#6C665E]" />
+              <PlaceholderBlock label="Coming Soon" className="min-h-[180px] bg-[#36516E]" />
             </div>
           </div>
           <div className="soft-card p-8 sm:p-10">
@@ -895,22 +859,18 @@ export default function SchoolVisits() {
 
             <div className="mt-10 rounded-[1.5rem] border border-[color:rgba(27,42,74,0.08)] bg-[#FBFAF6] p-6">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#4A7C59]">Booking inquiry form</p>
-              <form className="mt-6 space-y-4">
-                <input type="text" placeholder="Name" className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
-                <input type="text" placeholder="School" className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
-                <input type="email" placeholder="Email" className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
-                <select className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]">
-                  <option value="grades">Grade Levels</option>
-                  <option value="k">K</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-                <input type="text" placeholder="Preferred Dates" className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
-                <textarea placeholder="Message" rows={5} className="w-full rounded-[1.5rem] border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
-                <button type="button" className="w-full rounded-full bg-[#4A7C59] px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#3C6648]">
+              <form action="https://formspree.io/jeffreyekurrus@gmail.com" method="POST" className="mt-6 space-y-4">
+                <input type="hidden" name="_subject" value="School Visit Booking Inquiry" />
+                <input type="hidden" name="inquiry_type" value="School Visit" />
+                <input type="text" name="name" placeholder="Name" required className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
+                <input type="text" name="school" placeholder="School / Organization" required className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
+                <input type="text" name="role" placeholder="Role (Teacher, Librarian, Principal, PTO, Other)" className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
+                <input type="email" name="email" placeholder="Email" required className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
+                <input type="tel" name="phone" placeholder="Phone" required className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
+                <input type="text" name="grade_levels" placeholder="Grade Levels" className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
+                <input type="text" name="preferred_date" placeholder="Preferred Dates" className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
+                <textarea name="message" placeholder="Message" rows={5} className="w-full rounded-[1.5rem] border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
+                <button type="submit" className="w-full rounded-full bg-[#4A7C59] px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#3C6648]">
                   Book a Visit
                 </button>
               </form>
@@ -943,9 +903,9 @@ export default function About() {
 
       <section className="container py-16 sm:py-20">
         <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-          <PlaceholderBlock label="AUTHOR PHOTO: Jeff's environmental portrait, outdoor setting, golden hour. Photo not yet available." className="min-h-[520px] bg-[#1B2A4A]" />
+          <PlaceholderBlock label="Coming Soon" className="min-h-[520px] bg-[#1B2A4A]" />
           <div className="soft-card p-8 sm:p-10 lg:p-12">
-            <p className="section-label">First person</p>
+            <p className="section-label">In his own words</p>
             <div className="space-y-6 text-lg leading-8 text-[#445065]">
               <p>I grew up in Shelby Forest, a suburb of sorts outside of Memphis, Tennessee. There, I spent my days in the outdoors -- catching fish, hunting ducks, and ... writing.</p>
               <p>I've always loved to write, even though I wasn't an A student in English in grade school, high school, or college.</p>
@@ -979,7 +939,7 @@ export default function Photography() {
   return (
     <div className="page-shell">
       <PageHero
-        eyebrow="Photography"
+        eyebrow="Senior Photography"
         title="You own every image. No usage fees. No restrictions."
         description="I've been photographing beautiful Nebraska for twenty years. The same eye that finds a stunning sunrise finds the light on a senior's face at golden hour. I specialize in getting people of all ages comfortable in front of the camera -- so the expression you see is the real one."
         image={heroImage}
@@ -989,7 +949,7 @@ export default function Photography() {
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {photographyGallery.map((photo, index) => (
             <figure key={photo.src} className={`${index === 0 ? "md:col-span-2 xl:col-span-2" : ""} overflow-hidden rounded-[1.75rem] bg-white shadow-[0_26px_55px_rgba(27,42,74,0.12)]`}>
-              <img src={photo.src} alt={photo.alt} className={`w-full object-cover ${index === 0 ? "h-[440px]" : "h-[320px]"}`} />
+              <img src={photo.src} alt={photo.alt} style={{ objectPosition: photo.position }} className={`w-full object-cover ${index === 0 ? "h-[440px]" : "h-[320px]"}`} />
             </figure>
           ))}
         </div>
@@ -1048,18 +1008,20 @@ export default function Contact() {
         <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="soft-card p-8 sm:p-10 lg:p-12">
             <p className="section-label">Contact form</p>
-            <form className="space-y-4">
-              <input type="text" placeholder="Name" className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
-              <input type="email" placeholder="Email" className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
-              <select className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]">
-                <option value="book-visit">Book a School Visit</option>
-                <option value="order-books">Order Books</option>
-                <option value="photo-session">Photography Session</option>
-                <option value="media-inquiry">Media Inquiry</option>
-                <option value="general-question">General Question</option>
+            <form action="https://formspree.io/jeffreyekurrus@gmail.com" method="POST" className="space-y-4">
+              <input type="text" name="name" placeholder="Name" required className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
+              <input type="email" name="email" placeholder="Email" required className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
+              <input type="tel" name="phone" placeholder="Phone" required className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
+              <select name="inquiry_type" className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]">
+                <option value="Senior Photo Session">Senior Photo Session</option>
+                <option value="School Visit">School Visit</option>
+                <option value="Order Books">Order Books</option>
+                <option value="Media Inquiry">Media Inquiry</option>
+                <option value="General Inquiry">General Inquiry</option>
               </select>
-              <textarea placeholder="Message" rows={7} className="w-full rounded-[1.5rem] border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
-              <button type="button" className="w-full rounded-full bg-[#1B2A4A] px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#16233D]">
+              <textarea name="message" placeholder="Message" rows={7} className="w-full rounded-[1.5rem] border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
+              <input type="hidden" name="_subject" value="New inquiry from jeffkurrus.com" />
+              <button type="submit" className="w-full rounded-full bg-[#1B2A4A] px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#16233D]">
                 Send Message
               </button>
             </form>

@@ -12,7 +12,7 @@ export default function Photography() {
   return (
     <div className="page-shell">
       <PageHero
-        eyebrow="Photography"
+        eyebrow="Senior Photography"
         title="You own every image. No usage fees. No restrictions."
         description="I've been photographing beautiful Nebraska for twenty years. The same eye that finds a stunning sunrise finds the light on a senior's face at golden hour. I specialize in getting people of all ages comfortable in front of the camera -- so the expression you see is the real one."
         image={heroImage}

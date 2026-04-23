@@ -48,7 +48,7 @@ export default function Home() {
                 <p className="mt-6 max-w-2xl text-lg leading-8 text-[#445065]">
                   Donnie Bats loves baseball. He just can't hit, throw, or catch. A chapter book for every kid who has ever been the worst player on the team.
                 </p>
-                <a href="#" className="mt-8 inline-flex rounded-full bg-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:bg-[#16233D]">
+                <a href="https://www.amazon.com/Legend-Donnie-Bats-Greatness-Lives/dp/0991638921/" target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex rounded-full bg-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:bg-[#16233D]">
                   Buy on Amazon
                 </a>
               </div>
@@ -59,20 +59,7 @@ export default function Home() {
               <p className="section-label">Coming next</p>
               <h2 className="max-w-sm text-3xl font-semibold text-[#1B2A4A]">The Return of Donnie Bats</h2>
               <p className="mt-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#B8860B]">Coming December 2026</p>
-              <p className="mt-6 max-w-sm text-lg leading-8 text-[#445065]">Be the first to know.</p>
-              <form className="mt-8 space-y-4">
-                <input
-                  type="email"
-                  placeholder="Email address"
-                  className="w-full rounded-full border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base text-[#1B2A4A] outline-none transition focus:border-[#4A7C59]"
-                />
-                <button
-                  type="button"
-                  className="w-full rounded-full bg-[#4A7C59] px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#3C6648]"
-                >
-                  Be the first to know
-                </button>
-              </form>
+              <p className="mt-6 max-w-sm text-lg leading-8 text-[#445065]">The sequel is coming December 2026.</p>
             </div>
           </div>
         </div>
@@ -83,7 +70,7 @@ export default function Home() {
           <div className="soft-card p-8 sm:p-10">
             <p className="section-label">Recognition</p>
             <blockquote className="text-2xl font-semibold leading-[1.3] text-[#1B2A4A] sm:text-3xl">
-              “Jeff Kurrus's words and Michael Forsberg's photographs are teamed here to bring us a remarkable story...”
+              Jeff Kurrus's words and Michael Forsberg's photographs are teamed here to bring us a remarkable story...
             </blockquote>
             <p className="mt-6 text-base font-semibold text-[#1B2A4A]">Joel Sartore, founder of National Geographic Photo Ark</p>
             <p className="mt-1 text-base text-[#526077]">on Have You Seen Mary?</p>
@@ -107,28 +94,8 @@ export default function Home() {
       </section>
 
       <section className="container pb-16 sm:pb-20">
-        <div className="soft-card overflow-hidden lg:grid lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="p-8 sm:p-10 lg:p-12">
-            <p className="section-label">Email capture</p>
-            <h2 className="text-3xl font-semibold text-[#1B2A4A] sm:text-4xl">Get the Free Donnie Bats Activity Pack.</h2>
-            <p className="mt-5 max-w-xl text-lg leading-8 text-[#445065]">
-              Puzzles, a word search, and discussion questions. Enter your email and I'll send it straight to your inbox.
-            </p>
-            <form className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <input
-                type="email"
-                placeholder="Email address"
-                className="min-h-[56px] flex-1 rounded-full border border-[color:rgba(27,42,74,0.12)] bg-white px-5 text-base text-[#1B2A4A] outline-none transition focus:border-[#4A7C59]"
-              />
-              <button
-                type="button"
-                className="rounded-full bg-[#1B2A4A] px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#16233D]"
-              >
-                Send It to Me
-              </button>
-            </form>
-          </div>
-          <div className="h-full border-t border-[color:rgba(27,42,74,0.08)] bg-[#F5F2EA] p-8 lg:border-l lg:border-t-0 lg:p-12" style={{ backgroundImage: `linear-gradient(180deg, rgba(255,255,255,0.88), rgba(245,242,234,0.92)), url(${visualAssets.generated.contactSkyline})`, backgroundSize: "cover", backgroundPosition: "center" }}>
+        <div className="soft-card overflow-hidden">
+          <div className="h-full bg-[#F5F2EA] p-8 lg:p-12" style={{ backgroundImage: `linear-gradient(180deg, rgba(255,255,255,0.88), rgba(245,242,234,0.92)), url(${visualAssets.generated.contactSkyline})`, backgroundSize: "cover", backgroundPosition: "center" }}>
             <p className="section-label">For educators</p>
             <img
               src={visualAssets.uploaded.schoolVisit1}
@@ -140,7 +107,7 @@ export default function Home() {
             </p>
             <blockquote className="mt-5 border-l-2 border-[#4A7C59]/40 pl-4">
               <p className="text-base italic leading-7 text-[#445065]">
-                "'Jeff Kurrus Days' are a core memory for every student who has had the chance to experience them."
+                'Jeff Kurrus Days' are a core memory for every student who has had the chance to experience them.
               </p>
               <footer className="mt-2 text-sm font-semibold text-[#4A7C59]">
                 — Mrs. Lisa Giles, 4th Grade, Ashbury Elementary
