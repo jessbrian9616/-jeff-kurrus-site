@@ -32,18 +32,9 @@ export default function SchoolVisits() {
               <p className="text-lg leading-8 text-[#445065]">
                 Jeff reads from the book, talks about where stories come from, and takes questions. Every student gets to meet the author and sign books at the table afterward.
               </p>
-              <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                <img
-                  src={visualAssets.uploaded.schoolVisit1}
-                  alt="Donnie Bats poster created by students during Jeff Kurrus school visit"
-                  className="h-[180px] w-full rounded-[1.2rem] bg-[#f5f3ee] object-contain shadow-[0_14px_28px_rgba(96,87,62,0.1)] sm:h-[200px]"
-                />
-                <img
-                  src={visualAssets.uploaded.schoolVisitTurtle}
-                  alt="Students with turtle during outdoor portion of Jeff Kurrus school visit"
-                  className="h-[180px] w-full rounded-[1.2rem] bg-[#f5f3ee] object-contain shadow-[0_14px_28px_rgba(96,87,62,0.1)] sm:h-[200px]"
-                />
-              </div>
+              <p className="mt-4 text-lg leading-8 text-[#445065]">
+                Students leave with signed copies and a reason to keep writing.
+              </p>
             </div>
 
             <div className="border-t border-[rgba(96,87,62,0.12)] bg-[#F6EFD9] p-8 sm:p-10 lg:border-l lg:border-t-0 lg:p-12">
@@ -193,10 +184,26 @@ export default function SchoolVisits() {
         </div>
       </section>
 
-      {/* Booking form - full width */}
+      {/* School visit photos + Booking form */}
       <section className="container pb-16 sm:pb-20">
         <div className="soft-card overflow-hidden" style={{ backgroundColor: "#FFF8ED" }}>
-          <div className="p-8 sm:p-10 lg:p-12">
+          <div className="grid lg:grid-cols-[1fr_1fr]">
+            <div className="p-8 sm:p-10 lg:p-12">
+              <p className="section-label">School visit photos</p>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <img
+                  src={visualAssets.uploaded.schoolVisit1}
+                  alt="Donnie Bats poster created by students during Jeff Kurrus school visit"
+                  className="h-[180px] w-full rounded-[1.2rem] bg-[#f5f3ee] object-contain shadow-[0_14px_28px_rgba(96,87,62,0.1)] sm:h-[220px]"
+                />
+                <img
+                  src={visualAssets.uploaded.schoolVisitTurtle}
+                  alt="Students with turtle during outdoor portion of Jeff Kurrus school visit"
+                  className="h-[180px] w-full rounded-[1.2rem] bg-[#f5f3ee] object-contain shadow-[0_14px_28px_rgba(96,87,62,0.1)] sm:h-[220px]"
+                />
+              </div>
+            </div>
+            <div className="border-t border-[rgba(96,87,62,0.12)] p-8 sm:p-10 lg:border-l lg:border-t-0 lg:p-12">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">Booking inquiry form</p>
               <form action="https://formspree.io/jeffreyekurrus@gmail.com" method="POST" className="mt-6 space-y-4">
                 <input type="hidden" name="_subject" value="School Visit Booking Inquiry -- jeffkurrus.com" />
@@ -221,6 +228,7 @@ export default function SchoolVisits() {
                   Book a Visit
                 </button>
               </form>
+            </div>
           </div>
         </div>
       </section>
