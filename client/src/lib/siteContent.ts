@@ -214,13 +214,8 @@ export const photographyGallery = [
     position: "center center",
   },
   {
-    src: visualAssets.jkPhotography.seniorSdAthlete,
-    alt: "USD student athlete senior portrait in white dress by Jeff Kurrus",
-    position: "center top",
-  },
-  {
     src: visualAssets.jkPhotography.seniorGraduationToss,
     alt: "Graduation cap toss celebration portrait in red gown by Jeff Kurrus",
-    position: "center top",
+    position: "center 15%",
   },
 ];

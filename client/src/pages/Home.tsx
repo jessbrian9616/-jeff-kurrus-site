@@ -122,9 +122,9 @@ export default function Home() {
           <div className="soft-card overflow-hidden">
             <Link href="/photography">
               <img
-                src={visualAssets.jkPhotography.seniorGraduationToss}
-                alt="Graduation cap toss celebration portrait by Jeff Kurrus"
-                className="h-[260px] w-full object-cover object-center transition hover:scale-[1.02]"
+                src={visualAssets.jkPhotography.seniorSdAthlete}
+                alt="USD student athlete senior portrait in white dress by Jeff Kurrus"
+                className="h-[260px] w-full object-cover object-top transition hover:scale-[1.02]"
               />
               <div className="p-6">
                 <p className="section-label">Senior Photography</p>
@@ -133,15 +133,15 @@ export default function Home() {
             </Link>
           </div>
           <div className="soft-card overflow-hidden">
-            <Link href="/contact">
+            <Link href="/news">
               <img
                 src={visualAssets.jkPhotography.heroFoggyGoldenLandscape}
                 alt="Foggy golden sunrise landscape in Nebraska, photographed by Jeff Kurrus"
                 className="h-[260px] w-full object-cover object-center transition hover:scale-[1.02]"
               />
               <div className="p-6">
-                <p className="section-label">Get in touch</p>
-                <p className="text-lg leading-8 text-[#445065]">Book a school visit, order books, or schedule a photography session.</p>
+                <p className="section-label">Nebraskaland Magazine</p>
+                <p className="text-lg leading-8 text-[#445065]">50+ national awards under Jeff's editorship. See what's happening with the magazine, upcoming events, and community presentations.</p>
               </div>
             </Link>
           </div>

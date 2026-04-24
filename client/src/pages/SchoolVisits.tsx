@@ -28,23 +28,22 @@ export default function SchoolVisits() {
         <div className="soft-card overflow-hidden">
           <div className="grid lg:grid-cols-[1.08fr_0.92fr]">
             <div className="p-8 sm:p-10 lg:p-12">
-              <p className="section-label">What educators are saying</p>
-              <blockquote className="text-xl leading-9 italic text-[#31405C]">
-                One moment, the room is roaring with laughter. The next, it is filled with focused silence as students craft their stories with purpose and confidence.
-              </blockquote>
-              <footer className="mt-4 text-base font-semibold text-[#5B6D53]">
-                Jeanna White, Facilitator of Curriculum and Instruction
-              </footer>
-              <div className="mt-8">
-                <img
-                  src={visualAssets.uploaded.schoolVisit1}
-                  alt="Donnie Bats bulletin board display during Jeff Kurrus school visit"
-                  className="h-[220px] w-full rounded-[1.2rem] object-cover object-center shadow-[0_14px_28px_rgba(96,87,62,0.1)]"
-                />
-              </div>
-              <p className="mt-6 text-base leading-7 text-[#445065]">
+              <p className="section-label">What to expect</p>
+              <p className="text-lg leading-8 text-[#445065]">
                 Jeff reads from the book, talks about where stories come from, and takes questions. Every student gets to meet the author and sign books at the table afterward.
               </p>
+              <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <img
+                  src={visualAssets.uploaded.schoolVisit1}
+                  alt="Donnie Bats poster created by students during Jeff Kurrus school visit"
+                  className="h-[180px] w-full rounded-[1.2rem] bg-[#f5f3ee] object-contain shadow-[0_14px_28px_rgba(96,87,62,0.1)] sm:h-[200px]"
+                />
+                <img
+                  src={visualAssets.uploaded.schoolVisitTurtle}
+                  alt="Students with turtle during outdoor portion of Jeff Kurrus school visit"
+                  className="h-[180px] w-full rounded-[1.2rem] bg-[#f5f3ee] object-contain shadow-[0_14px_28px_rgba(96,87,62,0.1)] sm:h-[200px]"
+                />
+              </div>
             </div>
 
             <div className="border-t border-[rgba(96,87,62,0.12)] bg-[#F6EFD9] p-8 sm:p-10 lg:border-l lg:border-t-0 lg:p-12">
@@ -154,7 +153,16 @@ export default function SchoolVisits() {
               There is something uniquely powerful about students and educators learning from a real, local author. Jeff brings credibility, authenticity, and a sense of possibility that cannot be replicated. Jeff's session was one of the highest-rated at the symposium, even among an outstanding lineup of nationally recognized literacy experts.
             </p>
             <footer className="mt-5 text-sm font-semibold text-[#5B6D53]">
-              Jeanna, Archdiocese of Omaha
+              Jeanna White, Archdiocese of Omaha
+            </footer>
+          </blockquote>
+          <blockquote className="rounded-[1.8rem] border-l-4 border-[#C4883A] bg-[#FFF8ED] p-7 shadow-[0_18px_36px_rgba(96,87,62,0.1)]">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#C4883A]">In the classroom</p>
+            <p className="mt-4 text-lg leading-8 text-[#31405C]">
+              One moment, the room is roaring with laughter. The next, it is filled with focused silence as students craft their stories with purpose and confidence.
+            </p>
+            <footer className="mt-5 text-sm font-semibold text-[#5B6D53]">
+              Jeanna White, Facilitator of Curriculum and Instruction
             </footer>
           </blockquote>
           <blockquote className="rounded-[1.8rem] border-l-4 border-[#4A7C59] bg-[#EDF3EA] p-7 shadow-[0_18px_36px_rgba(96,87,62,0.1)]">
@@ -165,22 +173,14 @@ export default function SchoolVisits() {
             <footer className="mt-5 text-sm font-semibold text-[#5B6D53]">
               Mrs. Lisa Giles, 4th grade teacher, Ashbury Elementary
             </footer>
-            <div className="mt-5 border-t border-[#4A7C59]/20 pt-5">
-              <p className="text-base leading-7 italic text-[#31405C]">
-                All students, even the reluctant writers, become celebrated authors after spending time with Jeff. Our students love 'Kurrus Day!'
-              </p>
-              <footer className="mt-3 text-sm font-semibold text-[#5B6D53]">
-                Katie Mott, 4th Grade Teacher, Prairie Queen Elementary
-              </footer>
-            </div>
           </blockquote>
-          <div className="rounded-[1.8rem] border-l-4 border-[#1B2A4A] bg-[#EEF1F6] p-7 shadow-[0_18px_36px_rgba(96,87,62,0.1)]">
+          <div className="rounded-[1.8rem] border-l-4 border-[#1B2A4A] bg-[#EEF1F6] p-7 shadow-[0_18px_36px_rgba(96,87,62,0.1)] lg:col-span-2">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#1B2A4A]">What parents are saying</p>
             <div className="mt-4 flex justify-center">
               <img
                 src={visualAssets.uploaded.readerCouch}
                 alt="Boy reading a Jeff Kurrus book on the couch"
-                className="h-[240px] w-full rounded-[1.2rem] object-cover object-center"
+                className="h-[220px] w-full rounded-[1.2rem] object-cover object-[center_65%] sm:h-[280px]"
               />
             </div>
             <p className="mt-5 text-lg leading-8 text-[#31405C]">
@@ -196,24 +196,7 @@ export default function SchoolVisits() {
       {/* Booking form - full width */}
       <section className="container pb-16 sm:pb-20">
         <div className="soft-card overflow-hidden" style={{ backgroundColor: "#FFF8ED" }}>
-          <div className="grid lg:grid-cols-[1fr_1fr]">
-            <div className="p-8 sm:p-10 lg:p-12">
-              <p className="section-label">School visit photos</p>
-              <div className="grid grid-cols-2 gap-3">
-                <img src={visualAssets.uploaded.schoolVisit2} alt="Students engaged during Jeff Kurrus author visit" className="h-[220px] w-full rounded-[1.2rem] object-cover object-center shadow-[0_14px_28px_rgba(96,87,62,0.1)]" />
-                <img
-                  src={visualAssets.uploaded.readerThankYou}
-                  alt="Hand-drawn thank-you card from a young reader"
-                  className="h-[220px] w-full rounded-[1.2rem] bg-[#f5f0e8] object-contain shadow-[0_14px_28px_rgba(96,87,62,0.1)]"
-                />
-              </div>
-              <img
-                src={visualAssets.uploaded.readerShipping}
-                alt="Table of Donnie Bats books being prepped for shipping"
-                className="mt-3 h-[180px] w-full rounded-[1.2rem] bg-[#f5f3ee] object-contain shadow-[0_14px_28px_rgba(96,87,62,0.1)]"
-              />
-            </div>
-            <div className="border-t border-[rgba(96,87,62,0.12)] p-8 sm:p-10 lg:border-l lg:border-t-0 lg:p-12">
+          <div className="p-8 sm:p-10 lg:p-12">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">Booking inquiry form</p>
               <form action="https://formspree.io/jeffreyekurrus@gmail.com" method="POST" className="mt-6 space-y-4">
                 <input type="hidden" name="_subject" value="School Visit Booking Inquiry -- jeffkurrus.com" />
@@ -238,7 +221,6 @@ export default function SchoolVisits() {
                   Book a Visit
                 </button>
               </form>
-            </div>
           </div>
         </div>
       </section>

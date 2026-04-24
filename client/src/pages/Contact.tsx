@@ -15,7 +15,7 @@ export default function Contact() {
         title="I read every message."
         description="Use the form below to book a school visit, order books, ask about photography, or send a general inquiry."
         image={visualAssets.jkPhotography.heroFoggyFisherman}
-        imagePosition="center center"
+        imagePosition="70% center"
       />
 
       <section className="container py-16 sm:py-20">

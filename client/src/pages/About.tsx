@@ -21,15 +21,15 @@ export default function About() {
       <section className="container py-16 sm:py-20">
         <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div className="space-y-5 lg:sticky lg:top-8">
+            <div className="rounded-[1.75rem] bg-[#1B2A4A] p-6">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Credentials</p>
+              <p className="mt-3 text-base leading-7 text-white/80">Editor, Nebraskaland Magazine (est. 1926). 20+ years professional outdoor photography. Golden Sower Award nominee. 25,000+ books in readers' hands. Endorsed by Joel Sartore, National Geographic Photo Ark.</p>
+            </div>
             <img
               src={visualAssets.uploaded.senior04}
               alt="Young photographer with a 'Never Give Up' shirt in a golden field by Jeff Kurrus"
               className="w-full rounded-[1.75rem] object-cover shadow-[0_24px_50px_rgba(27,42,74,0.14)]"
             />
-            <div className="rounded-[1.75rem] bg-[#1B2A4A] p-6">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Credentials</p>
-              <p className="mt-3 text-base leading-7 text-white/80">Editor, Nebraskaland Magazine (est. 1926). 20+ years professional outdoor photography. Golden Sower Award nominee. 25,000+ books in readers' hands. Endorsed by Joel Sartore, National Geographic Photo Ark.</p>
-            </div>
             <img
               src={visualAssets.jkPhotography.lakeDiveSunset}
               alt="Sunset lake dive scene, photographed by Jeff Kurrus"
