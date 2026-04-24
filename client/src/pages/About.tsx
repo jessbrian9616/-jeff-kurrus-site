@@ -3,16 +3,18 @@ Design philosophy for this file: the about page should feel like a long-form pro
 Use measured rhythm, careful line length, and a balance between literary credibility and visual professionalism.
 */
 import PageHero from "@/components/PageHero";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import { visualAssets } from "@/lib/siteContent";
 
 export default function About() {
+  usePageMeta("About Jeff Kurrus", "From Memphis to Nebraska, Jeff Kurrus became an award-winning children's book author, Nebraskaland Magazine editor, and professional outdoor photographer. Read his story.");
   return (
     <div className="page-shell">
       <PageHero
         eyebrow="About"
-        title="The author formation story behind the books and the camera."
-        description="From sandhill cranes on the Platte River to a young baseball player discovering his hidden talent, the subject changes but the goal stays the same."
-        image={visualAssets.jkPhotography.heroFoggyGoldenLandscape}
+        title="20 years of writing, photography, and showing up in classrooms."
+        description="Jeff Kurrus is the editor of Nebraskaland Magazine, a Golden Sower-nominated children's book author, and a professional photographer based in Gretna, Nebraska. He has put 25,000+ books into readers' hands and visited hundreds of schools across the state."
+        image={visualAssets.jkPhotography.heroBarnGoldenHour}
         imagePosition="center center"
       />
 
@@ -20,8 +22,8 @@ export default function About() {
         <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div className="space-y-5 lg:sticky lg:top-8">
             <img
-              src={visualAssets.uploaded.momDaughterSunset}
-              alt="Mother and daughter portrait at sunset by Jeff Kurrus"
+              src={visualAssets.uploaded.senior04}
+              alt="Young photographer with a 'Never Give Up' shirt in a golden field by Jeff Kurrus"
               className="w-full rounded-[1.75rem] object-cover shadow-[0_24px_50px_rgba(27,42,74,0.14)]"
             />
             <div className="rounded-[1.75rem] bg-[#1B2A4A] p-6">
@@ -29,8 +31,8 @@ export default function About() {
               <p className="mt-3 text-base leading-7 text-white/80">Editor, Nebraskaland Magazine (est. 1926). 20+ years professional outdoor photography. Golden Sower Award nominee. 25,000+ books in readers' hands. Endorsed by Joel Sartore, National Geographic Photo Ark.</p>
             </div>
             <img
-              src={visualAssets.uploaded.seniorAthlete}
-              alt="Student athlete portrait by Jeff Kurrus"
+              src={visualAssets.jkPhotography.lakeDiveSunset}
+              alt="Sunset lake dive scene, photographed by Jeff Kurrus"
               className="w-full rounded-[1.75rem] object-cover shadow-[0_24px_50px_rgba(27,42,74,0.14)]"
             />
           </div>
@@ -53,11 +55,11 @@ export default function About() {
       </section>
 
       <section className="container pb-16 sm:pb-20">
-        <div className="soft-card overflow-hidden lg:grid lg:grid-cols-2">
+        <div className="soft-card overflow-hidden lg:grid lg:grid-cols-2 lg:items-center">
           <img
             src={visualAssets.jkPhotography.sunflowerLight}
             alt="Wild sunflowers with a beam of light across a Nebraska field, photographed by Jeff Kurrus"
-            className="h-[360px] w-full object-cover object-center lg:h-full"
+            className="h-[300px] w-full object-cover object-center lg:h-[340px]"
           />
           <div className="p-8 sm:p-10 lg:p-12">
             <p className="section-label">Behind the camera</p>

@@ -5,9 +5,11 @@ Packages appear before the gallery so educators/parents see pricing immediately.
 */
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import { photographyGallery, photographyPackages, visualAssets } from "@/lib/siteContent";
 
 export default function Photography() {
+  usePageMeta("Senior Portrait Photography in Gretna & Omaha", "Senior portraits by Jeff Kurrus. You own every image. No usage fees. Packages from $500. Gretna, Omaha, and surrounding Nebraska areas. 20+ years experience.");
   const heroImage = visualAssets.uploaded.senior09;
 
   return (
@@ -25,33 +27,33 @@ export default function Photography() {
         <p className="section-label">Packages</p>
         <div className="grid gap-6 lg:grid-cols-3">
           {/* The Runway -- premium, gold accent */}
-          <article className="relative overflow-hidden rounded-[1.75rem] border-l-4 border-[#B8860B] bg-[#1B2A4A] p-8 shadow-[0_24px_50px_rgba(27,42,74,0.18)]">
+          <article className="relative flex flex-col overflow-hidden rounded-[1.75rem] border-l-4 border-[#B8860B] bg-[#1B2A4A] p-8 shadow-[0_24px_50px_rgba(27,42,74,0.18)]">
             <div className="absolute right-4 top-4 rounded-full bg-[#B8860B]/15 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[#B8860B]">Most popular</div>
             <h2 className="text-2xl font-semibold text-white">{photographyPackages[0].title}</h2>
             <p className="mt-3 text-4xl font-semibold text-[#B8860B]">{photographyPackages[0].price}</p>
-            <p className="mt-5 text-base leading-7 text-white/75">{photographyPackages[0].details}</p>
-            <Link href="/contact" className="mt-6 inline-flex rounded-full bg-[#B8860B] px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#9A7209]">
+            <p className="mt-5 flex-1 text-base leading-7 text-white/75">{photographyPackages[0].details}</p>
+            <Link href="/contact" className="mt-6 inline-flex self-start rounded-full bg-[#B8860B] px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#9A7209]">
               Book This Package
             </Link>
           </article>
 
           {/* The Golden Hour -- warm amber accent */}
-          <article className="rounded-[1.75rem] border-l-4 border-[#C4883A] bg-[#FBF6EC] p-8 shadow-[0_20px_44px_rgba(184,134,11,0.10)]">
+          <article className="flex flex-col rounded-[1.75rem] border-l-4 border-[#C4883A] bg-[#FBF6EC] p-8 shadow-[0_20px_44px_rgba(184,134,11,0.10)]">
             <div className="mb-3 inline-flex rounded-full bg-[#C4883A]/10 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[#C4883A]">Great value</div>
             <h2 className="text-2xl font-semibold text-[#1B2A4A]">{photographyPackages[1].title}</h2>
             <p className="mt-3 text-4xl font-semibold text-[#C4883A]">{photographyPackages[1].price}</p>
-            <p className="mt-5 text-base leading-7 text-[#445065]">{photographyPackages[1].details}</p>
+            <p className="mt-5 flex-1 text-base leading-7 text-[#445065]">{photographyPackages[1].details}</p>
             <Link href="/contact" className="mt-6 inline-flex rounded-full border border-[#C4883A]/30 px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-[#C4883A] transition hover:bg-[#C4883A] hover:text-white">
               Book This Package
             </Link>
           </article>
 
           {/* The Essential -- green accent */}
-          <article className="rounded-[1.75rem] border-l-4 border-[#4A7C59] bg-[#F2F7F0] p-8 shadow-[0_20px_44px_rgba(74,124,89,0.10)]">
+          <article className="flex flex-col rounded-[1.75rem] border-l-4 border-[#4A7C59] bg-[#F2F7F0] p-8 shadow-[0_20px_44px_rgba(74,124,89,0.10)]">
             <div className="mb-3 inline-flex rounded-full bg-[#4A7C59]/10 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[#4A7C59]">Quick session</div>
             <h2 className="text-2xl font-semibold text-[#1B2A4A]">{photographyPackages[2].title}</h2>
             <p className="mt-3 text-4xl font-semibold text-[#4A7C59]">{photographyPackages[2].price}</p>
-            <p className="mt-5 text-base leading-7 text-[#445065]">{photographyPackages[2].details}</p>
+            <p className="mt-5 flex-1 text-base leading-7 text-[#445065]">{photographyPackages[2].details}</p>
             <Link href="/contact" className="mt-6 inline-flex rounded-full border border-[#4A7C59]/30 px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-[#4A7C59] transition hover:bg-[#4A7C59] hover:text-white">
               Book This Package
             </Link>
@@ -66,7 +68,15 @@ export default function Photography() {
           </div>
           <div className="rounded-[1.5rem] border border-[color:rgba(27,42,74,0.08)] bg-white p-6">
             <p className="text-base leading-7 text-[#445065]">Gretna, Omaha, and surrounding areas. Travel available.</p>
-            <p className="mt-3 text-base leading-7 text-[#445065]">To check availability or schedule a session, send a message through the contact page or email jeffreyekurrus@gmail.com.</p>
+            <p className="mt-3 text-base leading-7 text-[#445065]">To check availability or schedule a session:</p>
+            <a
+              href="mailto:jeffreyekurrus@gmail.com?subject=Senior%20Photo%20Session"
+              className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#2A3E5E]"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              Email Jeff About a Session
+            </a>
+            <p className="mt-3 text-sm text-[#7A8599]">jeffreyekurrus@gmail.com</p>
           </div>
         </div>
       </section>

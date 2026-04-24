@@ -169,11 +169,6 @@ export const photographyGallery = [
     position: "center top",
   },
   {
-    src: visualAssets.uploaded.senior04,
-    alt: "Senior portrait photography by Jeff Kurrus in Gretna Nebraska, young photographer in a golden field",
-    position: "center center",
-  },
-  {
     src: visualAssets.uploaded.senior05,
     alt: "Senior portrait photography by Jeff Kurrus in Gretna Nebraska, field portrait",
     position: "center top",

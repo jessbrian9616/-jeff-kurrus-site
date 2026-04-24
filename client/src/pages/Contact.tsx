@@ -3,9 +3,11 @@ Design philosophy for this file: the contact page should feel direct, calm, and 
 Reduce friction, keep the form legible, and let the practical contact options sit within a clean editorial frame.
 */
 import PageHero from "@/components/PageHero";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import { siteMeta, visualAssets } from "@/lib/siteContent";
 
 export default function Contact() {
+  usePageMeta("Contact Jeff Kurrus", "Book a school visit, order books, schedule a senior photo session, or send a general inquiry. Jeff reads every message. Based in Gretna, Nebraska.");
   return (
     <div className="page-shell">
       <PageHero
@@ -34,6 +36,7 @@ export default function Contact() {
               </select>
               <textarea name="message" placeholder="Message" rows={7} required className="w-full rounded-[1.5rem] border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
               <input type="hidden" name="_subject" value="New inquiry from jeffkurrus.com" />
+              <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
               <button type="submit" className="w-full rounded-full bg-[#1B2A4A] px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#16233D]">
                 Send Message
               </button>

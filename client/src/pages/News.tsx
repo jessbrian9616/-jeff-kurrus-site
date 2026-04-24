@@ -5,6 +5,7 @@ Use card-based event listings, a featured callout for the magazine, and a clear 
 */
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import { visualAssets } from "@/lib/siteContent";
 
 const upcomingEvents = [
@@ -59,15 +60,19 @@ const recentOngoing = [
 ];
 
 export default function News() {
+  usePageMeta("News & Events", "Upcoming school visits, Nebraskaland Magazine awards, community presentations, and updates on The Return of Donnie Bats. Stay current with Jeff Kurrus.");
   return (
     <div className="page-shell">
-      <PageHero
-        eyebrow="News"
-        title="What's happening with Jeff's books, school visits, and Nebraskaland Magazine."
-        description="Upcoming events, magazine awards, and community presentations across Nebraska."
-        image={visualAssets.jkPhotography.heroWindmillSunset}
-        imagePosition="center center"
-      />
+      <div className="relative">
+        <PageHero
+          eyebrow="News"
+          title="What's happening with Jeff's books, school visits, and Nebraskaland Magazine."
+          description="Upcoming events, magazine awards, and community presentations across Nebraska."
+          image={visualAssets.jkPhotography.doubleRainbowDirtRoad}
+          imagePosition="center center"
+        />
+        <span className="absolute bottom-4 right-8 text-[0.6rem] tracking-[0.06em] text-white/50">Courtesy of Nebraskaland Magazine</span>
+      </div>
 
       {/* Nebraskaland Magazine featured callout */}
       <section className="container py-16 sm:py-20">
@@ -153,15 +158,13 @@ export default function News() {
       <section className="container pb-16 sm:pb-20">
         <div className="soft-card overflow-hidden lg:grid lg:grid-cols-[1.1fr_0.9fr]">
           <div
-            className="relative min-h-[300px] lg:min-h-full"
+            className="min-h-[300px] lg:min-h-full"
             style={{
-              backgroundImage: `url(${visualAssets.jkPhotography.doubleRainbowDirtRoad})`,
+              backgroundImage: `url(${visualAssets.jkPhotography.duckDecoysWinter})`,
               backgroundSize: "cover",
               backgroundPosition: "center center",
             }}
-          >
-            <span className="absolute bottom-3 left-4 text-[0.65rem] tracking-[0.06em] text-white/60">Courtesy of Nebraskaland Magazine</span>
-          </div>
+          />
           <div className="p-8 sm:p-10 lg:p-12">
             <p className="section-label">Community presentations</p>
             <h2 className="text-3xl font-semibold text-[#1B2A4A] sm:text-4xl">

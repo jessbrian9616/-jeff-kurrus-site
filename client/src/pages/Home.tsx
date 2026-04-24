@@ -5,9 +5,11 @@ The home page should feel like a premium landing sequence for adults making deci
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import PageHero from "@/components/PageHero";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import { visualAssets } from "@/lib/siteContent";
 
 export default function Home() {
+  usePageMeta("Children's Book Author & Photographer in Gretna, Nebraska", "Jeff Kurrus writes baseball chapter books, presents writing workshops in K-8 classrooms across Nebraska, and photographs seniors in Gretna and Omaha. Author of The Legend of Donnie Bats.");
   return (
     <div className="page-shell">
       <PageHero
@@ -97,18 +99,6 @@ export default function Home() {
         <div className="soft-card overflow-hidden">
           <div className="h-full bg-[#F5F2EA] p-8 lg:p-12" style={{ backgroundImage: `linear-gradient(180deg, rgba(255,255,255,0.88), rgba(245,242,234,0.92)), url(${visualAssets.generated.contactSkyline})`, backgroundSize: "cover", backgroundPosition: "center" }}>
             <p className="section-label">For educators</p>
-            <div className="mb-6 grid grid-cols-2 gap-3">
-              <img
-                src={visualAssets.uploaded.schoolVisit1}
-                alt="Students engaged during a Jeff Kurrus author visit"
-                className="h-[200px] w-full rounded-[1.5rem] object-cover object-center shadow-[0_20px_40px_rgba(27,42,74,0.12)]"
-              />
-              <img
-                src={visualAssets.uploaded.schoolVisitTurtle}
-                alt="Students gathered around a turtle during a Jeff Kurrus school visit"
-                className="h-[200px] w-full rounded-[1.5rem] object-cover object-center shadow-[0_20px_40px_rgba(27,42,74,0.12)]"
-              />
-            </div>
             <p className="text-lg leading-8 text-[#445065]">
               Jeff brings a 45-minute writing program to K-8 classrooms across Nebraska. Students hear the story behind Donnie Bats, dig into the writing process, and leave with signed books.
             </p>
@@ -132,8 +122,8 @@ export default function Home() {
           <div className="soft-card overflow-hidden">
             <Link href="/photography">
               <img
-                src={visualAssets.jkPhotography.lakeDiveSunset}
-                alt="Silhouette of a girl diving into a lake at sunset, photographed by Jeff Kurrus"
+                src={visualAssets.jkPhotography.seniorGraduationToss}
+                alt="Graduation cap toss celebration portrait by Jeff Kurrus"
                 className="h-[260px] w-full object-cover object-center transition hover:scale-[1.02]"
               />
               <div className="p-6">
@@ -145,8 +135,8 @@ export default function Home() {
           <div className="soft-card overflow-hidden">
             <Link href="/contact">
               <img
-                src={visualAssets.jkPhotography.foggyDockMahoney}
-                alt="Foggy morning dock at Mahoney State Park, photographed by Jeff Kurrus"
+                src={visualAssets.jkPhotography.heroFoggyGoldenLandscape}
+                alt="Foggy golden sunrise landscape in Nebraska, photographed by Jeff Kurrus"
                 className="h-[260px] w-full object-cover object-center transition hover:scale-[1.02]"
               />
               <div className="p-6">

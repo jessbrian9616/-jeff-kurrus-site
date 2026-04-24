@@ -5,9 +5,11 @@ Give the Donnie Bats title the strongest hierarchy, keep the grid airy, and let 
 import { Button } from "@/components/ui/button";
 import PageHero from "@/components/PageHero";
 import PlaceholderBlock from "@/components/PlaceholderBlock";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import { bookCatalog, visualAssets } from "@/lib/siteContent";
 
 export default function Books() {
+  usePageMeta("Books by Jeff Kurrus", "The Legend of Donnie Bats, Have You Seen Mary?, The Tale of Jacob Swift, and Can You Dance Like John? Baseball chapter books and nature picture books for kids ages 5-12.");
   const [featured, sequel, ...catalog] = bookCatalog;
 
   return (

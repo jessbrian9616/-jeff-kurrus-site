@@ -3,6 +3,7 @@ Design philosophy for this file: Storybook Editorial should make the School Visi
 Use stronger hierarchy, warmer cards, and balanced sections that remove dead space while increasing readability.
 */
 import PageHero from "@/components/PageHero";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import { schoolVisitPricing, visualAssets } from "@/lib/siteContent";
 
 const visitHighlights = [
@@ -13,6 +14,7 @@ const visitHighlights = [
 ];
 
 export default function SchoolVisits() {
+  usePageMeta("School Visits & Author Presentations", "Book a 45-minute K-8 author visit with Jeff Kurrus. Writing workshops, photography sessions, and author Q&As for Nebraska schools. Pricing from $500/day.");
   return (
     <div className="page-shell">
       <PageHero
@@ -33,16 +35,11 @@ export default function SchoolVisits() {
               <footer className="mt-4 text-base font-semibold text-[#5B6D53]">
                 Jeanna White, Facilitator of Curriculum and Instruction
               </footer>
-              <div className="mt-8 grid grid-cols-2 gap-3">
+              <div className="mt-8">
                 <img
                   src={visualAssets.uploaded.schoolVisit1}
                   alt="Donnie Bats bulletin board display during Jeff Kurrus school visit"
-                  className="h-[180px] w-full rounded-[1.2rem] object-cover object-center shadow-[0_14px_28px_rgba(96,87,62,0.1)]"
-                />
-                <img
-                  src={visualAssets.uploaded.schoolVisitTurtle}
-                  alt="Students gathered around a turtle during a school visit"
-                  className="h-[180px] w-full rounded-[1.2rem] object-cover object-center shadow-[0_14px_28px_rgba(96,87,62,0.1)]"
+                  className="h-[220px] w-full rounded-[1.2rem] object-cover object-center shadow-[0_14px_28px_rgba(96,87,62,0.1)]"
                 />
               </div>
               <p className="mt-6 text-base leading-7 text-[#445065]">
@@ -66,6 +63,14 @@ export default function SchoolVisits() {
                   Common Core ELA connections include reading engagement, narrative structure, author's craft, vocabulary in context, and speaking and listening standards. The presentation supports classroom reading goals and gives students a reason to pick up a book.
                 </p>
               </div>
+              <a
+                href="/downloads/Jeff_Kurrus_Author_Visit_Packet.pdf"
+                download
+                className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-white shadow-[0_8px_20px_rgba(27,42,74,0.2)] transition hover:bg-[#2A3E5E]"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download Author Visit Info (PDF)
+              </a>
             </div>
           </div>
         </div>
@@ -160,6 +165,14 @@ export default function SchoolVisits() {
             <footer className="mt-5 text-sm font-semibold text-[#5B6D53]">
               Mrs. Lisa Giles, 4th grade teacher, Ashbury Elementary
             </footer>
+            <div className="mt-5 border-t border-[#4A7C59]/20 pt-5">
+              <p className="text-base leading-7 italic text-[#31405C]">
+                All students, even the reluctant writers, become celebrated authors after spending time with Jeff. Our students love 'Kurrus Day!'
+              </p>
+              <footer className="mt-3 text-sm font-semibold text-[#5B6D53]">
+                Katie Mott, 4th Grade Teacher, Prairie Queen Elementary
+              </footer>
+            </div>
           </blockquote>
           <div className="rounded-[1.8rem] border-l-4 border-[#1B2A4A] bg-[#EEF1F6] p-7 shadow-[0_18px_36px_rgba(96,87,62,0.1)]">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#1B2A4A]">What parents are saying</p>
@@ -187,28 +200,25 @@ export default function SchoolVisits() {
             <div className="p-8 sm:p-10 lg:p-12">
               <p className="section-label">School visit photos</p>
               <div className="grid grid-cols-2 gap-3">
-                <img src={visualAssets.uploaded.schoolVisit1} alt="Donnie Bats bulletin board display at Ashbury Elementary" className="h-[200px] w-full rounded-[1.2rem] object-cover object-center shadow-[0_14px_28px_rgba(96,87,62,0.1)]" />
-                <img src={visualAssets.uploaded.schoolVisit2} alt="Students engaged during Jeff Kurrus author visit" className="h-[200px] w-full rounded-[1.2rem] object-cover object-center shadow-[0_14px_28px_rgba(96,87,62,0.1)]" />
-              </div>
-              <img src={visualAssets.uploaded.schoolVisitTurtle} alt="Students gathered around a turtle during a school visit" className="mt-3 h-[200px] w-full rounded-[1.2rem] object-cover object-center shadow-[0_14px_28px_rgba(96,87,62,0.1)]" />
-              <div className="mt-6 grid grid-cols-2 gap-3">
-                <img
-                  src={visualAssets.uploaded.readerShipping}
-                  alt="Table of Donnie Bats books being prepped for shipping"
-                  className="h-[160px] w-full rounded-[1.2rem] bg-[#f5f3ee] object-contain"
-                />
+                <img src={visualAssets.uploaded.schoolVisit2} alt="Students engaged during Jeff Kurrus author visit" className="h-[220px] w-full rounded-[1.2rem] object-cover object-center shadow-[0_14px_28px_rgba(96,87,62,0.1)]" />
                 <img
                   src={visualAssets.uploaded.readerThankYou}
                   alt="Hand-drawn thank-you card from a young reader"
-                  className="h-[160px] w-full rounded-[1.2rem] bg-[#f5f0e8] object-contain"
+                  className="h-[220px] w-full rounded-[1.2rem] bg-[#f5f0e8] object-contain shadow-[0_14px_28px_rgba(96,87,62,0.1)]"
                 />
               </div>
+              <img
+                src={visualAssets.uploaded.readerShipping}
+                alt="Table of Donnie Bats books being prepped for shipping"
+                className="mt-3 h-[180px] w-full rounded-[1.2rem] bg-[#f5f3ee] object-contain shadow-[0_14px_28px_rgba(96,87,62,0.1)]"
+              />
             </div>
             <div className="border-t border-[rgba(96,87,62,0.12)] p-8 sm:p-10 lg:border-l lg:border-t-0 lg:p-12">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">Booking inquiry form</p>
               <form action="https://formspree.io/jeffreyekurrus@gmail.com" method="POST" className="mt-6 space-y-4">
                 <input type="hidden" name="_subject" value="School Visit Booking Inquiry -- jeffkurrus.com" />
                 <input type="hidden" name="inquiry_type" value="School Visit" />
+                <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
                 <input type="text" name="name" placeholder="Name *" required className="w-full rounded-2xl border border-[color:rgba(96,87,62,0.16)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#5F7752]" />
                 <input type="text" name="school" placeholder="School / Organization *" required className="w-full rounded-2xl border border-[color:rgba(96,87,62,0.16)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#5F7752]" />
                 <select name="role" required className="w-full rounded-2xl border border-[color:rgba(96,87,62,0.16)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#5F7752]">
