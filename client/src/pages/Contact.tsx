@@ -2,6 +2,7 @@
 Design philosophy for this file: the contact page should feel direct, calm, and trustworthy.
 Reduce friction, keep the form legible, and let the practical contact options sit within a clean editorial frame.
 */
+import { useState } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -9,6 +10,11 @@ import { siteMeta, visualAssets } from "@/lib/siteContent";
 
 export default function Contact() {
   usePageMeta("Contact Jeff Kurrus", "Book a school visit, order books, schedule a senior photo session, or send a general inquiry. Jeff reads every message. Based in Gretna, Nebraska.");
+  // Track inquiry type so the email subject Jeff receives reflects what the visitor selected.
+  const [inquiryType, setInquiryType] = useState("");
+  const emailSubject = inquiryType
+    ? `${inquiryType} - jeffkurrus.com`
+    : "New inquiry from jeffkurrus.com";
   return (
     <div className="page-shell">
       <PageHero
@@ -24,12 +30,18 @@ export default function Contact() {
         <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="soft-card p-8 sm:p-10 lg:p-12">
             <p className="section-label">Contact form</p>
-            <form action="https://formspree.io/jeffreyekurrus@gmail.com" method="POST" className="space-y-4">
+            <form action="https://formspree.io/f/mlgavlpv" method="POST" className="space-y-4">
               <input type="text" name="name" placeholder="Name *" required className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
               <input type="email" name="email" placeholder="Email *" required className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
               <input type="tel" name="phone" placeholder="Phone *" required className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
-              <select name="inquiry_type" required className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]">
-                <option value="" disabled selected>What can Jeff help with? *</option>
+              <select
+                name="inquiry_type"
+                required
+                value={inquiryType}
+                onChange={(e) => setInquiryType(e.target.value)}
+                className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]"
+              >
+                <option value="" disabled>What can Jeff help with? *</option>
                 <option value="School Visit">School Visit</option>
                 <option value="Order Books">Order Books</option>
                 <option value="Senior Photo Session">Senior Photo Session</option>
@@ -37,7 +49,7 @@ export default function Contact() {
                 <option value="General Inquiry">General Inquiry</option>
               </select>
               <textarea name="message" placeholder="Message" rows={7} required className="w-full rounded-[1.5rem] border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
-              <input type="hidden" name="_subject" value="New inquiry from jeffkurrus.com" />
+              <input type="hidden" name="_subject" value={emailSubject} />
               <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
               <button type="submit" className="w-full rounded-full bg-[#1B2A4A] px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#16233D]">
                 Send Message

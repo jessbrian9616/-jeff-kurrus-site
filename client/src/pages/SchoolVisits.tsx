@@ -220,8 +220,8 @@ export default function SchoolVisits() {
           <div className="p-8 sm:p-10 lg:p-12">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">Booking inquiry form</p>
             <p className="mt-2 max-w-2xl text-base leading-7 text-[#5D6475]">Send the details and Jeff will reply with available dates and pricing for your situation.</p>
-              <form action="https://formspree.io/jeffreyekurrus@gmail.com" method="POST" className="mt-6 space-y-4">
-                <input type="hidden" name="_subject" value="School Visit Booking Inquiry -- jeffkurrus.com" />
+              <form action="https://formspree.io/f/mlgavlpv" method="POST" className="mt-6 space-y-4">
+                <input type="hidden" name="_subject" value="School Visit Booking Inquiry - jeffkurrus.com" />
                 <input type="hidden" name="inquiry_type" value="School Visit" />
                 <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
                 <input type="text" name="name" placeholder="Name *" required className="w-full rounded-2xl border border-[color:rgba(96,87,62,0.16)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#5F7752]" />
