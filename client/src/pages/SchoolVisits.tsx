@@ -110,7 +110,7 @@ export default function SchoolVisits() {
           <div className="mt-6 grid gap-5 lg:grid-cols-3">
             {schoolVisitPricing.map((item, i) => (
               <article key={item.label} className={`rounded-[1.6rem] p-6 ${i === 0 ? "bg-white/15 ring-2 ring-[#B8860B]/40" : "bg-white/10"}`}>
-                <h2 className="text-2xl font-semibold text-white sm:text-[1.75rem]">{item.label}</h2>
+                <h3 className="text-2xl font-semibold text-white sm:text-[1.75rem]">{item.label}</h3>
                 <p className="mt-4 text-xl font-semibold text-[#B8860B]">{item.value}</p>
               </article>
             ))}

@@ -29,7 +29,7 @@ export default function Photography() {
           {/* The Runway -- premium, gold accent */}
           <article className="relative flex flex-col overflow-hidden rounded-[1.75rem] border-l-4 border-[#B8860B] bg-[#1B2A4A] p-8 shadow-[0_24px_50px_rgba(27,42,74,0.18)]">
             <div className="absolute right-4 top-4 rounded-full bg-[#B8860B]/15 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[#B8860B]">Most popular</div>
-            <h2 className="text-2xl font-semibold text-white">{photographyPackages[0].title}</h2>
+            <h3 className="text-2xl font-semibold text-white">{photographyPackages[0].title}</h3>
             <p className="mt-3 text-4xl font-semibold text-[#B8860B]">{photographyPackages[0].price}</p>
             <p className="mt-5 flex-1 text-base leading-7 text-white/75">{photographyPackages[0].details}</p>
             <Link href="/contact" className="mt-6 inline-flex self-start rounded-full bg-[#B8860B] px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#9A7209]">
@@ -40,7 +40,7 @@ export default function Photography() {
           {/* The Golden Hour -- warm amber accent */}
           <article className="flex flex-col rounded-[1.75rem] border-l-4 border-[#C4883A] bg-[#FBF6EC] p-8 shadow-[0_20px_44px_rgba(184,134,11,0.10)]">
             <div className="mb-3 inline-flex rounded-full bg-[#C4883A]/10 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[#C4883A]">Great value</div>
-            <h2 className="text-2xl font-semibold text-[#1B2A4A]">{photographyPackages[1].title}</h2>
+            <h3 className="text-2xl font-semibold text-[#1B2A4A]">{photographyPackages[1].title}</h3>
             <p className="mt-3 text-4xl font-semibold text-[#C4883A]">{photographyPackages[1].price}</p>
             <p className="mt-5 flex-1 text-base leading-7 text-[#445065]">{photographyPackages[1].details}</p>
             <Link href="/contact" className="mt-6 inline-flex rounded-full border border-[#C4883A]/30 px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-[#C4883A] transition hover:bg-[#C4883A] hover:text-white">
@@ -51,7 +51,7 @@ export default function Photography() {
           {/* The Essential -- green accent */}
           <article className="flex flex-col rounded-[1.75rem] border-l-4 border-[#4A7C59] bg-[#F2F7F0] p-8 shadow-[0_20px_44px_rgba(74,124,89,0.10)]">
             <div className="mb-3 inline-flex rounded-full bg-[#4A7C59]/10 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[#4A7C59]">Quick session</div>
-            <h2 className="text-2xl font-semibold text-[#1B2A4A]">{photographyPackages[2].title}</h2>
+            <h3 className="text-2xl font-semibold text-[#1B2A4A]">{photographyPackages[2].title}</h3>
             <p className="mt-3 text-4xl font-semibold text-[#4A7C59]">{photographyPackages[2].price}</p>
             <p className="mt-5 flex-1 text-base leading-7 text-[#445065]">{photographyPackages[2].details}</p>
             <Link href="/contact" className="mt-6 inline-flex rounded-full border border-[#4A7C59]/30 px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-[#4A7C59] transition hover:bg-[#4A7C59] hover:text-white">

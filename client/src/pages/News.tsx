@@ -36,7 +36,7 @@ const formatDate = (iso: string) => {
 export default function News() {
   usePageMeta(
     "News & Events",
-    "Recent bylines from Nebraskaland Magazine, school visits, awards, and updates on The Return of Donnie Bats. Auto-refreshed."
+    "Recent bylines from Nebraskaland Magazine, school visit updates, book award news, and the latest on The Return of Donnie Bats. Updated weekly."
   );
 
   const nebraskalandPosts = (newsFeed.latestFromNebraskaland ?? []) as NebraskalandPost[];

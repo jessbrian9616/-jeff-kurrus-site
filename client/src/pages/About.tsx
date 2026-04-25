@@ -8,7 +8,7 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import { visualAssets } from "@/lib/siteContent";
 
 export default function About() {
-  usePageMeta("About Jeff Kurrus", "From Memphis to Nebraska, Jeff Kurrus became an award-winning children's book author, Nebraskaland Magazine editor, and professional outdoor photographer. Read his story.");
+  usePageMeta("About Jeff Kurrus", "From Memphis to Nebraska: award-winning children's book author, Nebraskaland Magazine editor, and professional outdoor photographer based in Gretna.");
   return (
     <div className="page-shell">
       <PageHero

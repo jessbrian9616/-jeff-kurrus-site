@@ -9,7 +9,7 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import { visualAssets } from "@/lib/siteContent";
 
 export default function Home() {
-  usePageMeta("Children's Book Author & Photographer in Gretna, Nebraska", "Jeff Kurrus writes baseball chapter books, presents writing workshops in K-8 classrooms across Nebraska, and photographs seniors in Gretna and Omaha. Author of The Legend of Donnie Bats.");
+  usePageMeta("Children's Book Author & Photographer in Gretna, Nebraska", "Jeff Kurrus writes baseball chapter books for kids, leads K-8 writing workshops across Nebraska, and photographs seniors in Gretna and Omaha.");
   return (
     <div className="page-shell">
       <PageHero
