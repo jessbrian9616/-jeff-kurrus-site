@@ -2,6 +2,7 @@
 Design philosophy for this file: the about page should feel like a long-form profile.
 Use measured rhythm, careful line length, and a balance between literary credibility and visual professionalism.
 */
+import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { visualAssets } from "@/lib/siteContent";
@@ -13,7 +14,7 @@ export default function About() {
       <PageHero
         eyebrow="About"
         title="20 years of writing, photography, and showing up in classrooms."
-        description="Jeff Kurrus is the editor of Nebraskaland Magazine, a Golden Sower-nominated children's book author, and a professional photographer based in Gretna, Nebraska. He has put 25,000+ books into readers' hands and visited hundreds of schools across the state."
+        description="Jeff Kurrus is the editor of Nebraskaland Magazine, a Golden Sower-nominated children's book author, and a professional photographer based in Gretna, Nebraska."
         image={visualAssets.jkPhotography.heroBarnGoldenHour}
         imagePosition="center center"
       />
@@ -28,12 +29,12 @@ export default function About() {
             <img
               src={visualAssets.uploaded.senior04}
               alt="Young photographer with a 'Never Give Up' shirt in a golden field by Jeff Kurrus"
-              className="w-full rounded-[1.75rem] object-cover shadow-[0_24px_50px_rgba(27,42,74,0.14)]"
+              className="h-[300px] w-full rounded-[1.75rem] object-cover object-[center_top] shadow-[0_24px_50px_rgba(27,42,74,0.14)] sm:h-[360px]"
             />
             <img
               src={visualAssets.jkPhotography.lakeDiveSunset}
               alt="Sunset lake dive scene, photographed by Jeff Kurrus"
-              className="w-full rounded-[1.75rem] object-cover shadow-[0_24px_50px_rgba(27,42,74,0.14)]"
+              className="h-[300px] w-full rounded-[1.75rem] object-cover object-center shadow-[0_24px_50px_rgba(27,42,74,0.14)] sm:h-[360px]"
             />
           </div>
           <div className="soft-card p-8 sm:p-10 lg:p-12">
@@ -63,11 +64,31 @@ export default function About() {
           />
           <div className="p-8 sm:p-10 lg:p-12">
             <p className="section-label">Behind the camera</p>
-            <h2 className="text-3xl font-semibold text-[#1B2A4A]">Twenty years of Nebraska light.</h2>
+            <h2 className="text-3xl font-semibold text-[#1B2A4A]">The camera came first. The writing followed.</h2>
             <p className="mt-6 text-lg leading-8 text-[#445065]">
-              The same eye that finds a stunning sunrise over the Sandhills finds the light on a senior's face at golden hour. Jeff has spent two decades photographing Nebraska's landscapes, wildlife, and people for Nebraskaland Magazine and his own portrait work.
+              Jeff learned to see before he learned to write. Years of fieldwork for Nebraskaland Magazine, shooting everything from Sandhills sunrises to whitetail in winter, shaped how he builds a scene on the page. Today that same discipline carries into senior portrait sessions across the Gretna and Omaha area.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Soft conversion CTAs so the About page doesn't dead-end (§7 conversion-path check) */}
+      <section className="container pb-16 sm:pb-20">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Link href="/school-visits" className="soft-card flex items-center justify-between gap-4 p-6 transition hover:-translate-y-0.5">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">For educators</p>
+              <p className="mt-2 text-lg leading-7 text-[#22304F]">Bring Jeff to your school.</p>
+            </div>
+            <span className="text-2xl text-[#4A7C59]">→</span>
+          </Link>
+          <Link href="/photography" className="soft-card flex items-center justify-between gap-4 p-6 transition hover:-translate-y-0.5">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">For families</p>
+              <p className="mt-2 text-lg leading-7 text-[#22304F]">See senior photo sessions.</p>
+            </div>
+            <span className="text-2xl text-[#B8860B]">→</span>
+          </Link>
         </div>
       </section>
     </div>

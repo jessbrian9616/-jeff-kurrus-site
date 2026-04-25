@@ -2,6 +2,7 @@
 Design philosophy for this file: the contact page should feel direct, calm, and trustworthy.
 Reduce friction, keep the form legible, and let the practical contact options sit within a clean editorial frame.
 */
+import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { siteMeta, visualAssets } from "@/lib/siteContent";
@@ -16,6 +17,7 @@ export default function Contact() {
         description="Use the form below to book a school visit, order books, ask about photography, or send a general inquiry."
         image={visualAssets.jkPhotography.heroFoggyFisherman}
         imagePosition="70% center"
+        gradientStrength="strong"
       />
 
       <section className="container py-16 sm:py-20">
@@ -64,6 +66,33 @@ export default function Contact() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Quick reasons people get in touch — gives the page substance + clear conversion paths (CONTACT-2) */}
+      <section className="container pb-16 sm:pb-20">
+        <p className="section-label">Why people reach out</p>
+        <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <Link href="/school-visits" className="rounded-[1.75rem] border-l-4 border-[#5F7752] bg-[#F2F7F0] p-6 shadow-[0_16px_32px_rgba(74,124,89,0.08)] transition hover:-translate-y-0.5">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#5F7752]">School visits</p>
+            <p className="mt-3 text-base leading-7 text-[#22304F]">Bring Jeff to your K-8 classroom for a 45-minute author visit.</p>
+            <p className="mt-4 text-sm font-semibold text-[#5F7752]">See programs and pricing →</p>
+          </Link>
+          <Link href="/photography" className="rounded-[1.75rem] border-l-4 border-[#B8860B] bg-[#FBF6EC] p-6 shadow-[0_16px_32px_rgba(184,134,11,0.08)] transition hover:-translate-y-0.5">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Senior photo session</p>
+            <p className="mt-3 text-base leading-7 text-[#22304F]">Outdoor portraits in Gretna, Omaha, and beyond. You own every image.</p>
+            <p className="mt-4 text-sm font-semibold text-[#B8860B]">See packages →</p>
+          </Link>
+          <Link href="/books" className="rounded-[1.75rem] border-l-4 border-[#1B2A4A] bg-[#EEF1F6] p-6 shadow-[0_16px_32px_rgba(27,42,74,0.08)] transition hover:-translate-y-0.5">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1B2A4A]">Order books</p>
+            <p className="mt-3 text-base leading-7 text-[#22304F]">Direct, signed, or in bulk for classrooms and gift orders.</p>
+            <p className="mt-4 text-sm font-semibold text-[#1B2A4A]">See the catalog →</p>
+          </Link>
+          <a href={`mailto:${siteMeta.email}?subject=Media%20inquiry`} className="rounded-[1.75rem] border-l-4 border-[#7A6B5A] bg-[#F7F4EE] p-6 shadow-[0_16px_32px_rgba(122,107,90,0.08)] transition hover:-translate-y-0.5">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7A6B5A]">Media or interview</p>
+            <p className="mt-3 text-base leading-7 text-[#22304F]">Press, podcasts, or community presentations.</p>
+            <p className="mt-4 text-sm font-semibold text-[#7A6B5A]">Email Jeff →</p>
+          </a>
         </div>
       </section>
     </div>

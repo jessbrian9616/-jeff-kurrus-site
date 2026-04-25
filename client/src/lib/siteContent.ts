@@ -136,32 +136,35 @@ export const photographyPackages = [
     title: "The Runway",
     price: "$1,500",
     details:
-      "Two 3-hour sessions. Unlimited outfits. Preview after first session. 50 image work-ups. You own all images.",
+      "Two 3-hour sessions. Unlimited outfits. Preview after the first session. 50 image work-ups.",
   },
   {
     title: "The Golden Hour",
     price: "$800",
     details:
-      "One 3-hour session. Unlimited outfits. Preview during session. 25 image work-ups. You own all images.",
+      "One 3-hour session. Unlimited outfits. Preview during the session. 25 image work-ups.",
   },
   {
     title: "The Essential",
     price: "$500",
     details:
-      "One 1-hour session. Unlimited outfits. 15 image work-ups. You own all images.",
+      "One 1-hour session. Unlimited outfits. 15 image work-ups.",
   },
 ];
 
+// Gallery positions defaulted to "center top" or higher to keep faces safely framed.
+// Uniform tile heights are enforced in Photography.tsx (no col-span special case),
+// so any tile can be reordered without breaking layout. (PHOTO-1, L6, L7)
 export const photographyGallery = [
   {
     src: visualAssets.uploaded.senior01,
     alt: "Senior portrait photography by Jeff Kurrus in Gretna Nebraska, natural light",
-    position: "center center",
+    position: "center top",
   },
   {
     src: visualAssets.uploaded.senior02,
     alt: "Senior portrait photography by Jeff Kurrus in Gretna Nebraska, outdoor portrait",
-    position: "center center",
+    position: "center top",
   },
   {
     src: visualAssets.uploaded.senior03,
@@ -191,7 +194,7 @@ export const photographyGallery = [
   {
     src: visualAssets.uploaded.senior09,
     alt: "Senior portrait photography by Jeff Kurrus in Gretna Nebraska, softball portrait at golden hour",
-    position: "center center",
+    position: "center top",
   },
   {
     src: visualAssets.uploaded.senior10,
@@ -206,16 +209,16 @@ export const photographyGallery = [
   {
     src: visualAssets.uploaded.momDaughterSunset,
     alt: "Mother and daughter portrait at sunset in a golden field by Jeff Kurrus",
-    position: "center center",
+    position: "center top",
   },
   {
     src: visualAssets.jkPhotography.seniorDragonsAthlete,
     alt: "Dragons multi-sport athlete senior portrait with jerseys and football by Jeff Kurrus",
-    position: "center center",
+    position: "center top",
   },
   {
     src: visualAssets.jkPhotography.seniorGraduationToss,
     alt: "Graduation cap toss celebration portrait in red gown by Jeff Kurrus",
-    position: "center 15%",
+    position: "center top",
   },
 ];

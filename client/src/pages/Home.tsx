@@ -61,18 +61,18 @@ export default function Home() {
               <p className="section-label">Coming next</p>
               <h2 className="max-w-sm text-3xl font-semibold text-[#1B2A4A]">The Return of Donnie Bats</h2>
               <p className="mt-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#B8860B]">Coming December 2026</p>
-              <p className="mt-6 max-w-sm text-lg leading-8 text-[#445065]">The sequel is coming December 2026.</p>
+              <p className="mt-6 max-w-sm text-lg leading-8 text-[#445065]">More heart. More humor. More ballfield trouble.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="container pb-16 sm:pb-20">
+      <section className="container pb-12 sm:pb-16">
         <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="soft-card p-8 sm:p-10">
             <p className="section-label">Recognition</p>
             <blockquote className="text-2xl font-semibold leading-[1.3] text-[#1B2A4A] sm:text-3xl">
-              Jeff Kurrus's words and Michael Forsberg's photographs are teamed here to bring us a remarkable story...
+              Jeff Kurrus's words and Michael Forsberg's photographs are teamed here to bring us a remarkable story.
             </blockquote>
             <p className="mt-6 text-base font-semibold text-[#1B2A4A]">Joel Sartore, founder of National Geographic Photo Ark</p>
             <p className="mt-1 text-base text-[#526077]">on Have You Seen Mary?</p>
@@ -82,10 +82,10 @@ export default function Home() {
             <p className="section-label">About Jeff</p>
             <div className="space-y-5 text-lg leading-8 text-[#445065]">
               <p>
-                I spent years behind a camera. Sandhill cranes on the Platte River. Swift foxes in the short grass. I learned that a good photograph and a good story ask the same thing of you: pay attention and tell the truth about what you see.
+                I grew up catching fish and writing stories in the woods outside Memphis. Today I edit Nebraskaland Magazine and photograph the landscapes, wildlife, and people of Nebraska.
               </p>
               <p>
-                I am the editor of Nebraskaland Magazine. I live in Gretna, Nebraska. I write baseball chapter books for kids who would rather be outside than reading.
+                My books start with questions I can't let go of. What happens when two cranes lose each other during migration? What if the worst kid on the team turns out to be the best?
               </p>
             </div>
             <Link href="/about" className="mt-8 inline-flex text-sm font-semibold uppercase tracking-[0.18em] text-[#4A7C59]">
@@ -95,7 +95,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container pb-16 sm:pb-20">
+      <section className="container pb-12 sm:pb-16">
         <div className="soft-card overflow-hidden">
           <div className="h-full bg-[#F5F2EA] p-8 lg:p-12" style={{ backgroundImage: `linear-gradient(180deg, rgba(255,255,255,0.88), rgba(245,242,234,0.92)), url(${visualAssets.generated.contactSkyline})`, backgroundSize: "cover", backgroundPosition: "center" }}>
             <p className="section-label">For educators</p>
@@ -107,7 +107,7 @@ export default function Home() {
                 'Jeff Kurrus Days' are a core memory for every student who has had the chance to experience them.
               </p>
               <footer className="mt-2 text-sm font-semibold text-[#4A7C59]">
-                — Mrs. Lisa Giles, 4th Grade, Ashbury Elementary
+                — Mrs. Lisa Giles, 4th Grade Teacher, Ashbury Elementary
               </footer>
             </blockquote>
             <Link href="/school-visits" className="mt-8 inline-flex rounded-full bg-[#4A7C59] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#3C6648]">
@@ -124,11 +124,11 @@ export default function Home() {
               <img
                 src={visualAssets.jkPhotography.seniorSdAthlete}
                 alt="USD student athlete senior portrait in white dress by Jeff Kurrus"
-                className="h-[260px] w-full object-cover object-top transition hover:scale-[1.02]"
+                className="h-[440px] w-full bg-[#f5f3ee] object-contain transition hover:scale-[1.02]"
               />
               <div className="p-6">
                 <p className="section-label">Senior Photography</p>
-                <p className="text-lg leading-8 text-[#445065]">You own every image. No usage fees. No restrictions. Gretna, Omaha, and surrounding areas.</p>
+                <p className="text-lg leading-8 text-[#445065]">Outdoor senior portraits with 20 years of Nebraska light behind the lens. Gretna, Omaha, and beyond.</p>
               </div>
             </Link>
           </div>
@@ -137,7 +137,7 @@ export default function Home() {
               <img
                 src={visualAssets.jkPhotography.heroFoggyGoldenLandscape}
                 alt="Foggy golden sunrise landscape in Nebraska, photographed by Jeff Kurrus"
-                className="h-[260px] w-full object-cover object-center transition hover:scale-[1.02]"
+                className="h-[380px] w-full object-cover object-center transition hover:scale-[1.02]"
               />
               <div className="p-6">
                 <p className="section-label">Nebraskaland Magazine</p>

@@ -16,10 +16,10 @@ export default function Books() {
     <div className="page-shell">
       <PageHero
         eyebrow="Books"
-        title="Baseball chapter books for kids who'd rather be outside than reading."
-        description="From sandhill cranes on the Platte River to a young ballplayer discovering his hidden talent, Jeff's books capture attention and tell the truth about what's there."
-        image={visualAssets.uploaded.donnieBats}
-        imagePosition="center center"
+        title="From the Platte River to a small-town ballfield."
+        description="Five books across two decades of writing and photography. Real stories about real places, written for young readers who can tell the difference."
+        image={visualAssets.uploaded.readerShipping}
+        imagePosition="center 55%"
       />
 
       <section className="container py-16 sm:py-20">
@@ -39,7 +39,7 @@ export default function Books() {
         </div>
       </section>
 
-      <section className="container pb-16 sm:pb-20">
+      <section className="container pb-12 sm:pb-16">
         <div className="soft-card overflow-hidden bg-[#1B2A4A] lg:grid lg:grid-cols-[1fr_1fr] lg:items-center">
           <div className="p-8 sm:p-10 lg:p-12">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Coming next</p>
@@ -51,28 +51,33 @@ export default function Books() {
             </a>
           </div>
           <div className="flex items-center justify-center p-8 sm:p-10 lg:p-12">
-            <blockquote className="max-w-sm">
-              <p className="text-xl italic leading-9 text-white/70">"It's the best insomnia I've ever had."</p>
+            <blockquote className="max-w-md">
+              <p className="text-xl italic leading-9 text-white/75">"What if the worst kid on the team turns out to be the best? The question kept me up nights. So did the next one."</p>
               <footer className="mt-4 text-sm font-semibold text-[#B8860B]">-- Jeff, on writing the sequel</footer>
             </blockquote>
           </div>
         </div>
       </section>
 
+      {/* Nature Picture Books — subtle hierarchy: same content, lighter visual weight than Donnie Bats above (N5) */}
       <section className="container pb-8">
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mb-8">
+          <p className="section-label">Nature Picture Books</p>
+          <p className="mt-2 max-w-2xl text-base leading-7 text-[#5D6475]">Three picture books from the Platte River and the prairie, photographed by Michael Forsberg and Rob Palmer, written for ages 5-10.</p>
+        </div>
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {catalog.map((book) => (
-            <article key={book.title} className="soft-card overflow-hidden p-6 sm:p-8">
+            <article key={book.title} className="soft-card overflow-hidden p-5 sm:p-7">
               {book.image ? (
-                <img src={book.image} alt={book.alt} className="mb-6 mx-auto max-h-[400px] w-auto max-w-full rounded-[1.5rem] object-contain shadow-[0_18px_40px_rgba(27,42,74,0.12)]" />
+                <img src={book.image} alt={book.alt} className="mb-5 mx-auto max-h-[340px] w-auto max-w-full rounded-[1.25rem] object-contain shadow-[0_14px_32px_rgba(27,42,74,0.10)]" />
               ) : (
-                <PlaceholderBlock label={book.placeholder ?? "Cover placeholder"} className="mb-6 min-h-[360px] bg-[#2E465A]" />
+                <PlaceholderBlock label={book.placeholder ?? "Cover placeholder"} className="mb-5 min-h-[300px] bg-[#2E465A]" />
               )}
-              <h2 className="text-2xl font-semibold text-[#1B2A4A]">{book.title}</h2>
-              <p className="mt-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">{book.price}</p>
-              {book.note ? <p className="mt-4 text-sm font-semibold text-[#4A7C59]">{book.note}</p> : null}
-              <p className="mt-4 text-base leading-7 text-[#445065]">{book.description}</p>
-              <a href={book.href} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex rounded-full border border-[color:rgba(27,42,74,0.12)] px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#1B2A4A] transition hover:border-[#1B2A4A] hover:bg-[#1B2A4A] hover:text-white">
+              <h3 className="text-xl font-semibold text-[#1B2A4A]">{book.title}</h3>
+              <p className="mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#B8860B]">{book.price}</p>
+              {book.note ? <p className="mt-3 text-sm font-semibold text-[#4A7C59]">{book.note}</p> : null}
+              <p className="mt-3 text-sm leading-6 text-[#445065]">{book.description}</p>
+              <a href={book.href} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex rounded-full border border-[color:rgba(27,42,74,0.12)] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#1B2A4A] transition hover:border-[#1B2A4A] hover:bg-[#1B2A4A] hover:text-white">
                 {book.cta}
               </a>
             </article>

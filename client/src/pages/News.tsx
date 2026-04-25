@@ -1,81 +1,98 @@
 /*
-Design philosophy for this file: the news page should feel like an editorial bulletin board.
-Combine Nebraskaland Magazine credibility with upcoming events in a scannable, warm layout.
-Use card-based event listings, a featured callout for the magazine, and a clear community CTA.
+Design philosophy for this file: News is the cross-promotion engine.
+The "Latest from Nebraskaland Magazine" block is auto-fed from
+client/src/data/news-feed.json (refreshed weekly by Claude scheduled task
+'kurrus-news-refresh' against /wp-json/wp/v2/posts?author=8). This page
+borrows Nebraskaland's authority every time an agent or librarian visits
+jeffkurrus.com - exactly the cross-flow Brand Strategy v3 §5 calls for.
 */
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { visualAssets } from "@/lib/siteContent";
+import newsFeed from "@/data/news-feed.json";
 
-const upcomingEvents = [
-  {
-    date: "May 2025",
-    title: "Thedford School Visit",
-    description:
-      "Jeff brings his Writer's Workshop to Thedford, Nebraska. Students will hear from Donnie Bats, learn the 7 Question Words, and leave with signed books.",
-  },
-  {
-    date: "End of May",
-    title: "Radio Show",
-    description:
-      "Jeff joins the airwaves to talk about children's books, writing process, and life behind the camera at Nebraskaland Magazine.",
-  },
-  {
-    date: "TBA",
-    title: "Podcast Guest",
-    description:
-      "Details coming soon. Jeff will be a guest on a podcast discussing storytelling, photography, and Nebraska's outdoor culture.",
-  },
-  {
-    date: "July",
-    title: "ACI Awards for Magazine",
-    description:
-      "Nebraskaland Magazine competes at the ACI (Association for Communication Excellence) national awards. The magazine and staff have won more than 50 national awards under Jeff's editorship.",
-  },
-  {
-    date: "Fall 2025",
-    title: "Return of Donnie Bats Excerpts",
-    description:
-      "Early excerpts from The Return of Donnie Bats will begin appearing. The sequel to the beloved baseball chapter book arrives December 2026.",
-  },
-];
+type NebraskalandPost = {
+  id: number;
+  title: string;
+  date: string;
+  excerpt: string;
+  link: string;
+  category: string;
+};
 
-const recentOngoing = [
-  {
-    title: "Author in Residence Re-up in Papillion",
-    description:
-      "Jeff continues his Author in Residence role in Papillion, working directly with student writers across multiple grade levels throughout the school year.",
-  },
-  {
-    title: "Nebraskaland Magazine Durham Exhibit",
-    description:
-      "A selection of Jeff's photography and editorial work from Nebraskaland Magazine is featured in the Durham Museum exhibit highlighting Nebraska's outdoor heritage.",
-  },
-  {
-    title: "New Issue of Nebraskaland",
-    description:
-      "The latest issue of Nebraskaland Magazine is on newsstands now. An award-winning outdoor publication that has been part of readers' lives since 1926.",
-  },
-];
+type AroundJeffItem = {
+  title: string;
+  date: string;
+  excerpt: string;
+  link: string;
+};
+
+const formatDate = (iso: string) => {
+  const d = new Date(iso);
+  return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+};
 
 export default function News() {
-  usePageMeta("News & Events", "Upcoming school visits, Nebraskaland Magazine awards, community presentations, and updates on The Return of Donnie Bats. Stay current with Jeff Kurrus.");
+  usePageMeta(
+    "News & Events",
+    "Recent bylines from Nebraskaland Magazine, school visits, awards, and updates on The Return of Donnie Bats. Auto-refreshed."
+  );
+
+  const nebraskalandPosts = (newsFeed.latestFromNebraskaland ?? []) as NebraskalandPost[];
+  const aroundJeff = (newsFeed.aroundJeff ?? []) as AroundJeffItem[];
+
   return (
     <div className="page-shell">
       <div className="relative">
         <PageHero
           eyebrow="News"
-          title="What's happening with Jeff's books, school visits, and Nebraskaland Magazine."
-          description="Upcoming events, magazine awards, and community presentations across Nebraska."
+          title="What I've been writing, where I've been visiting, and what's new at Nebraskaland."
+          description="Recent bylines, school visits, and what's coming next. This page refreshes itself."
           image={visualAssets.jkPhotography.doubleRainbowDirtRoad}
           imagePosition="center center"
         />
-        <span className="absolute bottom-4 right-8 text-[0.6rem] tracking-[0.06em] text-white/50">Courtesy of Nebraskaland Magazine</span>
+        <span className="absolute bottom-4 right-8 text-[0.7rem] tracking-[0.06em] text-white/70">Courtesy of Nebraskaland Magazine</span>
       </div>
 
-      {/* Nebraskaland Magazine featured callout */}
+      {/* Latest from Nebraskaland - auto-pulled from /wp-json/wp/v2/posts?author=8 */}
       <section className="container py-16 sm:py-20">
+        <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p className="section-label">Latest from Nebraskaland Magazine</p>
+            <p className="mt-2 max-w-2xl text-base leading-7 text-[#5D6475]">Recent bylines from Jeff's editorial work. Updated automatically.</p>
+          </div>
+          <a
+            href="https://magazine.outdoornebraska.gov/author/jeff-kurrus/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex rounded-full border border-[color:rgba(27,42,74,0.18)] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#1B2A4A] transition hover:border-[#1B2A4A] hover:bg-[#1B2A4A] hover:text-white"
+          >
+            Read more on Nebraskaland
+          </a>
+        </div>
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {nebraskalandPosts.map((post) => (
+            <article key={post.id} className="soft-card flex flex-col p-7">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#B8860B]">{post.category}</p>
+              <h3 className="mt-3 text-xl font-semibold text-[#1B2A4A]">{post.title}</h3>
+              <p className="mt-2 text-sm text-[#5D6475]">{formatDate(post.date)}</p>
+              <p className="mt-4 flex-1 text-base leading-7 text-[#445065]">{post.excerpt}</p>
+              <a
+                href={post.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex self-start text-sm font-semibold uppercase tracking-[0.14em] text-[#4A7C59] transition hover:text-[#3C6648]"
+              >
+                Read on Nebraskaland →
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* Nebraskaland Magazine featured callout */}
+      <section className="container pb-12 sm:pb-16">
         <div
           className="rounded-[1.75rem] border border-[color:rgba(96,87,62,0.16)] p-8 shadow-[0_24px_55px_rgba(76,59,37,0.10)] sm:p-10 lg:p-12"
           style={{
@@ -94,63 +111,27 @@ export default function News() {
         </div>
       </section>
 
-      {/* Upcoming Events -- each card color-coded */}
-      <section className="container pb-16 sm:pb-20">
-        <p className="section-label">Upcoming events</p>
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {upcomingEvents.map((event, i) => {
-            const accents = [
-              { border: "border-[#4A7C59]", bg: "bg-[#F2F7F0]", badge: "bg-[#4A7C59]/10 text-[#4A7C59]", date: "text-[#4A7C59]" },
-              { border: "border-[#B8860B]", bg: "bg-[#FBF6EC]", badge: "bg-[#B8860B]/10 text-[#B8860B]", date: "text-[#B8860B]" },
-              { border: "border-[#5C6782]", bg: "bg-[#F0F2F7]", badge: "bg-[#5C6782]/10 text-[#5C6782]", date: "text-[#5C6782]" },
-              { border: "border-[#1B2A4A]", bg: "bg-[#EEF1F6]", badge: "bg-[#1B2A4A]/10 text-[#1B2A4A]", date: "text-[#1B2A4A]" },
-              { border: "border-[#7A6B5A]", bg: "bg-[#F7F4EE]", badge: "bg-[#7A6B5A]/10 text-[#7A6B5A]", date: "text-[#7A6B5A]" },
-            ];
-            const a = accents[i % accents.length];
-            return (
-              <article
-                key={event.title}
-                className={`rounded-[1.75rem] border-l-4 ${a.border} ${a.bg} p-7 shadow-[0_16px_32px_rgba(27,42,74,0.06)]`}
-              >
-                <div className={`mb-3 inline-flex rounded-full ${a.badge} px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.18em]`}>
-                  {event.date}
-                </div>
-                <h3 className="text-xl font-semibold text-[#1B2A4A]">
-                  {event.title}
-                </h3>
-                <p className="mt-4 text-base leading-7 text-[#445065]">
-                  {event.description}
-                </p>
-              </article>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Recent / Ongoing -- dark treatment to contrast with events */}
-      <section className="container pb-16 sm:pb-20">
-        <p className="section-label">Recent and ongoing</p>
-        <div className="grid gap-5 lg:grid-cols-3">
-          {recentOngoing.map((item, i) => {
-            const tints = [
-              "bg-[#1B2A4A] border-[#B8860B]",
-              "bg-[#2A3E5E] border-[#4A7C59]",
-              "bg-[#1B2A4A] border-[#C4883A]",
-            ];
-            return (
-              <article
-                key={item.title}
-                className={`rounded-[1.75rem] border-t-4 ${tints[i % tints.length]} p-7 shadow-[0_20px_44px_rgba(27,42,74,0.14)]`}
-              >
-                <h3 className="text-xl font-semibold text-white">
-                  {item.title}
-                </h3>
-                <p className="mt-4 text-base leading-7 text-white/75">
-                  {item.description}
-                </p>
-              </article>
-            );
-          })}
+      {/* What's happening with Jeff */}
+      <section className="container pb-12 sm:pb-16">
+        <p className="section-label">What's happening with Jeff</p>
+        <p className="mt-2 max-w-2xl text-base leading-7 text-[#5D6475]">School visits, awards, community appearances, and book updates.</p>
+        <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {aroundJeff.map((item) => (
+            <article key={item.title} className="rounded-[1.75rem] border-l-4 border-[#1B2A4A] bg-[#EEF1F6] p-7 shadow-[0_16px_32px_rgba(27,42,74,0.06)]">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1B2A4A]">{formatDate(item.date)}</p>
+              <h3 className="mt-3 text-xl font-semibold text-[#1B2A4A]">{item.title}</h3>
+              <p className="mt-4 text-base leading-7 text-[#445065]">{item.excerpt}</p>
+              {item.link?.startsWith("/") ? (
+                <Link href={item.link} className="mt-5 inline-flex text-sm font-semibold uppercase tracking-[0.14em] text-[#4A7C59] transition hover:text-[#3C6648]">
+                  Learn more →
+                </Link>
+              ) : (
+                <a href={item.link} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex text-sm font-semibold uppercase tracking-[0.14em] text-[#4A7C59] transition hover:text-[#3C6648]">
+                  Learn more →
+                </a>
+              )}
+            </article>
+          ))}
         </div>
       </section>
 

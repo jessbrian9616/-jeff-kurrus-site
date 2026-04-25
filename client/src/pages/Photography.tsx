@@ -17,7 +17,7 @@ export default function Photography() {
       <PageHero
         eyebrow="Senior Photography"
         title="You own every image. No usage fees. No restrictions."
-        description="I've been photographing beautiful Nebraska for twenty years. The same eye that finds a stunning sunrise finds the light on a senior's face at golden hour. I specialize in getting people of all ages comfortable in front of the camera -- so the expression you see is the real one."
+        description="I've been photographing Nebraska for twenty years. The same eye that finds a sunrise on the Platte finds the light on a senior's face at golden hour. I get people of all ages comfortable in front of the camera -- so the expression you see is the real one."
         image={heroImage}
         imagePosition="center center"
       />
@@ -81,17 +81,18 @@ export default function Photography() {
         </div>
       </section>
 
-      {/* Gallery */}
+      {/* Gallery — uniform 3-column grid, every tile same height. No col-span special case (fixes the
+          extra-whitespace-under-shorter-tiles bug, PHOTO-1). All tiles are interchangeable. */}
       <section className="container pb-16 sm:pb-20">
         <p className="section-label">Portfolio</p>
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {photographyGallery.filter((photo) => photo.src !== heroImage).map((photo, index) => (
-            <figure key={photo.src} className={`${index === 0 ? "md:col-span-2 xl:col-span-2" : ""} overflow-hidden rounded-[1.75rem] bg-white p-3 shadow-[0_26px_55px_rgba(27,42,74,0.12)]`}>
+        <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {photographyGallery.filter((photo) => photo.src !== heroImage).map((photo) => (
+            <figure key={photo.src} className="overflow-hidden rounded-[1.75rem] bg-white p-3 shadow-[0_26px_55px_rgba(27,42,74,0.12)]">
               <img
                 src={photo.src}
                 alt={photo.alt}
                 style={{ objectPosition: photo.position }}
-                className={`w-full rounded-[1.35rem] object-cover ${index === 0 ? "h-[540px] sm:h-[620px]" : "h-[420px] sm:h-[500px]"}`}
+                className="h-[480px] w-full rounded-[1.35rem] object-cover sm:h-[540px]"
               />
             </figure>
           ))}

@@ -1,0 +1,66 @@
+{
+  "$schema_note": "Auto-refreshed weekly by Claude scheduled task 'kurrus-news-refresh'. latestFromNebraskaland is pulled from https://magazine.outdoornebraska.gov/wp-json/wp/v2/posts?author=8 (Jeff's WordPress author ID). aroundJeff is editable by hand. lastUpdated is ISO 8601.",
+  "lastUpdated": "2026-04-25T18:00:00-05:00",
+  "latestFromNebraskaland": [
+    {
+      "id": 16600,
+      "title": "Nebraskaland Digital Archive",
+      "date": "2026-03-26",
+      "excerpt": "Celebrate 100 years of the Nebraska outdoors in the newly expanded Nebraskaland Magazine Digital Archive.",
+      "link": "https://magazine.outdoornebraska.gov/stories/history-and-culture/nebraskaland-digital-archive/",
+      "category": "History & Culture"
+    },
+    {
+      "id": 16190,
+      "title": "100 Years Later",
+      "date": "2026-01-27",
+      "excerpt": "The predecessor of Nebraskaland Magazine, Outdoor Nebraska, was first published in June 1926. A century-mark essay on what's changed and what hasn't.",
+      "link": "https://magazine.outdoornebraska.gov/stories/history-and-culture/100-years-later/",
+      "category": "History & Culture"
+    },
+    {
+      "id": 15889,
+      "title": "Still Making Memories — A Family Tradition",
+      "date": "2025-12-22",
+      "excerpt": "The story of Justin Stofer, whose family is keeping the hunting tradition alive in Fillmore County.",
+      "link": "https://magazine.outdoornebraska.gov/stories/hunting/still-making-memories-a-family-tradition/",
+      "category": "Hunting"
+    },
+    {
+      "id": 15783,
+      "title": "A Club for Carvers",
+      "date": "2025-12-08",
+      "excerpt": "The Central Flyway Decoy Collectors and Carvers Club is an eclectic group. World-class carvers next to first-time folks with the worry of 'I'm not sure if I can do this.'",
+      "link": "https://magazine.outdoornebraska.gov/stories/people/a-club-for-carvers/",
+      "category": "People"
+    },
+    {
+      "id": 15386,
+      "title": "The Circle — The Jordy Bahl Story",
+      "date": "2025-10-20",
+      "excerpt": "Jordy, originally from Papillion, is a three-time All-American and a two-time national champion. A profile written from a family pheasant hunt.",
+      "link": "https://magazine.outdoornebraska.gov/stories/people/the-circle-the-jordy-bahl-story/",
+      "category": "People"
+    }
+  ],
+  "aroundJeff": [
+    {
+      "title": "The Return of Donnie Bats — December 2026",
+      "date": "2026-12-01",
+      "excerpt": "The sequel to The Legend of Donnie Bats arrives this December. More heart, more humor, more ballfield trouble.",
+      "link": "/books"
+    },
+    {
+      "title": "Author in Residence — Papillion",
+      "date": "2026-04-01",
+      "excerpt": "Jeff continues his Author in Residence role in Papillion, working with student writers across multiple grade levels.",
+      "link": "/school-visits"
+    },
+    {
+      "title": "Nebraska Book Awards 2026 — Children/YA submission underway",
+      "date": "2026-04-15",
+      "excerpt": "The Legend of Donnie Bats is being submitted to the Nebraska Book Awards 2026 in the Children/Young Adult category. Award announced fall 2026.",
+      "link": "/books"
+    }
+  ]
+}

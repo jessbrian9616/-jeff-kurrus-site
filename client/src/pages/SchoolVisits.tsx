@@ -7,10 +7,10 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import { schoolVisitPricing, visualAssets } from "@/lib/siteContent";
 
 const visitHighlights = [
-  "Grades K-5 with an engaging 45-minute presentation",
-  "Interactive talk about writing, storytelling, and where ideas come from",
-  "Q&A plus book-signing time after the presentation",
-  "Ideal for librarians, classroom visits, and school-wide assemblies",
+  "K-8 classrooms, 45 minutes, signed books at the table afterward",
+  "Five program tracks: Writer's Workshop K-2 and 3-5, Photography Workshop 6-8, Author Q&A K-8, Zoom Q&A K-8",
+  "Common Core ELA connections: reading engagement, narrative structure, author's craft",
+  "Works as a classroom visit, a librarian event, or a school-wide assembly",
 ];
 
 export default function SchoolVisits() {
@@ -19,7 +19,7 @@ export default function SchoolVisits() {
     <div className="page-shell">
       <PageHero
         eyebrow="School visits"
-        title="A 45-minute K-5 author presentation built for real school scheduling decisions."
+        title="A 45-minute author visit built for K-8 classrooms across Nebraska."
         description="Jeff brings an engaging, practical author visit that helps students connect writing, reading, and curiosity with the real world around them."
         image={visualAssets.uploaded.schoolVisit2}
       />
@@ -30,10 +30,16 @@ export default function SchoolVisits() {
             <div className="p-8 sm:p-10 lg:p-12">
               <p className="section-label">What to expect</p>
               <p className="text-lg leading-8 text-[#445065]">
-                Jeff reads from the book, talks about where stories come from, and takes questions. Every student gets to meet the author and sign books at the table afterward.
+                Jeff opens with a passage from one of his books. The room goes quiet. A hand goes up.
               </p>
               <p className="mt-4 text-lg leading-8 text-[#445065]">
-                Students leave with signed copies and a reason to keep writing.
+                The next 45 minutes cover where stories come from, the seven question words Jeff teaches every classroom, and how a kid who couldn't hit, throw, or catch ended up the hero of a chapter book. Students draw, talk, write, and try the technique themselves. The reluctant writers find a way in.
+              </p>
+              <p className="mt-4 text-lg leading-8 text-[#445065]">
+                Teachers stay in the room. The presentation is built to work alongside what you're already teaching, not to replace it. By the end, students have signed copies of the books and a reason to keep writing.
+              </p>
+              <p className="mt-4 text-lg leading-8 text-[#445065]">
+                Jeff has been doing this for ten years across schools in Nebraska. He's edited a state magazine for thirteen. The work he asks students to do is the work he does every day.
               </p>
             </div>
 
@@ -68,7 +74,8 @@ export default function SchoolVisits() {
 
       <section className="container pb-16 sm:pb-20">
         <p className="section-label">Programs</p>
-        <div className="grid gap-5 lg:grid-cols-2">
+        <p className="mt-2 max-w-2xl text-base leading-7 text-[#5D6475]">All five programs are offered K-8 — choose by grade band.</p>
+        <div className="mt-8 grid gap-5 lg:grid-cols-2">
           <div className="rounded-[1.75rem] border-l-4 border-[#4A7C59] bg-[#F2F7F0] p-7 shadow-[0_16px_32px_rgba(74,124,89,0.08)]">
             <div className="mb-3 inline-flex rounded-full bg-[#4A7C59]/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#4A7C59]">Writing</div>
             <h3 className="text-xl font-semibold text-[#22304F]">Writer's Workshop <span className="ml-2 text-base font-normal text-[#5F7752]">Grades K-2</span></h3>
@@ -125,19 +132,11 @@ export default function SchoolVisits() {
         </div>
       </section>
 
-      {/* Testimonials - full width, balanced grid */}
-      <section className="container pb-16 sm:pb-20">
+      {/* Testimonials - full width, balanced grid. Jeanna White appears twice (both attributions are real per L3) -
+          her literacy-expert testimonial leads, her in-classroom observation runs as a smaller secondary quote below. */}
+      <section className="container pb-12 sm:pb-16">
         <p className="section-label">What educators and parents are saying</p>
-        <div className="grid gap-5 lg:grid-cols-2">
-          <blockquote className="rounded-[1.8rem] border-l-4 border-[#5F7752] bg-[#F7ECD0] p-7 shadow-[0_18px_36px_rgba(96,87,62,0.1)]">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">15-year partner school</p>
-            <p className="mt-4 text-lg leading-8 text-[#31405C]">
-              I have had the privilege of watching Jeff work with 4th graders for 15 years. Every year, whether we have 40 kids or 90, Jeff captivates the students with his hands-on, straight forward, yet always entertaining, methods. All students, even the reluctant writers, become celebrated authors after spending time with Jeff. Our students love 'Kurrus Day!'
-            </p>
-            <footer className="mt-5 text-sm font-semibold text-[#5B6D53]">
-              Katie Mott, 4th Grade Teacher, Prairie Queen Elementary, Papillion, Nebraska
-            </footer>
-          </blockquote>
+        <div className="mt-8 grid gap-5 lg:grid-cols-2">
           <blockquote className="rounded-[1.8rem] border-l-4 border-[#B8860B] bg-[#FBF6EC] p-7 shadow-[0_18px_36px_rgba(96,87,62,0.1)]">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Literacy expert</p>
             <p className="mt-4 text-lg leading-8 text-[#31405C]">
@@ -147,13 +146,13 @@ export default function SchoolVisits() {
               Jeanna White, Archdiocese of Omaha
             </footer>
           </blockquote>
-          <blockquote className="rounded-[1.8rem] border-l-4 border-[#C4883A] bg-[#FFF8ED] p-7 shadow-[0_18px_36px_rgba(96,87,62,0.1)]">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#C4883A]">In the classroom</p>
+          <blockquote className="rounded-[1.8rem] border-l-4 border-[#5F7752] bg-[#F7ECD0] p-7 shadow-[0_18px_36px_rgba(96,87,62,0.1)]">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">15-year partner school</p>
             <p className="mt-4 text-lg leading-8 text-[#31405C]">
-              One moment, the room is roaring with laughter. The next, it is filled with focused silence as students craft their stories with purpose and confidence.
+              I have had the privilege of watching Jeff work with 4th graders for 15 years. Every year, whether we have 40 kids or 90, Jeff captivates the students with his hands-on, straight forward, yet always entertaining, methods. All students, even the reluctant writers, become celebrated authors after spending time with Jeff. Our students love 'Kurrus Day!'
             </p>
             <footer className="mt-5 text-sm font-semibold text-[#5B6D53]">
-              Jeanna White, Facilitator of Curriculum and Instruction
+              Katie Mott, 4th Grade Teacher, Prairie Queen Elementary, Papillion, Nebraska
             </footer>
           </blockquote>
           <blockquote className="rounded-[1.8rem] border-l-4 border-[#4A7C59] bg-[#EDF3EA] p-7 shadow-[0_18px_36px_rgba(96,87,62,0.1)]">
@@ -163,6 +162,16 @@ export default function SchoolVisits() {
             </p>
             <footer className="mt-5 text-sm font-semibold text-[#5B6D53]">
               Mrs. Lisa Giles, 4th grade teacher, Ashbury Elementary
+            </footer>
+          </blockquote>
+          {/* Smaller secondary Jeanna White quote — her in-classroom observation. Lighter visual weight to avoid duplicate-attribution feel. */}
+          <blockquote className="rounded-[1.5rem] border border-[color:rgba(196,136,58,0.25)] bg-[#FFF8ED] p-6 shadow-[0_10px_20px_rgba(96,87,62,0.06)]">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#C4883A]">In the classroom</p>
+            <p className="mt-3 text-base leading-7 text-[#31405C]">
+              One moment, the room is roaring with laughter. The next, it is filled with focused silence as students craft their stories with purpose and confidence.
+            </p>
+            <footer className="mt-4 text-xs font-semibold text-[#5B6D53]">
+              Jeanna White, Facilitator of Curriculum and Instruction
             </footer>
           </blockquote>
           <div className="rounded-[1.8rem] border-l-4 border-[#1B2A4A] bg-[#EEF1F6] p-7 shadow-[0_18px_36px_rgba(96,87,62,0.1)] lg:col-span-2">
@@ -184,27 +193,33 @@ export default function SchoolVisits() {
         </div>
       </section>
 
-      {/* School visit photos + Booking form */}
+      {/* School visit photos — full-width, larger, no crop. (SV-2, L8) */}
+      <section className="container pb-12 sm:pb-16">
+        <div className="soft-card overflow-hidden" style={{ backgroundColor: "#FFF8ED" }}>
+          <div className="p-8 sm:p-10 lg:p-12">
+            <p className="section-label">School visit photos</p>
+            <div className="mt-6 grid grid-cols-1 gap-5 lg:grid-cols-2">
+              <img
+                src={visualAssets.uploaded.schoolVisit1}
+                alt="Donnie Bats poster created by students during Jeff Kurrus school visit"
+                className="h-[460px] w-full rounded-[1.5rem] bg-[#f5f3ee] object-contain shadow-[0_18px_32px_rgba(96,87,62,0.1)] sm:h-[560px]"
+              />
+              <img
+                src={visualAssets.uploaded.schoolVisitTurtle}
+                alt="Students with turtle during outdoor portion of Jeff Kurrus school visit"
+                className="h-[460px] w-full rounded-[1.5rem] bg-[#f5f3ee] object-contain shadow-[0_18px_32px_rgba(96,87,62,0.1)] sm:h-[560px]"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Booking inquiry form — own section so the photos above can breathe at full width. */}
       <section className="container pb-16 sm:pb-20">
         <div className="soft-card overflow-hidden" style={{ backgroundColor: "#FFF8ED" }}>
-          <div className="grid lg:grid-cols-[1fr_1fr]">
-            <div className="p-8 sm:p-10 lg:p-12">
-              <p className="section-label">School visit photos</p>
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                <img
-                  src={visualAssets.uploaded.schoolVisit1}
-                  alt="Donnie Bats poster created by students during Jeff Kurrus school visit"
-                  className="h-[180px] w-full rounded-[1.2rem] bg-[#f5f3ee] object-contain shadow-[0_14px_28px_rgba(96,87,62,0.1)] sm:h-[220px]"
-                />
-                <img
-                  src={visualAssets.uploaded.schoolVisitTurtle}
-                  alt="Students with turtle during outdoor portion of Jeff Kurrus school visit"
-                  className="h-[180px] w-full rounded-[1.2rem] bg-[#f5f3ee] object-contain shadow-[0_14px_28px_rgba(96,87,62,0.1)] sm:h-[220px]"
-                />
-              </div>
-            </div>
-            <div className="border-t border-[rgba(96,87,62,0.12)] p-8 sm:p-10 lg:border-l lg:border-t-0 lg:p-12">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">Booking inquiry form</p>
+          <div className="p-8 sm:p-10 lg:p-12">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">Booking inquiry form</p>
+            <p className="mt-2 max-w-2xl text-base leading-7 text-[#5D6475]">Send the details and Jeff will reply with available dates and pricing for your situation.</p>
               <form action="https://formspree.io/jeffreyekurrus@gmail.com" method="POST" className="mt-6 space-y-4">
                 <input type="hidden" name="_subject" value="School Visit Booking Inquiry -- jeffkurrus.com" />
                 <input type="hidden" name="inquiry_type" value="School Visit" />
@@ -228,7 +243,6 @@ export default function SchoolVisits() {
                   Book a Visit
                 </button>
               </form>
-            </div>
           </div>
         </div>
       </section>

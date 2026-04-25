@@ -1,49 +1,28 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { AlertCircle, Home } from "lucide-react";
-import { useLocation } from "wouter";
+import { Link } from "wouter";
 
 export default function NotFound() {
-  const [, setLocation] = useLocation();
-
-  const handleGoHome = () => {
-    setLocation("/");
-  };
-
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
-      <Card className="w-full max-w-lg mx-4 shadow-lg border-0 bg-white/80 backdrop-blur-sm">
-        <CardContent className="pt-8 pb-8 text-center">
-          <div className="flex justify-center mb-6">
-            <div className="relative">
-              <div className="absolute inset-0 bg-red-100 rounded-full animate-pulse" />
-              <AlertCircle className="relative h-16 w-16 text-red-500" />
-            </div>
-          </div>
-
-          <h1 className="text-4xl font-bold text-slate-900 mb-2">404</h1>
-
-          <h2 className="text-xl font-semibold text-slate-700 mb-4">
-            Page Not Found
-          </h2>
-
-          <p className="text-slate-600 mb-8 leading-relaxed">
-            Sorry, the page you are looking for doesn't exist.
-            <br />
-            It may have been moved or deleted.
+    <div className="page-shell">
+      <section className="container py-24 sm:py-32">
+        <div className="soft-card mx-auto max-w-2xl p-10 text-center sm:p-14">
+          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#B8860B]">404</p>
+          <h1 className="mt-4 text-4xl font-semibold text-[#1B2A4A] sm:text-5xl">This page wandered off.</h1>
+          <p className="mt-6 text-lg leading-8 text-[#445065]">
+            The page you're looking for isn't here. Try the homepage, the books, or send Jeff a note.
           </p>
-
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button
-              onClick={handleGoHome}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
-            >
-              <Home className="w-4 h-4 mr-2" />
-              Go Home
-            </Button>
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <Link href="/" className="inline-flex rounded-full bg-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#16233D]">
+              Back to home
+            </Link>
+            <Link href="/books" className="inline-flex rounded-full border border-[color:rgba(27,42,74,0.18)] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#1B2A4A] transition hover:border-[#1B2A4A] hover:bg-[#1B2A4A] hover:text-white">
+              See the books
+            </Link>
+            <Link href="/contact" className="inline-flex rounded-full border border-[color:rgba(27,42,74,0.18)] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#1B2A4A] transition hover:border-[#1B2A4A] hover:bg-[#1B2A4A] hover:text-white">
+              Send a note
+            </Link>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </section>
     </div>
   );
 }
