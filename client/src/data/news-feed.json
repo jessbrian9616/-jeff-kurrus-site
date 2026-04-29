@@ -1,6 +1,6 @@
 {
   "$schema_note": "Auto-refreshed weekly by Claude scheduled task 'kurrus-news-refresh'. latestFromNebraskaland is pulled from https://magazine.outdoornebraska.gov/wp-json/wp/v2/posts?author=8 (Jeff's WordPress author ID). aroundJeff is editable by hand. lastUpdated is ISO 8601.",
-  "lastUpdated": "2026-04-25T18:00:00-05:00",
+  "lastUpdated": "2026-04-27T07:02:05-05:00",
   "latestFromNebraskaland": [
     {
       "id": 16600,
@@ -14,33 +14,33 @@
       "id": 16190,
       "title": "100 Years Later",
       "date": "2026-01-27",
-      "excerpt": "The predecessor of Nebraskaland Magazine, Outdoor Nebraska, was first published in June 1926. A century-mark essay on what's changed and what hasn't.",
+      "excerpt": "The predecessor of Nebraskaland Magazine, Outdoor Nebraska, was first published in June 1926.",
       "link": "https://magazine.outdoornebraska.gov/stories/history-and-culture/100-years-later/",
       "category": "History & Culture"
+    },
+    {
+      "id": 16083,
+      "title": "Nebraskaland 2025 Photo Contest",
+      "date": "2026-01-20",
+      "excerpt": "This year's Nebraskaland Magazine Photo Contest was once again a thrill for our staff to witness.",
+      "link": "https://magazine.outdoornebraska.gov/stories/photography/nebraskaland-2025-photo-contest/",
+      "category": "Photography"
+    },
+    {
+      "id": 16089,
+      "title": "Nebraskaland Photo Contest History",
+      "date": "2026-01-20",
+      "excerpt": "The June 1970 edition of Nebraskaland Magazine accepted entries for the \"Nebraskaland Festival of Color Photo Contest,\" a first in its history.",
+      "link": "https://magazine.outdoornebraska.gov/stories/photography/nebraskaland-photo-contest-history/",
+      "category": "Photography"
     },
     {
       "id": 15889,
       "title": "Still Making Memories — A Family Tradition",
       "date": "2025-12-22",
-      "excerpt": "The story of Justin Stofer, whose family is keeping the hunting tradition alive in Fillmore County.",
+      "excerpt": "Nebraskaland editor Jeff Kurrus tells the story of Justin Stofer, whose family is keeping the hunting tradition alive in Fillmore County.",
       "link": "https://magazine.outdoornebraska.gov/stories/hunting/still-making-memories-a-family-tradition/",
       "category": "Hunting"
-    },
-    {
-      "id": 15783,
-      "title": "A Club for Carvers",
-      "date": "2025-12-08",
-      "excerpt": "The Central Flyway Decoy Collectors and Carvers Club is an eclectic group. World-class carvers next to first-time folks with the worry of 'I'm not sure if I can do this.'",
-      "link": "https://magazine.outdoornebraska.gov/stories/people/a-club-for-carvers/",
-      "category": "People"
-    },
-    {
-      "id": 15386,
-      "title": "The Circle — The Jordy Bahl Story",
-      "date": "2025-10-20",
-      "excerpt": "Jordy, originally from Papillion, is a three-time All-American and a two-time national champion. A profile written from a family pheasant hunt.",
-      "link": "https://magazine.outdoornebraska.gov/stories/people/the-circle-the-jordy-bahl-story/",
-      "category": "People"
     }
   ],
   "aroundJeff": [
@@ -49,6 +49,18 @@
       "date": "2026-12-01",
       "excerpt": "The sequel to The Legend of Donnie Bats arrives this December. More heart, more humor, more ballfield trouble.",
       "link": "/books"
+    },
+    {
+      "title": "100 Years of Nebraskaland Magazine — Durham Museum Exhibit Opens June 20",
+      "date": "2026-04-26",
+      "excerpt": "The Durham Museum in Omaha opens 100 Years of Nebraskaland Magazine on Saturday, June 20, 2026. The exhibit traces a century of Nebraska outdoor storytelling, from Outdoor Nebraska's first issue in 1926 through Nebraskaland today. Jeff Kurrus has served as editor since 2013.",
+      "link": "/news"
+    },
+    {
+      "title": "Author in Residence — Papillion La Vista 2026-27 — 14th Year",
+      "date": "2026-04-26",
+      "excerpt": "Jeff has signed on as the Author in Residence for Papillion La Vista School District for the 2026-27 school year. It will be his 14th year working with writers in the district.",
+      "link": "/school-visits"
     },
     {
       "title": "Author in Residence — Papillion",
