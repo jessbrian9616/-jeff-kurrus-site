@@ -28,6 +28,14 @@ type AroundJeffItem = {
   link: string;
 };
 
+type CurrentIssue = {
+  coverImage: string;
+  issueMonth: string;
+  issueYear: number;
+  highlightStory?: { title: string; page?: number; byline?: string };
+  subscribeLink?: string;
+};
+
 const formatDate = (iso: string) => {
   const d = new Date(iso);
   return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
@@ -41,6 +49,7 @@ export default function News() {
 
   const nebraskalandPosts = (newsFeed.latestFromNebraskaland ?? []) as NebraskalandPost[];
   const aroundJeff = (newsFeed.aroundJeff ?? []) as AroundJeffItem[];
+  const currentIssue = (newsFeed as { currentIssue?: CurrentIssue }).currentIssue;
 
   return (
     <div className="page-shell">
@@ -55,12 +64,21 @@ export default function News() {
         <span className="absolute bottom-4 right-8 text-[0.7rem] tracking-[0.06em] text-white/70">Courtesy of Nebraskaland Magazine</span>
       </div>
 
+      {/* ZONE 1: From Nebraskaland Magazine. Editorial work, auto-pulled. */}
+      <section className="container pt-16 sm:pt-20">
+        <div className="mb-10 border-t-4 border-[#C5943A] pt-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#C5943A]">From Nebraskaland Magazine</p>
+          <h2 className="mt-3 text-3xl font-semibold text-[#1B2A4A] sm:text-4xl">Jeff's editorial work, refreshed weekly.</h2>
+          <p className="mt-3 max-w-2xl text-base leading-7 text-[#5D6475]">Recent bylines, the current issue, and the magazine itself.</p>
+        </div>
+      </section>
+
       {/* Latest from Nebraskaland - auto-pulled from /wp-json/wp/v2/posts?author=8 */}
-      <section className="container py-16 sm:py-20">
+      <section className="container pb-12 sm:pb-16">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="section-label">Latest from Nebraskaland Magazine</p>
-            <p className="mt-2 max-w-2xl text-base leading-7 text-[#5D6475]">Recent bylines from Jeff's editorial work. Updated automatically.</p>
+            <h3 className="text-2xl font-semibold text-[#1B2A4A]">Latest bylines</h3>
+            <p className="mt-2 max-w-2xl text-base leading-7 text-[#5D6475]">Recent stories from Jeff at Nebraskaland Magazine. Updated automatically each week.</p>
           </div>
           <a
             href="https://magazine.outdoornebraska.gov/author/jeff-kurrus/"
@@ -91,8 +109,46 @@ export default function News() {
         </div>
       </section>
 
+      {/* Current Issue - cover image with delayed mirror per audit P2.7. Renders only when news-feed.json includes a currentIssue object. */}
+      {currentIssue && (
+        <section className="container pb-12 sm:pb-16">
+          <div className="grid gap-8 rounded-[1.75rem] border border-[color:rgba(27,42,74,0.10)] bg-white p-6 shadow-[0_18px_40px_rgba(27,42,74,0.08)] sm:p-8 lg:grid-cols-[0.7fr_1.3fr] lg:p-10">
+            <div className="overflow-hidden rounded-2xl bg-[#F3F0E7]">
+              <img
+                src={currentIssue.coverImage}
+                alt={`Nebraskaland Magazine ${currentIssue.issueMonth} ${currentIssue.issueYear} cover`}
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="flex flex-col justify-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#C5943A]">Current Issue</p>
+              <h3 className="mt-3 text-3xl font-semibold text-[#1B2A4A] sm:text-4xl">
+                {currentIssue.issueMonth} {currentIssue.issueYear}
+              </h3>
+              {currentIssue.highlightStory && (
+                <p className="mt-5 text-lg leading-8 text-[#445065]">
+                  {currentIssue.highlightStory.byline ? `${currentIssue.highlightStory.byline}: ` : ""}
+                  <em>{currentIssue.highlightStory.title}</em>
+                  {currentIssue.highlightStory.page ? ` (page ${currentIssue.highlightStory.page})` : ""}
+                </p>
+              )}
+              {currentIssue.subscribeLink && (
+                <a
+                  href={currentIssue.subscribeLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex self-start rounded-full bg-[#1B2A4A] px-7 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#16233D]"
+                >
+                  Subscribe to Nebraskaland
+                </a>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Nebraskaland Magazine featured callout */}
-      <section className="container pb-12 sm:pb-16">
+      <section className="container pb-16 sm:pb-20">
         <div
           className="rounded-[1.75rem] border border-[color:rgba(96,87,62,0.16)] p-8 shadow-[0_24px_55px_rgba(76,59,37,0.10)] sm:p-10 lg:p-12"
           style={{
@@ -101,25 +157,36 @@ export default function News() {
             backgroundPosition: "center",
           }}
         >
-          <p className="section-label">Nebraskaland Magazine</p>
-          <h2 className="max-w-3xl text-3xl font-semibold text-[#1B2A4A] sm:text-4xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#C5943A]">About the magazine</p>
+          <h3 className="mt-3 max-w-3xl text-3xl font-semibold text-[#1B2A4A] sm:text-4xl">
             50+ national awards and counting.
-          </h2>
+          </h3>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-[#445065]">
             The magazine and its staff, during my tenure as editor since 2013, has won more than 50 national awards. Nebraskaland Magazine has been part of readers' lives since 1926, covering Nebraska's outdoor heritage, wildlife, and landscapes with photography and storytelling that holds up against anything in the country.
           </p>
         </div>
       </section>
 
+      {/* ZONE 2: From Jeff. School visits, books, community appearances. */}
+      <section className="container pt-8 sm:pt-12">
+        <div className="mb-10 border-t-4 border-[#4A7C59] pt-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#4A7C59]">From Jeff</p>
+          <h2 className="mt-3 text-3xl font-semibold text-[#1B2A4A] sm:text-4xl">School visits, books, and what's coming next.</h2>
+          <p className="mt-3 max-w-2xl text-base leading-7 text-[#5D6475]">Author events, award news, and community presentations across Nebraska.</p>
+        </div>
+      </section>
+
       {/* What's happening with Jeff */}
       <section className="container pb-12 sm:pb-16">
-        <p className="section-label">What's happening with Jeff</p>
-        <p className="mt-2 max-w-2xl text-base leading-7 text-[#5D6475]">School visits, awards, community appearances, and book updates.</p>
-        <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mb-8">
+          <h3 className="text-2xl font-semibold text-[#1B2A4A]">Recent updates</h3>
+          <p className="mt-2 max-w-2xl text-base leading-7 text-[#5D6475]">School visits, awards, community appearances, and book updates.</p>
+        </div>
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {aroundJeff.map((item) => (
             <article key={item.title} className="rounded-[1.75rem] border-l-4 border-[#1B2A4A] bg-[#EEF1F6] p-7 shadow-[0_16px_32px_rgba(27,42,74,0.06)]">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1B2A4A]">{formatDate(item.date)}</p>
-              <h3 className="mt-3 text-xl font-semibold text-[#1B2A4A]">{item.title}</h3>
+              <h4 className="mt-3 text-xl font-semibold text-[#1B2A4A]">{item.title}</h4>
               <p className="mt-4 text-base leading-7 text-[#445065]">{item.excerpt}</p>
               {item.link?.startsWith("/") ? (
                 <Link href={item.link} className="mt-5 inline-flex text-sm font-semibold uppercase tracking-[0.14em] text-[#4A7C59] transition hover:text-[#3C6648]">
@@ -135,8 +202,12 @@ export default function News() {
         </div>
       </section>
 
-      {/* Community Presentations */}
+      {/* Community Presentations - lives within the From Jeff zone */}
       <section className="container pb-16 sm:pb-20">
+        <div className="mb-6">
+          <h3 className="text-2xl font-semibold text-[#1B2A4A]">Community presentations</h3>
+          <p className="mt-2 max-w-2xl text-base leading-7 text-[#5D6475]">Book clubs, civic groups, and specialty organizations across Nebraska.</p>
+        </div>
         <div className="soft-card overflow-hidden lg:grid lg:grid-cols-[1.1fr_0.9fr]">
           <div
             className="min-h-[300px] lg:min-h-full"
@@ -147,10 +218,9 @@ export default function News() {
             }}
           />
           <div className="p-8 sm:p-10 lg:p-12">
-            <p className="section-label">Community presentations</p>
-            <h2 className="text-3xl font-semibold text-[#1B2A4A] sm:text-4xl">
+            <h4 className="text-2xl font-semibold text-[#1B2A4A] sm:text-3xl">
               Book clubs, civic groups, and specialty organizations.
-            </h2>
+            </h4>
             <p className="mt-6 text-lg leading-8 text-[#445065]">
               Jeff speaks to book clubs, civic organizations, and specialty groups across Nebraska. He shares stories from his writing and photography career in a presentation tailored to your group's interests. No speaking fee required.
             </p>
