@@ -186,12 +186,12 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
                   <p className="mt-2 text-base leading-7 text-[#566070]">
                     Free for teachers and parents. Coming soon.
                   </p>
-                  <Link
-                    href="/contact?inquiry_type=Activity%20Pack"
+                  <a
+                    href="https://bit.ly/jk-pack"
                     className="mt-3 inline-flex rounded-full bg-[#1B2A4A] px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#16233D]"
                   >
                     Be the first to get it
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

@@ -226,7 +226,7 @@ export default function News() {
               Jeff speaks to book clubs, civic organizations, and specialty groups across Nebraska. He shares stories from his writing and photography career in a presentation tailored to your group's interests. No speaking fee required.
             </p>
             <Link
-              href="/contact#form"
+              href="/contact?type=General%20Inquiry#form"
               className="mt-8 inline-flex rounded-full bg-[#4A7C59] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#3C6648]"
             >
               Get in Touch

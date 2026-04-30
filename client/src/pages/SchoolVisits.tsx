@@ -120,7 +120,7 @@ export default function SchoolVisits() {
             <div className="rounded-[1.5rem] bg-white/10 p-6">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Book orders</p>
               <p className="mt-3 text-base leading-7 text-white/80">Books can be ordered in advance at bulk pricing. Students can also purchase at the signing table after the presentation.</p>
-              <a href="/contact#form" className="mt-4 inline-flex rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-white/20">
+              <a href="/contact?type=Order%20Books#form" className="mt-4 inline-flex rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-white/20">
                 Order Books
               </a>
             </div>

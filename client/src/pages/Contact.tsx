@@ -2,11 +2,20 @@
 Design philosophy for this file: the contact page should feel direct, calm, and trustworthy.
 Reduce friction, keep the form legible, and let the practical contact options sit within a clean editorial frame.
 */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { siteMeta, visualAssets } from "@/lib/siteContent";
+
+// Allowed inquiry types — must match the <option value="..."> values in the form.
+const ALLOWED_INQUIRY_TYPES = [
+  "School Visit",
+  "Order Books",
+  "Senior Photo Session",
+  "Media Inquiry",
+  "General Inquiry",
+] as const;
 
 export default function Contact() {
   usePageMeta("Contact Jeff Kurrus", "Book a school visit, order books, schedule a senior photo session, or send a general inquiry. Jeff reads every message. Based in Gretna, Nebraska.");
@@ -15,6 +24,18 @@ export default function Contact() {
   const emailSubject = inquiryType
     ? `${inquiryType} - jeffkurrus.com`
     : "New inquiry from jeffkurrus.com";
+
+  // Pre-fill the inquiry type from the URL query param so buttons across the site
+  // (Photography "Book This Package", SchoolVisits "Order Books", News "Get in Touch")
+  // can land here with the dropdown already set to the relevant option.
+  // Only applies values that match an allowed dropdown option to prevent injection of arbitrary text.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const requested = params.get("type");
+    if (requested && ALLOWED_INQUIRY_TYPES.includes(requested as typeof ALLOWED_INQUIRY_TYPES[number])) {
+      setInquiryType(requested);
+    }
+  }, []);
   return (
     <div className="page-shell">
       <PageHero
