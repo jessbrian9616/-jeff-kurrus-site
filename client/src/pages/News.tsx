@@ -64,8 +64,9 @@ export default function News() {
         <span className="absolute bottom-4 right-8 text-[0.7rem] tracking-[0.06em] text-white/70">Courtesy of Nebraskaland Magazine</span>
       </div>
 
-      {/* ZONE 1: From Nebraskaland Magazine. Editorial work, auto-pulled. */}
-      <section className="container pt-16 sm:pt-20">
+      {/* ZONE 1: From Nebraskaland Magazine. Editorial work, auto-pulled.
+          id="nebraskaland" anchor lets the homepage Nebraskaland card scroll directly to this zone. */}
+      <section id="nebraskaland" className="container pt-16 sm:pt-20 scroll-mt-24">
         <div className="mb-10 border-t-4 border-[#C5943A] pt-8">
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#C5943A]">From Nebraskaland Magazine</p>
           <h2 className="mt-3 text-3xl font-semibold text-[#1B2A4A] sm:text-4xl">Jeff's editorial work, refreshed weekly.</h2>
@@ -225,7 +226,7 @@ export default function News() {
               Jeff speaks to book clubs, civic organizations, and specialty groups across Nebraska. He shares stories from his writing and photography career in a presentation tailored to your group's interests. No speaking fee required.
             </p>
             <Link
-              href="/contact"
+              href="/contact#form"
               className="mt-8 inline-flex rounded-full bg-[#4A7C59] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#3C6648]"
             >
               Get in Touch

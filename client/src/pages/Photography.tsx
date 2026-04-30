@@ -22,8 +22,9 @@ export default function Photography() {
         imagePosition="center center"
       />
 
-      {/* Packages -- each with its own visual identity */}
-      <section className="container py-16 sm:py-20">
+      {/* Packages -- each with its own visual identity. id="packages" anchor lets the homepage
+          Senior Photography card scroll directly to pricing instead of mid-page. */}
+      <section id="packages" className="container py-16 sm:py-20 scroll-mt-24">
         <p className="section-label">Packages</p>
         <div className="grid gap-6 lg:grid-cols-3">
           {/* The Runway -- premium, gold accent */}

@@ -26,7 +26,9 @@ export default function Contact() {
         gradientStrength="strong"
       />
 
-      <section className="container py-16 sm:py-20">
+      {/* id="form" anchor lets buttons across the site (News page Get in Touch, SchoolVisits Order Books, etc.)
+          scroll directly to the form with the inquiry-type drop-down visible. */}
+      <section id="form" className="container py-16 sm:py-20 scroll-mt-24">
         <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="soft-card p-8 sm:p-10 lg:p-12">
             <p className="section-label">Contact form</p>

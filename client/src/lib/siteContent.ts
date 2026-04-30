@@ -87,7 +87,9 @@ export const bookCatalog = [
     price: "Coming December 2026",
     description: "A new Donnie Bats story is on the way, with more heart, humor, and ballfield trouble ahead.",
     cta: "Be the first to know.",
-    href: "/contact",
+    // Routes through Bitly to the Kit landing page that delivers the Donnie Bats Activity Pack
+    // and adds the subscriber to Jeff's Kit list. See 04_SYSTEMS/KURRUS_BITLY_QR_WORKFLOW_v1.md
+    href: "https://bit.ly/jk-pack",
     image: null,
     alt: "Placeholder for The Return of Donnie Bats cover",
     placeholder: "COVER PLACEHOLDER: The Return of Donnie Bats. Jeff owns cover photo.",

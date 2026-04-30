@@ -25,7 +25,7 @@ export default function Home() {
                 Get the Book
               </Button>
             </Link>
-            <Link href="/school-visits">
+            <Link href="/school-visits#book">
               <Button variant="outline" className="rounded-full border-[color:rgba(255,255,255,0.35)] bg-white/10 px-7 py-6 text-sm font-semibold uppercase tracking-[0.18em] text-white backdrop-blur hover:bg-white/18">
                 Book an Author Visit
               </Button>
@@ -110,7 +110,7 @@ export default function Home() {
                 — Mrs. Lisa Giles, 4th Grade Teacher, Ashbury Elementary
               </footer>
             </blockquote>
-            <Link href="/school-visits" className="mt-8 inline-flex rounded-full bg-[#4A7C59] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#3C6648]">
+            <Link href="/school-visits#book" className="mt-8 inline-flex rounded-full bg-[#4A7C59] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#3C6648]">
               Book an Author Visit
             </Link>
           </div>
@@ -120,7 +120,7 @@ export default function Home() {
       {/* Senior Photography — Jeff's other professional work, paired image+text card */}
       <section className="container pb-12 sm:pb-16">
         <div className="soft-card overflow-hidden lg:grid lg:grid-cols-[1.1fr_0.9fr]">
-          <Link href="/photography" className="block">
+          <Link href="/photography#packages" className="block">
             <img
               src={visualAssets.jkPhotography.seniorSdAthlete}
               alt="USD student athlete senior portrait in white dress by Jeff Kurrus"
@@ -136,7 +136,7 @@ export default function Home() {
               Gretna, Omaha, and beyond.
             </p>
             <Link
-              href="/photography"
+              href="/photography#packages"
               className="mt-6 inline-flex self-start rounded-full bg-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#16233D]"
             >
               See Packages
@@ -189,13 +189,13 @@ export default function Home() {
               See what's happening with the magazine, upcoming events, and community presentations.
             </p>
             <Link
-              href="/news"
+              href="/news#nebraskaland"
               className="mt-6 inline-flex self-start rounded-full border-2 border-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#1B2A4A] transition hover:bg-[#1B2A4A] hover:text-white"
             >
               Visit the News Page
             </Link>
           </div>
-          <Link href="/news" className="block">
+          <Link href="/news#nebraskaland" className="block">
             <img
               src={visualAssets.jkPhotography.heroFoggyGoldenLandscape}
               alt="Foggy golden sunrise landscape in Nebraska, photographed by Jeff Kurrus"

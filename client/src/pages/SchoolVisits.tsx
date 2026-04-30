@@ -120,7 +120,7 @@ export default function SchoolVisits() {
             <div className="rounded-[1.5rem] bg-white/10 p-6">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Book orders</p>
               <p className="mt-3 text-base leading-7 text-white/80">Books can be ordered in advance at bulk pricing. Students can also purchase at the signing table after the presentation.</p>
-              <a href="/contact" className="mt-4 inline-flex rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-white/20">
+              <a href="/contact#form" className="mt-4 inline-flex rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-white/20">
                 Order Books
               </a>
             </div>
@@ -214,8 +214,9 @@ export default function SchoolVisits() {
         </div>
       </section>
 
-      {/* Booking inquiry form — own section so the photos above can breathe at full width. */}
-      <section className="container pb-16 sm:pb-20">
+      {/* Booking inquiry form — own section so the photos above can breathe at full width.
+          id="book" anchor lets the homepage "Book an Author Visit" CTA scroll directly here. */}
+      <section id="book" className="container pb-16 sm:pb-20 scroll-mt-24">
         <div className="soft-card overflow-hidden" style={{ backgroundColor: "#FFF8ED" }}>
           <div className="p-8 sm:p-10 lg:p-12">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">Booking inquiry form</p>
