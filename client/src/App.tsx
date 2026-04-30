@@ -3,6 +3,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
+import ScrollManager from "./components/ScrollManager";
 import SiteLayout from "./components/SiteLayout";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import About from "./pages/About";
@@ -16,6 +17,7 @@ import SchoolVisits from "./pages/SchoolVisits";
 function Router() {
   return (
     <SiteLayout>
+      <ScrollManager />
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/books" component={Books} />

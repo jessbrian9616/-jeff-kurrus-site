@@ -117,91 +117,64 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Senior Photography — Jeff's other professional work, paired image+text card */}
+      {/* Senior Photography (left) + Nebraskaland Magazine (right) — original 2-col layout restored.
+          Reading order: Photography first, Nebraskaland after, which keeps Jeff's Nebraskaland
+          editorial role as the closing card before the subscribe ask. */}
       <section className="container pb-12 sm:pb-16">
-        <div className="soft-card overflow-hidden lg:grid lg:grid-cols-[1.1fr_0.9fr]">
-          <Link href="/photography#packages" className="block">
-            <img
-              src={visualAssets.jkPhotography.seniorSdAthlete}
-              alt="USD student athlete senior portrait in white dress by Jeff Kurrus"
-              className="h-[320px] w-full bg-[#f5f3ee] object-contain transition hover:scale-[1.02] lg:h-full"
-            />
-          </Link>
-          <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
-            <p className="section-label">Senior Photography</p>
-            <h2 className="mt-3 text-2xl font-semibold text-[#1B2A4A] sm:text-3xl">
-              Outdoor senior portraits with 20 years of Nebraska light behind the lens.
-            </h2>
-            <p className="mt-5 text-lg leading-8 text-[#445065]">
-              Gretna, Omaha, and beyond.
-            </p>
-            <Link
-              href="/photography#packages"
-              className="mt-6 inline-flex self-start rounded-full bg-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#16233D]"
-            >
-              See Packages
+        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="soft-card overflow-hidden">
+            <Link href="/photography#packages" className="block">
+              <img
+                src={visualAssets.jkPhotography.seniorSdAthlete}
+                alt="USD student athlete senior portrait in white dress by Jeff Kurrus"
+                className="h-[440px] w-full bg-[#f5f3ee] object-contain transition hover:scale-[1.02]"
+              />
+              <div className="p-6">
+                <p className="section-label">Senior Photography</p>
+                <p className="text-lg leading-8 text-[#445065]">Outdoor senior portraits with 20 years of Nebraska light behind the lens. Gretna, Omaha, and beyond.</p>
+              </div>
+            </Link>
+          </div>
+          <div className="soft-card overflow-hidden">
+            <Link href="/news#nebraskaland" className="block">
+              <img
+                src={visualAssets.jkPhotography.heroFoggyGoldenLandscape}
+                alt="Foggy golden sunrise landscape in Nebraska, photographed by Jeff Kurrus"
+                className="h-[380px] w-full object-cover object-center transition hover:scale-[1.02]"
+              />
+              <div className="p-6">
+                <p className="section-label">Nebraskaland Magazine</p>
+                <p className="text-lg leading-8 text-[#445065]">50+ national awards under Jeff's editorship. See what's happening with the magazine, upcoming events, and community presentations.</p>
+              </div>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Subscribe block. Anchor target for the Donnie Bats Activity Pack QR code (jeffkurrus.com/#subscribe).
-          Form is a Kit Inline embed. Subscribers are tagged source:website-subscribe in Kit and do NOT receive the Activity Pack.
-          See 04_SYSTEMS/KURRUS_KIT_AND_FORMS_RUNBOOK_v1.md for setup. */}
-      <section id="subscribe" className="container pb-12 sm:pb-16 scroll-mt-24">
-        <div className="soft-card overflow-hidden bg-[#1B2A4A] p-8 text-white sm:p-10 lg:p-12">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#C5943A]">Stay in touch</p>
-          <h2 className="mt-3 max-w-2xl text-3xl font-semibold sm:text-4xl">Stay close to Jeff's stories.</h2>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-white/85">
-            Book updates, sneak peeks, and word from the prairie. Straight to your inbox.
-          </p>
-          <ul className="mt-6 grid max-w-3xl gap-3 text-base leading-7 text-white/85 sm:grid-cols-3">
-            <li className="rounded-2xl bg-white/8 p-4">News when a new book is launching, including The Return of Donnie Bats in December 2026.</li>
-            <li className="rounded-2xl bg-white/8 p-4">Behind the scenes from Jeff's writing and his work as Editor of Nebraskaland Magazine.</li>
-            <li className="rounded-2xl bg-white/8 p-4">Early looks at activity packs, school programs, and signed-book opportunities.</li>
-          </ul>
-
-          {/* PASTE KIT EMBED CODE BELOW (replace this entire div with the embed snippet from Kit > Grow > Forms > Website Subscribe > Embed) */}
-          <div className="mt-8 rounded-2xl bg-white p-6 text-[#1B2A4A] shadow-[0_18px_44px_rgba(0,0,0,0.18)]">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#C5943A]">Subscribe form pending</p>
-            <p className="mt-2 text-sm text-[#445065]">
-              The Kit subscribe form embed will appear here once the form is created in Kit and its embed code is pasted into this component. See KURRUS_KIT_AND_FORMS_RUNBOOK_v1.md.
-            </p>
+      {/* Subscribe — compact closing block. Anchor /#subscribe is the Activity Pack QR destination.
+          Subscribers come in via a Kit Inline form, tagged source:website-subscribe, and do NOT
+          receive the Activity Pack (that lives on the separate Kit landing page).
+          See 04_SYSTEMS/KURRUS_KIT_AND_FORMS_RUNBOOK_v1.md. */}
+      <section id="subscribe" className="container pb-16 sm:pb-20 scroll-mt-24">
+        <div className="soft-card overflow-hidden bg-[#FBF6EC] p-6 sm:p-8 lg:p-10">
+          <div className="lg:grid lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-10">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Stay in touch</p>
+              <h2 className="mt-2 text-2xl font-semibold text-[#1B2A4A] sm:text-3xl">Stay close to Jeff's stories.</h2>
+              <p className="mt-3 text-base leading-7 text-[#445065]">
+                Book updates, sneak peeks, and word from the prairie. Your email stays private. Unsubscribe anytime.
+              </p>
+            </div>
+            <div className="mt-5 lg:mt-0">
+              {/* PASTE KIT EMBED CODE BELOW (replace this entire div with the embed snippet from Kit > Grow > Forms > Website Subscribe > Embed) */}
+              <div className="rounded-2xl border border-dashed border-[color:rgba(184,134,11,0.4)] bg-white p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Subscribe form pending</p>
+                <p className="mt-2 text-sm text-[#5D6475]">
+                  Kit form embed will appear here. See KURRUS_KIT_AND_FORMS_RUNBOOK_v1.md.
+                </p>
+              </div>
+            </div>
           </div>
-
-          <p className="mt-6 text-xs leading-6 text-white/60">
-            Your email stays private. Unsubscribe anytime. We never share your information.
-          </p>
-        </div>
-      </section>
-
-      {/* Nebraskaland Magazine — Jeff's editorial work. Final section per the v5.9 brand rule
-          (Donnie Bats anchors digital channels; Nebraskaland supports). Mirrored layout from Photography
-          (text left, image right) for visual rhythm. */}
-      <section className="container pb-16 sm:pb-20">
-        <div className="soft-card overflow-hidden lg:grid lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
-            <p className="section-label">Nebraskaland Magazine</p>
-            <h2 className="mt-3 text-2xl font-semibold text-[#1B2A4A] sm:text-3xl">
-              50+ national awards under Jeff's editorship.
-            </h2>
-            <p className="mt-5 text-lg leading-8 text-[#445065]">
-              See what's happening with the magazine, upcoming events, and community presentations.
-            </p>
-            <Link
-              href="/news#nebraskaland"
-              className="mt-6 inline-flex self-start rounded-full border-2 border-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#1B2A4A] transition hover:bg-[#1B2A4A] hover:text-white"
-            >
-              Visit the News Page
-            </Link>
-          </div>
-          <Link href="/news#nebraskaland" className="block">
-            <img
-              src={visualAssets.jkPhotography.heroFoggyGoldenLandscape}
-              alt="Foggy golden sunrise landscape in Nebraska, photographed by Jeff Kurrus"
-              className="h-[320px] w-full object-cover object-center transition hover:scale-[1.02] lg:h-full"
-            />
-          </Link>
         </div>
       </section>
 
