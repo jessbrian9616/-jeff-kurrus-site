@@ -77,6 +77,15 @@ export default function Photography() {
               Email Jeff About a Session
             </a>
             <p className="mt-3 text-sm text-[#7A8599]">jeffreyekurrus@gmail.com</p>
+            <a
+              href="/downloads/Jeff_Kurrus_Senior_Photography_Info.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-[#1B2A4A] transition hover:text-[#C4883A]"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+              Download Senior Photography Flyer (PDF)
+            </a>
           </div>
         </div>
       </section>

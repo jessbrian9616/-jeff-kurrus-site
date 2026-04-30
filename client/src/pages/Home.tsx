@@ -148,6 +148,36 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Subscribe block. Anchor target for the Donnie Bats Activity Pack QR code (jeffkurrus.com/#subscribe).
+          Form is a Kit Inline embed. Subscribers are tagged source:website-subscribe in Kit and do NOT receive the Activity Pack.
+          See 04_SYSTEMS/KURRUS_KIT_AND_FORMS_RUNBOOK_v1.md for setup. */}
+      <section id="subscribe" className="container pb-16 sm:pb-20 scroll-mt-24">
+        <div className="soft-card overflow-hidden bg-[#1B2A4A] p-8 text-white sm:p-10 lg:p-12">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#C5943A]">Stay in touch</p>
+          <h2 className="mt-3 max-w-2xl text-3xl font-semibold sm:text-4xl">Stay close to Jeff's stories.</h2>
+          <p className="mt-5 max-w-2xl text-lg leading-8 text-white/85">
+            Book updates, sneak peeks, and word from the prairie. Straight to your inbox.
+          </p>
+          <ul className="mt-6 grid max-w-3xl gap-3 text-base leading-7 text-white/85 sm:grid-cols-3">
+            <li className="rounded-2xl bg-white/8 p-4">News when a new book is launching, including The Return of Donnie Bats in December 2026.</li>
+            <li className="rounded-2xl bg-white/8 p-4">Behind the scenes from Jeff's writing and his work as Editor of Nebraskaland Magazine.</li>
+            <li className="rounded-2xl bg-white/8 p-4">Early looks at activity packs, school programs, and signed-book opportunities.</li>
+          </ul>
+
+          {/* PASTE KIT EMBED CODE BELOW (replace this entire div with the embed snippet from Kit > Grow > Forms > Website Subscribe > Embed) */}
+          <div className="mt-8 rounded-2xl bg-white p-6 text-[#1B2A4A] shadow-[0_18px_44px_rgba(0,0,0,0.18)]">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#C5943A]">Subscribe form pending</p>
+            <p className="mt-2 text-sm text-[#445065]">
+              The Kit subscribe form embed will appear here once the form is created in Kit and its embed code is pasted into this component. See KURRUS_KIT_AND_FORMS_RUNBOOK_v1.md.
+            </p>
+          </div>
+
+          <p className="mt-6 text-xs leading-6 text-white/60">
+            Your email stays private. Unsubscribe anytime. We never share your information.
+          </p>
+        </div>
+      </section>
+
     </div>
   );
 }
