@@ -23,9 +23,13 @@ type NebraskalandPost = {
 
 type AroundJeffItem = {
   title: string;
-  date: string;
+  // date, link, and image are all optional. Some entries (e.g. Instagram-sourced
+  // stories that have no firm post date or no full article live yet) only have
+  // a title, excerpt, and image.
+  date?: string;
   excerpt: string;
-  link: string;
+  link?: string;
+  image?: string;
 };
 
 type CurrentIssue = {
@@ -185,19 +189,33 @@ export default function News() {
         </div>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {aroundJeff.map((item) => (
-            <article key={item.title} className="rounded-[1.75rem] border-l-4 border-[#1B2A4A] bg-[#EEF1F6] p-7 shadow-[0_16px_32px_rgba(27,42,74,0.06)]">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1B2A4A]">{formatDate(item.date)}</p>
-              <h4 className="mt-3 text-xl font-semibold text-[#1B2A4A]">{item.title}</h4>
-              <p className="mt-4 text-base leading-7 text-[#445065]">{item.excerpt}</p>
-              {item.link?.startsWith("/") ? (
-                <Link href={item.link} className="mt-5 inline-flex text-sm font-semibold uppercase tracking-[0.14em] text-[#4A7C59] transition hover:text-[#3C6648]">
-                  Learn more →
-                </Link>
-              ) : (
-                <a href={item.link} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex text-sm font-semibold uppercase tracking-[0.14em] text-[#4A7C59] transition hover:text-[#3C6648]">
-                  Learn more →
-                </a>
+            <article key={item.title} className="overflow-hidden rounded-[1.75rem] border-l-4 border-[#1B2A4A] bg-[#EEF1F6] shadow-[0_16px_32px_rgba(27,42,74,0.06)]">
+              {item.image && (
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="h-[220px] w-full object-cover"
+                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                />
               )}
+              <div className="p-7">
+                {item.date && (
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1B2A4A]">{formatDate(item.date)}</p>
+                )}
+                <h4 className={`${item.date ? "mt-3" : ""} text-xl font-semibold text-[#1B2A4A]`}>{item.title}</h4>
+                <p className="mt-4 text-base leading-7 text-[#445065]">{item.excerpt}</p>
+                {item.link && (
+                  item.link.startsWith("/") ? (
+                    <Link href={item.link} className="mt-5 inline-flex text-sm font-semibold uppercase tracking-[0.14em] text-[#4A7C59] transition hover:text-[#3C6648]">
+                      Learn more →
+                    </Link>
+                  ) : (
+                    <a href={item.link} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex text-sm font-semibold uppercase tracking-[0.14em] text-[#4A7C59] transition hover:text-[#3C6648]">
+                      Learn more →
+                    </a>
+                  )
+                )}
+              </div>
             </article>
           ))}
         </div>
