@@ -43,8 +43,9 @@ export default function Contact() {
         title="I read every message."
         description="Use the form below to book a school visit, order books, ask about photography, or send a general inquiry."
         image={visualAssets.jkPhotography.heroFoggyFisherman}
-        imagePosition="70% center"
-        gradientStrength="strong"
+        imagePosition="80% center"
+        gradientStrength="minimal"
+        size="compact"
       />
 
       {/* id="form" anchor lets buttons across the site (News page Get in Touch, SchoolVisits Order Books, etc.)
@@ -106,7 +107,7 @@ export default function Contact() {
 
       {/* Quick reasons people get in touch — gives the page substance + clear conversion paths (CONTACT-2) */}
       <section className="container pb-16 sm:pb-20">
-        <p className="section-label">Why people reach out</p>
+        <h2 className="section-title-large">Why People Reach Out</h2>
         <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           <Link href="/school-visits" className="rounded-[1.75rem] border-l-4 border-[#5F7752] bg-[#F2F7F0] p-6 shadow-[0_16px_32px_rgba(74,124,89,0.08)] transition hover:-translate-y-0.5">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#5F7752]">School visits</p>

@@ -134,9 +134,14 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
           }
         })();
 
+        // Activity Pack capture appears only on routes where the offer is
+        // contextually relevant: Books, Home, School Visits, News, Contact.
+        // Excluded from Senior Photography and About per Jess 2026-04-30.
+        const showActivityPack = ["/", "/books", "/school-visits", "/news", "/contact"].includes(location);
+
         return (
-          <footer className="mt-24 border-t border-[color:rgba(96,87,62,0.12)] bg-[#F5EEDC]">
-            <div className="container grid gap-12 py-14 lg:grid-cols-[1.15fr_0.85fr_0.85fr]">
+          <footer className="mt-12 border-t border-[color:rgba(96,87,62,0.12)] bg-[#F5EEDC]">
+            <div className="container grid gap-12 py-12 lg:grid-cols-[1.15fr_0.85fr_0.85fr]">
               {/* Column 1 — Per-page identity + Jeff-voice summary + email */}
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#5F7752]">Jeff Kurrus</p>
@@ -169,7 +174,7 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
                 </div>
               </div>
 
-              {/* Column 3 — Connect + Activity Pack capture (placeholder per N3) */}
+              {/* Column 3 — Connect + Activity Pack capture (conditional per route) */}
               <div className="space-y-8">
                 <div>
                   <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-[#22304F]">Connect</h3>
@@ -181,18 +186,20 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
                     ))}
                   </div>
                 </div>
-                <div className="rounded-[1.5rem] border border-[color:rgba(96,87,62,0.18)] bg-white/60 p-5">
-                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">Donnie Bats Activity Pack</p>
-                  <p className="mt-2 text-base leading-7 text-[#566070]">
-                    Free for teachers and parents. Coming soon.
-                  </p>
-                  <a
-                    href="https://bit.ly/jk-pack"
-                    className="mt-3 inline-flex rounded-full bg-[#1B2A4A] px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#16233D]"
-                  >
-                    Be the first to get it
-                  </a>
-                </div>
+                {showActivityPack ? (
+                  <div className="rounded-[1.5rem] border border-[color:rgba(96,87,62,0.18)] bg-white/60 p-5">
+                    <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">Donnie Bats Activity Pack</p>
+                    <p className="mt-2 text-base leading-7 text-[#566070]">
+                      Free for teachers and parents. Coming soon.
+                    </p>
+                    <a
+                      href="https://bit.ly/jk-pack"
+                      className="mt-3 inline-flex whitespace-nowrap rounded-full bg-[#1B2A4A] px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#16233D]"
+                    >
+                      Be the first to get it
+                    </a>
+                  </div>
+                ) : null}
               </div>
             </div>
             <div className="container border-t border-[color:rgba(96,87,62,0.12)] py-6 text-base text-[#566070]">

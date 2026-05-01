@@ -25,7 +25,7 @@ export default function Photography() {
       {/* Packages -- each with its own visual identity. id="packages" anchor lets the homepage
           Senior Photography card scroll directly to pricing instead of mid-page. */}
       <section id="packages" className="container py-16 sm:py-20 scroll-mt-24">
-        <p className="section-label">Packages</p>
+        <h2 className="section-title-large">Packages</h2>
         <div className="grid gap-6 lg:grid-cols-3">
           {/* The Runway -- premium, gold accent */}
           <article className="relative flex flex-col overflow-hidden rounded-[1.75rem] border-l-4 border-[#B8860B] bg-[#1B2A4A] p-8 shadow-[0_24px_50px_rgba(27,42,74,0.18)]">
@@ -70,14 +70,13 @@ export default function Photography() {
           <div className="rounded-[1.5rem] border border-[color:rgba(27,42,74,0.08)] bg-white p-6">
             <p className="text-base leading-7 text-[#445065]">Gretna, Omaha, and surrounding areas. Travel available.</p>
             <p className="mt-3 text-base leading-7 text-[#445065]">To check availability or schedule a session:</p>
-            <a
-              href="mailto:jeffreyekurrus@gmail.com?subject=Senior%20Photo%20Session"
+            <Link
+              href="/contact?type=Senior%20Photo%20Session#form"
               className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#2A3E5E]"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
               Email Jeff About a Session
-            </a>
-            <p className="mt-3 text-sm text-[#7A8599]">jeffreyekurrus@gmail.com</p>
+            </Link>
             <a
               href="/downloads/Jeff_Kurrus_Senior_Photography_Info.pdf"
               target="_blank"
@@ -94,7 +93,7 @@ export default function Photography() {
       {/* Gallery — uniform 3-column grid, every tile same height. No col-span special case (fixes the
           extra-whitespace-under-shorter-tiles bug, PHOTO-1). All tiles are interchangeable. */}
       <section className="container pb-16 sm:pb-20">
-        <p className="section-label">Portfolio</p>
+        <h2 className="section-title-large">Sample Portfolio</h2>
         <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {photographyGallery.filter((photo) => photo.src !== heroImage).map((photo) => (
             <figure key={photo.src} className="overflow-hidden rounded-[1.75rem] bg-white p-3 shadow-[0_26px_55px_rgba(27,42,74,0.12)]">

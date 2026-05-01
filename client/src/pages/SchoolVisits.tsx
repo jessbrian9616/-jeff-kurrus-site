@@ -28,7 +28,7 @@ export default function SchoolVisits() {
         <div className="soft-card overflow-hidden">
           <div className="grid lg:grid-cols-[1.08fr_0.92fr]">
             <div className="p-8 sm:p-10 lg:p-12">
-              <p className="section-label">What to expect</p>
+              <h2 className="section-title-large">What to Expect</h2>
               <p className="text-lg leading-8 text-[#445065]">
                 Jeff opens with a passage from one of his books. The room goes quiet. A hand goes up.
               </p>
@@ -44,7 +44,7 @@ export default function SchoolVisits() {
             </div>
 
             <div className="border-t border-[rgba(96,87,62,0.12)] bg-[#F6EFD9] p-8 sm:p-10 lg:border-l lg:border-t-0 lg:p-12">
-              <p className="section-label">At a glance</p>
+              <h2 className="section-title-large">At a Glance</h2>
               <ul className="space-y-4 text-lg leading-8 text-[#31405C]">
                 {visitHighlights.map((item) => (
                   <li key={item} className="flex gap-3">
@@ -59,21 +59,35 @@ export default function SchoolVisits() {
                   Common Core ELA connections include reading engagement, narrative structure, author's craft, vocabulary in context, and speaking and listening standards. The presentation supports classroom reading goals and gives students a reason to pick up a book.
                 </p>
               </div>
-              <a
-                href="/downloads/Jeff_Kurrus_Author_Visit_Packet.pdf"
-                download
-                className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-white shadow-[0_8px_20px_rgba(27,42,74,0.2)] transition hover:bg-[#2A3E5E]"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                Download Author Visit Info (PDF)
-              </a>
+              {/* Two related downloads. The Author Visit Packet is the comprehensive
+                  resource (books + curriculum). The Core Curriculum handout is a
+                  focused educator-only excerpt — distinct from the packet, offered
+                  alongside it for educators who only need the curriculum piece. */}
+              <div className="mt-8 flex flex-col gap-3">
+                <a
+                  href="/downloads/Jeff_Kurrus_Author_Visit_Packet.pdf"
+                  download
+                  className="inline-flex items-center gap-3 rounded-full bg-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-white shadow-[0_8px_20px_rgba(27,42,74,0.2)] transition hover:bg-[#2A3E5E]"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Download Author Visit Info (PDF)
+                </a>
+                <a
+                  href="/downloads/Donnie_Bats_Educator_Core_Curriculum_Handout.pdf"
+                  download
+                  className="inline-flex items-center gap-3 rounded-full border-2 border-[#1B2A4A] bg-white px-7 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-[#1B2A4A] transition hover:bg-[#1B2A4A] hover:text-white"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Download Core Curriculum (PDF)
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       <section className="container pb-16 sm:pb-20">
-        <p className="section-label">Programs</p>
+        <h2 className="section-title-large">Programs</h2>
         <p className="mt-2 max-w-2xl text-base leading-7 text-[#5D6475]">All five programs are offered K-8 — choose by grade band.</p>
         <div className="mt-8 grid gap-5 lg:grid-cols-2">
           <div className="rounded-[1.75rem] border-l-4 border-[#4A7C59] bg-[#F2F7F0] p-7 shadow-[0_16px_32px_rgba(74,124,89,0.08)]">
@@ -135,7 +149,7 @@ export default function SchoolVisits() {
       {/* Testimonials - full width, balanced grid. Jeanna White appears twice (both attributions are real per L3) -
           her literacy-expert testimonial leads, her in-classroom observation runs as a smaller secondary quote below. */}
       <section className="container pb-12 sm:pb-16">
-        <p className="section-label">What educators and parents are saying</p>
+        <h2 className="section-title-large">What Educators and Parents Are Saying</h2>
         <div className="mt-8 grid gap-5 lg:grid-cols-2">
           <blockquote className="rounded-[1.8rem] border-l-4 border-[#B8860B] bg-[#FBF6EC] p-7 shadow-[0_18px_36px_rgba(96,87,62,0.1)]">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Literacy expert</p>
@@ -197,7 +211,7 @@ export default function SchoolVisits() {
       <section className="container pb-12 sm:pb-16">
         <div className="soft-card overflow-hidden" style={{ backgroundColor: "#FFF8ED" }}>
           <div className="p-8 sm:p-10 lg:p-12">
-            <p className="section-label">School visit photos</p>
+            <h2 className="section-title-large">School Visit Photos</h2>
             <div className="mt-6 grid grid-cols-1 gap-5 lg:grid-cols-2">
               <img
                 src={visualAssets.uploaded.schoolVisit1}
@@ -219,7 +233,7 @@ export default function SchoolVisits() {
       <section id="book" className="container pb-16 sm:pb-20 scroll-mt-24">
         <div className="soft-card overflow-hidden" style={{ backgroundColor: "#FFF8ED" }}>
           <div className="p-8 sm:p-10 lg:p-12">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">Booking inquiry form</p>
+            <h2 className="section-title-large">Booking Inquiry Form</h2>
             <p className="mt-2 max-w-2xl text-base leading-7 text-[#5D6475]">Send the details and Jeff will reply with available dates and pricing for your situation.</p>
               <form action="https://formspree.io/f/mlgavlpv" method="POST" className="mt-6 space-y-4">
                 <input type="hidden" name="_subject" value="School Visit Booking Inquiry - jeffkurrus.com" />
