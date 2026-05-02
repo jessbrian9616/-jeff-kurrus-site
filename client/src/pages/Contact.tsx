@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import { siteMeta, visualAssets } from "@/lib/siteContent";
+import { photographyPackages, siteMeta, visualAssets } from "@/lib/siteContent";
 
 // Allowed inquiry types — must match the <option value="..."> values in the form.
 const ALLOWED_INQUIRY_TYPES = [
@@ -17,23 +17,40 @@ const ALLOWED_INQUIRY_TYPES = [
   "General Inquiry",
 ] as const;
 
+// Senior photo session packages, sourced from siteContent so titles stay in sync
+// if a package is renamed. Used both to pre-fill from the URL param `package` (set
+// by the three Book This Package buttons on /photography) and to render the
+// conditional package dropdown on this form.
+const ALLOWED_PACKAGES = photographyPackages.map((p) => p.title);
+
 export default function Contact() {
   usePageMeta("Contact Jeff Kurrus", "Book a school visit, order books, schedule a senior photo session, or send a general inquiry. Jeff reads every message. Based in Gretna, Nebraska.");
-  // Track inquiry type so the email subject Jeff receives reflects what the visitor selected.
+  // Track inquiry type AND (when relevant) the senior photo session package so the
+  // email subject Jeff receives reflects the visitor's actual intent.
   const [inquiryType, setInquiryType] = useState("");
-  const emailSubject = inquiryType
-    ? `${inquiryType} - jeffkurrus.com`
-    : "New inquiry from jeffkurrus.com";
+  const [selectedPackage, setSelectedPackage] = useState("");
+  const emailSubject = (() => {
+    if (!inquiryType) return "New inquiry from jeffkurrus.com";
+    if (inquiryType === "Senior Photo Session" && selectedPackage) {
+      return `Senior Photo Session: ${selectedPackage} - jeffkurrus.com`;
+    }
+    return `${inquiryType} - jeffkurrus.com`;
+  })();
 
-  // Pre-fill the inquiry type from the URL query param so buttons across the site
+  // Pre-fill from URL query params so buttons across the site
   // (Photography "Book This Package", SchoolVisits "Order Books", News "Get in Touch")
-  // can land here with the dropdown already set to the relevant option.
-  // Only applies values that match an allowed dropdown option to prevent injection of arbitrary text.
+  // can land here with the dropdowns already set. The `package` param is only
+  // honored when it matches a real package title; type/package only set state if
+  // they pass the allowlist (prevents injection of arbitrary subject text).
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const requested = params.get("type");
-    if (requested && ALLOWED_INQUIRY_TYPES.includes(requested as typeof ALLOWED_INQUIRY_TYPES[number])) {
-      setInquiryType(requested);
+    const requestedType = params.get("type");
+    if (requestedType && ALLOWED_INQUIRY_TYPES.includes(requestedType as typeof ALLOWED_INQUIRY_TYPES[number])) {
+      setInquiryType(requestedType);
+    }
+    const requestedPackage = params.get("package");
+    if (requestedPackage && ALLOWED_PACKAGES.includes(requestedPackage)) {
+      setSelectedPackage(requestedPackage);
     }
   }, []);
   return (
@@ -62,7 +79,14 @@ export default function Contact() {
                 name="inquiry_type"
                 required
                 value={inquiryType}
-                onChange={(e) => setInquiryType(e.target.value)}
+                onChange={(e) => {
+                  const next = e.target.value;
+                  setInquiryType(next);
+                  // If the visitor switches away from Senior Photo Session, clear
+                  // any package selection so it doesn't bleed into a different
+                  // inquiry's subject line.
+                  if (next !== "Senior Photo Session") setSelectedPackage("");
+                }}
                 className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]"
               >
                 <option value="" disabled>What can Jeff help with? *</option>
@@ -72,6 +96,23 @@ export default function Contact() {
                 <option value="Media Inquiry">Media Inquiry</option>
                 <option value="General Inquiry">General Inquiry</option>
               </select>
+              {/* Conditional package dropdown — appears only when inquiry type is
+                  Senior Photo Session. Pre-fills from the `package` URL param when
+                  the visitor came from one of the three Book This Package buttons. */}
+              {inquiryType === "Senior Photo Session" && (
+                <select
+                  name="senior_package"
+                  value={selectedPackage}
+                  onChange={(e) => setSelectedPackage(e.target.value)}
+                  className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]"
+                >
+                  <option value="">Which package? (optional)</option>
+                  {ALLOWED_PACKAGES.map((pkg) => (
+                    <option key={pkg} value={pkg}>{pkg}</option>
+                  ))}
+                  <option value="Not sure yet — let's discuss">Not sure yet — let's discuss</option>
+                </select>
+              )}
               <textarea name="message" placeholder="Message" rows={7} required className="w-full rounded-[1.5rem] border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
               <input type="hidden" name="_subject" value={emailSubject} />
               <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />

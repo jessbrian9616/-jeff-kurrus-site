@@ -33,7 +33,7 @@ export default function Photography() {
             <h3 className="text-2xl font-semibold text-white">{photographyPackages[0].title}</h3>
             <p className="mt-3 text-4xl font-semibold text-[#B8860B]">{photographyPackages[0].price}</p>
             <p className="mt-5 flex-1 text-base leading-7 text-white/75">{photographyPackages[0].details}</p>
-            <Link href="/contact?type=Senior%20Photo%20Session#form" className="mt-6 inline-flex self-start rounded-full bg-[#B8860B] px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#9A7209]">
+            <Link href="/contact?type=Senior%20Photo%20Session&package=The%20Runway#form" className="mt-6 inline-flex self-start rounded-full bg-[#B8860B] px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#9A7209]">
               Book This Package
             </Link>
           </article>
@@ -44,7 +44,7 @@ export default function Photography() {
             <h3 className="text-2xl font-semibold text-[#1B2A4A]">{photographyPackages[1].title}</h3>
             <p className="mt-3 text-4xl font-semibold text-[#C4883A]">{photographyPackages[1].price}</p>
             <p className="mt-5 flex-1 text-base leading-7 text-[#445065]">{photographyPackages[1].details}</p>
-            <Link href="/contact?type=Senior%20Photo%20Session#form" className="mt-6 inline-flex rounded-full border border-[#C4883A]/30 px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-[#C4883A] transition hover:bg-[#C4883A] hover:text-white">
+            <Link href="/contact?type=Senior%20Photo%20Session&package=The%20Golden%20Hour#form" className="mt-6 inline-flex rounded-full border border-[#C4883A]/30 px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-[#C4883A] transition hover:bg-[#C4883A] hover:text-white">
               Book This Package
             </Link>
           </article>
@@ -55,7 +55,7 @@ export default function Photography() {
             <h3 className="text-2xl font-semibold text-[#1B2A4A]">{photographyPackages[2].title}</h3>
             <p className="mt-3 text-4xl font-semibold text-[#4A7C59]">{photographyPackages[2].price}</p>
             <p className="mt-5 flex-1 text-base leading-7 text-[#445065]">{photographyPackages[2].details}</p>
-            <Link href="/contact?type=Senior%20Photo%20Session#form" className="mt-6 inline-flex rounded-full border border-[#4A7C59]/30 px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-[#4A7C59] transition hover:bg-[#4A7C59] hover:text-white">
+            <Link href="/contact?type=Senior%20Photo%20Session&package=The%20Essential#form" className="mt-6 inline-flex rounded-full border border-[#4A7C59]/30 px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-[#4A7C59] transition hover:bg-[#4A7C59] hover:text-white">
               Book This Package
             </Link>
           </article>
