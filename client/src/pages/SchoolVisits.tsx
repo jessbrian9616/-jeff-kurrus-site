@@ -27,14 +27,26 @@ export default function SchoolVisits() {
       {/* Mitch Kampbell pull-quote — closing line of his full endorsement (full quote
           lives on the home page). Placed at the top of School Visits to set the
           credibility frame for school decision-makers (curriculum directors,
-          librarians, principals) before they read the program details. Words verbatim. */}
+          librarians, principals) before they read the program details. Words verbatim.
+
+          Visual treatment matches the home-page endorsement (cream callout, faint gold
+          border, subtle shadow, "Endorsement" eyebrow, gold rule above attribution).
+          Attribution is prominent — name at body+1 semibold, role at body in muted green —
+          per testimonial typography best practice for credibility-building blocks. */}
       <section className="container pt-16 sm:pt-20">
-        <div className="mx-auto max-w-4xl rounded-[1.5rem] border-l-4 border-[#C5943A] bg-[#FBF6EC] p-7 sm:p-10">
-          <blockquote className="text-lg italic leading-8 text-[#1B2A4A] sm:text-xl sm:leading-9">
+        <figure className="mx-auto max-w-4xl rounded-[1.5rem] border border-[#C5943A]/25 bg-[#FBF6EC] p-8 shadow-[0_2px_24px_rgba(27,42,74,0.05)] sm:p-10">
+          <div className="flex items-center gap-3">
+            <span className="h-px w-8 bg-[#C5943A]" aria-hidden="true" />
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#C5943A]">Endorsement</p>
+          </div>
+          <blockquote className="mt-5 text-lg italic leading-[1.65] text-[#1B2A4A] sm:text-xl sm:leading-[1.55]">
             &ldquo;And Jeff is exactly that &ndash; a connector who builds real, lasting relationships with kids and helps guide them in ways that truly matter.&rdquo;
           </blockquote>
-          <p className="mt-5 text-sm font-semibold text-[#1B2A4A]">&mdash; Mitch Kampbell, President, Millard United</p>
-        </div>
+          <figcaption className="mt-6 border-t border-[#C5943A]/30 pt-5">
+            <p className="text-base font-semibold text-[#1B2A4A] sm:text-lg">Mitch Kampbell</p>
+            <p className="mt-1 text-sm text-[#5F7752] sm:text-base">President, Millard United</p>
+          </figcaption>
+        </figure>
       </section>
 
       <section className="container py-16 sm:py-20">
