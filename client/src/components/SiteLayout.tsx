@@ -134,10 +134,14 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
           }
         })();
 
-        // Activity Pack capture appears only on routes where the offer is
-        // contextually relevant: Books, Home, School Visits, News, Contact.
-        // Excluded from Senior Photography and About per Jess 2026-04-30.
-        const showActivityPack = ["/", "/books", "/school-visits", "/news", "/contact"].includes(location);
+        // Activity Pack footer block REMOVED 2026-05-03 per Jess.
+        // The Activity Pack now lives exclusively on the Kit landing page (email-gated)
+        // to preserve the email-capture funnel. When the Kit landing page is live and
+        // we want a footer CTA back, replace this constant with the route-conditional
+        // logic below and update the link to the production Kit landing URL:
+        //   const showActivityPack = ["/", "/books", "/school-visits", "/news", "/contact"].includes(location);
+        // Until then, the Activity Pack footer block does not render on any page.
+        const showActivityPack = false;
 
         return (
           <footer className="mt-12 border-t border-[color:rgba(96,87,62,0.12)] bg-[#F5EEDC]">

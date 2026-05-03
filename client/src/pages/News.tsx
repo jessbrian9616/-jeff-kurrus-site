@@ -24,14 +24,18 @@ type NebraskalandPost = {
 
 type AroundJeffItem = {
   title: string;
-  // date, link, image, and nebraskalandSource are optional. Some entries
+  // date, link, image, focalPoint, and nebraskalandSource are optional. Some entries
   // (Instagram-sourced or pre-publish stories) only have title, excerpt, image.
   // When nebraskalandSource is true AND link exists, the whole card becomes a
   // clickable link to the Nebraskaland content (no inner Learn More button).
+  // focalPoint controls how the image crops in the card thumbnail (CSS object-position
+  // value, e.g., "center top", "center 30%", "left center"). Defaults to "center top"
+  // to preserve heads/faces in portrait-style photos. Override per-image when needed.
   date?: string;
   excerpt: string;
   link?: string;
   image?: string;
+  focalPoint?: string;
   nebraskalandSource?: boolean;
 };
 
@@ -57,6 +61,24 @@ export default function News() {
   const nebraskalandPosts = (newsFeed.latestFromNebraskaland ?? []) as NebraskalandPost[];
   const aroundJeff = (newsFeed.aroundJeff ?? []) as AroundJeffItem[];
   const currentIssue = (newsFeed as { currentIssue?: CurrentIssue }).currentIssue;
+
+  // Sort aroundJeff items chronologically. Convention:
+  // - Items without a date go to the top (treated as "currently happening" / ongoing).
+  // - Dated items follow, sorted by date descending (newest first).
+  // - Future-dated items (e.g., upcoming launches) naturally appear at the top of
+  //   the dated section because they are "newest" by date.
+  // This keeps the feed predictable and is the standard "what's new" presentation.
+  const sortedAroundJeff = [...aroundJeff].sort((a, b) => {
+    if (!a.date && b.date) return -1;
+    if (a.date && !b.date) return 1;
+    if (!a.date && !b.date) return 0;
+    return new Date(b.date!).getTime() - new Date(a.date!).getTime();
+  });
+
+  // Sort Nebraskaland posts by date descending (newest first).
+  const sortedNebraskalandPosts = [...nebraskalandPosts].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 
   return (
     <div className="page-shell">
@@ -88,7 +110,7 @@ export default function News() {
           <p className="mt-2 max-w-2xl text-base leading-7 text-[#5D6475]">School visits, awards, community appearances, and book updates.</p>
         </div>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {aroundJeff.map((item) => {
+          {sortedAroundJeff.map((item) => {
             // When the entry is sourced from Nebraskaland AND has a link, the entire
             // card is a clickable link to that Nebraskaland content (no inner button).
             // Otherwise the card uses the existing inline-link pattern.
@@ -103,6 +125,7 @@ export default function News() {
                     src={item.image}
                     alt={item.title}
                     className="h-[220px] w-full object-cover"
+                    style={{ objectPosition: item.focalPoint || "center top" }}
                     onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
                   />
                 )}
@@ -213,7 +236,7 @@ export default function News() {
           </a>
         </div>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {nebraskalandPosts.map((post) => (
+          {sortedNebraskalandPosts.map((post) => (
             <article key={post.id} className="soft-card flex flex-col p-7">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#B8860B]">{post.category}</p>
               <h3 className="mt-3 text-xl font-semibold text-[#1B2A4A]">{post.title}</h3>
