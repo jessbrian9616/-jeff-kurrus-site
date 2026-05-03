@@ -95,6 +95,44 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Mitch Kampbell endorsement — character-level testimonial from a regionally
+          credible voice (President of Millard United, large Omaha-metro youth sports org).
+          Placed just before the educators block so the closing line ("a connector who
+          builds real, lasting relationships with kids") flows directly into the school
+          visits CTA. Quote text is verbatim from Mitch — line breaks preserved as paragraph
+          breaks per the original cadence. Do not edit the words. */}
+      <section className="container pb-12 sm:pb-16">
+        <div className="rounded-[1.75rem] bg-[#FBF6EC] p-8 sm:p-12 lg:p-16">
+          <div className="mx-auto max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#C5943A]">Endorsement</p>
+            <div className="relative mt-6">
+              <span aria-hidden="true" className="pointer-events-none absolute -left-2 -top-10 select-none font-serif text-[140px] leading-none text-[#1B2A4A]/12 sm:-left-4 sm:-top-14 sm:text-[180px]">&ldquo;</span>
+              <blockquote className="relative space-y-5 text-lg italic leading-8 text-[#1B2A4A] sm:text-xl sm:leading-9">
+                <p>
+                  Teachers. Coaches. Writers. Advisors.<br />
+                  Mentors. Counselors. Trainers. Mediators.<br />
+                  Journalists. Consultants. Speakers. Facilitators. Historians. Storytellers. Lectors.
+                </p>
+                <p>The overlooked and often underappreciated stewards of knowledge &ndash; those who make sense of yesterday, give voice to today, and help shape what comes next.</p>
+                <p>The ones who look to the next generation and understand the responsibility to show them the way.</p>
+                <p>Then there are connectors.</p>
+                <p>Connectors are the chameleons &ndash; able to adapt to any person, situation, or audience.</p>
+                <p>Not flashy or spotlight-seeking. Not the headliner.</p>
+                <p>But always present. Always ready. Generous with their time. Caring. Impactful. And never forgotten.</p>
+                <p>And Jeff is exactly that &ndash; a connector who builds real, lasting relationships with kids and helps guide them in ways that truly matter.</p>
+              </blockquote>
+            </div>
+            <div className="mt-10 flex items-center gap-4">
+              <span className="h-px w-12 bg-[#C5943A]" aria-hidden="true" />
+              <div>
+                <p className="text-base font-semibold text-[#1B2A4A]">Mitch Kampbell</p>
+                <p className="text-sm text-[#526077]">President, Millard United</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="container pb-12 sm:pb-16">
         <div className="soft-card overflow-hidden">
           <div className="h-full bg-[#F5F2EA] p-8 lg:p-12" style={{ backgroundImage: `linear-gradient(180deg, rgba(255,255,255,0.88), rgba(245,242,234,0.92)), url(${visualAssets.generated.contactSkyline})`, backgroundSize: "cover", backgroundPosition: "center" }}>

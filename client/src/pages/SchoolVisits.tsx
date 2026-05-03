@@ -24,6 +24,19 @@ export default function SchoolVisits() {
         image={visualAssets.uploaded.schoolVisit2}
       />
 
+      {/* Mitch Kampbell pull-quote — closing line of his full endorsement (full quote
+          lives on the home page). Placed at the top of School Visits to set the
+          credibility frame for school decision-makers (curriculum directors,
+          librarians, principals) before they read the program details. Words verbatim. */}
+      <section className="container pt-16 sm:pt-20">
+        <div className="mx-auto max-w-4xl rounded-[1.5rem] border-l-4 border-[#C5943A] bg-[#FBF6EC] p-7 sm:p-10">
+          <blockquote className="text-lg italic leading-8 text-[#1B2A4A] sm:text-xl sm:leading-9">
+            &ldquo;And Jeff is exactly that &ndash; a connector who builds real, lasting relationships with kids and helps guide them in ways that truly matter.&rdquo;
+          </blockquote>
+          <p className="mt-5 text-sm font-semibold text-[#1B2A4A]">&mdash; Mitch Kampbell, President, Millard United</p>
+        </div>
+      </section>
+
       <section className="container py-16 sm:py-20">
         <div className="soft-card overflow-hidden">
           <div className="grid lg:grid-cols-[1.08fr_0.92fr]">
