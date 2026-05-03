@@ -6,14 +6,31 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formspree.io
 
+# Static images in /public/images/ keep their original filenames (not content-hashed),
+# so we use a 1-day browser cache with must-revalidate. Updates propagate within 24h
+# automatically — no manual Cloudflare purge required. Replaces an earlier `immutable`
+# rule which caused cache poisoning when an asset URL was hit before the file existed
+# (Cloudflare locked in the SPA-fallback HTML response for a year). Documented in
+# 04_SYSTEMS/CACHE_PURGE_RUNBOOK_v1.md.
 /images/*
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=86400, must-revalidate
 
+# PDF downloads (author visit packet, educator handout, etc.) — same pattern as images.
+/downloads/*
+  Cache-Control: public, max-age=86400, must-revalidate
+
+# Vite-built hashed JS/CSS bundles — content-addressed filenames change automatically
+# when source changes, so safe to cache forever.
 /*.js
   Cache-Control: public, max-age=31536000, immutable
 
 /*.css
   Cache-Control: public, max-age=31536000, immutable
+
+# JSON data files (news-feed.json) — must be revalidated so feed updates appear
+# without delay.
+/*.json
+  Cache-Control: public, max-age=0, must-revalidate
 
 /
   Cache-Control: public, max-age=0, must-revalidate

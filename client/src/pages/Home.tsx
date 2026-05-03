@@ -99,31 +99,44 @@ export default function Home() {
           credible voice (President of Millard United, large Omaha-metro youth sports org).
           Placed just before the educators block so the closing line ("a connector who
           builds real, lasting relationships with kids") flows directly into the school
-          visits CTA. Quote text is verbatim from Mitch — line breaks preserved as paragraph
-          breaks per the original cadence. Do not edit the words. */}
+          visits CTA. Quote text is verbatim from Mitch — line breaks preserved per the
+          original cadence. Do not edit the words.
+
+          Layout: magazine-editorial 2-column at lg breakpoint, single-column on smaller.
+          Setup stanzas (1-3) on the left; payoff stanzas (4-8) on the right starting with
+          the rhetorical pivot "Then there are connectors." Best practice for long literary
+          testimonials per niche convention (children's-author / personal brand sites). */}
       <section className="container pb-12 sm:pb-16">
-        <div className="rounded-[1.75rem] bg-[#FBF6EC] p-8 sm:p-12 lg:p-16">
-          <div className="mx-auto max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#C5943A]">Endorsement</p>
+        <div className="rounded-[1.75rem] bg-[#FBF6EC] px-8 py-12 sm:px-12 sm:py-14 lg:px-16 lg:py-16">
+          <div className="mx-auto max-w-5xl">
+            <div className="flex items-baseline gap-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#C5943A]">Endorsement</p>
+              <span className="h-px flex-1 bg-[#C5943A]/30" aria-hidden="true" />
+            </div>
             <div className="relative mt-6">
-              <span aria-hidden="true" className="pointer-events-none absolute -left-2 -top-10 select-none font-serif text-[140px] leading-none text-[#1B2A4A]/12 sm:-left-4 sm:-top-14 sm:text-[180px]">&ldquo;</span>
-              <blockquote className="relative space-y-5 text-lg italic leading-8 text-[#1B2A4A] sm:text-xl sm:leading-9">
-                <p>
-                  Teachers. Coaches. Writers. Advisors.<br />
-                  Mentors. Counselors. Trainers. Mediators.<br />
-                  Journalists. Consultants. Speakers. Facilitators. Historians. Storytellers. Lectors.
-                </p>
-                <p>The overlooked and often underappreciated stewards of knowledge &ndash; those who make sense of yesterday, give voice to today, and help shape what comes next.</p>
-                <p>The ones who look to the next generation and understand the responsibility to show them the way.</p>
-                <p>Then there are connectors.</p>
-                <p>Connectors are the chameleons &ndash; able to adapt to any person, situation, or audience.</p>
-                <p>Not flashy or spotlight-seeking. Not the headliner.</p>
-                <p>But always present. Always ready. Generous with their time. Caring. Impactful. And never forgotten.</p>
-                <p>And Jeff is exactly that &ndash; a connector who builds real, lasting relationships with kids and helps guide them in ways that truly matter.</p>
+              <span aria-hidden="true" className="pointer-events-none absolute -left-3 -top-12 select-none font-serif text-[160px] leading-none text-[#1B2A4A]/[0.10] sm:-left-6 sm:-top-16 sm:text-[200px]">&ldquo;</span>
+              <blockquote className="relative grid gap-x-12 gap-y-5 text-base italic leading-7 text-[#1B2A4A] sm:text-lg sm:leading-8 lg:grid-cols-2 lg:gap-x-14 lg:gap-y-6">
+                {/* Left column — setup */}
+                <div className="space-y-5 lg:space-y-6">
+                  <p>
+                    Teachers. Coaches. Writers. Advisors.<br />
+                    Mentors. Counselors. Trainers. Mediators.<br />
+                    Journalists. Consultants. Speakers. Facilitators. Historians. Storytellers. Lectors.
+                  </p>
+                  <p>The overlooked and often underappreciated stewards of knowledge &ndash; those who make sense of yesterday, give voice to today, and help shape what comes next.</p>
+                  <p>The ones who look to the next generation and understand the responsibility to show them the way.</p>
+                </div>
+                {/* Right column — payoff, starting at the rhetorical pivot */}
+                <div className="space-y-5 lg:space-y-6">
+                  <p>Then there are connectors.</p>
+                  <p>Connectors are the chameleons &ndash; able to adapt to any person, situation, or audience.</p>
+                  <p>Not flashy or spotlight-seeking. Not the headliner.</p>
+                  <p>But always present. Always ready. Generous with their time. Caring. Impactful. And never forgotten.</p>
+                  <p>And Jeff is exactly that &ndash; a connector who builds real, lasting relationships with kids and helps guide them in ways that truly matter.</p>
+                </div>
               </blockquote>
             </div>
-            <div className="mt-10 flex items-center gap-4">
-              <span className="h-px w-12 bg-[#C5943A]" aria-hidden="true" />
+            <div className="mt-10 flex items-center gap-4 border-t border-[#C5943A]/30 pt-6">
               <div>
                 <p className="text-base font-semibold text-[#1B2A4A]">Mitch Kampbell</p>
                 <p className="text-sm text-[#526077]">President, Millard United</p>
