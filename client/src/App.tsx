@@ -7,6 +7,7 @@ import ScrollManager from "./components/ScrollManager";
 import SiteLayout from "./components/SiteLayout";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import About from "./pages/About";
+import ActivityPack from "./pages/ActivityPack";
 import Books from "./pages/Books";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
@@ -26,6 +27,7 @@ function Router() {
         <Route path="/photography" component={Photography} />
         <Route path="/news" component={News} />
         <Route path="/contact" component={Contact} />
+        <Route path="/activity-pack" component={ActivityPack} />
         <Route path="/404" component={NotFound} />
         <Route component={NotFound} />
       </Switch>

@@ -2,6 +2,7 @@
 Design philosophy for this file: Storybook Editorial should make the School Visits page feel welcoming, informative, and easy for educators to scan.
 Use stronger hierarchy, warmer cards, and balanced sections that remove dead space while increasing readability.
 */
+import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { schoolVisitPricing, visualAssets } from "@/lib/siteContent";
@@ -106,6 +107,32 @@ export default function SchoolVisits() {
                   Download Core Curriculum (PDF)
                 </a>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Activity Pack CTA — placed before Programs so educators see the free classroom
+          resource immediately after reading the visit overview. Per Kurrus D-36 + D-39:
+          single audience-capture front door is the Activity Pack. Links to /activity-pack
+          which contains the Kit-backed subscribe path. */}
+      <section className="container pb-12 sm:pb-16">
+        <div className="soft-card overflow-hidden bg-[#FBF6EC] p-8 sm:p-10 lg:p-12">
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Free classroom resource</p>
+              <h2 className="mt-3 text-3xl font-semibold text-[#1B2A4A] sm:text-4xl">The Donnie Bats Activity Pack.</h2>
+              <p className="mt-5 text-lg leading-8 text-[#445065]">
+                A free printable pack of coloring pages, puzzles, and reflection prompts that pairs with The Legend of Donnie Bats. Built for K-5 classrooms. We send it to your inbox in under a minute.
+              </p>
+            </div>
+            <div className="flex justify-center lg:justify-end">
+              <Link
+                href="/activity-pack"
+                className="inline-flex items-center justify-center rounded-full bg-[#1B2A4A] px-8 py-4 text-base font-semibold text-white shadow-[0_12px_30px_rgba(27,42,74,0.18)] transition hover:-translate-y-0.5 hover:bg-[#152038]"
+              >
+                Send me the Activity Pack
+              </Link>
             </div>
           </div>
         </div>

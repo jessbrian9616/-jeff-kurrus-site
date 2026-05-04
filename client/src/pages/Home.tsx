@@ -197,28 +197,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Subscribe — compact closing block. Anchor /#subscribe is the Activity Pack QR destination.
-          Subscribers come in via a Kit Inline form, tagged source:website-subscribe, and do NOT
-          receive the Activity Pack (that lives on the separate Kit landing page).
-          See 04_SYSTEMS/KURRUS_KIT_AND_FORMS_RUNBOOK_v1.md. */}
-      <section id="subscribe" className="container pb-16 sm:pb-20 scroll-mt-24">
+      {/* Activity Pack CTA — closing block. Per Kurrus D-36 + D-39 (2026-05-04): single
+          audience-capture front door is the free Donnie Bats Activity Pack. Newsletter
+          form deferred until Jeff has broadcasts queued. Two-column layout: pitch on left,
+          prominent Send-me-the-Activity-Pack button on right linking to /activity-pack
+          (the branded URL the regenerated QR code will encode). The /activity-pack page
+          handles the actual subscribe via the existing Kit landing page. */}
+      <section id="activity-pack" className="container pb-16 sm:pb-20 scroll-mt-24">
         <div className="soft-card overflow-hidden bg-[#FBF6EC] p-6 sm:p-8 lg:p-10">
-          <div className="lg:grid lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-10">
+          <div className="lg:grid lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-10">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Stay in touch</p>
-              <h2 className="mt-2 text-2xl font-semibold text-[#1B2A4A] sm:text-3xl">Stay close to Jeff's stories.</h2>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Free for kids, parents, and teachers</p>
+              <h2 className="mt-2 text-2xl font-semibold text-[#1B2A4A] sm:text-3xl">The Donnie Bats Activity Pack.</h2>
               <p className="mt-3 text-base leading-7 text-[#445065]">
-                Book updates, sneak peeks, and word from the prairie. Your email stays private. Unsubscribe anytime.
+                A free printable pack of coloring pages, puzzles, and reflection prompts. We'll send it to your inbox in under a minute. Your email stays private. Unsubscribe anytime.
               </p>
             </div>
-            <div className="mt-5 lg:mt-0">
-              {/* PASTE KIT EMBED CODE BELOW (replace this entire div with the embed snippet from Kit > Grow > Forms > Website Subscribe > Embed) */}
-              <div className="rounded-2xl border border-dashed border-[color:rgba(184,134,11,0.4)] bg-white p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Subscribe form pending</p>
-                <p className="mt-2 text-sm text-[#5D6475]">
-                  Kit form embed will appear here. See KURRUS_KIT_AND_FORMS_RUNBOOK_v1.md.
-                </p>
-              </div>
+            <div className="mt-5 flex justify-center lg:mt-0 lg:justify-end">
+              <Link
+                href="/activity-pack"
+                className="inline-flex items-center justify-center rounded-full bg-[#1B2A4A] px-8 py-4 text-base font-semibold text-white shadow-[0_12px_30px_rgba(27,42,74,0.18)] transition hover:-translate-y-0.5 hover:bg-[#152038]"
+              >
+                Send me the Activity Pack
+              </Link>
             </div>
           </div>
         </div>

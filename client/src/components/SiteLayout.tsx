@@ -134,14 +134,15 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
           }
         })();
 
-        // Activity Pack footer block REMOVED 2026-05-03 per Jess.
-        // The Activity Pack now lives exclusively on the Kit landing page (email-gated)
-        // to preserve the email-capture funnel. When the Kit landing page is live and
-        // we want a footer CTA back, replace this constant with the route-conditional
-        // logic below and update the link to the production Kit landing URL:
-        //   const showActivityPack = ["/", "/books", "/school-visits", "/news", "/contact"].includes(location);
-        // Until then, the Activity Pack footer block does not render on any page.
-        const showActivityPack = false;
+        // Activity Pack footer block — RE-ENABLED 2026-05-04 per D-36 + D-39 + D-40.
+        // Activity Pack is the single audience-capture front door across the site.
+        // Footer block fires on Home, Books, School Visits, and News (the pages where
+        // a parent / teacher / reader is most likely to find the offer relevant).
+        // Skipped on Photography (different audience), Contact (inquiry intent),
+        // About (autobiographical context).
+        // Link points at /activity-pack (the dedicated page that contains the Kit-backed
+        // subscribe path). NO Bitly. Per D-39 Bitly is dropped permanently.
+        const showActivityPack = ["/", "/books", "/school-visits", "/news"].includes(location);
 
         return (
           <footer className="mt-12 border-t border-[color:rgba(96,87,62,0.12)] bg-[#F5EEDC]">
@@ -194,14 +195,14 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
                   <div className="rounded-[1.5rem] border border-[color:rgba(96,87,62,0.18)] bg-white/60 p-5">
                     <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">Donnie Bats Activity Pack</p>
                     <p className="mt-2 text-base leading-7 text-[#566070]">
-                      Free for teachers and parents. Coming soon.
+                      Free coloring pages, puzzles, and reflection prompts. Sent to your inbox.
                     </p>
-                    <a
-                      href="https://bit.ly/jk-pack"
+                    <Link
+                      href="/activity-pack"
                       className="mt-3 inline-flex whitespace-nowrap rounded-full bg-[#1B2A4A] px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#16233D]"
                     >
-                      Be the first to get it
-                    </a>
+                      Send me the Activity Pack
+                    </Link>
                   </div>
                 ) : null}
               </div>

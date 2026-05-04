@@ -2,6 +2,7 @@
 Design philosophy for this file: the books page should read like a restrained catalog from a premium independent publisher.
 Give the Donnie Bats title the strongest hierarchy, keep the grid airy, and let missing covers appear as elegant placeholders.
 */
+import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import PageHero from "@/components/PageHero";
 import PlaceholderBlock from "@/components/PlaceholderBlock";
@@ -55,6 +56,32 @@ export default function Books() {
               <p className="text-xl italic leading-9 text-white/75">"What if the worst kid on the team turns out to be the best? The question kept me up nights. So did the next one."</p>
               <footer className="mt-4 text-sm font-semibold text-[#B8860B]">-- Jeff, on writing the sequel</footer>
             </blockquote>
+          </div>
+        </div>
+      </section>
+
+      {/* Activity Pack CTA — sits right after the Donnie Bats featured + sequel sections so
+          the offer is contextually adjacent to the book the pack supports. Links to the
+          dedicated /activity-pack page (which contains the Kit-backed subscribe path).
+          Per Kurrus D-36 + D-39: single audience-capture front door is the Activity Pack. */}
+      <section className="container pb-12 sm:pb-16">
+        <div className="soft-card overflow-hidden bg-[#FBF6EC] p-8 sm:p-10 lg:p-12">
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Free for kids, parents, and teachers</p>
+              <h2 className="mt-3 text-3xl font-semibold text-[#1B2A4A] sm:text-4xl">The Donnie Bats Activity Pack.</h2>
+              <p className="mt-5 text-lg leading-8 text-[#445065]">
+                A free printable pack that brings The Legend of Donnie Bats off the page and into the kitchen table or classroom. Coloring pages, puzzles, and reflection prompts. We send it to your inbox in under a minute.
+              </p>
+            </div>
+            <div className="flex justify-center lg:justify-end">
+              <Link
+                href="/activity-pack"
+                className="inline-flex items-center justify-center rounded-full bg-[#1B2A4A] px-8 py-4 text-base font-semibold text-white shadow-[0_12px_30px_rgba(27,42,74,0.18)] transition hover:-translate-y-0.5 hover:bg-[#152038]"
+              >
+                Send me the Activity Pack
+              </Link>
+            </div>
           </div>
         </div>
       </section>
