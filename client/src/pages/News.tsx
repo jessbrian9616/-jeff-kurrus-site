@@ -1,26 +1,22 @@
 /*
 Design philosophy for this file: News is the cross-promotion engine.
-Flow per Jess 2026-04-30: hero → FROM JEFF zone (school visits, awards, community) → FROM NEBRASKALAND zone (editorial work, current issue, magazine context).
-The "Latest from Nebraskaland Magazine" block is auto-fed from
-client/src/data/news-feed.json (refreshed weekly by Claude scheduled task
-'kurrus-news-refresh' against /wp-json/wp/v2/posts?author=8). This page
-borrows Nebraskaland's authority every time an agent or librarian visits
-jeffkurrus.com - exactly the cross-flow Brand Strategy v3 §5 calls for.
+Flow per Jess 2026-04-30: hero → FROM JEFF zone (school visits, awards, community) → FROM NEBRASKALAND zone (editorial gateway, magazine context).
+The "From Nebraskaland Magazine" zone is a curated set of static gateway
+cards pointing at official Nebraskaland destinations (Phase 1A).
+The previous weekly auto-pull workflow (kurrus-news-refresh writing into
+client/src/data/news-feed.json's latestFromNebraskaland field) is being
+intentionally retired in Phase 1B; Phase 1A is the code-only swap.
+aroundJeff still drives Jeff's personal news cards from
+client/src/data/news-feed.json. The currentIssue conditional is left
+intact and dormant for an optional future hand-curated cover slot.
+This page highlights Jeff's editorial connection to Nebraskaland while
+directing readers to official Nebraskaland destinations.
 */
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { visualAssets } from "@/lib/siteContent";
 import newsFeed from "@/data/news-feed.json";
-
-type NebraskalandPost = {
-  id: number;
-  title: string;
-  date: string;
-  excerpt: string;
-  link: string;
-  category: string;
-};
 
 type AroundJeffItem = {
   title: string;
@@ -47,6 +43,55 @@ type CurrentIssue = {
   subscribeLink?: string;
 };
 
+// Static Nebraskaland gateway cards (Phase 1A).
+// Hand-curated, verified against Nebraskaland Magazine's official public navigation.
+// Replaces the previous auto-pulled "Latest from Nebraskaland" feed.
+// To update a destination: edit this array and re-push via commit-and-push.sh.
+const nebraskalandGateway = [
+  {
+    eyebrow: "Magazine",
+    title: "Nebraskaland Magazine",
+    description: "Nebraska's flagship outdoor magazine, featuring stories, photography, wildlife, conservation, outdoor recreation, history, and culture from across the state.",
+    linkLabel: "Visit Nebraskaland →",
+    url: "https://magazine.outdoornebraska.gov/",
+  },
+  {
+    eyebrow: "Jeff",
+    title: "Jeff's Nebraskaland articles",
+    description: "Jeff's official Nebraskaland author archive, including stories, photography, editorials, and magazine features under his byline.",
+    linkLabel: "Read Jeff's articles →",
+    url: "https://magazine.outdoornebraska.gov/author/jeff-kurrus/",
+  },
+  {
+    eyebrow: "Stories",
+    title: "Feature stories",
+    description: "Long-form Nebraskaland stories on wildlife, conservation, hunting, fishing, photography, travel, history, and Nebraska's outdoor culture.",
+    linkLabel: "Read stories →",
+    url: "https://magazine.outdoornebraska.gov/category/stories/",
+  },
+  {
+    eyebrow: "Voices",
+    title: "Voices",
+    description: "Nebraskaland's editorial voices, including Barbs and Backlashes, In the Wild, Nebraska Nature, and Nebraskaland Magazine Podcasts.",
+    linkLabel: "Read Voices →",
+    url: "https://magazine.outdoornebraska.gov/voices/",
+  },
+  {
+    eyebrow: "Archive",
+    title: "Archives and digital issues",
+    description: "Nebraskaland's archive hub, with pathways to the digital archive, recent digital issues, and photo library resources.",
+    linkLabel: "Open the archive →",
+    url: "https://magazine.outdoornebraska.gov/about/archive/",
+  },
+  {
+    eyebrow: "Subscribe",
+    title: "Subscribe",
+    description: "Subscribe to Nebraskaland Magazine in print or digital and support Nebraska's outdoor storytelling, photography, and conservation coverage.",
+    linkLabel: "Subscribe →",
+    url: "https://magazine.outdoornebraska.gov/subscribe/",
+  },
+] as const;
+
 const formatDate = (iso: string) => {
   const d = new Date(iso);
   return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
@@ -55,10 +100,9 @@ const formatDate = (iso: string) => {
 export default function News() {
   usePageMeta(
     "News & Events",
-    "Recent bylines from Nebraskaland Magazine, school visit updates, book award news, and the latest on The Return of Donnie Bats. Updated weekly."
+    "Jeff Kurrus's news, school visits, book awards, and editorial work at Nebraskaland Magazine."
   );
 
-  const nebraskalandPosts = (newsFeed.latestFromNebraskaland ?? []) as NebraskalandPost[];
   const aroundJeff = (newsFeed.aroundJeff ?? []) as AroundJeffItem[];
   const currentIssue = (newsFeed as { currentIssue?: CurrentIssue }).currentIssue;
 
@@ -74,11 +118,6 @@ export default function News() {
     if (!a.date && !b.date) return 0;
     return new Date(b.date!).getTime() - new Date(a.date!).getTime();
   });
-
-  // Sort Nebraskaland posts by date descending (newest first).
-  const sortedNebraskalandPosts = [...nebraskalandPosts].sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
 
   return (
     <div className="page-shell">
@@ -209,50 +248,80 @@ export default function News() {
         </div>
       </section>
 
-      {/* ZONE 2: FROM NEBRASKALAND MAGAZINE — editorial work, auto-pulled.
+      {/* ZONE 2: FROM NEBRASKALAND MAGAZINE — static editorial gateway, hand-curated.
+          This page highlights Jeff's editorial connection to Nebraskaland while directing
+          readers to official Nebraskaland destinations.
           id="nebraskaland" anchor lets the homepage Nebraskaland card scroll directly to this zone. */}
       <section id="nebraskaland" className="container pt-8 sm:pt-12 scroll-mt-24">
         <div className="mb-10 border-t-4 border-[#C5943A] pt-8">
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#C5943A]">From Nebraskaland Magazine</p>
-          <h2 className="mt-3 text-3xl font-semibold text-[#1B2A4A] sm:text-4xl">Jeff's editorial work, refreshed weekly.</h2>
-          <p className="mt-3 max-w-2xl text-base leading-7 text-[#5D6475]">Recent bylines, the current issue, and the magazine itself.</p>
+          <h2 className="mt-3 text-3xl font-semibold text-[#1B2A4A] sm:text-4xl">Jeff is editor of Nebraskaland Magazine.</h2>
+          <p className="mt-3 max-w-2xl text-base leading-7 text-[#5D6475]">As editor of Nebraskaland Magazine, Jeff helps connect readers with the stories, photography, wildlife, conservation, and Nebraska landscapes that define the state. Use the official pathways below to explore Jeff's Nebraskaland work, feature stories, Voices, archives, digital issues, photography, and subscription options.</p>
         </div>
       </section>
 
-      {/* Latest from Nebraskaland - auto-pulled from /wp-json/wp/v2/posts?author=8 */}
+      {/* Official Nebraskaland pathways - static gateway grid (Phase 1A). */}
       <section className="container pb-12 sm:pb-16">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h3 className="text-2xl font-semibold text-[#1B2A4A]">Latest bylines</h3>
-            <p className="mt-2 max-w-2xl text-base leading-7 text-[#5D6475]">Recent stories from Jeff at Nebraskaland Magazine. Updated automatically each week.</p>
+            <h3 className="text-2xl font-semibold text-[#1B2A4A]">Official Nebraskaland pathways</h3>
+            <p className="mt-2 max-w-2xl text-base leading-7 text-[#5D6475]">Direct links to evergreen sections of Nebraskaland Magazine.</p>
           </div>
           <a
-            href="https://magazine.outdoornebraska.gov/author/jeff-kurrus/"
+            href="https://magazine.outdoornebraska.gov/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex whitespace-nowrap rounded-full border border-[color:rgba(27,42,74,0.18)] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#1B2A4A] transition hover:border-[#1B2A4A] hover:bg-[#1B2A4A] hover:text-white"
           >
-            Read more on Nebraskaland
+            Visit Nebraskaland Magazine
           </a>
         </div>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {sortedNebraskalandPosts.map((post) => (
-            <article key={post.id} className="soft-card flex flex-col p-7">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#B8860B]">{post.category}</p>
-              <h3 className="mt-3 text-xl font-semibold text-[#1B2A4A]">{post.title}</h3>
-              <p className="mt-2 text-sm text-[#5D6475]">{formatDate(post.date)}</p>
-              <p className="mt-4 flex-1 text-base leading-7 text-[#445065]">{post.excerpt}</p>
-              <a
-                href={post.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-5 inline-flex self-start text-sm font-semibold uppercase tracking-[0.14em] text-[#4A7C59] transition hover:text-[#3C6648]"
-              >
-                Read on Nebraskaland →
-              </a>
-            </article>
+          {nebraskalandGateway.map((card) => (
+            <a
+              key={card.title}
+              href={card.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="soft-card flex flex-col p-7 transition hover:-translate-y-0.5 hover:shadow-[0_22px_40px_rgba(27,42,74,0.12)]"
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#B8860B]">{card.eyebrow}</p>
+              <h3 className="mt-3 text-xl font-semibold text-[#1B2A4A]">{card.title}</h3>
+              <p className="mt-4 flex-1 text-base leading-7 text-[#445065]">{card.description}</p>
+              <span className="mt-5 inline-flex self-start text-sm font-semibold uppercase tracking-[0.14em] text-[#4A7C59] transition hover:text-[#3C6648]">
+                {card.linkLabel}
+              </span>
+            </a>
           ))}
         </div>
+        <p className="mt-8 text-sm text-[#5D6475]">
+          <a
+            href="https://magazine.outdoornebraska.gov/about/archive/digital-issues/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-[#4A7C59] transition hover:text-[#3C6648]"
+          >
+            Recent digital issues →
+          </a>
+          <span className="mx-3 text-[#C5943A]">·</span>
+          <a
+            href="https://magazine.outdoornebraska.gov/category/stories/photography/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-[#4A7C59] transition hover:text-[#3C6648]"
+          >
+            Photography →
+          </a>
+          <span className="mx-3 text-[#C5943A]">·</span>
+          <a
+            href="https://magazine.outdoornebraska.gov/about/shop-nebraskaland/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-[#4A7C59] transition hover:text-[#3C6648]"
+          >
+            Shop Nebraskaland →
+          </a>
+        </p>
       </section>
 
       {/* Current Issue - cover image with delayed mirror per audit P2.7. Renders only when news-feed.json includes a currentIssue object. */}
