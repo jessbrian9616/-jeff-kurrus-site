@@ -117,7 +117,7 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
               return {
                 hook: "What I've been writing, where I've been visiting, and what's new at Nebraskaland.",
                 summary:
-                  "Recent bylines from Nebraskaland Magazine plus school visits and community work. Refreshed automatically.",
+                  "School visits, books, awards, and official Nebraskaland Magazine pathways.",
               };
             case "/contact":
               return {

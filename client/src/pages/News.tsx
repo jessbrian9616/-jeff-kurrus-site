@@ -125,11 +125,22 @@ export default function News() {
         <PageHero
           eyebrow="News"
           title="What I've been writing, where I've been visiting, and what's new at Nebraskaland."
-          description="Recent bylines, school visits, and what's coming next. This page refreshes itself."
+          description="School visits, book news, community updates, and official pathways into Jeff's work with Nebraskaland Magazine."
           image={visualAssets.jkPhotography.doubleRainbowDirtRoad}
           imagePosition="center center"
         />
-        <span className="absolute bottom-4 right-8 text-[0.7rem] tracking-[0.06em] text-white/70">Courtesy of Nebraskaland Magazine</span>
+        {/* Hero photo credit. Pinned inside the rounded hero box via a container-width
+            overlay so the credit stays inside the rounded corner on every breakpoint
+            (was right-edge of full page width pre-Phase-1A.1 and could land in the
+            gutter on desktop where text-white/70 went invisible against the page
+            background). The subtle dark pill ensures legibility regardless of the
+            underlying photo brightness. Overlay is pointer-events-none so it never
+            intercepts clicks on the hero itself. */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-end">
+          <div className="container">
+            <span className="mr-8 mb-6 inline-flex rounded-full bg-black/35 px-3 py-1 text-[0.7rem] tracking-[0.06em] text-white/95 backdrop-blur-sm sm:mr-12 sm:mb-8 lg:mr-16 lg:mb-10">Courtesy of Nebraskaland Magazine</span>
+          </div>
+        </div>
       </div>
 
       {/* ZONE 1: FROM JEFF — school visits, books, community appearances.
