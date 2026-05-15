@@ -24,16 +24,16 @@ import { visualAssets } from "@/lib/siteContent";
 const KIT_LANDING_URL = "https://jeff-kurrus-reader-community.kit.com/activity-pack";
 
 const insidePack = [
-  "Donnie Bats themed coloring pages, ready to print at home or in the classroom",
-  "Word search and matching puzzles tied to the story",
-  "A short read-aloud reflection guide for parents and teachers",
-  "Discussion questions that connect baseball, perseverance, and Donnie's journey",
+  "Discussion questions about Donnie's journey and hidden talents",
+  "Baseball word search and short vocabulary activity",
+  "Be Like Donnie student challenge for young readers",
+  "Educator notes aligned with grades 3 to 5 ELA standards",
 ];
 
 export default function ActivityPack() {
   usePageMeta(
     "Free Donnie Bats Activity Pack",
-    "A free printable Activity Pack for The Legend of Donnie Bats by Jeff Kurrus. Coloring pages, puzzles, and reflection prompts for kids, parents, and teachers."
+    "Free Donnie Bats Activity Pack with discussion questions, a word search, a vocabulary activity, a student challenge, and standards-aligned educator notes."
   );
 
   return (
@@ -41,7 +41,7 @@ export default function ActivityPack() {
       <PageHero
         eyebrow="Free for kids, parents, and teachers"
         title="The Donnie Bats Activity Pack."
-        description="A free printable pack of coloring pages, puzzles, and reflection prompts that bring The Legend of Donnie Bats off the page and into the classroom or kitchen table. Enter your email and we'll send it right to you."
+        description="A free printable pack for The Legend of Donnie Bats with discussion questions, a baseball word search, a student challenge, and standards-aligned educator notes. Enter your email and we'll send it right to you."
         image={visualAssets.uploaded.schoolVisit1}
       />
 
