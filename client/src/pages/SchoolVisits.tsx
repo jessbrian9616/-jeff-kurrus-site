@@ -134,7 +134,7 @@ export default function SchoolVisits() {
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Free classroom resource</p>
               <h2 className="mt-3 text-3xl font-semibold text-[#1B2A4A] sm:text-4xl">The Donnie Bats Activity Pack.</h2>
               <p className="mt-5 text-lg leading-8 text-[#445065]">
-                A free printable pack of coloring pages, puzzles, and reflection prompts that pairs with The Legend of Donnie Bats. Built for K-5 classrooms. We send it to your inbox in under a minute.
+                A free printable pack for The Legend of Donnie Bats with discussion questions, a baseball word search, a student challenge, and standards-aligned educator notes. Built for K-5 classrooms. We send it to your inbox in under a minute.
               </p>
             </div>
             <div className="flex justify-center lg:justify-end">

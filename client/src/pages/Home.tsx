@@ -210,7 +210,7 @@ export default function Home() {
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Free for kids, parents, and teachers</p>
               <h2 className="mt-2 text-2xl font-semibold text-[#1B2A4A] sm:text-3xl">The Donnie Bats Activity Pack.</h2>
               <p className="mt-3 text-base leading-7 text-[#445065]">
-                A free printable pack of coloring pages, puzzles, and reflection prompts. We'll send it to your inbox in under a minute. Your email stays private. Unsubscribe anytime.
+                A free printable pack with discussion questions, a baseball word search, a student challenge, and standards-aligned educator notes. We'll send it to your inbox in under a minute. Your email stays private. Unsubscribe anytime.
               </p>
             </div>
             <div className="mt-5 flex justify-center lg:mt-0 lg:justify-end">

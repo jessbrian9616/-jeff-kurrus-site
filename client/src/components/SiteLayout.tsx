@@ -195,7 +195,7 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
                   <div className="rounded-[1.5rem] border border-[color:rgba(96,87,62,0.18)] bg-white/60 p-5">
                     <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7752]">Donnie Bats Activity Pack</p>
                     <p className="mt-2 text-base leading-7 text-[#566070]">
-                      Free coloring pages, puzzles, and reflection prompts. Sent to your inbox.
+                      Free discussion questions, a word search, and educator notes. Sent to your inbox.
                     </p>
                     <Link
                       href="/activity-pack"
