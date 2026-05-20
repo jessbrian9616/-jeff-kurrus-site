@@ -142,7 +142,7 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
         // About (autobiographical context).
         // Link points at /activity-pack (the dedicated page that contains the Kit-backed
         // subscribe path). NO Bitly. Per D-39 Bitly is dropped permanently.
-        const showActivityPack = ["/", "/books", "/school-visits", "/news"].includes(location);
+        const showActivityPack = ["/", "/books", "/school-visits"].includes(location);
 
         return (
           <footer className="mt-12 border-t border-[color:rgba(96,87,62,0.12)] bg-[#F5EEDC]">
