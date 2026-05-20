@@ -17,6 +17,11 @@ const ALLOWED_INQUIRY_TYPES = [
   "General Inquiry",
 ] as const;
 
+// Funding-stage option that triggers Jeff's "send the funding document" action line.
+// Kept as a constant so the form field's value and the conditional ACTION trigger
+// always reference the same exact string. Mirrors the SchoolVisits page constant.
+const FUNDING_STATUS_TRIGGER = "Interested in funding options — please send any funding information available";
+
 // Senior photo session packages, sourced from siteContent so titles stay in sync
 // if a package is renamed. Used both to pre-fill from the URL param `package` (set
 // by the three Book This Package buttons on /photography) and to render the
@@ -29,6 +34,10 @@ export default function Contact() {
   // email subject Jeff receives reflects the visitor's actual intent.
   const [inquiryType, setInquiryType] = useState("");
   const [selectedPackage, setSelectedPackage] = useState("");
+  // Funding-stage state used by the conditional School Visit block. Reset to empty
+  // whenever the inquiry type changes away from School Visit so a stale funding answer
+  // from a prior selection cannot bleed into a different inquiry context.
+  const [fundingStatus, setFundingStatus] = useState("");
   const emailSubject = (() => {
     if (!inquiryType) return "New inquiry from jeffkurrus.com";
     if (inquiryType === "Senior Photo Session" && selectedPackage) {
@@ -86,6 +95,10 @@ export default function Contact() {
                   // any package selection so it doesn't bleed into a different
                   // inquiry's subject line.
                   if (next !== "Senior Photo Session") setSelectedPackage("");
+                  // Same logic for funding stage — clear when the inquiry is no
+                  // longer a School Visit so a stale answer can't slip into the
+                  // submitted email.
+                  if (next !== "School Visit") setFundingStatus("");
                 }}
                 className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]"
               >
@@ -113,6 +126,39 @@ export default function Contact() {
                   <option value="Not sure yet — let's discuss">Not sure yet — let's discuss</option>
                 </select>
               )}
+              {/* Conditional funding-stage dropdown — only shown when the inquiry type
+                  is School Visit. Mirrors the SchoolVisits page form so the same three
+                  options and the same ACTION trigger phrase apply regardless of which
+                  door the school comes through. */}
+              {inquiryType === "School Visit" && (
+                <>
+                  <select
+                    name="funding_status"
+                    required
+                    value={fundingStatus}
+                    onChange={(e) => setFundingStatus(e.target.value)}
+                    className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]"
+                  >
+                    <option value="" disabled>Funding for this visit *</option>
+                    <option value="Funding is in place — ready to discuss dates and details">Funding is in place — ready to discuss dates and details</option>
+                    <option value={FUNDING_STATUS_TRIGGER}>Interested in funding options — please send any funding information available</option>
+                    <option value="Just exploring — gathering information first">Just exploring — gathering information first</option>
+                  </select>
+                  {fundingStatus === FUNDING_STATUS_TRIGGER && (
+                    <input type="hidden" name="action_required" value="ACTION: Send the Nebraska Author Visit Funding Document." />
+                  )}
+                </>
+              )}
+              {/* Source attribution — always visible, required. Same field name and
+                  placeholder as the SchoolVisits page so attribution reads consistently
+                  across both intake paths. */}
+              <input
+                type="text"
+                name="how_found"
+                required
+                placeholder="How you found Jeff (e.g. teacher referral, Nebraskaland Magazine, Google) *"
+                className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]"
+              />
               <textarea name="message" placeholder="Message" rows={7} required className="w-full rounded-[1.5rem] border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
               <input type="hidden" name="_subject" value={emailSubject} />
               <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />

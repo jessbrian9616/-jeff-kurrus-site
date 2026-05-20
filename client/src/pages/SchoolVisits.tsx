@@ -2,10 +2,16 @@
 Design philosophy for this file: Storybook Editorial should make the School Visits page feel welcoming, informative, and easy for educators to scan.
 Use stronger hierarchy, warmer cards, and balanced sections that remove dead space while increasing readability.
 */
+import { useState } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { schoolVisitPricing, visualAssets } from "@/lib/siteContent";
+
+// Funding-stage option that triggers Jeff's "send the funding document" action line.
+// Kept as a constant so the form field's value and the conditional ACTION trigger
+// always reference the same exact string.
+const FUNDING_STATUS_TRIGGER = "Interested in funding options — please send any funding information available";
 
 const visitHighlights = [
   "K-8 classrooms, 45 minutes, signed books at the table afterward",
@@ -16,6 +22,11 @@ const visitHighlights = [
 
 export default function SchoolVisits() {
   usePageMeta("School Visits & Author Presentations", "Book a 45-minute K-8 author visit with Jeff Kurrus. Writing workshops, photography sessions, and author Q&As for Nebraska schools. Pricing from $500/day.");
+  // Funding-stage state lets the form conditionally emit an `action_required` hidden
+  // input only when the visitor explicitly asks for funding information. That hidden
+  // input appears as a labeled line in Jeff's Formspree email so he sees the cue to
+  // send the Nebraska Author Visit Funding Document.
+  const [fundingStatus, setFundingStatus] = useState("");
   return (
     <div className="page-shell">
       <PageHero
@@ -305,6 +316,36 @@ export default function SchoolVisits() {
                 <input type="tel" name="phone" placeholder="Phone *" required className="w-full rounded-2xl border border-[color:rgba(96,87,62,0.16)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#5F7752]" />
                 <input type="text" name="grade_levels" placeholder="Grade Levels" className="w-full rounded-2xl border border-[color:rgba(96,87,62,0.16)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#5F7752]" />
                 <input type="text" name="preferred_date" placeholder="Preferred Dates" className="w-full rounded-2xl border border-[color:rgba(96,87,62,0.16)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#5F7752]" />
+                {/* Funding-stage dropdown. Three options keep teachers and librarians from
+                    being asked about federal Title program details they typically do not
+                    track. Selecting the middle option emits the action_required line below
+                    so Jeff sees the cue to send the funding document in his reply. */}
+                <select
+                  name="funding_status"
+                  required
+                  value={fundingStatus}
+                  onChange={(e) => setFundingStatus(e.target.value)}
+                  className="w-full rounded-2xl border border-[color:rgba(96,87,62,0.16)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#5F7752]"
+                >
+                  <option value="" disabled>Funding for this visit *</option>
+                  <option value="Funding is in place — ready to discuss dates and details">Funding is in place — ready to discuss dates and details</option>
+                  <option value={FUNDING_STATUS_TRIGGER}>Interested in funding options — please send any funding information available</option>
+                  <option value="Just exploring — gathering information first">Just exploring — gathering information first</option>
+                </select>
+                {fundingStatus === FUNDING_STATUS_TRIGGER && (
+                  <input type="hidden" name="action_required" value="ACTION: Send the Nebraska Author Visit Funding Document." />
+                )}
+                {/* Source attribution. Required free-text with placeholder examples per
+                    Recast and Zuko form-analytics research: free-text avoids dropdown order
+                    bias and lying when the real source is not in the list, and inline
+                    examples keep responses categorizable. */}
+                <input
+                  type="text"
+                  name="how_found"
+                  required
+                  placeholder="How you found Jeff (e.g. teacher referral, Nebraskaland Magazine, Google) *"
+                  className="w-full rounded-2xl border border-[color:rgba(96,87,62,0.16)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#5F7752]"
+                />
                 <textarea name="message" placeholder="Message" rows={4} className="w-full rounded-[1.5rem] border border-[color:rgba(96,87,62,0.16)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#5F7752]" />
                 <button type="submit" className="w-full rounded-full bg-[#5F7752] px-6 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#4F6644]">
                   Book a Visit
