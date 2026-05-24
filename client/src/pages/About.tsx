@@ -22,14 +22,16 @@ export default function About() {
       <section className="container py-16 sm:py-20">
         <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div className="space-y-5 lg:sticky lg:top-8">
-            {/* Jeff biopic — added 2026-05-24. Placed at the top of the sidebar so the
-                About page leads with Jeff's face in classroom context. Square-ish source
-                (520x568) sits well at the existing 300/360px sidebar height with
-                object-cover; object-position keeps the three faces centered. */}
+            {/* Jeff biopic — added 2026-05-24, recropped 2026-05-24 v2.
+                Source is 520x568 (slight portrait, aspect 0.92). Earlier version forced it
+                into a landscape h-[360px] slot which cropped 115px off the top AND bottom
+                with object-center — chopped Jeff's head. Fixed by using the source's natural
+                aspect ratio (aspect-[520/568]) so the slot grows to match the image and zero
+                cropping happens. All three faces (Jeff + two students) are fully visible. */}
             <img
               src={visualAssets.uploaded.jeffBioClassroom}
               alt="Jeff Kurrus seated with two students holding signed copies of The Legend of Donnie Bats during a school visit"
-              className="h-[300px] w-full rounded-[1.75rem] object-cover object-center shadow-[0_24px_50px_rgba(27,42,74,0.14)] sm:h-[360px]"
+              className="aspect-[520/568] w-full rounded-[1.75rem] object-cover object-center shadow-[0_24px_50px_rgba(27,42,74,0.14)]"
             />
             <div className="rounded-[1.75rem] bg-[#1B2A4A] p-6">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Credentials</p>
