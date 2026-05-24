@@ -134,15 +134,24 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
           }
         })();
 
-        // Activity Pack footer block — RE-ENABLED 2026-05-04 per D-36 + D-39 + D-40.
-        // Activity Pack is the single audience-capture front door across the site.
-        // Footer block fires on Home, Books, School Visits, and News (the pages where
-        // a parent / teacher / reader is most likely to find the offer relevant).
-        // Skipped on Photography (different audience), Contact (inquiry intent),
-        // About (autobiographical context).
-        // Link points at /activity-pack (the dedicated page that contains the Kit-backed
-        // subscribe path). NO Bitly. Per D-39 Bitly is dropped permanently.
-        const showActivityPack = ["/", "/books", "/school-visits"].includes(location);
+        // Activity Pack footer block — scope refined 2026-05-24 per Jess.
+        // Rule: footer block fires on pages where the audience is relevant AND there
+        // is no in-body Activity Pack CTA already on the page (avoids duplicate CTA
+        // and the mobile-stacking eyesore Jess called out on the Home page).
+        //
+        // Audience-relevant pages: Home, Books, School Visits, About.
+        //   - Home, Books, School Visits already have in-body Activity Pack CTAs →
+        //     footer block would duplicate → excluded from allowlist.
+        //   - About has no in-body CTA but is highly relevant (educators researching
+        //     Jeff often land here before deciding to book) → included in allowlist.
+        // Non-audience pages: News (informational), Contact (inquiry intent),
+        // Photography (different service line) → excluded.
+        //
+        // End-to-end conversion path verified 2026-05-24: footer button → /activity-pack
+        // (HTTP 200, 4860 bytes) → Kit landing page (HTTP 200, no redirect) → form
+        // ID 9315733 → POST to app.kit.com/forms/9315733/subscriptions → welcome
+        // email with PDF. No Bitly per D-39.
+        const showActivityPack = ["/about"].includes(location);
 
         return (
           <footer className="mt-12 border-t border-[color:rgba(96,87,62,0.12)] bg-[#F5EEDC]">
@@ -179,7 +188,10 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
                 </div>
               </div>
 
-              {/* Column 3 — Connect + Activity Pack capture (conditional per route) */}
+              {/* Column 3 — Connect / Socials + (on About only) Activity Pack capture.
+                  Activity Pack mini-block is gated by showActivityPack so it only
+                  renders on the About page — the one page where the audience is
+                  relevant AND no in-body CTA already exists. */}
               <div className="space-y-8">
                 <div>
                   <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-[#22304F]">Connect</h3>
