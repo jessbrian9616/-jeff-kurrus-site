@@ -22,6 +22,15 @@ export default function About() {
       <section className="container py-16 sm:py-20">
         <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div className="space-y-5 lg:sticky lg:top-8">
+            {/* Jeff biopic — added 2026-05-24. Placed at the top of the sidebar so the
+                About page leads with Jeff's face in classroom context. Square-ish source
+                (520x568) sits well at the existing 300/360px sidebar height with
+                object-cover; object-position keeps the three faces centered. */}
+            <img
+              src={visualAssets.uploaded.jeffBioClassroom}
+              alt="Jeff Kurrus seated with two students holding signed copies of The Legend of Donnie Bats during a school visit"
+              className="h-[300px] w-full rounded-[1.75rem] object-cover object-center shadow-[0_24px_50px_rgba(27,42,74,0.14)] sm:h-[360px]"
+            />
             <div className="rounded-[1.75rem] bg-[#1B2A4A] p-6">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Credentials</p>
               <p className="mt-3 text-base leading-7 text-white/80">Editor, Nebraskaland Magazine (est. 1926). 20+ years professional outdoor photography. Golden Sower Award nominee. 25,000+ books in readers' hands. Endorsed by Joel Sartore, National Geographic Photo Ark.</p>

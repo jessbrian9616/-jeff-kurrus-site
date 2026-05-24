@@ -270,7 +270,11 @@ export default function SchoolVisits() {
         </div>
       </section>
 
-      {/* School visit photos — full-width, larger, no crop. (SV-2, L8) */}
+      {/* School visit photos — full-width, larger, no crop. (SV-2, L8)
+          2026-05-24: Added a second row with two new classroom photos (Donnie Bats
+          projection room + large group seated on the floor). Same h-[460px] sm:h-[560px]
+          + object-contain + rounded-[1.5rem] + bg-[#f5f3ee] treatment so the new row
+          reads as a continuation of the existing gallery. */}
       <section className="container pb-12 sm:pb-16">
         <div className="soft-card overflow-hidden" style={{ backgroundColor: "#FFF8ED" }}>
           <div className="p-8 sm:p-10 lg:p-12">
@@ -284,6 +288,16 @@ export default function SchoolVisits() {
               <img
                 src={visualAssets.uploaded.schoolVisitTurtle}
                 alt="Students with turtle during outdoor portion of Jeff Kurrus school visit"
+                className="h-[460px] w-full rounded-[1.5rem] bg-[#f5f3ee] object-contain shadow-[0_18px_32px_rgba(96,87,62,0.1)] sm:h-[560px]"
+              />
+              <img
+                src={visualAssets.uploaded.schoolVisitClassroomProjection}
+                alt="Jeff Kurrus standing with a classroom of students in front of The Legend of Donnie Bats projection during a school visit"
+                className="h-[460px] w-full rounded-[1.5rem] bg-[#f5f3ee] object-contain shadow-[0_18px_32px_rgba(96,87,62,0.1)] sm:h-[560px]"
+              />
+              <img
+                src={visualAssets.uploaded.schoolVisitLargeGroup}
+                alt="Jeff Kurrus seated with a large group of students holding copies of The Legend of Donnie Bats during a school assembly"
                 className="h-[460px] w-full rounded-[1.5rem] bg-[#f5f3ee] object-contain shadow-[0_18px_32px_rgba(96,87,62,0.1)] sm:h-[560px]"
               />
             </div>

@@ -68,6 +68,13 @@ export const visualAssets = {
     momDaughterSunset: "/images/mom-daughter-sunset.jpg",
     seniorAthlete: "/images/senior-athlete.jpg",
     schoolVisitTurtle: "/images/school-visit-turtle.jpg",
+    // 2026-05-24: Three classroom photos delivered by Jess. Biopic is a close-up of
+    // Jeff seated with two students holding The Legend of Donnie Bats (About sidebar,
+    // top slot). The two school-visit shots show a Donnie Bats projection room and a
+    // larger group seated on the floor — both render in the School Visits gallery.
+    jeffBioClassroom: "/images/jeff-bio-classroom.jpg",
+    schoolVisitClassroomProjection: "/images/school-visit-classroom-projection.jpg",
+    schoolVisitLargeGroup: "/images/school-visit-large-group.jpg",
   },
 };
 
