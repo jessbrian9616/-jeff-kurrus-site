@@ -94,9 +94,12 @@ export const bookCatalog = [
     price: "Coming December 2026",
     description: "A new Donnie Bats story is on the way, with more heart, humor, and ballfield trouble ahead.",
     cta: "Be the first to know.",
-    // Routes through Bitly to the Kit landing page that delivers the Donnie Bats Activity Pack
-    // and adds the subscriber to Jeff's Kit list. See 04_SYSTEMS/KURRUS_BITLY_QR_WORKFLOW_v1.md
-    href: "https://bit.ly/jk-pack",
+    // 2026-08-27: was https://bit.ly/jk-pack, which returns HTTP 404 and appears never to have
+    // existed (found by the 2026-08-03 site health check, JK-041). That made this the only
+    // dead CTA on the site. Now routes to the Activity Pack page, the project's designated
+    // single audience-capture front door (D-36, D-39), on a jeffkurrus.com URL Jess controls.
+    // Also satisfies the standing rule: never use a third-party short link for this brand.
+    href: "/activity-pack",
     image: null,
     alt: "Placeholder for The Return of Donnie Bats cover",
     placeholder: "COVER PLACEHOLDER: The Return of Donnie Bats. Jeff owns cover photo.",
