@@ -46,6 +46,9 @@ export default function Contact() {
   // Signing choice for Order Books. Cleared when the inquiry type moves away, so a
   // stale signing answer cannot ride along on a school-visit or photo enquiry. (2026-09-01)
   const [signingRequest, setSigningRequest] = useState("");
+  // Copies wanted, for Order Books. Drives how many inscription lines appear.
+  // Held as a string because a number input can legitimately be empty mid-typing.
+  const [quantity, setQuantity] = useState("1");
   const emailSubject = (() => {
     if (!inquiryType) return "New inquiry from jeffkurrus.com";
     if (inquiryType === "Senior Photo Session" && selectedPackage) {
@@ -128,7 +131,7 @@ export default function Contact() {
                   if (next !== "School Visit") setFundingStatus("");
                   // Same logic for the signing choice — clear it when the inquiry is
                   // no longer a book order.
-                  if (next !== "Order Books") setSigningRequest("");
+                  if (next !== "Order Books") { setSigningRequest(""); setQuantity("1"); }
                 }}
                 className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]"
               >
@@ -191,6 +194,15 @@ export default function Contact() {
                   to Amazon orders, which Jeff never handles and cannot sign. */}
               {inquiryType === "Order Books" && (
                 <>
+                  {/* Copies first: it is the fact that shapes everything after it. */}
+                  <input
+                    type="number" name="quantity" min="1" max="500" step="1" required aria-required="true"
+                    value={quantity}
+                    onChange={(e) => setQuantity(e.target.value)}
+                    aria-label="How many copies? Required."
+                    placeholder="How many copies? *"
+                    className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]"
+                  />
                   <select
                     name="signing_request"
                     required
@@ -203,20 +215,57 @@ export default function Contact() {
                     <option value="Signed, no name">Signed, no name</option>
                     <option value="Neither, just the book">Neither, just the book</option>
                   </select>
-                  {signingRequest === SIGNING_PERSONALIZED && (
-                    <input
-                      type="text"
-                      name="inscription"
-                      required
-                      aria-required="true"
-                      aria-label="Who is it for, and what should it say? Required."
-                      placeholder="Who is it for, and what should it say? *"
-                      className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]"
-                    />
-                  )}
-                  {signingRequest === SIGNING_PERSONALIZED && (
-                    <p className="-mt-1 px-1 text-sm text-[#5D6475]">For example, "For Emma." A first name is enough.</p>
-                  )}
+                  {/* INSCRIPTIONS. One line per copy, shown only when personalization was
+                      asked for, so the ~two thirds who did not ask never see any of this.
+                      Above ten copies the per-copy list would be a wall of boxes, so it
+                      collapses to a single textarea. Ten is a judgement call, not a
+                      researched number: it is roughly where a stack of identical inputs
+                      stops reading as a form and starts reading as a chore, and bulk
+                      school orders are far past it either way. */}
+                  {signingRequest === SIGNING_PERSONALIZED && (() => {
+                    const n = Math.min(Math.max(parseInt(quantity, 10) || 1, 1), 500);
+                    if (n === 1) {
+                      return (
+                        <>
+                          <input
+                            type="text" name="inscription_1" required aria-required="true"
+                            aria-label="Who is it for, and what should it say? Required."
+                            placeholder="Who is it for, and what should it say? *"
+                            className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]"
+                          />
+                          <p className="-mt-1 px-1 text-sm text-[#5D6475]">For example, "For Emma." A first name is enough.</p>
+                        </>
+                      );
+                    }
+                    if (n <= 10) {
+                      return (
+                        <>
+                          <p className="px-1 text-sm font-semibold text-[#1B2A4A]">What should each copy say?</p>
+                          {Array.from({ length: n }, (_, i) => (
+                            <input
+                              key={i}
+                              type="text" name={`inscription_${i + 1}`} required aria-required="true"
+                              aria-label={`Inscription for copy ${i + 1} of ${n}. Required.`}
+                              placeholder={`Copy ${i + 1} *`}
+                              className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]"
+                            />
+                          ))}
+                          <p className="-mt-1 px-1 text-sm text-[#5D6475]">For example, "For Emma." A first name is enough. Leave a copy blank to have it signed without a name.</p>
+                        </>
+                      );
+                    }
+                    return (
+                      <>
+                        <textarea
+                          name="inscription_list" rows={6} required aria-required="true"
+                          aria-label={`Inscriptions for all ${n} copies, one per line. Required.`}
+                          placeholder={`One inscription per line, ${n} lines *`}
+                          className="w-full rounded-[1.5rem] border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]"
+                        />
+                        <p className="-mt-1 px-1 text-sm text-[#5D6475]">One name per line, in order. Blank lines get signed without a name.</p>
+                      </>
+                    );
+                  })()}
 
                   {/* SHIPPING ADDRESS — Order Books only. Split inputs rather than one
                       textarea, per the GOV.UK Design System addresses pattern: separate
