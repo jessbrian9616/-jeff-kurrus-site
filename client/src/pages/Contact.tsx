@@ -89,9 +89,17 @@ export default function Contact() {
           <div className="soft-card p-8 sm:p-10 lg:p-12">
             <p className="section-label">Contact form</p>
             <form action="https://formspree.io/f/mlgavlpv" method="POST" className="space-y-4">
-              <input type="text" name="name" placeholder="Name *" required className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
-              <input type="email" name="email" placeholder="Email *" required className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
-              <input type="tel" name="phone" placeholder="Phone *" required className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
+              <input type="text" name="name" placeholder="Name *" required aria-required="true" autoComplete="name" aria-label="Name. Required." className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
+              <input type="email" name="email" placeholder="Email *" required aria-required="true" autoComplete="email" aria-label="Email. Required." className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
+              {/* Phone stays required at Jess's instruction. Baymard's study of 1,026
+                  online shoppers found 14% would never give a store their phone number,
+                  and that unexplained required phone fields produce fake entries. Their
+                  three sanctioned remedies are: explain why it is required, make it
+                  optional, or drop it. The explanation below is remedy one. If order
+                  volume ever looks lower than expected, this field is the first thing
+                  to test making optional. */}
+              <input type="tel" name="phone" placeholder="Phone *" required aria-required="true" autoComplete="tel" aria-label="Phone. Required." className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
+              <p className="-mt-1 px-1 text-sm text-[#5D6475]">Only used if Jeff needs to reach you about your request.</p>
               <select
                 name="inquiry_type"
                 required
@@ -189,10 +197,77 @@ export default function Contact() {
                       type="text"
                       name="inscription"
                       required
+                      aria-required="true"
+                      aria-label="Who is it for, and what should it say? Required."
                       placeholder="Who is it for, and what should it say? *"
                       className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]"
                     />
                   )}
+                  {signingRequest === SIGNING_PERSONALIZED && (
+                    <p className="-mt-1 px-1 text-sm text-[#5D6475]">For example, "For Emma." A first name is enough.</p>
+                  )}
+
+                  {/* SHIPPING ADDRESS — Order Books only. Split inputs rather than one
+                      textarea, per the GOV.UK Design System addresses pattern: separate
+                      inputs are what browser autocomplete fills, and autocomplete is what
+                      satisfies WCAG 2.2 success criterion 1.3.5 Identify Input Purpose.
+                      Every field carries its MDN autocomplete token.
+                      Apartment line is optional and labelled so, because Baymard measured
+                      30% of users coming to a full stop at a required-looking Address
+                      Line 2. ZIP is type="text", not "number" — W3C warns type="number"
+                      breaks postal codes. */}
+                  <p className="px-1 pt-1 text-sm font-semibold text-[#1B2A4A]">Where should the book go?</p>
+                  <input
+                    type="text" name="ship_street" required aria-required="true" autoComplete="address-line1"
+                    aria-label="Mailing address, where the book should be sent. Required."
+                    placeholder="Mailing address (where the book should be sent) *"
+                    className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]"
+                  />
+                  <input
+                    type="text" name="ship_unit" autoComplete="address-line2"
+                    aria-label="Apartment, suite, or unit. Optional."
+                    placeholder="Apartment, suite, or unit (optional)"
+                    className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]"
+                  />
+                  <div className="grid gap-4 sm:grid-cols-[1.4fr_0.8fr_0.8fr]">
+                    <input
+                      type="text" name="ship_city" required aria-required="true" autoComplete="address-level2"
+                      aria-label="City. Required." placeholder="City *"
+                      className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]"
+                    />
+                    <input
+                      type="text" name="ship_state" required aria-required="true" autoComplete="address-level1"
+                      aria-label="State. Required." placeholder="State *"
+                      className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]"
+                    />
+                    <input
+                      type="text" inputMode="numeric" name="ship_zip" required aria-required="true" autoComplete="postal-code"
+                      aria-label="ZIP code. Required." placeholder="ZIP *"
+                      className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]"
+                    />
+                  </div>
+                  <p className="-mt-1 px-1 text-sm text-[#5D6475]">Your address is used only to mail your book. It is not shared, sold, or added to any list. US addresses only.</p>
+
+                  {/* PAYMENT METHOD — asked here so Jeff can send the right instructions in
+                      his first reply instead of spending an email finding out. Deliberately
+                      NOT asking for a confirmation number: at this moment nothing has been
+                      paid, so no confirmation number exists yet. And deliberately NOT asking
+                      for a Venmo or PayPal handle: it is a persistent searchable identity,
+                      it would sit next to a home address in a plaintext email, and Formspree's
+                      own terms say not to use the service to collect sensitive personal data.
+                      Payment is matched by an order reference Jeff issues in his reply, which
+                      the buyer types into the payment note. */}
+                  <select
+                    name="payment_method" required aria-required="true"
+                    aria-label="How would you like to pay? Required."
+                    defaultValue=""
+                    className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]"
+                  >
+                    <option value="" disabled>How would you like to pay? *</option>
+                    <option value="Venmo">Venmo</option>
+                    <option value="PayPal">PayPal</option>
+                  </select>
+                  <p className="-mt-1 px-1 text-sm text-[#5D6475]">Nothing is charged here. Jeff emails you the total and payment details after you send this.</p>
                 </>
               )}
               {/* Source attribution — always visible, required. Same field name and

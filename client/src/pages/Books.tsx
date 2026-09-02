@@ -56,9 +56,14 @@ export default function Books() {
                 belongs to. Centring it in its own column puts it on the optical centre
                 between the end of the text and the card edge. */}
             <div className="flex flex-col items-center justify-center gap-2">
+              {/* 2026-09-01: this is the primary conversion on the page, so it is sized
+                  and lifted above the other buttons. Larger type and padding, a gold ring
+                  offset from the navy fill for the highlight, and a deeper shadow. The
+                  gold is a ring, never the text or the fill, so no contrast requirement
+                  attaches to it: white on navy stays at 14.4:1. */}
               <Link
                 href="/contact?type=Order%20Books#form"
-                className="inline-flex items-center justify-center rounded-full bg-[#1B2A4A] px-8 py-4 text-base font-semibold text-white shadow-[0_12px_30px_rgba(27,42,74,0.18)] transition hover:-translate-y-0.5 hover:bg-[#152038]"
+                className="inline-flex items-center justify-center rounded-full bg-[#1B2A4A] px-10 py-5 text-lg font-semibold text-white shadow-[0_16px_38px_rgba(27,42,74,0.26)] ring-2 ring-[#B8860B] ring-offset-4 ring-offset-[#FBF6EC] transition hover:-translate-y-0.5 hover:bg-[#152038] hover:shadow-[0_20px_44px_rgba(27,42,74,0.32)]"
               >
                 Order a signed copy
               </Link>
