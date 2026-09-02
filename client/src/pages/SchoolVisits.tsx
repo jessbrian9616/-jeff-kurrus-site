@@ -200,6 +200,9 @@ export default function SchoolVisits() {
               <a href="/contact?type=Order%20Books#form" className="mt-4 inline-flex rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-white/20">
                 Order Books
               </a>
+              {/* 2026-09-01: same options named here as on Home and Books, so a teacher
+                  ordering through the school door sees the identical offer a parent sees. */}
+              <p className="mt-3 text-sm leading-6 text-white/70">Copies can be signed or personalized on request. Pay by Venmo or PayPal.</p>
             </div>
             <div className="rounded-[1.5rem] bg-white/10 p-6">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">What Jeff needs</p>

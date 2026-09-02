@@ -48,10 +48,14 @@ export default function Books() {
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Direct from Jeff</p>
               <h2 className="mt-3 text-3xl font-semibold text-[#1B2A4A] sm:text-4xl">Signed and personalized copies.</h2>
               <p className="mt-5 text-lg leading-8 text-[#445065]">
-                Order direct and you can ask for the book signed, or personalized to a name. The Legend of Donnie Bats is $12.95 a copy. Use the button to send the details, including the inscription. Jeff replies with the total and payment options. Signed copies are not available through Amazon.
+                Order direct and you can ask for the book signed, or personalized to a name. The Legend of Donnie Bats is $12.95 a copy with free shipping. Use the button to send the details, including the inscription. Jeff replies with payment options, Venmo or PayPal. Signed copies are not available through Amazon.
               </p>
             </div>
-            <div className="flex justify-center lg:justify-end">
+            {/* 2026-09-01: centred, not right-aligned. justify-end pinned the button to
+                the far edge of the card, leaving it visually adrift from the copy it
+                belongs to. Centring it in its own column puts it on the optical centre
+                between the end of the text and the card edge. */}
+            <div className="flex flex-col items-center justify-center gap-2">
               <Link
                 href="/contact?type=Order%20Books#form"
                 className="inline-flex items-center justify-center rounded-full bg-[#1B2A4A] px-8 py-4 text-base font-semibold text-white shadow-[0_12px_30px_rgba(27,42,74,0.18)] transition hover:-translate-y-0.5 hover:bg-[#152038]"
@@ -145,9 +149,23 @@ export default function Books() {
                 </p>
                 <p className="mt-1.5 text-sm text-[#445065]">Nebraska Center for the Book</p>
               </div>
-              <a href={featured.href} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex rounded-full bg-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#16233D]">
-                {featured.cta}
-              </a>
+              {/* 2026-09-01: two ways to buy, side by side, so the direct signed option is
+                  never hidden behind the Amazon link. Amazon keeps the solid navy fill it
+                  has site-wide; the direct button is outlined so the pair reads as two
+                  routes to the same book rather than two competing calls to action.
+                  Payment methods are named under the direct button because a reader
+                  deciding between the two needs to know before they click, not after. */}
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-start">
+                <a href={featured.href} target="_blank" rel="noopener noreferrer" className="inline-flex justify-center rounded-full bg-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#16233D]">
+                  {featured.cta}
+                </a>
+                <div className="flex flex-col gap-1.5">
+                  <Link href="/contact?type=Order%20Books#form" className="inline-flex justify-center rounded-full border border-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#1B2A4A] transition hover:bg-[#1B2A4A] hover:text-white">
+                    Order a signed copy
+                  </Link>
+                  <p className="text-center text-sm text-[#5D6475] sm:text-left">$12.95, free shipping. Signed or personalized on request. Pay by Venmo or PayPal.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

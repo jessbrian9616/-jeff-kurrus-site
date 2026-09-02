@@ -106,7 +106,10 @@ export default function News() {
     "Jeff Kurrus's news, school visits, book awards, and editorial work at Nebraskaland Magazine."
   );
 
-  const aroundJeff = (newsFeed.aroundJeff ?? []) as AroundJeffItem[];
+  // Entries archived out of the live feed keep their original text under _archived* keys
+  // and carry no `title`, so they are skipped here rather than deleted from the file.
+  // Nothing is ever removed from news-feed.json outright. (2026-09-01)
+  const aroundJeff = ((newsFeed.aroundJeff ?? []) as AroundJeffItem[]).filter((i) => !!i.title);
   const currentIssue = (newsFeed as { currentIssue?: CurrentIssue }).currentIssue;
 
   // Sort aroundJeff items chronologically. Convention:
@@ -161,8 +164,10 @@ export default function News() {
       <section className="container pt-16 sm:pt-20">
         <div className="mb-10 border-t-4 border-[#4A7C59] pt-8">
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#4A7C59]">From Jeff</p>
+          {/* 2026-09-01: the subheading under this was "Author events, award news, and
+              community presentations across Nebraska," which restated the headline in
+              different words and said nothing new. Removed. */}
           <h2 className="mt-3 text-3xl font-semibold text-[#1B2A4A] sm:text-4xl">School visits, books, and what's coming next.</h2>
-          <p className="mt-3 max-w-2xl text-base leading-7 text-[#5D6475]">Author events, award news, and community presentations across Nebraska.</p>
         </div>
       </section>
 
@@ -178,7 +183,16 @@ export default function News() {
             // card is a clickable link to that Nebraskaland content (no inner button).
             // Otherwise the card uses the existing inline-link pattern.
             const isClickableNebraskalandCard = !!(item.nebraskalandSource && item.link);
-            const cardClassName = "overflow-hidden rounded-[1.75rem] border-l-4 border-[#1B2A4A] bg-[#EEF1F6] shadow-[0_16px_32px_rgba(27,42,74,0.06)] transition";
+            // 2026-09-01: a pinned item gets the award treatment — gold left rule and cream
+            // ground instead of the standard navy rule on cool grey, plus a slightly deeper
+            // shadow so it lifts off the grid. Same two ingredients (cream + gold rule) as
+            // the award blocks on Home and Books, so all three read as one thing. Emphasis
+            // comes from the ground and the rule, not from bigger or louder type: per
+            // Nielsen Norman Group, if everything is contrasted then nothing stands out,
+            // so only ONE card in the grid may ever carry this.
+            const cardClassName = item.pinned
+              ? "overflow-hidden rounded-[1.75rem] border-l-4 border-[#B8860B] bg-[#FBF6EC] shadow-[0_20px_40px_rgba(27,42,74,0.10)] transition"
+              : "overflow-hidden rounded-[1.75rem] border-l-4 border-[#1B2A4A] bg-[#EEF1F6] shadow-[0_16px_32px_rgba(27,42,74,0.06)] transition";
             const cardClickable = isClickableNebraskalandCard ? `${cardClassName} hover:-translate-y-0.5 hover:shadow-[0_22px_40px_rgba(27,42,74,0.12)] cursor-pointer` : cardClassName;
 
             const cardContent = (
@@ -193,10 +207,19 @@ export default function News() {
                   />
                 )}
                 <div className="p-7">
+                  {/* Pinned award card carries a short gold rule and an "Award" label above
+                      the date. One extra line, no extra colour beyond the house gold, and it
+                      tells the reader what kind of item this is before they read the title. */}
+                  {item.pinned && (
+                    <div className="mb-3 flex items-center gap-3">
+                      <span className="h-px w-8 bg-[#B8860B]" aria-hidden="true" />
+                      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#8A6508]">Award</p>
+                    </div>
+                  )}
                   {item.date && (
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1B2A4A]">{formatDate(item.date)}</p>
                   )}
-                  <h4 className={`${item.date ? "mt-3" : ""} text-xl font-semibold text-[#1B2A4A]`}>{item.title}</h4>
+                  <h4 className={`${item.date ? "mt-3" : ""} font-semibold text-[#1B2A4A] ${item.pinned ? "text-2xl leading-8" : "text-xl"}`}>{item.title}</h4>
                   <p className="mt-4 text-base leading-7 text-[#445065]">{item.excerpt}</p>
                   {/* Inline Learn More button only renders when:
                       - link exists AND

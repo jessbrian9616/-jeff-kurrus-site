@@ -59,9 +59,10 @@
       "excerpt": "Jeff has signed on as the Author in Residence for Papillion La Vista School District for the 2026-27 school year. It will be his 14th year working with writers in the district."
     },
     {
-      "title": "Author in Residence — Papillion",
-      "date": "2026-04-01",
-      "excerpt": "Jeff continues his Author in Residence role in Papillion, working with student writers across multiple grade levels."
+      "_archived": "2026-09-01: The generic Papillion Author in Residence card was removed from the live feed as a duplicate. The 2026-04-26 card covers the same role with more detail (names the district, the 2026-27 school year, and the 14th year). Original entry retained verbatim below so nothing is lost. Restore by deleting this wrapper and the _archived key.",
+      "_archivedTitle": "Author in Residence — Papillion",
+      "_archivedDate": "2026-04-01",
+      "_archivedExcerpt": "Jeff continues his Author in Residence role in Papillion, working with student writers across multiple grade levels."
     },
     {
       "pinned": true,

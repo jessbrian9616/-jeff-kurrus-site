@@ -53,9 +53,19 @@ export default function Home() {
                 <p className="mt-6 max-w-2xl text-lg leading-8 text-[#445065]">
                   Donnie Bats loves baseball. He just can't hit, throw, or catch. A chapter book for every kid who has ever been the worst player on the team.
                 </p>
-                <a href="https://www.amazon.com/Legend-Donnie-Bats-Greatness-Lives/dp/0991638921/" target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex rounded-full bg-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:bg-[#16233D]">
-                  Buy on Amazon
-                </a>
+                {/* 2026-09-01: same two-route buy pair as the Books page. Amazon solid,
+                    direct outlined, payment methods named under the direct button. */}
+                <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-start">
+                  <a href="https://www.amazon.com/Legend-Donnie-Bats-Greatness-Lives/dp/0991638921/" target="_blank" rel="noopener noreferrer" className="inline-flex justify-center rounded-full bg-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:bg-[#16233D]">
+                    Buy on Amazon
+                  </a>
+                  <div className="flex flex-col gap-1.5">
+                    <Link href="/contact?type=Order%20Books#form" className="inline-flex justify-center rounded-full border border-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#1B2A4A] transition hover:bg-[#1B2A4A] hover:text-white">
+                      Order a signed copy
+                    </Link>
+                    <p className="text-center text-sm text-[#5D6475] sm:text-left">$12.95, free shipping. Signed or personalized on request. Pay by Venmo or PayPal.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -80,7 +90,28 @@ export default function Home() {
             </blockquote>
             <p className="mt-6 text-base font-semibold text-[#1B2A4A]">Joel Sartore, founder of National Geographic Photo Ark</p>
             <p className="mt-1 text-base text-[#526077]">on Have You Seen Mary?</p>
-            <p className="mt-6 text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Golden Sower Award nominee. 25,000+ books in readers' hands.</p>
+            {/* 2026-09-01: the award joins the Recognition card, which is where a reader
+                already comes to weigh whether Jeff is worth their time. Same cream ground
+                and gold left rule as the award block on the Books page, so the two read as
+                one treatment rather than two designs. Deliberately set BELOW the Sartore
+                quote and ABOVE the older credential line: newest and strongest first among
+                the standing credentials, without displacing the endorsement that carries
+                the most weight with a general reader. */}
+            <div className="mt-6 rounded-r-[1.25rem] border-l-[3px] border-[#B8860B] bg-[#FBF6EC] px-5 py-4">
+              <p className="text-xl font-semibold leading-none text-[#1B2A4A]">Winner!</p>
+              <p className="mt-2 text-base font-semibold leading-6 text-[#1B2A4A]">
+                <a
+                  href="https://centerforthebook.nebraska.gov/awards/winners/nebook.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline decoration-[#1B2A4A]/25 underline-offset-4 transition hover:decoration-[#1B2A4A]"
+                >
+                  2026 Nebraska Book Award, Children's Award
+                </a>
+              </p>
+              <p className="mt-1 text-sm text-[#445065]">The Legend of Donnie Bats. Nebraska Center for the Book.</p>
+            </div>
+            <p className="mt-5 text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Golden Sower Award nominee. 25,000+ books in readers' hands.</p>
           </div>
           <div className="soft-card p-8 sm:p-10">
             <p className="section-label">About Jeff</p>
