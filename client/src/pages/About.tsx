@@ -8,13 +8,19 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import { visualAssets } from "@/lib/siteContent";
 
 export default function About() {
-  usePageMeta("About Jeff Kurrus", "From Memphis to Nebraska: award-winning children's book author, Nebraskaland Magazine editor, and professional outdoor photographer based in Gretna.");
+  {/* 2026-09-01: "award-winning children's book author" replaced with the named award.
+      An unnamed award adjective carries nothing; a named one is checkable. */}
+  usePageMeta("About Jeff Kurrus", "Winner of the 2026 Nebraska Book Award, Children's Award. Nebraskaland Magazine editor and professional outdoor photographer based in Gretna, Nebraska.");
   return (
     <div className="page-shell">
       <PageHero
         eyebrow="About"
         title="20 years of writing, photography, and showing up in classrooms."
-        description="Jeff Kurrus is the editor of Nebraskaland Magazine, a Golden Sower-nominated children's book author, and a professional photographer based in Gretna, Nebraska."
+        // 2026-09-01: every award credit is now bound to the book that earned it. The
+        // Golden Sower nomination belongs to Have You Seen Mary? alone and may never be
+        // used as a general credential for Jeff. The Nebraska Book Award belongs to
+        // The Legend of Donnie Bats.
+        description="Jeff Kurrus is the editor of Nebraskaland Magazine and a professional photographer based in Gretna, Nebraska. The Legend of Donnie Bats won the Children's Award in the 2026 Nebraska Book Awards."
         image={visualAssets.jkPhotography.heroBarnGoldenHour}
         imagePosition="center center"
       />
@@ -35,7 +41,12 @@ export default function About() {
             />
             <div className="rounded-[1.75rem] bg-[#1B2A4A] p-6">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Credentials</p>
-              <p className="mt-3 text-base leading-7 text-white/80">Editor, Nebraskaland Magazine (est. 1926). 20+ years professional outdoor photography. Golden Sower Award nominee. 25,000+ books in readers' hands. Endorsed by Joel Sartore, National Geographic Photo Ark.</p>
+              {/* 2026-09-01: the award added, and every book credit tied to its book.
+                  "Golden Sower Award nominee" stood alone here, which read as a general
+                  credential for Jeff. It belongs to Have You Seen Mary? only. */}
+              <p className="mt-3 text-base leading-7 text-white/80">
+                Winner, 2026 Nebraska Book Award, Children's Award, for The Legend of Donnie Bats. Golden Sower Award nominee for Have You Seen Mary? Editor, Nebraskaland Magazine (est. 1926). 20+ years professional outdoor photography. 25,000+ books in readers' hands. Endorsed by Joel Sartore, National Geographic Photo Ark.
+              </p>
             </div>
             <img
               src={visualAssets.uploaded.senior04}

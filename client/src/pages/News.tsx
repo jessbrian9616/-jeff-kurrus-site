@@ -140,8 +140,10 @@ export default function News() {
       <div className="relative">
         <PageHero
           eyebrow="News"
+          // 2026-09-01: the description said "School visits, book news, community updates,
+          // and official pathways into Jeff's work with Nebraskaland Magazine," which
+          // restated the title in different words. Removed; the title carries it.
           title="What I've been writing, where I've been visiting, and what's new at Nebraskaland."
-          description="School visits, book news, community updates, and official pathways into Jeff's work with Nebraskaland Magazine."
           image={visualAssets.jkPhotography.doubleRainbowDirtRoad}
           imagePosition="center center"
         />

@@ -1,6 +1,10 @@
 import { Link } from "wouter";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 export default function NotFound() {
+  // 2026-09-01: this page inherited the homepage title, so a not-found page showed
+  // "Jeff Kurrus | Children's Book Author..." in the browser tab and in search results.
+  usePageMeta("Page not found", "This page isn't here. Try the homepage, the books, or send Jeff a note.");
   return (
     <div className="page-shell">
       <section className="container py-24 sm:py-32">

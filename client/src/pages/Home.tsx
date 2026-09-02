@@ -55,16 +55,18 @@ export default function Home() {
                 </p>
                 {/* 2026-09-01: same two-route buy pair as the Books page. Amazon solid,
                     direct outlined, payment methods named under the direct button. */}
+                {/* Signed copy filled and first, Amazon outlined and second. Identical
+                    pairing to Books.tsx, deliberately. See the note there. (2026-09-01) */}
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-start">
-                  <a href="https://www.amazon.com/Legend-Donnie-Bats-Greatness-Lives/dp/0991638921/" target="_blank" rel="noopener noreferrer" className="inline-flex justify-center rounded-full bg-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:bg-[#16233D]">
-                    Buy on Amazon
-                  </a>
                   <div className="flex flex-col gap-1.5">
-                    <Link href="/contact?type=Order%20Books#form" className="inline-flex justify-center rounded-full border border-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#1B2A4A] transition hover:bg-[#1B2A4A] hover:text-white">
+                    <Link href="/contact?type=Order%20Books#form" className="inline-flex justify-center rounded-full bg-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-[0_12px_30px_rgba(27,42,74,0.18)] transition hover:-translate-y-0.5 hover:bg-[#152038]">
                       Order a signed copy
                     </Link>
                     <p className="text-center text-sm text-[#5D6475] sm:text-left">$12.95, free shipping. Signed or personalized on request. Pay by Venmo or PayPal.</p>
                   </div>
+                  <a href="https://www.amazon.com/Legend-Donnie-Bats-Greatness-Lives/dp/0991638921/" target="_blank" rel="noopener noreferrer" className="inline-flex justify-center rounded-full border border-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#1B2A4A] transition-colors hover:bg-[#1B2A4A] hover:text-white">
+                    Buy on Amazon
+                  </a>
                 </div>
               </div>
             </div>

@@ -160,16 +160,23 @@ export default function Books() {
                   routes to the same book rather than two competing calls to action.
                   Payment methods are named under the direct button because a reader
                   deciding between the two needs to know before they click, not after. */}
+              {/* BUTTON HIERARCHY, set 2026-09-01. Ordering a signed copy is the primary
+                  action everywhere on this site, so it always gets the filled navy button
+                  and always sits first. Buy on Amazon is the secondary route and always
+                  gets the outline. Direct sales are the only channel where Jeff keeps the
+                  full margin and captures the reader's details, so the visual weight
+                  follows the business, not the habit of putting Amazon first.
+                  This pairing is repeated verbatim on Home.tsx. Change both or neither. */}
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-start">
-                <a href={featured.href} target="_blank" rel="noopener noreferrer" className="inline-flex justify-center rounded-full bg-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#16233D]">
-                  {featured.cta}
-                </a>
                 <div className="flex flex-col gap-1.5">
-                  <Link href="/contact?type=Order%20Books#form" className="inline-flex justify-center rounded-full border border-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#1B2A4A] transition hover:bg-[#1B2A4A] hover:text-white">
+                  <Link href="/contact?type=Order%20Books#form" className="inline-flex justify-center rounded-full bg-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-[0_12px_30px_rgba(27,42,74,0.18)] transition hover:-translate-y-0.5 hover:bg-[#152038]">
                     Order a signed copy
                   </Link>
                   <p className="text-center text-sm text-[#5D6475] sm:text-left">$12.95, free shipping. Signed or personalized on request. Pay by Venmo or PayPal.</p>
                 </div>
+                <a href={featured.href} target="_blank" rel="noopener noreferrer" className="inline-flex justify-center rounded-full border border-[#1B2A4A] px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#1B2A4A] transition hover:bg-[#1B2A4A] hover:text-white">
+                  {featured.cta}
+                </a>
               </div>
             </div>
           </div>
@@ -183,9 +190,15 @@ export default function Books() {
             <h2 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">{sequel.title}</h2>
             <p className="mt-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#B8860B]">{sequel.price}</p>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/80">{sequel.description}</p>
-            <a href={sequel.href} className="mt-8 inline-flex rounded-full border border-white/30 bg-white/10 px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white backdrop-blur transition hover:bg-white/20">
-              {sequel.cta}
-            </a>
+            {/* 2026-09-01: the "Be the first to know." button was removed from this block.
+                Two problems, both real. It pointed at /activity-pack, the same destination
+                as the "Send me the Activity Pack" button roughly thirty lines below, so the
+                page carried two calls to action going to one place. And the label promised
+                news about Book 2 while delivering an activity pack, which is a different
+                thing. The Activity Pack block directly beneath this one is the site's single
+                audience-capture front door (D-36, D-39) and now says so without competition.
+                The cta and href are still on the sequel entry in siteContent.ts, unused
+                here, so nothing was deleted and this is one line to restore. */}
           </div>
           <div className="flex items-center justify-center p-8 sm:p-10 lg:p-12">
             <blockquote className="max-w-md">
