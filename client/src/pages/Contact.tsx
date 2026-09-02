@@ -89,7 +89,18 @@ export default function Contact() {
           <div className="soft-card p-8 sm:p-10 lg:p-12">
             <p className="section-label">Contact form</p>
             <form action="https://formspree.io/f/mlgavlpv" method="POST" className="space-y-4">
-              <input type="text" name="name" placeholder="Name *" required aria-required="true" autoComplete="name" aria-label="Name. Required." className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
+              {/* 2026-09-01: split into first and last name, both required. Baymard's
+                  research prefers a single full-name field for checkout forms, because
+                  42% of their participants typed a full name into a First Name box. That
+                  finding is about data quality in a database. The problem here is
+                  different: a single "Name" field lets someone submit "Emma", and Jeff
+                  cannot address a parcel to a first name. Split fields guarantee a
+                  surname, and Baymard's failure mode (a full name in the first box) still
+                  leaves Jeff a usable name, because a person reads this, not a database. */}
+              <div className="grid gap-4 sm:grid-cols-2">
+                <input type="text" name="first_name" placeholder="First name *" required aria-required="true" autoComplete="given-name" aria-label="First name. Required." className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
+                <input type="text" name="last_name" placeholder="Last name *" required aria-required="true" autoComplete="family-name" aria-label="Last name. Required." className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
+              </div>
               <input type="email" name="email" placeholder="Email *" required aria-required="true" autoComplete="email" aria-label="Email. Required." className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]" />
               {/* Phone stays required at Jess's instruction. Baymard's study of 1,026
                   online shoppers found 14% would never give a store their phone number,
@@ -267,7 +278,11 @@ export default function Contact() {
                     <option value="Venmo">Venmo</option>
                     <option value="PayPal">PayPal</option>
                   </select>
-                  <p className="-mt-1 px-1 text-sm text-[#5D6475]">Nothing is charged here. Jeff emails you the total and payment details after you send this.</p>
+                  {/* 2026-09-01: reassurance at the point of hesitation. A reader is being
+                      asked for a home address and a payment method on a page that takes no
+                      money, so it must be explicit that a person replies and that nothing
+                      is charged here. Sits directly above the submit button. */}
+                  <p className="-mt-1 px-1 text-sm text-[#5D6475]">Nothing is charged on this page. Jeff reads every order himself and emails you back with the total and where to send payment.</p>
                 </>
               )}
               {/* Source attribution — always visible, required. Same field name and
