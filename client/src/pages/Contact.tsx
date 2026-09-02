@@ -22,6 +22,11 @@ const ALLOWED_INQUIRY_TYPES = [
 // always reference the same exact string. Mirrors the SchoolVisits page constant.
 const FUNDING_STATUS_TRIGGER = "Interested in funding options — please send any funding information available";
 
+// The one signing choice that requires an inscription. Kept as a constant so the
+// option value and the conditional that reveals the inscription field can never
+// drift apart. (2026-09-01)
+const SIGNING_PERSONALIZED = "Signed and personalized to a name";
+
 // Senior photo session packages, sourced from siteContent so titles stay in sync
 // if a package is renamed. Used both to pre-fill from the URL param `package` (set
 // by the three Book This Package buttons on /photography) and to render the
@@ -38,6 +43,9 @@ export default function Contact() {
   // whenever the inquiry type changes away from School Visit so a stale funding answer
   // from a prior selection cannot bleed into a different inquiry context.
   const [fundingStatus, setFundingStatus] = useState("");
+  // Signing choice for Order Books. Cleared when the inquiry type moves away, so a
+  // stale signing answer cannot ride along on a school-visit or photo enquiry. (2026-09-01)
+  const [signingRequest, setSigningRequest] = useState("");
   const emailSubject = (() => {
     if (!inquiryType) return "New inquiry from jeffkurrus.com";
     if (inquiryType === "Senior Photo Session" && selectedPackage) {
@@ -99,6 +107,9 @@ export default function Contact() {
                   // longer a School Visit so a stale answer can't slip into the
                   // submitted email.
                   if (next !== "School Visit") setFundingStatus("");
+                  // Same logic for the signing choice — clear it when the inquiry is
+                  // no longer a book order.
+                  if (next !== "Order Books") setSigningRequest("");
                 }}
                 className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]"
               >
@@ -146,6 +157,41 @@ export default function Contact() {
                   </select>
                   {fundingStatus === FUNDING_STATUS_TRIGGER && (
                     <input type="hidden" name="action_required" value="ACTION: Send the Nebraska Author Visit Funding Document." />
+                  )}
+                </>
+              )}
+              {/* Conditional signing block — only shown when the inquiry type is Order
+                  Books. Added 2026-09-01 alongside the Signed and Personalized section on
+                  the Books page. Signing and personalization are OFFERED here, never
+                  promised: the visitor chooses, and "Neither" is a real option. The
+                  inscription field only appears once they have asked for personalization,
+                  so nobody is made to answer a question that does not apply to them.
+                  This capture is payment-method agnostic. It applies to any direct order,
+                  whether it settles by Venmo, PayPal or anything else, because the order is
+                  captured here first and payment is arranged afterwards. It does NOT apply
+                  to Amazon orders, which Jeff never handles and cannot sign. */}
+              {inquiryType === "Order Books" && (
+                <>
+                  <select
+                    name="signing_request"
+                    required
+                    value={signingRequest}
+                    onChange={(e) => setSigningRequest(e.target.value)}
+                    className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]"
+                  >
+                    <option value="" disabled>Would you like the book signed? *</option>
+                    <option value={SIGNING_PERSONALIZED}>Signed and personalized to a name</option>
+                    <option value="Signed, no name">Signed, no name</option>
+                    <option value="Neither, just the book">Neither, just the book</option>
+                  </select>
+                  {signingRequest === SIGNING_PERSONALIZED && (
+                    <input
+                      type="text"
+                      name="inscription"
+                      required
+                      placeholder="Who is it for, and what should it say? *"
+                      className="w-full rounded-2xl border border-[color:rgba(27,42,74,0.12)] bg-white px-5 py-4 text-base outline-none transition focus:border-[#4A7C59]"
+                    />
                   )}
                 </>
               )}

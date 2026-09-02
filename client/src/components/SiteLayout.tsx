@@ -93,7 +93,10 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
               return {
                 hook: "Stories for kids who'd rather be outside.",
                 summary:
-                  "Four published titles. The Legend of Donnie Bats anchors the chapter-book line. The Return of Donnie Bats arrives December 2026.",
+                  // 2026-09-01: date reference removed. Book 2 has no announced release date.
+                  // Prose slot, so the sentence reads "is coming soon" rather than the
+                  // "Coming Soon!" label used on the Home and Books cards.
+                  "Four published titles. The Legend of Donnie Bats anchors the chapter-book line. The Return of Donnie Bats is coming soon.",
               };
             case "/about":
               return {

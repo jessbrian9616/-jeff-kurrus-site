@@ -81,7 +81,11 @@ export const visualAssets = {
 export const bookCatalog = [
   {
     title: "The Legend of Donnie Bats",
-    price: "$12.95 | Ages 7-12 | Chapter Book",
+    // 2026-09-01: Amazon-linked price removed. Amazon sets its own price and the
+    // figure here went stale; the only price published on the site is now Jeff's
+    // own $12.95 direct price in the Signed and Personalized section of Books.tsx.
+    // Age range and format retained.
+    price: "Ages 7-12 | Chapter Book",
     description:
       "Donnie Bats loves baseball but can't hit, throw, or catch -- until he discovers he might just be the best player his town has ever seen.",
     cta: "Buy on Amazon",
@@ -91,7 +95,10 @@ export const bookCatalog = [
   },
   {
     title: "The Return of Donnie Bats",
-    price: "Coming December 2026",
+    // 2026-09-01: date reference removed. Book 2 is in final edits with no announced
+    // release date; print turnaround is one week, so no date may be published until
+    // Jeff confirms edits, layout and cover are done. Jess specified this exact string.
+    price: "Coming Soon!",
     description: "A new Donnie Bats story is on the way, with more heart, humor, and ballfield trouble ahead.",
     cta: "Be the first to know.",
     // 2026-08-27: was https://bit.ly/jk-pack, which returns HTTP 404 and appears never to have
@@ -106,7 +113,9 @@ export const bookCatalog = [
   },
   {
     title: "Have You Seen Mary?",
-    price: "$9.95 (softcover) / $17.00 (hardcover) | Ages 5-10",
+    // 2026-09-01: Amazon-linked prices removed (see note on The Legend of Donnie Bats).
+    // Softcover/hardcover format retained; photographer credit stays in `note`.
+    price: "Ages 5-10 | Softcover and hardcover",
     description:
       "'. . . and the sky blackened with dark, gray bodies. In the blurry confusion, John lost Mary.' So begins Have You Seen Mary?, the photo fictional account of one sandhill crane's faithful search during spring migration for his lost mate. Set on the crane's migration path, this bittersweet story of love, loss, and healing will appeal to all ages. Michael Forsberg's beautiful color photographs also help entertain and educate readers about sandhill cranes.",
     note: "Golden Sower Award Nominee | Photography by Michael Forsberg | Endorsed by Joel Sartore, founder of National Geographic Photo Ark.",
@@ -117,7 +126,8 @@ export const bookCatalog = [
   },
   {
     title: "The Tale of Jacob Swift",
-    price: "$17.00 | Ages 5-10 | Photography by Rob Palmer",
+    // 2026-09-01: Amazon-linked price removed (see note on The Legend of Donnie Bats).
+    price: "Ages 5-10 | Photography by Rob Palmer",
     description:
       "Jacob recounts the struggles and triumphs that one swift fox family experiences in raising its son in the harsh but beautiful grasslands of North America. Looks like a picture book, reads like a chapter book.",
     cta: "Buy on Amazon",
@@ -127,7 +137,8 @@ export const bookCatalog = [
   },
   {
     title: "Can You Dance Like John?",
-    price: "$17.00 | Ages 5-10 | Photography by Michael Forsberg",
+    // 2026-09-01: Amazon-linked price removed (see note on The Legend of Donnie Bats).
+    price: "Ages 5-10 | Photography by Michael Forsberg",
     description:
       "The story of John and Mary continues in this picture book follow-up to Have You Seen Mary?, returning to John and Mary with a tale of love, loss, and the memories that keep us going.",
     cta: "Buy on Amazon",

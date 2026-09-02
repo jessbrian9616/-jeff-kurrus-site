@@ -1,6 +1,6 @@
 {
   "$schema_note": "Auto-refreshed weekly by Claude scheduled task 'kurrus-news-refresh'. latestFromNebraskaland is pulled from https://magazine.outdoornebraska.gov/wp-json/wp/v2/posts?author=8 (Jeff's WordPress author ID). aroundJeff is editable by hand. lastUpdated is ISO 8601.",
-  "lastUpdated": "2026-04-27T07:02:05-05:00",
+  "lastUpdated": "2026-09-01T00:00:00-05:00",
   "latestFromNebraskaland": [
     {
       "id": 16600,
@@ -45,9 +45,8 @@
   ],
   "aroundJeff": [
     {
-      "title": "The Return of Donnie Bats — December 2026",
-      "date": "2026-12-01",
-      "excerpt": "The sequel to The Legend of Donnie Bats arrives this December. More heart, more humor, more ballfield trouble."
+      "title": "The Return of Donnie Bats — Coming Soon",
+      "excerpt": "The sequel to The Legend of Donnie Bats is coming soon. More heart, more humor, more ballfield trouble."
     },
     {
       "title": "100 Years of Nebraskaland Magazine — Durham Museum Exhibit Opens June 20",
@@ -65,9 +64,11 @@
       "excerpt": "Jeff continues his Author in Residence role in Papillion, working with student writers across multiple grade levels."
     },
     {
-      "title": "Nebraska Book Awards 2026 — Children/YA submission underway",
-      "date": "2026-04-15",
-      "excerpt": "The Legend of Donnie Bats is being submitted to the Nebraska Book Awards 2026 in the Children/Young Adult category. Award announced fall 2026."
+      "pinned": true,
+      "title": "Winner — 2026 Nebraska Book Award, Children's Award",
+      "date": "2026-08-31",
+      "excerpt": "The Legend of Donnie Bats: Greatness Lives in Every Kid won the Children's Award in the 2026 Nebraska Book Awards. The Nebraska Center for the Book and the Nebraska Library Commission announced the winners on August 31. Winners are honored at the Nebraska Celebration of Books on Saturday, November 14, at the UNL City Campus Union in Lincoln.",
+      "link": "https://nlcblogs.nebraska.gov/ncb/2026/08/31/nebraskas-2026-book-award-winners-announced/"
     }
   ]
 }

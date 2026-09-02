@@ -30,6 +30,9 @@ type AroundJeffItem = {
   date?: string;
   excerpt: string;
   link?: string;
+  // pinned: true forces this item to the top of "Recent updates", above undated
+  // and dated items alike. Use sparingly — one item at a time. (2026-09-01)
+  pinned?: boolean;
   image?: string;
   focalPoint?: string;
   nebraskalandSource?: boolean;
@@ -107,12 +110,22 @@ export default function News() {
   const currentIssue = (newsFeed as { currentIssue?: CurrentIssue }).currentIssue;
 
   // Sort aroundJeff items chronologically. Convention:
-  // - Items without a date go to the top (treated as "currently happening" / ongoing).
+  // - pinned: true items lead, above everything. (Added 2026-09-01, Jess's call.)
+  // - Items without a date come next (treated as "currently happening" / ongoing).
   // - Dated items follow, sorted by date descending (newest first).
   // - Future-dated items (e.g., upcoming launches) naturally appear at the top of
   //   the dated section because they are "newest" by date.
   // This keeps the feed predictable and is the standard "what's new" presentation.
+  //
+  // WHY pinning was added: taking the (false) December 2026 release date off the
+  // Return of Donnie Bats card left that card undated, and the undated-first rule
+  // then pushed it above the Nebraska Book Award win — burying the most valuable
+  // fact on the site under a placeholder. Pinning fixes that without inventing a
+  // date for Book 2 and without deleting the card. Keep pinned items to one or two;
+  // pinning everything pins nothing.
   const sortedAroundJeff = [...aroundJeff].sort((a, b) => {
+    if (a.pinned && !b.pinned) return -1;
+    if (!a.pinned && b.pinned) return 1;
     if (!a.date && b.date) return -1;
     if (a.date && !b.date) return 1;
     if (!a.date && !b.date) return 0;

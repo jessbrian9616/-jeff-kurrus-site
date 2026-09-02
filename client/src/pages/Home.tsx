@@ -46,7 +46,10 @@ export default function Home() {
               />
               <div>
                 <h2 className="text-3xl font-semibold text-[#1B2A4A] sm:text-4xl">The Legend of Donnie Bats</h2>
-                <p className="mt-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#B8860B]">$12.95 | Ages 7-12</p>
+                {/* 2026-09-01: Amazon-linked price removed. Amazon sets its own price;
+                    the only price published on the site is Jeff's own $12.95 direct
+                    price in the Signed and Personalized section of the Books page. */}
+                <p className="mt-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#B8860B]">Ages 7-12</p>
                 <p className="mt-6 max-w-2xl text-lg leading-8 text-[#445065]">
                   Donnie Bats loves baseball. He just can't hit, throw, or catch. A chapter book for every kid who has ever been the worst player on the team.
                 </p>
@@ -60,7 +63,8 @@ export default function Home() {
             <div className="h-full min-h-[360px] bg-[#F3F0E7] p-6 sm:p-8" style={{ backgroundImage: `linear-gradient(180deg, rgba(255,251,244,0.76), rgba(255,250,242,0.94)), url(${visualAssets.uploaded.bookReleaseComing})`, backgroundSize: "cover", backgroundPosition: "center" }}>
               <p className="section-label">Coming next</p>
               <h2 className="max-w-sm text-3xl font-semibold text-[#1B2A4A]">The Return of Donnie Bats</h2>
-              <p className="mt-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#B8860B]">Coming December 2026</p>
+              {/* 2026-09-01: date reference removed. Book 2 has no announced release date. */}
+              <p className="mt-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#B8860B]">Coming Soon!</p>
               <p className="mt-6 max-w-sm text-lg leading-8 text-[#445065]">More heart. More humor. More ballfield trouble.</p>
             </div>
           </div>

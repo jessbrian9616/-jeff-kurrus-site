@@ -76,7 +76,7 @@ export default function SchoolVisits() {
                 Teachers stay in the room. The presentation is built to work alongside what you're already teaching, not to replace it. By the end, students have signed copies of the books and a reason to keep writing.
               </p>
               <p className="mt-4 text-lg leading-8 text-[#445065]">
-                Jeff has been doing this for ten years across schools in Nebraska. He's edited a state magazine for thirteen. The work he asks students to do is the work he does every day.
+                Jeff has been Author in Residence at Papillion La Vista Community Schools since 2013. He has edited a state magazine since 2013. He has visited schools across Nebraska for over ten years. The work he asks students to do is the work he does every day.
               </p>
             </div>
 
