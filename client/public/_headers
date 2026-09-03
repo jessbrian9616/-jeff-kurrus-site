@@ -44,16 +44,28 @@
 # static.cloudflareinsights.com is Cloudflare Web Analytics (free, privacy-
 # preserving, no cookies). It is auto-injected by Pages and was previously
 # blocked by this CSP, which is why the site had no analytics and threw two
-# console errors on every page load. connect-src 'self' is what the
-# auto-injected beacon posts back to (/cdn-cgi/rum).
-# Source: developers.cloudflare.com/web-analytics/faq/
+# console errors on every page load.
+#
+# TWO hosts are needed, and this was confirmed by watching the live console
+# rather than by reading the docs alone:
+#   script-src  https://static.cloudflareinsights.com  - loads the beacon
+#   connect-src https://cloudflareinsights.com         - where it SENDS the data
+#
+# Cloudflare's FAQ says an auto-injected beacon reports to your own domain, so
+# connect-src 'self' should be enough. On this site it does not: the live
+# console showed "Connecting to 'https://cloudflareinsights.com/cdn-cgi/rum'
+# violates ... connect-src 'self' https://formspree.io". The script loaded and
+# the upload was silently blocked - analytics would have looked switched on and
+# collected nothing. Measured behaviour wins over documented behaviour.
+# Source: developers.cloudflare.com/web-analytics/faq/ plus live observation
+# 2026-09-03.
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formspree.io
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io https://cloudflareinsights.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formspree.io
 
 
 # --- App code: never stale ---------------------------------------------------
