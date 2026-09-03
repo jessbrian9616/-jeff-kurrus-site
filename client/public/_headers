@@ -71,8 +71,30 @@
 # file from an edge server near them; the browser just asks "still current?"
 # and gets a few-hundred-byte "yes" (HTTP 304) instead of assuming.
 #
-# An explicit rule in this file wins over the dashboard setting - confirmed by
-# the homepage and /images/* already honouring their rules here.
+# CORRECTION, 2026-09-02, after this rule was deployed and measured:
+# THIS RULE ALONE IS NOT ENOUGH. A first attempt assumed an explicit rule here
+# would beat the Cloudflare dashboard setting. It does not, and the live site
+# proved it - the deployed rule still came back as max-age=14400.
+#
+# 14400 seconds is four hours, which is Cloudflare's DEFAULT zone-wide
+# "Browser Cache TTL" on every plan including Free. Cloudflare documents that
+# it overrides the origin's Cache-Control whenever the origin's max-age is
+# LOWER than that setting:
+#
+#   "By default, Cloudflare honors the cache expiration set in your Expires
+#    and Cache-Control headers but overrides those headers if: the value of
+#    the Expires or Cache-Control header from the origin web server is less
+#    than the Browser Cache TTL Cloudflare setting."
+#   - developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/
+#
+# That is why max-age=0 here became 14400, while /images/* at 86400 survived
+# untouched: 86400 is higher than the setting, 0 is lower.
+#
+# THE OTHER HALF OF THIS FIX IS A DASHBOARD SETTING, NOT A FILE:
+#   Cloudflare > Caching > Configuration > Browser Cache TTL
+#   must be set to "Respect Existing Headers".
+# Without it, this rule is silently raised to four hours. With it, this file
+# is authoritative. Recorded as D-108.
 /assets/*
   Cache-Control: public, max-age=0, must-revalidate
 
