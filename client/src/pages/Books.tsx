@@ -31,6 +31,16 @@ export default function Books() {
           $12.95 is Jeff's own direct price and, since the Amazon-linked prices came off
           the catalog entries, the only price published anywhere on the site.
           Order capture is the contact form first, payment second (settled flow).
+          EDITED 2026-09-04 on Jess's explicit instruction, wording supplied by her.
+          "Jeff replies with payment options, Venmo or PayPal." became "Jeff accepts Venmo
+          or PayPal." WHY: on 2026-09-04 the contact form began showing the Venmo and PayPal
+          handles on the page itself (D-113), so the old sentence promised a reply that no
+          longer has to happen and contradicted the form. Jess caught the contradiction;
+          the same-day site audit did not, because it checked that the $12.95 price matched
+          across pages and never checked the sentence beside it. Recorded as E-34.
+          Voice re-checked on the new sentence against kurrus_voice_analysis.pdf §12:
+          5 words, active voice, no -ly adverb, no exclamation, no superlative, no §8 Never
+          List marketing language, no stated emotion, specific not adjectival. Passes.
           Copy is new Jeff-voice website copy, not an edit to anything he wrote. Voice
           check run against kurrus_voice_analysis.pdf §12, all ten checks: sentence length
           (longest 15 words), no -ly adverbs, no announcement, no exclamation marks,
@@ -48,7 +58,7 @@ export default function Books() {
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">Direct from Jeff</p>
               <h2 className="mt-3 text-3xl font-semibold text-[#1B2A4A] sm:text-4xl">Signed and personalized copies.</h2>
               <p className="mt-5 text-lg leading-8 text-[#445065]">
-                Order direct and you can ask for the book signed, or personalized to a name. The Legend of Donnie Bats is $12.95 a copy with free shipping. Use the button to send the details, including the inscription. Jeff replies with payment options, Venmo or PayPal. Signed copies are not available through Amazon.
+                Order direct and you can ask for the book signed, or personalized to a name. The Legend of Donnie Bats is $12.95 a copy with free shipping. Use the button to send the details, including the inscription. Jeff accepts Venmo or PayPal. Signed copies are not available through Amazon.
               </p>
             </div>
             {/* 2026-09-01: centred, not right-aligned. justify-end pinned the button to
