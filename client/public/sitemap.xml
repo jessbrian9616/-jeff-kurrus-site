@@ -35,4 +35,26 @@
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
+  <!--
+    /activity-pack added 2026-09-04 (D-114). It was never here before, and that
+    was an omission of timing rather than a decision: this file was written
+    2026-04-25 and the Activity Pack page did not exist until mid-May. The full
+    history of this file was checked - the URL was never added and never removed.
+
+    KNOWN OVERLAP, deliberate and accepted. A second Activity Pack page exists on
+    Kit (jeff-kurrus-reader-community.kit.com/activity-pack), and a May 2026 plan
+    named the KIT page as the one to rank. The short-link decision has since made
+    jeffkurrus.com/activity-pack the address printed on QR codes, because Jess
+    controls that domain and can repoint it. So the page worth ranking is this
+    one. The overlap already existed before this entry: /activity-pack carries no
+    noindex and is linked from the homepage, so it was already indexable. Listing
+    it here only tells Google sooner.
+
+    Priority 0.7 rather than 0.9: it is a lead-magnet bridge page, not a pillar.
+  -->
+  <url>
+    <loc>https://www.jeffkurrus.com/activity-pack</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
