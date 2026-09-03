@@ -56,6 +56,27 @@
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formspree.io
 
 
+# --- App code: never stale ---------------------------------------------------
+# Added 2026-09-02, one push AFTER the main fix, because removing the bad rule
+# was not enough on its own.
+#
+# With no rule here at all, the ZONE-LEVEL "Browser Cache TTL" setting in the
+# Cloudflare dashboard filled the gap and served these paths as
+# `max-age=14400` (four hours). Measured live, not assumed. That is far better
+# than a year and it self-heals, but it still means a wrong answer could sit in
+# a phone for four hours. The whole point of this fix is that a wrong answer
+# cannot persist, so this rule closes that window to zero.
+#
+# Cost of max-age=0 here: none a visitor can feel. Cloudflare still serves the
+# file from an edge server near them; the browser just asks "still current?"
+# and gets a few-hundred-byte "yes" (HTTP 304) instead of assuming.
+#
+# An explicit rule in this file wins over the dashboard setting - confirmed by
+# the homepage and /images/* already honouring their rules here.
+/assets/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+
 # --- Images: one day, always revalidated ------------------------------------
 # Filenames here are NOT content-hashed, so a long cache would pin an outdated
 # photo. `must-revalidate` with no `immutable` means a poisoned entry heals
