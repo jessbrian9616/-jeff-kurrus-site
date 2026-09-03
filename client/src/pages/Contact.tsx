@@ -327,11 +327,61 @@ export default function Contact() {
                     <option value="Venmo">Venmo</option>
                     <option value="PayPal">PayPal</option>
                   </select>
-                  {/* 2026-09-01: reassurance at the point of hesitation. A reader is being
-                      asked for a home address and a payment method on a page that takes no
-                      money, so it must be explicit that a person replies and that nothing
-                      is charged here. Sits directly above the submit button. */}
-                  <p className="-mt-1 px-1 text-sm text-[#5D6475]">Nothing is charged on this page. Jeff reads every order himself and emails you back with the total and where to send payment.</p>
+                  {/* HOW TO PAY — added 2026-09-04, approved by Jess, logged as D-113.
+                      Shown ONLY when the inquiry type is Order Books.
+
+                      WHY THIS EXISTS. On 2026-09-03 a real customer ordered a signed copy.
+                      Jeff received the order and no payment, and asked Jess "do I just send
+                      the book?" The buyer had no idea where to pay, and Jeff had no idea
+                      whether to ship. The old copy here said Jeff would email the details,
+                      which put a human step between an order and its payment.
+
+                      THIS REVERSES D-104, KNOWINGLY. That decision kept payment handles off
+                      the page so a stranger could not pay with no order form attached, which
+                      leaves Jeff holding money and no shipping address. Jess was shown that
+                      reasoning again on 2026-09-04 and chose to publish anyway, because Jeff
+                      prefers it and because the order form still comes first in practice.
+                      Owner's call, made with the tradeoff in front of her. See D-113.
+
+                      NO "goods and services" INSTRUCTION HERE, DELIBERATELY. Venmo's user
+                      agreement says goods may only be sold via a business profile or a
+                      buyer-tagged payment, so the compliant wording was drafted and then
+                      REMOVED at Jess's instruction on 2026-09-04: it adds a step, and Jeff
+                      has not confirmed he wants it. Open with Jeff, not forgotten. Until he
+                      agrees, these are untagged personal payments for goods, which is
+                      outside Venmo's terms. Recorded in D-113 so it is not lost.
+
+                      The checkbox is required, so the browser blocks submission until it is
+                      ticked, and it arrives in Jeff's order email as payment_understood: Yes.
+                      That gives him a record the buyer saw the ship-after-payment terms.
+
+                      Styling copies the established site callout (Books.tsx line 143):
+                      gold left rule on cream. Nothing new was invented for the look. */}
+                  <div className="rounded-r-[1.25rem] border-l-[3px] border-[#B8860B] bg-[#FBF6EC] px-5 py-4 text-sm leading-6 text-[#3A4152]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1B2A4A]">How to pay</p>
+                    <p className="mt-3">Nothing is charged on this page. Send payment after you submit this form. Jeff ships your book once payment arrives.</p>
+                    <p className="mt-2">Put your <strong className="font-semibold text-[#1B2A4A]">first and last name</strong> in the payment note so Jeff can match your payment to this order.</p>
+                    <p className="mt-3">
+                      <strong className="font-semibold text-[#1B2A4A]">Venmo:</strong> @jkurrus
+                      <br />
+                      <strong className="font-semibold text-[#1B2A4A]">PayPal:</strong> jeffreyekurrus@gmail.com
+                    </p>
+                    <p className="mt-2">$12.95 per copy. Shipping is free.</p>
+                    <label className="mt-4 flex items-start gap-3 text-[#3A4152]">
+                      <input
+                        type="checkbox"
+                        name="payment_understood"
+                        value="Yes"
+                        required
+                        aria-required="true"
+                        className="mt-0.5 h-5 w-5 shrink-0 accent-[#4A7C59]"
+                      />
+                      <span>
+                        I understand my book ships after payment is received.{" "}
+                        <span aria-hidden="true">*</span>
+                      </span>
+                    </label>
+                  </div>
                 </>
               )}
               {/* Source attribution — always visible, required. Same field name and
