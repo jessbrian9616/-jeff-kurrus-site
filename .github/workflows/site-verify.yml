@@ -1,0 +1,121 @@
+# =============================================================================
+# Automatic site verification for jeffkurrus.com
+#
+# WHAT THIS DOES, IN PLAIN LANGUAGE
+# GitHub runs two free robots for us.
+#
+#   Robot 1 (guard-headers) reads the _headers file on every push and refuses
+#   the change if it contains the caching setting that broke the site in
+#   September 2026. It runs in about five seconds and needs no network.
+#
+#   Robot 2 (verify-live) opens the real website - the same way a phone would -
+#   and checks that every file the page needs actually loads. It runs four
+#   minutes after each push (once Cloudflare has finished publishing), and
+#   again every six hours, forever.
+#
+# WHEN SOMETHING BREAKS
+# GitHub emails the repository owner automatically. There is nothing to sign
+# up for and nothing to remember. A red X appears next to the commit on
+# github.com and the email says which check failed.
+#
+# COST: nothing. Roughly one hour of GitHub's 2,000 free monthly minutes.
+# =============================================================================
+
+name: Verify jeffkurrus.com
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Every six hours. Times are UTC.
+    - cron: "0 */6 * * *"
+  workflow_dispatch: # lets Jess run it on demand from the Actions tab
+
+permissions:
+  contents: read
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # Robot 1: block the September 2026 bug from ever being re-introduced.
+  # ---------------------------------------------------------------------------
+  guard-headers:
+    name: Guard against cache-poisoning headers
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Reject 'immutable' and long max-age in _headers
+        run: |
+          set -euo pipefail
+          FILE="client/public/_headers"
+          echo "Checking $FILE"
+
+          # Ignore comment lines; only inspect live directives.
+          LIVE="$(grep -vE '^\s*#' "$FILE" || true)"
+
+          FAILED=0
+
+          if printf '%s' "$LIVE" | grep -qi 'immutable'; then
+            echo "::error file=$FILE::'immutable' is banned in _headers."
+            echo ""
+            echo "WHY: a rule in _headers applies to every response at that path,"
+            echo "including the fallback HTML that Cloudflare returns when a file"
+            echo "is missing. Marking that HTML 'immutable' freezes a broken copy"
+            echo "in phone browsers for up to a year and it survives reloads."
+            echo "That is what made the site render blank white on four phones"
+            echo "in September 2026. See the comment block at the top of $FILE."
+            FAILED=1
+          fi
+
+          # Every Cache-Control line must be revalidatable. A non-zero max-age
+          # without must-revalidate lets a wrong answer sit unchallenged.
+          while IFS= read -r line; do
+            case "$line" in
+              *[Cc]ache-[Cc]ontrol:*) ;;
+              *) continue ;;
+            esac
+            if printf '%s' "$line" | grep -qi 'must-revalidate'; then continue; fi
+            if printf '%s' "$line" | grep -qiE 'max-age=0([^0-9]|$)'; then continue; fi
+            echo "::error file=$FILE::Cache-Control without must-revalidate: $line"
+            echo "Every cache rule here must be revalidatable, so a wrong"
+            echo "response expires on its own instead of sticking."
+            FAILED=1
+          done <<< "$LIVE"
+
+          if [ "$FAILED" -eq 1 ]; then exit 1; fi
+          echo "OK - no cache-poisoning directives found."
+
+      - name: Confirm the boot safety net is still in index.html
+        run: |
+          set -euo pipefail
+          if grep -q 'id="boot-fallback"' client/index.html; then
+            echo "OK - the boot safety net is present."
+          else
+            echo "::error file=client/index.html::The boot safety net (id=\"boot-fallback\") was removed."
+            echo "Without it, a failed page load shows a blank white screen with"
+            echo "no message and no way for a visitor to reach Jeff."
+            exit 1
+          fi
+
+  # ---------------------------------------------------------------------------
+  # Robot 2: open the real site and prove it works.
+  # ---------------------------------------------------------------------------
+  verify-live:
+    name: Verify the live site
+    runs-on: ubuntu-latest
+    # On a pull request there is nothing deployed yet, so skip it.
+    if: github.event_name != 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Wait for Cloudflare Pages to finish publishing
+        if: github.event_name == 'push'
+        run: |
+          echo "Cloudflare Pages builds and deploys after a push."
+          echo "Waiting four minutes so we test the NEW version, not the old one."
+          sleep 240
+
+      - name: Check the live site
+        run: bash scripts/verify-live.sh

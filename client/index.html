@@ -2,7 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <!-- maximum-scale=1 removed 2026-09-02: it blocked pinch-zoom on phones,
+         which fails WCAG 2.2 SC 1.4.4 (Resize Text). No visual change. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jeff Kurrus | Children's Book Author, School Visits & Senior Photography | Gretna, Nebraska</title>
     <meta
       name="description"
@@ -97,10 +99,87 @@
     }
     </script>
     <div id="root"></div>
+
+    <!-- ======================================================================
+         BOOT SAFETY NET - added 2026-09-02
+
+         If the app bundle fails to load or run for any reason, this is what a
+         visitor sees instead of a blank white page. It stays hidden on every
+         healthy page load and only reveals itself after 10 seconds if nothing
+         has rendered into #root.
+
+         Why it exists: between 2026-09-01 and 2026-09-02 the site rendered
+         pure white on four phones. There was no error message, no spinner and
+         nothing on screen, so nobody could tell a broken site from a slow one,
+         and a visitor had no way to reach Jeff. Never again.
+
+         The <noscript> block covers browsers with JavaScript switched off.
+         ====================================================================== -->
+    <div
+      id="boot-fallback"
+      hidden
+      style="
+        max-width: 34rem;
+        margin: 4rem auto;
+        padding: 0 1.5rem;
+        font-family: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+        color: #2f2a24;
+        line-height: 1.6;
+        text-align: center;
+      ">
+      <p style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.75rem; margin: 0 0 0.75rem">
+        Jeff Kurrus
+      </p>
+      <p style="margin: 0 0 1.5rem">
+        This page did not finish loading. It is usually fixed by reloading once.
+      </p>
+      <button
+        type="button"
+        onclick="location.reload(true)"
+        style="
+          font: inherit;
+          font-weight: 600;
+          padding: 0.7rem 1.6rem;
+          border: 1px solid #2f2a24;
+          border-radius: 2px;
+          background: #2f2a24;
+          color: #fdfcf9;
+          cursor: pointer;
+        ">
+        Reload the page
+      </button>
+      <p style="margin: 1.75rem 0 0; font-size: 0.95rem">
+        Still not working? Email
+        <a href="mailto:jeffreyekurrus@gmail.com" style="color: #2f2a24">jeffreyekurrus@gmail.com</a>
+      </p>
+    </div>
+
+    <noscript>
+      <div
+        style="
+          max-width: 34rem;
+          margin: 4rem auto;
+          padding: 0 1.5rem;
+          font-family: system-ui, sans-serif;
+          text-align: center;
+          line-height: 1.6;
+        ">
+        <p>This site needs JavaScript switched on.</p>
+        <p>To reach Jeff directly, email <a href="mailto:jeffreyekurrus@gmail.com">jeffreyekurrus@gmail.com</a>.</p>
+      </div>
+    </noscript>
+
     <script type="module" src="/src/main.tsx"></script>
-    <script
-      defer
-      src="%VITE_ANALYTICS_ENDPOINT%/umami"
-      data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
+
+    <script>
+      // Reveal the safety net only if the app never rendered.
+      setTimeout(function () {
+        var root = document.getElementById("root");
+        if (root && root.childElementCount === 0) {
+          var fallback = document.getElementById("boot-fallback");
+          if (fallback) fallback.hidden = false;
+        }
+      }, 10000);
+    </script>
   </body>
 </html>

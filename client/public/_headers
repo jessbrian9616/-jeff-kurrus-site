@@ -1,37 +1,82 @@
+# =============================================================================
+# Cloudflare Pages _headers
+#
+# CACHING POLICY - READ BEFORE ADDING ANY Cache-Control RULE
+#
+# Rules in this file are applied BY PATH PATTERN, to every response at that
+# path - including the single-page-app fallback HTML that Cloudflare Pages
+# returns (with status 200) when no file exists at the requested path.
+#
+# That combination is a cache-poisoning trap. Verified live on production
+# 2026-09-02:
+#
+#   GET /assets/index-DOESNOTEXIST.js
+#   -> HTTP 200
+#   -> content-type: text/html            (the SPA fallback, not JavaScript)
+#   -> cache-control: public, max-age=31536000, immutable
+#
+# A browser or edge node that receives that response caches HTML in place of
+# the app bundle for ONE YEAR and, because of `immutable`, never revalidates -
+# not even on a manual reload. The page then renders pure white forever, with
+# no error and no spinner. This is what broke the site on four phones between
+# 2026-09-01 and 2026-09-02 while desktop kept working.
+#
+# Cloudflare's own guidance (developers.cloudflare.com/pages/configuration/
+# serving-pages/): "In most situations, you should avoid setting up any custom
+# caching on your site. Pages comes with built in caching defaults that are
+# optimized for caching as much as possible, while providing the most up to
+# date content." Pages keeps assets on its CDN until the next deployment and
+# sends ETags, so browsers get 304 Not Modified instead of a re-download.
+#
+# THE RULE FOR THIS PROJECT:
+#   Never set `immutable`.
+#   Never set a long max-age on a path pattern that could also serve the SPA
+#   fallback - which, with a `/*` fallback in _redirects, is every path.
+#   A wrong answer must expire on its own. Self-healing beats fast.
+#
+# The JS and CSS cache rules that used to live here have been removed for that
+# reason. Cloudflare Pages' defaults now apply to /assets/*: CDN-cached until
+# the next deploy, ETag-revalidated in the browser.
+# =============================================================================
+
+
+# --- Security headers (all paths) -------------------------------------------
+# static.cloudflareinsights.com is Cloudflare Web Analytics (free, privacy-
+# preserving, no cookies). It is auto-injected by Pages and was previously
+# blocked by this CSP, which is why the site had no analytics and threw two
+# console errors on every page load. connect-src 'self' is what the
+# auto-injected beacon posts back to (/cdn-cgi/rum).
+# Source: developers.cloudflare.com/web-analytics/faq/
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formspree.io
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formspree.io
 
-# Static images in /public/images/ keep their original filenames (not content-hashed),
-# so we use a 1-day browser cache with must-revalidate. Updates propagate within 24h
-# automatically — no manual Cloudflare purge required. Replaces an earlier `immutable`
-# rule which caused cache poisoning when an asset URL was hit before the file existed
-# (Cloudflare locked in the SPA-fallback HTML response for a year). Documented in
-# 04_SYSTEMS/CACHE_PURGE_RUNBOOK_v1.md.
+
+# --- Images: one day, always revalidated ------------------------------------
+# Filenames here are NOT content-hashed, so a long cache would pin an outdated
+# photo. `must-revalidate` with no `immutable` means a poisoned entry heals
+# itself within 24 hours instead of persisting. Kept from the 2026-05-03 fix.
 /images/*
   Cache-Control: public, max-age=86400, must-revalidate
 
-# PDF downloads (author visit packet, educator handout, etc.) — same pattern as images.
+
+# --- PDF downloads: same pattern as images ----------------------------------
 /downloads/*
   Cache-Control: public, max-age=86400, must-revalidate
 
-# Vite-built hashed JS/CSS bundles — content-addressed filenames change automatically
-# when source changes, so safe to cache forever.
-/*.js
-  Cache-Control: public, max-age=31536000, immutable
 
-/*.css
-  Cache-Control: public, max-age=31536000, immutable
-
-# JSON data files (news-feed.json) — must be revalidated so feed updates appear
-# without delay.
+# --- JSON data (news-feed.json): never stale --------------------------------
 /*.json
   Cache-Control: public, max-age=0, must-revalidate
 
+
+# --- The HTML shell: never stale --------------------------------------------
+# This is the file that names the current bundle hashes. It must never be
+# cached, or a browser will keep asking for a bundle that no longer exists.
 /
   Cache-Control: public, max-age=0, must-revalidate
 
