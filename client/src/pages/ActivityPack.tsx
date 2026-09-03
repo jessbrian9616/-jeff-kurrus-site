@@ -9,9 +9,28 @@ Functionality today: a clear, mobile-friendly hero with one prominent CTA button
 visitors to the Kit landing page (jeff-kurrus-reader-community.kit.com/activity-pack), where
 they actually subscribe and receive the Activity Pack PDF in their welcome email.
 
-Future upgrade (queued): replace the CTA button with an embedded Kit Inline form so the
-subscribe happens on-site without the redirect. Per D-36 plan, that work is part of the
-homepage Activity Pack CTA push and uses the same Inline form embed code.
+CANCELLED 2026-09-04 (D-115). This block used to read: "Future upgrade (queued): replace
+the CTA button with an embedded Kit Inline form so the subscribe happens on-site without
+the redirect. Per D-36 plan..." DO NOT DO THIS. It was researched properly on 2026-09-04
+and rejected. The short version:
+
+- The existing Kit LANDING PAGE cannot be embedded at all. Kit: "Landing pages can't be
+  embedded within pages on your site." A new Kit FORM would have to be built from scratch,
+  PDF and confirmation email included.
+- Embedding needs five or more Kit and Google hosts added to this site's Content Security
+  Policy, across script-src, connect-src, form-action, frame-src and font-src.
+- KIT DOCUMENTS NONE OF IT. Zero mentions of Content Security Policy, f.convertkit.com,
+  index.js or ck.js anywhere on help.kit.com or developers.kit.com. Every required host was
+  derived by reading Kit's live JavaScript. Kit can change one without notice.
+- The failure mode is SILENT: a blocked submit can show the success state while recording
+  nothing. That would sit on the email list. `verify-live.sh` cannot catch it, because it
+  checks this site's own files, not a third party's form.
+- Nothing is gained but ONE CLICK. Verified on Kit's docs: PDF delivery, double opt-in,
+  per-form analytics and reCAPTCHA all work identically either way.
+
+If anyone ever revisits this, start from D-115, not from scratch. The acceptance test is:
+submit a real address, then confirm BOTH zero CSP violations in the console AND that the
+subscriber actually appears in Kit. One without the other proves nothing.
 
 Styling matches the rest of the site: page-shell layout, PageHero, container padding,
 soft-card sections, and the existing color palette (navy #1B2A4A, gold #B8860B, sage #5F7752).
@@ -48,8 +67,9 @@ export default function ActivityPack() {
       {/* Primary CTA — large, mobile-friendly button. Targets QR scanners landing here
           from a printed asset and on-site visitors arriving via the Books or School Visits
           page links. Outbound link to the Kit landing page that delivers the PDF.
-          When the Kit Inline form embed lands (per D-36 Phase 2), replace this section
-          with the embed and remove the button. */}
+          KEEP THIS BUTTON. The instruction that used to sit here, to replace this section
+          with a Kit Inline form embed (D-36 Phase 2), was CANCELLED 2026-09-04 by D-115.
+          Reasons are in the file header comment above. */}
       <section className="container py-16 sm:py-20">
         <div className="soft-card mx-auto max-w-3xl p-8 text-center sm:p-12">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B8860B]">
