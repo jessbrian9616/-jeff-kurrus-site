@@ -16,9 +16,46 @@
 # WHEN SOMETHING BREAKS
 # GitHub emails the repository owner automatically. There is nothing to sign
 # up for and nothing to remember. A red X appears next to the commit on
-# github.com and the email says which check failed.
+# github.com, and the page the email's button lands on now says what is wrong
+# IN PLAIN ENGLISH - see the summary block in scripts/verify-live.sh.
+#
+# That plain-English page was added 2026-09-04 because GitHub's own email says
+# only "Some jobs were not successful." Jess received two on 2026-09-03 and
+# could not tell whether anything was actually wrong. An alarm that cannot be
+# read without investigating is half an alarm.
 #
 # COST: nothing. Roughly one hour of GitHub's 2,000 free monthly minutes.
+#
+# -----------------------------------------------------------------------------
+# KNOWN LIMIT OF THE SIX-HOURLY SCHEDULE - read before relying on it
+#
+# GitHub's documentation states:
+#
+#   "In a public repository, scheduled workflows are automatically disabled
+#    when no repository activity has occurred in 60 days."
+#   - docs.github.com/en/actions/how-tos/manage-workflow-runs/
+#     disable-and-enable-workflows  [VERIFIED 2026-09-04]
+#
+# This repository IS public [VERIFIED 2026-09-04], so the rule applies. If
+# nobody pushes for 60 days, the six-hourly check switches itself off silently
+# and can be turned back on from the Actions tab.
+#
+# WHY WE ACCEPT THIS RATHER THAN WORK AROUND IT:
+#   - Any push resets the 60-day clock, and a push also runs the check.
+#   - The bug class this guards against APPEARS AT DEPLOY TIME. If nothing has
+#     been deployed for 60 days, nothing new can have broken this way.
+#   - The obvious workaround - a scheduled job that commits a heartbeat file to
+#     keep the repo "active" - would trigger a Cloudflare rebuild on every
+#     heartbeat. That means pointless deploys, and a deploy is precisely the
+#     risky moment. The cure would manufacture the disease.
+#   - The push-triggered check, the Cloudflare deploy-failure email and the
+#     boot safety net are all unaffected by this limit.
+#
+# Residual risk, stated plainly: during a quiet spell longer than 60 days, an
+# outage caused by something OUTSIDE our deploys (a Cloudflare change, a DNS or
+# domain lapse) could go unnoticed until someone looks. Run the check by hand
+# any time from the Actions tab via "Run workflow", or locally with
+# `bash scripts/verify-live.sh`.
 # =============================================================================
 
 name: Verify jeffkurrus.com
@@ -84,7 +121,21 @@ jobs:
             FAILED=1
           done <<< "$LIVE"
 
-          if [ "$FAILED" -eq 1 ]; then exit 1; fi
+          if [ "$FAILED" -eq 1 ]; then
+            {
+              echo "# A banned caching rule was added to \`_headers\`"
+              echo
+              echo "**This push was refused.** The rule it adds is the one that made"
+              echo "jeffkurrus.com render a blank white page on four phones in"
+              echo "September 2026: a broken file could get stuck in a phone for up to"
+              echo "a year and survive reloads."
+              echo
+              echo "Open \`client/public/_headers\` and read the comment block at the top."
+              echo "Never \`immutable\`; every cache rule is \`max-age=0\` or carries"
+              echo "\`must-revalidate\`."
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
           echo "OK - no cache-poisoning directives found."
 
       - name: Confirm the boot safety net is still in index.html

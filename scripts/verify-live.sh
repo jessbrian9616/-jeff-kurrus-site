@@ -26,9 +26,14 @@ SITE="${SITE_URL:-https://www.jeffkurrus.com}"
 UA_MOBILE="Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Mobile Safari/537.36"
 FAILURES=0
 CHECKS=0
+FAILLOG="$(mktemp)"
 
 pass() { CHECKS=$((CHECKS + 1)); printf '  PASS  %s\n' "$1"; }
-fail() { CHECKS=$((CHECKS + 1)); FAILURES=$((FAILURES + 1)); printf '  FAIL  %s\n' "$1"; }
+fail() {
+  CHECKS=$((CHECKS + 1)); FAILURES=$((FAILURES + 1))
+  printf '  FAIL  %s\n' "$1"
+  printf '%s\n' "$1" >> "$FAILLOG"
+}
 head2() { printf '\n%s\n' "$1"; }
 
 fetch() { curl -sS --max-time 30 -A "$UA_MOBILE" "$@"; }
@@ -166,6 +171,72 @@ HEADERS="$(fetch -o /dev/null -D- "$SITE/")"
 for h in "content-security-policy" "x-content-type-options" "x-frame-options"; do
   if printf '%s' "$HEADERS" | grep -qi "^$h:"; then pass "$h present"; else fail "$h MISSING"; fi
 done
+
+# --- Plain-language summary -------------------------------------------------
+# Added 2026-09-04. When this runs inside GitHub Actions, GITHUB_STEP_SUMMARY
+# points at a file whose contents render as the run's summary page - the page
+# the "View workflow run" button in the failure email lands on.
+#
+# WHY: GitHub's failure email says only "Some jobs were not successful." Jess
+# received two on 2026-09-03 and could not tell from the email whether anything
+# was actually wrong. An alarm that cannot be read without investigating is
+# half an alarm. This turns the landing page into plain English.
+#
+# Testable locally: GITHUB_STEP_SUMMARY=/tmp/s.md bash scripts/verify-live.sh
+
+# Translate a technical failure line into something readable at 10pm.
+plain() {
+  case "$1" in
+    *"WHITE-SCREEN BUG"*)   echo "**The site is serving a broken app file. Visitors will see a blank page.** This is the September 2026 bug. Most likely a caching rule was changed back." ;;
+    *"immutable"*)          echo "**A caching rule was re-added that caused the September 2026 outage.** A broken copy could get stuck in phones for up to a year. Check the \`_headers\` file and the Cloudflare Browser Cache TTL setting." ;;
+    *"cache-poisoning"*)    echo "**Cloudflare is caching missing files long-term again.** Check Caching -> Configuration -> Browser Cache TTL is still on \"Respect Existing Headers\"." ;;
+    *"safety net"*)         echo "**The blank-page safety net is gone.** A failed load would show a white screen with no message and no way to reach Jeff." ;;
+    *"placeholder"*)        echo "**An unfinished piece of code is live on the site.**" ;;
+    *"unstyled"*)           echo "**The site's styling file is broken.** Pages will load looking wrong." ;;
+    *"returned"*)           echo "**A page of the site is not responding properly:** \`$1\`" ;;
+    *"redirect"*)           echo "**jeffkurrus.com is no longer forwarding to www.jeffkurrus.com.**" ;;
+    *"MISSING"*)            echo "**A security header is missing:** \`$1\`" ;;
+    *)                      echo "$1" ;;
+  esac
+}
+
+if [ -n "${GITHUB_STEP_SUMMARY:-}" ]; then
+  {
+    if [ "$FAILURES" -eq 0 ]; then
+      echo "# The website is working"
+      echo
+      echo "All $CHECKS checks passed. **Nothing to do.**"
+    else
+      echo "# Something is wrong with jeffkurrus.com"
+      echo
+      echo "$FAILURES of $CHECKS checks failed. **In plain language:**"
+      echo
+      while IFS= read -r line; do
+        [ -z "$line" ] && continue
+        echo "- $(plain "$line")"
+      done < "$FAILLOG"
+      echo
+      echo "## What to do"
+      echo
+      echo "1. Open the site on a phone and see whether it loads."
+      echo "2. Paste this whole page to Claude in the Jeff-Kurrus project and say the site check failed."
+      echo "3. Background and history: \`04_SYSTEMS/INCIDENT_2026-09-02_MOBILE-WHITE-SCREEN_root-cause-and-permanent-fix.md\`"
+      echo
+      echo "<details><summary>The exact technical failures</summary>"
+      echo
+      echo '```'
+      cat "$FAILLOG"
+      echo '```'
+      echo
+      echo "</details>"
+    fi
+    echo
+    echo "---"
+    echo "Checked \`$SITE\` at $(date -u '+%Y-%m-%d %H:%M UTC') as an Android phone."
+  } >> "$GITHUB_STEP_SUMMARY"
+fi
+
+rm -f "$FAILLOG"
 
 # --- Result -----------------------------------------------------------------
 printf '\n=====================================================\n'
