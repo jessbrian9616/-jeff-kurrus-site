@@ -15,7 +15,7 @@ export const siteMeta = {
   socials: [
     { label: "Instagram", href: "https://www.instagram.com/jeffkurrus/" },
     { label: "Facebook", href: "https://www.facebook.com/jeffreyekurrus/" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/jeff-kurrus-25b02757/" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/jeff-kurrus/" },
   ],
 };
 
