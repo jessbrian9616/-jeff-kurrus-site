@@ -17,7 +17,7 @@
 # It also runs automatically: after every push, and every six hours, via
 # .github/workflows/site-verify.yml. A failure emails the repo owner.
 #
-# Exit code 0 = healthy. Exit code 1 = something is broken, details above.
+# Exit code 0 = checks passed. Exit code 1 = a check failed or could not verify the site.
 # =============================================================================
 
 set -uo pipefail
@@ -96,26 +96,47 @@ if [ -z "$ASSETS" ]; then
 else
   while IFS= read -r path; do
     [ -z "$path" ] && continue
-    code="$(fetch -o /dev/null -w '%{http_code}' "$SITE$path")"
-    ctype="$(fetch -o /dev/null -w '%{content_type}' "$SITE$path")"
+    # Keep status, type and curl exit from the SAME GET, including partial failures.
+    if ! asset_error_file="$(mktemp)"; then
+      fail "$path RESPONSE_UNVERIFIED: cannot create a diagnostic file."
+      continue
+    fi
+    asset_meta="$(fetch -o /dev/null -w '%{http_code} %{content_type}' "$SITE$path" 2>"$asset_error_file")"
+    asset_exit=$?
+    asset_error="$(tr '\r\n' '  ' < "$asset_error_file")"
+    rm -f "$asset_error_file"
+    code=""; ctype=""
+    read -r code ctype <<<"$asset_meta"
+    if [ "$asset_exit" -ne 0 ]; then
+      fail "$path TRANSPORT_UNVERIFIED: curl exit $asset_exit; HTTP ${code:-unknown}; type '${ctype:-unknown}'; ${asset_error:-no additional detail}. The file could not be verified."
+      continue
+    fi
+    if [ -z "$code" ] || [ "$code" = "000" ]; then
+      fail "$path RESPONSE_UNVERIFIED: no HTTP status was available."
+      continue
+    fi
+    if [ "$code" != "200" ]; then
+      fail "$path HTTP_FAILURE: returned HTTP $code as '${ctype:-unknown}', expected 200."
+      continue
+    fi
 
     case "$path" in
       *.js)
-        if [ "$code" = "200" ] && printf '%s' "$ctype" | grep -qi 'javascript'; then
+        if printf '%s' "$ctype" | grep -qi 'javascript'; then
           pass "$path serves JavaScript"
         else
-          fail "$path returned $code as '$ctype' - the browser cannot run this. THIS IS THE WHITE-SCREEN BUG."
+          fail "$path CONTENT_TYPE_FAILURE: HTTP 200 served '${ctype:-unknown}', expected JavaScript."
         fi
         ;;
       *.css)
-        if [ "$code" = "200" ] && printf '%s' "$ctype" | grep -qi 'css'; then
+        if printf '%s' "$ctype" | grep -qi 'css'; then
           pass "$path serves CSS"
         else
-          fail "$path returned $code as '$ctype' - the page will load unstyled."
+          fail "$path CONTENT_TYPE_FAILURE: HTTP 200 served '${ctype:-unknown}', expected CSS."
         fi
         ;;
       *)
-        if [ "$code" = "200" ]; then pass "$path returns 200"; else fail "$path returned $code"; fi
+        pass "$path returns 200"
         ;;
     esac
   done <<<"$ASSETS"
@@ -187,6 +208,10 @@ done
 # Translate a technical failure line into something readable at 10pm.
 plain() {
   case "$1" in
+    *"TRANSPORT_UNVERIFIED"*) echo "**An app-file download could not be verified.** Network transfer failed; this does not establish a broken file. See the path and error below." ;;
+    *"RESPONSE_UNVERIFIED"*) echo "**An app-file check could not be completed.** Response or diagnostic information was unavailable; file availability is unverified." ;;
+    *"HTTP_FAILURE"*) echo "**An app file did not return HTTP 200.** See the exact status and path below." ;;
+    *"CONTENT_TYPE_FAILURE"*) echo "**An app file returned an unexpected content type.** This may prevent correct display; see the expected type and path below." ;;
     *"WHITE-SCREEN BUG"*)   echo "**The site is serving a broken app file. Visitors will see a blank page.** This is the September 2026 bug. Most likely a caching rule was changed back." ;;
     *"immutable"*)          echo "**A caching rule was re-added that caused the September 2026 outage.** A broken copy could get stuck in phones for up to a year. Check the \`_headers\` file and the Cloudflare Browser Cache TTL setting." ;;
     *"cache-poisoning"*)    echo "**Cloudflare is caching missing files long-term again.** Check Caching -> Configuration -> Browser Cache TTL is still on \"Respect Existing Headers\"." ;;
@@ -207,7 +232,7 @@ if [ -n "${GITHUB_STEP_SUMMARY:-}" ]; then
       echo
       echo "All $CHECKS checks passed. **Nothing to do.**"
     else
-      echo "# Something is wrong with jeffkurrus.com"
+      echo "# Website verification needs attention"
       echo
       echo "$FAILURES of $CHECKS checks failed. **In plain language:**"
       echo
@@ -245,7 +270,7 @@ if [ "$FAILURES" -eq 0 ]; then
   printf '=====================================================\n'
   exit 0
 else
-  printf 'RESULT: BROKEN - %d checks, %d FAILURES (listed above).\n' "$CHECKS" "$FAILURES"
+  printf 'RESULT: CHECK FAILED - %d checks, %d FAILURES (listed above).\n' "$CHECKS" "$FAILURES"
   printf '=====================================================\n'
   exit 1
 fi
